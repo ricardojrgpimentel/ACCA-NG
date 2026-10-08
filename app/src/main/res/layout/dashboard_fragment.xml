@@ -104,6 +104,13 @@
                     android:padding="12dp"
                     android:text="@string/acc_daemon_status_reading_status"
                     android:gravity="center"/>
+                <TextView android:id="@+id/dash_health_summary"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp" android:visibility="gone" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dash_troubleshoot_button" style="@style/Widget.Acca.Button.Outlined"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="@string/troubleshoot_title" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

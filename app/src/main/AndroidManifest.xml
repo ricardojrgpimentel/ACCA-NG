@@ -66,6 +66,7 @@
 
         <activity android:name=".activities.AccConfigEditorActivity" />
         <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.AccTroubleshootActivity" android:exported="false" />
         <activity android:name=".activities.ExportProfilesActivity" />
         <activity android:name=".activities.ImportProfilesActivity" />
 

@@ -19,6 +19,11 @@ import mattecarra.accapp.CurrentUnit
 import mattecarra.accapp.MainApplication
 import mattecarra.accapp.VoltageUnit
 import mattecarra.accapp.acc.Acc
+import mattecarra.accapp.acc.AccTroubleshooter
+import mattecarra.accapp.acc.BundledAccDaemon
+import mattecarra.accapp.models.AccHealthReport
+import mattecarra.accapp.models.AccHealthSnapshot
+import mattecarra.accapp.models.AccHealthTracker
 import mattecarra.accapp.models.BatteryInfo
 import mattecarra.accapp.R
 import mattecarra.accapp.models.DashboardValues
@@ -31,6 +36,9 @@ class DashboardViewModel : ViewModel() {
 
     private val dashboard: MutableLiveData<DashboardValues> = MutableLiveData()
     val daemonRunning = MutableLiveData<Boolean?>()
+    val health = MutableLiveData<AccHealthReport>()
+    private val healthTracker = AccHealthTracker()
+    private var healthUpdatedAt: Long? = null
     private val refreshMutex = Mutex()
     private var diagnostics = BatteryDiagnostics()
     private var diagnosticsUpdatedAt: Long? = null
@@ -57,6 +65,15 @@ class DashboardViewModel : ViewModel() {
         } catch (ex: CancellationException) { throw ex
         } catch (ex: Exception) { null }
         daemonRunning.value = daemon
+        val healthNow = SystemClock.elapsedRealtime()
+        if (healthUpdatedAt == null || healthNow - healthUpdatedAt!! >= 10_000) {
+            val snapshot = try { AccTroubleshooter.read() }
+                catch (ex: CancellationException) { throw ex }
+                catch (ex: Exception) { AccHealthSnapshot() }
+            val hash = withContext(Dispatchers.IO) { BundledAccDaemon.hash(MainApplication.appContext) }
+            health.value = healthTracker.evaluate(snapshot, hash, healthNow)
+            healthUpdatedAt = healthNow
+        }
         var batteryReadingFresh = true
         val batteryInfo = try {
             Acc.instance.getBatteryInfo()

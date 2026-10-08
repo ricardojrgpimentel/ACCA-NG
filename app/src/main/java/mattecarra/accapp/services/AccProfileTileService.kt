@@ -12,6 +12,7 @@ import kotlinx.coroutines.*
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.acc.ConfigUpdaterEnable
+import mattecarra.accapp.acc.ConfigVerifier
 import mattecarra.accapp.utils.ProfileUtils
 import mattecarra.accapp.viewmodel.ProfilesViewModel
 import kotlin.coroutines.CoroutineContext
@@ -96,14 +97,21 @@ class AccProfileTileService: TileService(), CoroutineScope {
 
             //apply profile
             launch {
-                val res = Acc.instance.updateAccConfig(profile.accConfig, ConfigUpdaterEnable(mSharedPrefs))
+                val controls = ConfigUpdaterEnable(mSharedPrefs)
+                val successful = try {
+                    val res = Acc.instance.updateAccConfig(profile.accConfig, controls)
+                    res.isSuccessful() && ConfigVerifier.awaitApplied(profile.accConfig,
+                        controls.sendVoltage, controls.sendCurrMax) { Acc.instance.readConfig() } != null
+                } catch (ex: CancellationException) { throw ex
+                } catch (ex: Exception) { false }
 
                 //Update tile infos
-                qsTile.state =  Tile.STATE_ACTIVE
-                qsTile.label =  if(res.isSuccessful()) getString(R.string.profile_tile_label, profile.profileName) else getString(R.string.error_occurred)
+                qsTile.state = if (successful) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+                qsTile.label = if (successful) getString(R.string.profile_tile_label, profile.profileName) else getString(R.string.error_occurred)
                 qsTile.updateTile()
 
-                ProfileUtils.saveCurrentProfile(profile.uid, mSharedPrefs)
+                if (successful) ProfileUtils.saveCurrentProfile(profile.uid, mSharedPrefs)
+                else ProfileUtils.clearCurrentSelectedProfile(mSharedPrefs)
             }
         }
     }

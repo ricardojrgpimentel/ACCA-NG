@@ -9,7 +9,10 @@ object ProfileActivation {
             configCurrMax = if (applyCurrent) config.configCurrMax else null,
             configOnBoot = config.configOnBoot?.takeIf { it.isNotBlank() },
             configOnPlug = config.configOnPlug?.takeIf { it.isNotBlank() },
-            configChargeSwitch = config.configChargeSwitch?.takeIf { it.isNotBlank() },
+            // Automatic discovery changes the live switch without changing the
+            // user's profile. Only an enforced switch belongs to its identity.
+            configChargeSwitch = if (config.configIsAutomaticSwitchingEnabled) null
+                else config.configChargeSwitch?.trim()?.takeIf { it.isNotBlank() },
             configIsAutomaticSwitchingEnabled = if (config.configChargeSwitch.isNullOrBlank()) true
                 else config.configIsAutomaticSwitchingEnabled
         )

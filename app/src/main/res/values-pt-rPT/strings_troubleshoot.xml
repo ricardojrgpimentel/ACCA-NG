@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnóstico do carregamento</string>
+    <string name="troubleshoot_intro">Verifica o serviço de carregamento, a calibração e os limites aplicados. O diagnóstico atualiza automaticamente enquanto este ecrã estiver aberto.</string>
+    <string name="troubleshoot_no_issue">Sem problemas detetados nas leituras atuais. Isto não confirma um ciclo completo de carga e retoma.</string>
+    <string name="troubleshoot_unavailable">Diagnóstico indisponível. Verifica o acesso root e a instalação do ACC e tenta novamente.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Este serviço ACC modificado usa limites fixos de 90%/80% e ignora os perfis. Restaura o serviço incluído na app para recuperar o controlo pelos perfis.</string>
+    <string name="troubleshoot_different_module">O serviço instalado difere do incluído na app. Pode ser uma versão legítima ou uma modificação; a diferença, por si só, não prova uma falha.</string>
+    <string name="troubleshoot_calibration_pending">O ACC está em execução, mas à espera da calibração da corrente. Desliga todos os carregadores e usa Calibrar corrente para concluir este passo.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC à espera de calibração</string>
+    <string name="troubleshoot_stopped">O serviço ACC está parado. Inicia-o no ecrã principal para aplicar os limites de carregamento.</string>
+    <string name="troubleshoot_above_limit">A bateria continua a carregar no limite configurado ou acima dele há pelo menos 30 segundos. Verifica a calibração e o módulo; o mecanismo de corte escolhido também pode não estar a funcionar.</string>
+    <string name="troubleshoot_refresh">Verificar novamente</string>
+    <string name="troubleshoot_calibrate">Calibrar corrente</string>
+    <string name="troubleshoot_calibrate_now">Iniciar calibração</string>
+    <string name="troubleshoot_calibration_instructions">Desliga o USB, o carregamento sem fios e todos os outros carregadores. Espera alguns segundos e inicia. A app recolhe cinco leituras em descarga durante 10 segundos e guarda uma cópia da configuração. Mantém os carregadores desligados até terminar. Leituras instáveis ou indisponíveis deixam a calibração inalterada.</string>
+    <string name="troubleshoot_calibration_failed">Não foi possível confirmar a calibração. Mantém todos os carregadores desligados, espera que as leituras estabilizem e tenta novamente.</string>
+    <string name="troubleshoot_calibration_success">Calibração da corrente guardada e verificada. Volta a ligar o carregador e verifica o diagnóstico.</string>
+    <string name="troubleshoot_restore">Restaurar serviço incluído</string>
+    <string name="troubleshoot_restore_confirmation">Esta ação substitui o serviço de carregamento ACC pelo original da mesma versão incluído na app. As alterações ao serviço serão removidas. A app guarda primeiro uma cópia do módulo e da configuração, mantém as definições, reinicia o serviço e verifica a reparação. Se a verificação falhar, tenta restaurar o serviço anterior.</string>
+    <string name="troubleshoot_restore_success">O serviço original foi restaurado e verificado. Os limites de carregamento foram mantidos. Se a calibração ainda estiver pendente, conclui-a antes de testar o controlo da carga.</string>
+    <string name="troubleshoot_restore_failed">A recuperação do serviço falhou. Consulta os detalhes do comando para ver a localização da cópia de segurança e a falha. Verifica o diagnóstico antes de tentar novamente.</string>
+    <string name="troubleshoot_incompatible_version">A recuperação exige a mesma versão do ACC incluída na app. Outras versões não são substituídas nem desatualizadas aqui.</string>
+    <string name="troubleshoot_details">Código da versão ACC: %1$s\nBateria: %2$s%%\nParar: %3$s%% · Retomar: %4$s%%\nEstado da bateria: %5$s\nCorrente: %6$s mA\nPolaridade da descarga: %7$s\nMecanismo de corte: %8$s</string>
+    <string name="troubleshoot_backup">Cópia de segurança: %1$s</string>
+    <string name="troubleshoot_copy">Copiar diagnóstico</string>
+    <string name="troubleshoot_copied">Diagnóstico copiado</string>
+</resources>

@@ -7,6 +7,7 @@ import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.acc.ConfigUpdaterEnable
+import mattecarra.accapp.acc.ConfigVerifier
 import mattecarra.accapp.models.AccConfig
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ProfileUtils
@@ -86,9 +87,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application)
     */
     private suspend fun saveAccConfig(value: AccConfig): Boolean
     {
-        val result = Acc.instance.updateAccConfig(value, ConfigUpdaterEnable(mSharedPrefs))
-        if (result.isSuccessful()) {
-            config.postValue(Pair(value, null))
+        val controls = ConfigUpdaterEnable(mSharedPrefs)
+        val result = Acc.instance.updateAccConfig(value, controls)
+        val applied = if (result.isSuccessful()) ConfigVerifier.awaitApplied(value,
+            controls.sendVoltage, controls.sendCurrMax) { Acc.instance.readConfig() } else null
+        if (applied != null) {
+            config.postValue(Pair(applied, null))
         } else {
             val currentConfig = try {
                 Acc.instance.readConfig()
@@ -96,7 +100,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application)
             } catch (ex: Exception) { null }
             config.postValue(Pair(currentConfig, if (currentConfig == null) "Unable to read ACC settings" else null))
         }
-        return result.isSuccessful()
+        return applied != null
     }
 
     /**

@@ -1,6 +1,7 @@
 package mattecarra.accapp.fragments
 
 import android.os.Bundle
+import android.content.Intent
 import android.os.BatteryManager
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,9 @@ import mattecarra.accapp.Preferences
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.activities.MainActivity
+import mattecarra.accapp.activities.AccTroubleshootActivity
+import mattecarra.accapp.models.AccHealthIssue
+import mattecarra.accapp.utils.AccHealthText
 import mattecarra.accapp.databinding.DashboardFragmentBinding
 import mattecarra.accapp.databinding.EditChargingLimitOnceDialogBinding
 import mattecarra.accapp.models.BatteryPowerState
@@ -69,6 +73,16 @@ class DashboardFragment : ScopedFragment()
 
         super.onViewCreated(view, savedInstanceState)
         preferences = Preferences(requireContext())
+        binding.dashTroubleshootButton.setOnClickListener {
+            startActivity(Intent(requireContext(), AccTroubleshootActivity::class.java))
+        }
+        mViewModel.health.observe(viewLifecycleOwner) { report ->
+            binding.dashHealthSummary.isVisible = report.issues.isNotEmpty()
+            binding.dashHealthSummary.text = report.issues.joinToString("\n") {
+                getString(AccHealthText.message(it))
+            }
+            setAccdStatusUi(mIsDaemonRunning)
+        }
 
         //-----------------------------------------------------------------
 
@@ -290,6 +304,12 @@ class DashboardFragment : ScopedFragment()
                 getColor(requireContext(), R.color.colorSuccessful))
             binding.dashAccdStatusImageView.setImageResource(R.drawable.ic_outline_check_circle_24px)
             binding.dashAccdStatusTextView.setText(R.string.acc_daemon_status_running)
+            if (mViewModel.health.value?.issues?.contains(AccHealthIssue.CALIBRATION_PENDING) == true) {
+                binding.dashAccdStatusTextView.setText(R.string.troubleshoot_calibration_pending_short)
+                binding.dashAccdStatusImageView.setImageResource(R.drawable.ic_outline_error_outline_24px)
+                binding.dashAccdStatusImageView.imageTintList = android.content.res.ColorStateList.valueOf(
+                    getColor(requireContext(), R.color.color_error))
+            }
             // Enable buttons
             binding.dashDaemonRestartButton.isEnabled = true
             binding.dashDaemonToggleButton.isEnabled = true

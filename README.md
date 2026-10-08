@@ -26,6 +26,32 @@
 >   forever; tapping the card retries.
 > - Idle-mode probe is skipped when not charging (it hangs otherwise).
 
+### Charging diagnostics
+
+Open **Charging diagnostics** from the ACC status card when charging limits do
+not take effect. The dashboard also reports pending current calibration, a stopped
+service, the known modified service with fixed 90%/80% limits, and sustained battery
+charging above a configured percentage limit (30 seconds of fresh observations).
+A service fingerprint difference is reported as a difference, not proof of a fault.
+
+- **Calibrate current** requires all chargers to be disconnected. Five stable
+  discharge readings over ten seconds determine the sensor polarity and scale;
+  connected, missing, near-zero or mixed-sign readings do not change calibration.
+  The configuration is backed up before a confirmed calibration is written.
+- **Restore bundled service** repairs `accd.sh` from the app's existing ACC bundle
+  when the installed version matches the bundled version. It does not downgrade
+  another version. After confirmation, it backs up the module and configuration
+  under `/data/adb/vr25/acc-data/backup/troubleshoot-<id>/`, validates and atomically
+  replaces the service, restarts ACC and checks the fingerprint and preserved
+  settings. A failed verification attempts to restore the previous executable.
+- **Copy diagnostics** copies current readings and any displayed backup path for
+  manual sharing. Nothing is sent automatically.
+
+Profile application now waits for the settings to be read back before reporting
+success. Automatic charging-switch discovery does not deactivate a saved profile;
+an explicitly enforced switch must still match. These checks do not certify a full
+charge/pause/resume cycle or guarantee every kernel's charging controls work.
+
 
 
 - [DESCRIPTION](#description)

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Charging diagnostics</string>
+    <string name="troubleshoot_intro">Check the charging service, calibration and applied limits. Diagnostics refresh automatically while this screen is open.</string>
+    <string name="troubleshoot_no_issue">No problem detected in the current readings. This does not confirm a full charge and resume cycle.</string>
+    <string name="troubleshoot_unavailable">Diagnostics unavailable. Check root access and the ACC installation, then retry.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">This modified ACC service uses fixed 90%/80% limits and ignores profile limits. Restore the bundled service to recover profile control.</string>
+    <string name="troubleshoot_different_module">The installed service differs from the one bundled with the app. This can be a legitimate version or a modification; a difference alone does not prove a fault.</string>
+    <string name="troubleshoot_calibration_pending">ACC is running but waiting for current calibration. Disconnect all chargers and use Calibrate current to complete this step.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC waiting for calibration</string>
+    <string name="troubleshoot_stopped">The ACC service is stopped. Start it from the dashboard to apply charging limits.</string>
+    <string name="troubleshoot_above_limit">The battery has continued charging at or above the configured limit for at least 30 seconds. Check calibration and the module; the selected charging switch may also be ineffective.</string>
+    <string name="troubleshoot_refresh">Check again</string>
+    <string name="troubleshoot_calibrate">Calibrate current</string>
+    <string name="troubleshoot_calibrate_now">Start calibration</string>
+    <string name="troubleshoot_calibration_instructions">Disconnect USB, wireless charging and all other chargers. Wait a few seconds, then start. The app collects five discharge readings over 10 seconds and saves a configuration backup. Keep chargers disconnected until it finishes. Unstable or unavailable readings leave the calibration unchanged.</string>
+    <string name="troubleshoot_calibration_failed">Calibration could not be confirmed. Keep all chargers disconnected, wait for the readings to settle and retry.</string>
+    <string name="troubleshoot_calibration_success">Current calibration saved and verified. Reconnect your charger and check the diagnostics.</string>
+    <string name="troubleshoot_restore">Restore bundled service</string>
+    <string name="troubleshoot_restore_confirmation">This replaces the ACC charging service with the original bundled service of the same version. Custom service changes will be removed. The app first backs up the module and configuration, preserves your settings, restarts the service and verifies the repair. If verification fails, it attempts to restore the previous service.</string>
+    <string name="troubleshoot_restore_success">The original service was restored and verified. Charging limits were preserved. If calibration is still pending, complete it before testing charging control.</string>
+    <string name="troubleshoot_restore_failed">Service recovery failed. Review the command details for the backup location and failure. Check the diagnostics before trying again.</string>
+    <string name="troubleshoot_incompatible_version">Service recovery requires the same ACC version as the app bundle. Other versions are not replaced or downgraded here.</string>
+    <string name="troubleshoot_details">ACC version code: %1$s\nBattery: %2$s%%\nStop: %3$s%% · Resume: %4$s%%\nBattery status: %5$s\nCurrent: %6$s mA\nDischarge polarity: %7$s\nCharging switch: %8$s</string>
+    <string name="troubleshoot_backup">Backup: %1$s</string>
+    <string name="troubleshoot_copy">Copy diagnostics</string>
+    <string name="troubleshoot_copied">Diagnostics copied</string>
+</resources>

@@ -30,4 +30,18 @@ class ProfileActivationTest {
         val manual = saved.copy(configIsAutomaticSwitchingEnabled = false)
         assertFalse(ProfileActivation.matches(manual, saved))
     }
+
+    @Test fun automaticSwitchDiscoveryDoesNotDeactivateProfile() {
+        val saved = AccConfig()
+        val detected = saved.copy(configChargeSwitch = "battery/batt_slate_mode 0 1")
+        assertTrue(ProfileActivation.matches(detected, saved))
+        assertTrue(ProfileActivation.matches(detected.copy(configChargeSwitch = "battery/charging_enabled 1 0"), saved))
+    }
+
+    @Test fun enforcedSwitchMustStillMatch() {
+        val saved = AccConfig(configChargeSwitch = "battery/batt_slate_mode 0 1",
+            configIsAutomaticSwitchingEnabled = false)
+        assertFalse(ProfileActivation.matches(saved.copy(configChargeSwitch = "battery/charging_enabled 1 0"), saved))
+        assertFalse(ProfileActivation.matches(saved.copy(configIsAutomaticSwitchingEnabled = true), saved))
+    }
 }
