@@ -147,4 +147,15 @@ class Preferences(private val context: Context)
             editor.putBoolean(DJS_ENABLED, value)
             editor.apply()
         }
+
+    /**
+     * One-time migration marker: fresh installs default to A/V input units,
+     * but the app normalises all readings to µA/µV internally, so A/V
+     * defaults produce 1000x readings (issue #243). See DashboardViewModel.
+     */
+    var unitsMicroMigrationDone: Boolean
+        get() = sharedPrefs.getBoolean("UNITS_MICRO_MIGRATED", false)
+        set(value) {
+            sharedPrefs.edit().putBoolean("UNITS_MICRO_MIGRATED", value).apply()
+        }
 }

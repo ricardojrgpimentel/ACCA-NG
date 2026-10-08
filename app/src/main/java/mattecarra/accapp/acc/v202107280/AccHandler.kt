@@ -294,7 +294,10 @@ open class AccHandler(override val version: Int) : AccInterface {
         // forever, leaking a stray daemon process per tap). Use the
         // documented daemon manager instead. Bounded by the global libsu
         // job timeout if the daemon lock is wedged.
-        Shell.su("/dev/.vr25/acc/acca -D stop").exec().isSuccess
+        Shell.su("/dev/.vr25/acc/acca -D stop").exec()
+        // Report the real end state: ACC's lock/status bookkeeping can go
+        // stale, making the stop command "succeed" without effect.
+        !isAccdRunning()
     }
 
     //Charging switches
