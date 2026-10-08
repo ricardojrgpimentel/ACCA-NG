@@ -19,7 +19,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -101,7 +100,7 @@ class ProfilesFragment : ScopedFragment(),
         profilesRecycler.adapter = mProfilesAdapter
         profilesRecycler.layoutManager = LinearLayoutManager(mContext)
 
-        mProfilesViewModel = ViewModelProviders.of(this).get(ProfilesViewModel::class.java)
+        mProfilesViewModel = ViewModelProvider(this).get(ProfilesViewModel::class.java)
 
         // Observe data
         mProfilesViewModel.getLiveData().observe(viewLifecycleOwner, Observer { profiles ->
@@ -233,7 +232,7 @@ class ProfilesFragment : ScopedFragment(),
         itemTouchHelper.attachToRecyclerView(profilesRecycler)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String)
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?)
     {
         if (key == Constants.PROFILE_KEY)
         {

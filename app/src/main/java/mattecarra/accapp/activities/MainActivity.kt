@@ -25,6 +25,7 @@ import com.afollestad.materialdialogs.actions.setActionButtonEnabled
 import com.afollestad.materialdialogs.input.getInputField
 import com.afollestad.materialdialogs.input.input
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.launch
@@ -46,7 +47,7 @@ import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MainActivity : ScopedAppActivity(), BottomNavigationView.OnNavigationItemSelectedListener
+class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListener
 {
     private val LOG_TAG = "MainActivity"
     val ACC_CONFIG_EDITOR_REQUEST = 1
@@ -105,11 +106,23 @@ class MainActivity : ScopedAppActivity(), BottomNavigationView.OnNavigationItemS
         })
 
         // Set Bottom Navigation Bar Item Selected Listener
-        binding.mainBottomNav.setOnNavigationItemSelectedListener(this)
+        binding.mainBottomNav.setOnItemSelectedListener(this)
         setSupportActionBar(binding.mainToolbar)
 
         // Load in dashboard fragment
         binding.mainBottomNav.selectedItemId = selectedNavBarItem
+
+        // Back goes home section-first instead of leaving the app.
+        onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (binding.mainBottomNav.selectedItemId == R.id.botNav_home) {
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                } else {
+                    binding.mainBottomNav.selectedItemId = R.id.botNav_home
+                }
+            }
+        })
     }
 
     /**
@@ -524,6 +537,10 @@ class MainActivity : ScopedAppActivity(), BottomNavigationView.OnNavigationItemS
 
     fun checkWritePermission(context: Context)
     {
+        // Scoped storage (Android 10+) removed the need for this permission:
+        // the app only writes to its own files/shared intents. Request it
+        // solely on Android 9 and below where it still means something.
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) return
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE))
                 ActivityCompat.requestPermissions(this, Array(1){ Manifest.permission.WRITE_EXTERNAL_STORAGE }, 1);
@@ -543,14 +560,6 @@ class MainActivity : ScopedAppActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_appbar_menu, menu)
         return true
-    }
-
-    override fun onBackPressed() {
-        if (binding.mainBottomNav.selectedItemId == R.id.botNav_home) {
-            super.onBackPressed()
-        } else {
-            binding.mainBottomNav.selectedItemId = R.id.botNav_home
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

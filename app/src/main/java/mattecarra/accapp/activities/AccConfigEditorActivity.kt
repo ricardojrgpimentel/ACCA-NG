@@ -21,8 +21,9 @@ import com.afollestad.materialdialogs.list.toggleItemChecked
 import com.afollestad.materialdialogs.list.updateListItemsSingleChoice
 import it.sephiroth.android.library.xtooltip.ClosePolicy
 import it.sephiroth.android.library.xtooltip.Tooltip
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import mattecarra.accapp.Preferences
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
@@ -108,23 +109,86 @@ class AccConfigEditorActivity : ScopedAppActivity(),
             intent.hasExtra(Constants.ACC_CONFIG_KEY) ->
                 intent.getSerializableExtra(Constants.ACC_CONFIG_KEY) as AccConfig
 
-            else -> try
-            {
-                runBlocking { Acc.instance.readConfig() }
-            }
-            catch (ex: Exception)
-            {
-                ex.printStackTrace()
-                showConfigReadError()
-                runBlocking { Acc.instance.readDefaultConfig() } //if mAccConfig is null I use default mAccConfig values.
+            // No config attached: read it from the ACC daemon. This performs
+            // root shell I/O, so it must NOT block the UI thread (see issue
+            // #258). Show a loading indicator and initialise the editor once
+            // the config arrives.
+            else -> {
+                content.root.visibility = View.GONE
+                val loading = android.widget.ProgressBar(this).apply {
+                    isIndeterminate = true
+                }
+                (binding.root as android.view.ViewGroup).addView(
+                    loading,
+                    android.view.ViewGroup.LayoutParams(
+                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+                )
+                launch {
+                    val loaded = withContext(Dispatchers.IO) {
+                        try {
+                            Acc.instance.readConfig()
+                        } catch (ex: Exception) {
+                            ex.printStackTrace()
+                            null
+                        }
+                    }
+                    val finalConfig = loaded ?: run {
+                        showConfigReadError()
+                        withContext(Dispatchers.IO) {
+                            try {
+                                Acc.instance.readDefaultConfig()
+                            } catch (ex: Exception) {
+                                ex.printStackTrace()
+                                AccConfig()
+                            }
+                        }
+                    }
+                    (binding.root as android.view.ViewGroup).removeView(loading)
+                    content.root.visibility = View.VISIBLE
+                    initializeEditor(profile, finalConfig)
+                }
+                return
             }
         }
 
+        initializeEditor(profile, config)
+    }
+
+    /**
+     * Finishes Activity setup once the ACC config is available. Split out of
+     * [onCreate] so the daemon-backed path can load asynchronously without
+     * blocking the UI thread.
+     */
+    private fun initializeEditor(profile: AccaProfile, config: AccConfig) {
         if (accConfigOnly) profile.accConfig = config
         initConfig = profile.accConfig.copy()
 
         viewModel = ViewModelProvider(this, AccConfigEditorViewModelFactory(application, profile))
             .get(AccConfigEditorViewModel::class.java)
+
+        // The options menu may already have been created while the config
+        // was loading (async path); rebuild it so the undo observer binds.
+        invalidateOptionsMenu()
+
+        // Replaces the deprecated onBackPressed() override and is only active
+        // once the editor is initialised (config may still be loading).
+        onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (viewModel.unsavedChanges)
+                {
+                    MaterialDialog(this@AccConfigEditorActivity).show {
+                        title(R.string.unsaved_changes)
+                        message(R.string.unsaved_changes_message)
+                        positiveButton(R.string.save) { returnResults() }
+                        negativeButton(R.string.close_without_saving) { finish() }
+                        neutralButton(android.R.string.cancel)
+                    }
+                }
+                else finish()
+            }
+        })
 
         initUi()
 
@@ -296,36 +360,28 @@ class AccConfigEditorActivity : ScopedAppActivity(),
     {
         menuInflater.inflate(R.menu.acc_config_editor_menu, menu)
         mUndoMenuItem = menu.findItem(R.id.action_undo)
-        viewModel.undoOperationAvailableLiveData.observe(this, Observer { mUndoMenuItem.isEnabled = it })
+        // The config may still be loading asynchronously (daemon-backed
+        // path); the menu is rebuilt via invalidateOptionsMenu() once the
+        // ViewModel exists.
+        if (::viewModel.isInitialized) {
+            viewModel.undoOperationAvailableLiveData.observe(this, Observer { mUndoMenuItem.isEnabled = it })
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
+        // Ignore menu actions while the config is still loading.
+        if (!::viewModel.isInitialized) return true
         when (item.itemId)
         {
             R.id.action_save -> returnResults()
             R.id.action_restore -> viewModel.profile.accConfig = initConfig.copy()
             R.id.action_undo -> viewModel.undoLastConfigOperation()
-            android.R.id.home -> { onBackPressed(); return true }
+            android.R.id.home -> { onBackPressedDispatcher.onBackPressed(); return true }
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    override fun onBackPressed()
-    {
-        if (viewModel.unsavedChanges)
-        {
-            MaterialDialog(this).show {
-                    title(R.string.unsaved_changes)
-                    message(R.string.unsaved_changes_message)
-                    positiveButton(R.string.save) { returnResults() }
-                    negativeButton(R.string.close_without_saving) { finish() }
-                    neutralButton(android.R.string.cancel)
-                }
-        }
-        else super.onBackPressed()
     }
 
 //    private fun updateAccSwitchCard(config: AccConfig)
@@ -408,75 +464,75 @@ class AccConfigEditorActivity : ScopedAppActivity(),
         }
     }
 
-    override fun onCheckedChanged(p0: CompoundButton?, p1: Boolean)
+    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean)
     {
-        when (p0)
+        when (buttonView)
         {
             content.capacitySwitchEnabled ->
             {
-                viewModel.enables = viewModel.enables.copy(eCapacity = p1)
-                content.shutdownCapacityPicker.isEnabled = p1
-                content.resumeCapacityPicker.isEnabled = p1
-                content.pauseCapacityPicker.isEnabled = p1
+                viewModel.enables = viewModel.enables.copy(eCapacity = isChecked)
+                content.shutdownCapacityPicker.isEnabled = isChecked
+                content.resumeCapacityPicker.isEnabled = isChecked
+                content.pauseCapacityPicker.isEnabled = isChecked
             }
 
             content.automaticSwitchEnabled ->
             {
-                viewModel.isAutomaticSwitchEanbled = p1
-                viewModel.profile.accConfig.configIsAutomaticSwitchingEnabled = p1
+                viewModel.isAutomaticSwitchEanbled = isChecked
+                viewModel.profile.accConfig.configIsAutomaticSwitchingEnabled = isChecked
             }
 
             content.voltcontrolSwitchEnabled ->
             {
-                viewModel.enables = viewModel.enables.copy(eVoltage = p1)
-                content.editVoltageLimit.isEnabled = p1
+                viewModel.enables = viewModel.enables.copy(eVoltage = isChecked)
+                content.editVoltageLimit.isEnabled = isChecked
             }
 
             content.batteryPrioritizeIdleSwitchEnabled ->
             {
-                viewModel.prioritizeBatteryIdleMode = p1
-                viewModel.profile.accConfig.prioritizeBatteryIdleMode = p1
-                content.batteryIdleTestButton.isEnabled = p1
+                viewModel.prioritizeBatteryIdleMode = isChecked
+                viewModel.profile.accConfig.prioritizeBatteryIdleMode = isChecked
+                content.batteryIdleTestButton.isEnabled = isChecked
             }
 
             content.tempSwitchEnabled ->
             {
-                viewModel.enables = viewModel.enables.copy(eTemperature = p1)
-                content.temperatureCooldownPicker.isEnabled = p1
-                content.temperatureMaxPicker.isEnabled = p1
-                content.temperatureMaxPauseSecondsPicker.isEnabled = p1
+                viewModel.enables = viewModel.enables.copy(eTemperature = isChecked)
+                content.temperatureCooldownPicker.isEnabled = isChecked
+                content.temperatureMaxPicker.isEnabled = isChecked
+                content.temperatureMaxPauseSecondsPicker.isEnabled = isChecked
             }
 
             content.cooldownSwitchEnabled ->
             {
-                viewModel.enables = viewModel.enables.copy(eCoolDown = p1)
-                content.cooldownPercentagePicker.isEnabled = p1
-                content.cooldownChargeRatioPicker.isEnabled = p1
-                content.cooldownPauseRatioPicker.isEnabled = p1
+                viewModel.enables = viewModel.enables.copy(eCoolDown = isChecked)
+                content.cooldownPercentagePicker.isEnabled = isChecked
+                content.cooldownChargeRatioPicker.isEnabled = isChecked
+                content.cooldownPauseRatioPicker.isEnabled = isChecked
             }
 
             content.applyOnBootSwitchEnabled ->
             {
-                viewModel.enables = viewModel.enables.copy(eRunOnBoot = p1)
-                content.tvConfigOnBoot.isEnabled = p1
+                viewModel.enables = viewModel.enables.copy(eRunOnBoot = isChecked)
+                content.tvConfigOnBoot.isEnabled = isChecked
             }
 
             content.onPluggedSwitchEnabled ->
             {
-                viewModel.enables = viewModel.enables.copy(eRunOnPlug = p1)
-                content.tvConfigOnPlugged.isEnabled = p1
+                viewModel.enables = viewModel.enables.copy(eRunOnPlug = isChecked)
+                content.tvConfigOnPlugged.isEnabled = isChecked
             }
 
             content.resetStatusUnplugSwitch ->
             {
-                viewModel.resetBSOnUnplug = p1
-                viewModel.profile.accConfig.configResetUnplugged = p1
+                viewModel.resetBSOnUnplug = isChecked
+                viewModel.profile.accConfig.configResetUnplugged = isChecked
             }
 
             content.resetBSOnPauseSwitch ->
             {
-                viewModel.resetBSOnPause = p1
-                viewModel.profile.accConfig.configResetBsOnPause = p1
+                viewModel.resetBSOnPause = isChecked
+                viewModel.profile.accConfig.configResetBsOnPause = isChecked
             }
         }
     }

@@ -66,19 +66,30 @@ class LogExt
         if (debugEnabled != LOG_FILE) return
 
         val mTime: String = SimpleDateFormat("yyyy.MM.dd HH:mm:ss ", Locale.getDefault()).format(Date())
-        val mPath = Environment.getExternalStorageDirectory().absolutePath + "/AccA/"
+        // Scoped storage (Android 10+) forbids writing to the shared
+        // /sdcard/AccA dir, so prefer the app-specific external dir (no
+        // permission needed) and only fall back to the legacy path on old
+        // releases where it is still writable.
+        val dirs = listOfNotNull(
+            runCatching { MainApplication.appContext.getExternalFilesDir(null)?.absolutePath }.getOrNull(),
+            if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.P)
+                Environment.getExternalStorageDirectory().absolutePath + "/AccA" else null
+        )
 
-        try
-        {
-            File(mPath).mkdirs()
-            val out = BufferedWriter(FileWriter(mPath+filename, true), 8192)
-            out.write(mTime + msg)
-            out.newLine()
-            out.close()
-        }
-        catch (e: IOException)
-        {
-           // Log.e("AccA:LogExt", e.toString())
+        for (dir in dirs) {
+            try
+            {
+                File(dir).mkdirs()
+                val out = BufferedWriter(FileWriter("$dir/$filename", true), 8192)
+                out.write(mTime + msg)
+                out.newLine()
+                out.close()
+                return
+            }
+            catch (e: IOException)
+            {
+               // Log.e("AccA:LogExt", e.toString())
+            }
         }
     }
 

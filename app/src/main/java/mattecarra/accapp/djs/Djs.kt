@@ -50,7 +50,8 @@ interface DjsInterface {
 }
 
 object Djs {
-    const val bundledVersion = 202108260
+    // Bundled daemon updated to v2021.12.14 (module versionCode 202111030).
+    const val bundledVersion = 202111030
 
     /*
     * This method returns the name of the package with a compatible AccInterface

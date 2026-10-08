@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 import mattecarra.accapp.CurrentUnit
 import mattecarra.accapp.TemperatureUnit
 import mattecarra.accapp.VoltageUnit
+import java.util.Locale
 
 /**
  * A POJO for recording and reading data from 'acc -i'.
@@ -92,15 +93,17 @@ class BatteryInfo(val name: String,
      */
     fun getVoltageNow(unit: VoltageUnit): Float
     {
+        // Locale.US: String.format with a comma-decimal locale (e.g. pt-PT)
+        // would produce "4,340", which toFloat() cannot parse.
         return if (voltageNow <= 0f) voltageNow
-        else if (unit == VoltageUnit.uV) String.format("%.3f", voltageNow / 1000000f).toFloat()
-        else if (unit == VoltageUnit.V) String.format("%.3f", voltageNow / 1000f).toFloat()
+        else if (unit == VoltageUnit.uV) String.format(Locale.US, "%.3f", voltageNow / 1000000f).toFloat()
+        else if (unit == VoltageUnit.V) String.format(Locale.US, "%.3f", voltageNow / 1000f).toFloat()
         else voltageNow // mV without '.'
     }
 
     fun getVoltageNow(input: VoltageUnit, output: VoltageUnit, withMeaUnit: Boolean): String
     {
-        return if (output == VoltageUnit.V) { String.format("%.3f",getVoltageNow(input)) + if (withMeaUnit) " V" else "" }
+        return if (output == VoltageUnit.V) { String.format(Locale.US, "%.3f",getVoltageNow(input)) + if (withMeaUnit) " V" else "" }
         else (getVoltageNow(input) * 1000f).toInt().toString() + if (withMeaUnit) " mV" else ""
     }
 
@@ -118,7 +121,7 @@ class BatteryInfo(val name: String,
     fun getCurrentNow(input: CurrentUnit, output: CurrentUnit, positive: Boolean, withMeaUnit: Boolean): String
     {
         val rmd = if (positive) 1 else -1
-        return if (output == CurrentUnit.A) { String.format("%.3f", getCurrentNow(input) / 1000f * rmd) + if (withMeaUnit) " A" else "" }
+        return if (output == CurrentUnit.A) { String.format(Locale.US, "%.3f", getCurrentNow(input) / 1000f * rmd) + if (withMeaUnit) " A" else "" }
         else (getCurrentNow(input) * rmd).toInt().toString() + if (withMeaUnit) " mA" else ""
     }
 
@@ -127,8 +130,10 @@ class BatteryInfo(val name: String,
 
     fun getTemperature(unit: TemperatureUnit): Float
     {
-        val temp = String.format("%.1f", temperature * 1.8 + 32).replace(",",".", true)
-        return if (unit == TemperatureUnit.C) temperature.toFloat() // BAG IN FORMAT() ",." !!
+        // Was: String.format("%.1f", ...) with the default locale, producing
+        // "32,0" on comma-decimal locales and crashing toFloat().
+        val temp = String.format(Locale.US, "%.1f", temperature * 1.8 + 32)
+        return if (unit == TemperatureUnit.C) temperature.toFloat()
         else temp.toFloat() // TemperatureUnit.F
     }
 

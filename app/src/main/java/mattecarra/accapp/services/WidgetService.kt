@@ -1,12 +1,16 @@
 package mattecarra.accapp.services
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.*
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.core.os.HandlerCompat
+import mattecarra.accapp.R
 import mattecarra.accapp.receivers.AdvWidgetReceiver
 import mattecarra.accapp.utils.LogExt
 import xml.*
@@ -35,10 +39,37 @@ class WidgetService : Service(), OnAdvWidgetInterface
         super.onCreate()
 
         LogExt().d(javaClass.simpleName, ".onCreate()")
+        // Android 8+ kills background services started from widget
+        // broadcasts; run as a low-profile foreground service instead.
+        startAsForeground()
         mScreenService = getSystemService(POWER_SERVICE) as PowerManager
         mWidgetHandler = HandlerCompat.createAsync(Looper.getMainLooper())
         isScreenOn = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) mScreenService.isInteractive else mScreenService.isScreenOn
         registerWidgetReceiver()
+    }
+
+    private fun startAsForeground()
+    {
+        try {
+            val channelId = "acca_widget_updates"
+            val nm = getSystemService(NotificationManager::class.java)
+            nm.createNotificationChannel(
+                NotificationChannel(
+                    channelId,
+                    getString(R.string.widget_batteryInfo_name),
+                    NotificationManager.IMPORTANCE_MIN
+                )
+            )
+            val notification = NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_battery_charging_80)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.widget_batteryInfo_name))
+                .setOngoing(true)
+                .build()
+            startForeground(WIDGET_FGS_ID, notification)
+        } catch (ex: Exception) {
+            LogExt().e(javaClass.simpleName, "startAsForeground failed: $ex")
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int
@@ -109,7 +140,15 @@ class WidgetService : Service(), OnAdvWidgetInterface
             widgetFilter.addAction(Intent.ACTION_PACKAGE_REPLACED)
             widgetFilter.addAction(Intent.ACTION_SCREEN_ON)
             widgetFilter.addAction(Intent.ACTION_SCREEN_OFF)
-            registerReceiver(mAdvWidgetReceiver, widgetFilter)
+            // Android 14+ requires an explicit exported flag for runtime
+            // receivers; ours only listens to system broadcasts for this
+            // process, so keep it private.
+            ContextCompat.registerReceiver(
+                this,
+                mAdvWidgetReceiver,
+                widgetFilter,
+                ContextCompat.RECEIVER_NOT_EXPORTED
+            )
             mAdvWidgetReceiver?.setEventInterface(this)
         }
     }
@@ -140,33 +179,20 @@ class WidgetService : Service(), OnAdvWidgetInterface
 
     fun runSelfIntent(context: Context, intent: Intent)
     {
+        intent.setClass(context, WidgetService::class.java)
         try
         {
-            context.startService(intent.setClass(context, WidgetService::class.java))
+            // The widget provider runs on broadcasts; on Android 8+ a plain
+            // startService from the background is rejected, so go through
+            // the foreground-service path (onCreate promotes to foreground).
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                ContextCompat.startForegroundService(context, intent)
+            else context.startService(intent)
         }
         catch (ignored: Exception)
         {
-            try
-            {
-                LogExt().w(javaClass.simpleName, "Error startService() .. test startForegroundService()")
-                ContextCompat.startForegroundService(context, intent.setClass(context, WidgetService::class.java))
-            }
-            catch (ignored: Exception)
-            {
-                LogExt().e(javaClass.simpleName, "Error startForegroundService() .. goodbye!")
-            }
+            LogExt().e(javaClass.simpleName, "Error starting WidgetService: $ignored")
         }
-
-//        try
-//        {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-//                context.startForegroundService(intent.setClass(context, AccaService::class.java))
-//            else context.startService(intent.setClass(context, AccaService::class.java))
-//        }
-//        catch (ignored: Exception)
-//        {
-//            slog("AccaService", "Error runSelfIntent(): "+intent.action)
-//        }
     }
 
     //------------------------------------------------------------------------------------

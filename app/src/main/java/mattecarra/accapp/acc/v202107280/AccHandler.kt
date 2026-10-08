@@ -50,14 +50,18 @@ open class AccHandler(override val version: Int) : AccInterface {
 
     @WorkerThread
     fun parseConfig(config: String): AccConfig {
-        val capacityShutdown = SHUTDOWN_CAPACITY_REGEXP.find(config)!!.destructured.component1()
-        val capacityCoolDown = COOLDOWN_CAPACITY_REGEXP.find(config)!!.destructured.component1()
-        val capacityResume   = RESUME_CAPACITY_REGEXP.find(config)!!.destructured.component1()
-        val capacityPause    = PAUSE_CAPACITY_REGEXP.find(config)!!.destructured.component1()
+        // NOTE: newer ACC releases may omit keys this app does not know
+        // about yet (or print empty values). Every lookup below degrades to
+        // a sane default instead of throwing, so the app shows "disabled"
+        // rather than crashing (issues #212, #244).
+        val capacityShutdown = SHUTDOWN_CAPACITY_REGEXP.find(config)?.destructured?.component1()
+        val capacityCoolDown = COOLDOWN_CAPACITY_REGEXP.find(config)?.destructured?.component1()
+        val capacityResume   = RESUME_CAPACITY_REGEXP.find(config)?.destructured?.component1()
+        val capacityPause    = PAUSE_CAPACITY_REGEXP.find(config)?.destructured?.component1()
 
-        val temperatureCooldown = COOLDOWN_TEMP_REGEXP.find(config)!!.destructured.component1()
-        val temperatureMax      = MAX_TEMP_REGEXP.find(config)!!.destructured.component1()
-        val waitSeconds         = MAX_TEMP_PAUSE_REGEXP.find(config)!!.destructured.component1()
+        val temperatureCooldown = COOLDOWN_TEMP_REGEXP.find(config)?.destructured?.component1()
+        val temperatureMax      = MAX_TEMP_REGEXP.find(config)?.destructured?.component1()
+        val waitSeconds         = MAX_TEMP_PAUSE_REGEXP.find(config)?.destructured?.component1()
 
         val coolDownChargeSeconds = COOLDOWN_CHARGE_REGEXP.find(config)?.destructured?.component1()?.toIntOrNull()
         val coolDownPauseSeconds = COOLDOWN_PAUSE_REGEXP.find(config)?.destructured?.component1()?.toIntOrNull()
@@ -65,16 +69,21 @@ open class AccHandler(override val version: Int) : AccInterface {
         val maxChargingVoltage = MAX_CHARGING_VOLTAGE.find(config)?.destructured?.component1()
         val maxChargingCurrent = MAX_CHARGING_CURRENT.find(config)?.destructured?.component1()
 
+        val shutdown = capacityShutdown?.toIntOrNull() ?: 0
+        val resume = capacityResume?.toIntOrNull() ?: 80
+        // Keep the resume < pause invariant even with partial configs.
+        val pause = capacityPause?.toIntOrNull()?.takeIf { it > resume } ?: (resume + 10).coerceAtMost(100)
+
         return AccConfig(
-            AccConfig.ConfigCapacity(capacityShutdown.toIntOrNull() ?: 0, capacityResume.toInt(), capacityPause.toInt()),
+            AccConfig.ConfigCapacity(shutdown, resume, pause),
             AccConfig.ConfigVoltage(null, maxChargingVoltage?.toIntOrNull()),
             maxChargingCurrent?.toIntOrNull(),
-            AccConfig.ConfigTemperature(temperatureCooldown.toIntOrNull() ?: 90,
-                temperatureMax.toIntOrNull() ?: 95,
-                waitSeconds.toIntOrNull() ?: 90),
+            AccConfig.ConfigTemperature(temperatureCooldown?.toIntOrNull() ?: 90,
+                temperatureMax?.toIntOrNull() ?: 95,
+                waitSeconds?.toIntOrNull() ?: 90),
             getOnBoot(config),
             getOnPlugged(config),
-            if(coolDownChargeSeconds != null && coolDownPauseSeconds != null)
+            if(coolDownChargeSeconds != null && coolDownPauseSeconds != null && capacityCoolDown?.toIntOrNull() != null)
                 AccConfig.ConfigCoolDown(capacityCoolDown.toInt(), coolDownChargeSeconds, coolDownPauseSeconds)
             else null,
             getResetUnplugged(config),
@@ -191,6 +200,17 @@ open class AccHandler(override val version: Int) : AccInterface {
     override suspend fun getBatteryInfo(): BatteryInfo = withContext(Dispatchers.IO) {
         val info =  Shell.su("/dev/.vr25/acc/acca -i").exec().out.joinToString(separator = "\n")
 
+        // ACC >= 2022 prints CURRENT_NOW/VOLTAGE_NOW/POWER_NOW in A/V/W
+        // (e.g. -0.19, 4.34, -0.82) while older releases used µA/µV/µW.
+        // Normalise to the legacy micro scales the rest of the app expects
+        // (issue #243: wrong battery readings with new ACC).
+        val rawVoltage = VOLTAGE_NOW_REGEXP.find(info)?.destructured?.component1()?.toFloatOrNull() ?: 0f
+        val voltageNow = if (rawVoltage != 0f && kotlin.math.abs(rawVoltage) < 10000f) rawVoltage * 1000000f else rawVoltage
+        val rawCurrent = CURRENT_NOW_REGEXP.find(info)?.destructured?.component1()?.toFloatOrNull() ?: 0f
+        val currentNow = if (rawCurrent != 0f && kotlin.math.abs(rawCurrent) < 10000f) rawCurrent * 1000000f else rawCurrent
+        val rawPower = POWER_NOW_REGEXP.find(info)?.destructured?.component1()?.toFloatOrNull() ?: 0f
+        val powerNow = if (rawPower != 0f && kotlin.math.abs(rawPower) < 10000f) rawPower * 1000000f else rawPower
+
         BatteryInfo(
             NAME_REGEXP.find(info)?.destructured?.component1() ?: STRING_UNKNOWN,
             INPUT_SUSPEND_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull().let { // If r == true (input is suspended)
@@ -206,10 +226,10 @@ open class AccHandler(override val version: Int) : AccInterface {
             INPUT_CURRENT_LIMITED_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull().let {
                 it == 0
             },
-            VOLTAGE_NOW_REGEXP.find(info)?.destructured?.component1()?.toFloatOrNull() ?: 0f,
+            voltageNow,
             VOLTAGE_MAX_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             VOLTAGE_QNOVO_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
-            CURRENT_NOW_REGEXP.find(info)?.destructured?.component1()?.toFloatOrNull() ?: 0f,
+            currentNow,
             CURRENT_QNOVO_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             CONSTANT_CHARGE_CURRENT_MAX_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             TEMP_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull()?.let { it/10 } ?: -1,
@@ -246,7 +266,7 @@ open class AccHandler(override val version: Int) : AccInterface {
             CHARGE_CONTROL_LIMIT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             INPUT_CURRENT_MAX_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             CYCLE_COUNT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
-            POWER_NOW_REGEXP.find(info)?.destructured?.component1()?.toFloatOrNull() ?: 0f
+            powerNow
         )
     }
 
@@ -269,7 +289,12 @@ open class AccHandler(override val version: Int) : AccInterface {
     override fun getAccRestartDaemon(): String =  "/dev/.vr25/acc/acca -D restart"
 
     override suspend fun abcStopDaemon(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/acc/accd.").exec().isSuccess
+        // NOTE: the historical "accd." shortcut no longer stops modern ACC
+        // (it resolves to acc.sh, which drops into its main loop and hangs
+        // forever, leaking a stray daemon process per tap). Use the
+        // documented daemon manager instead. Bounded by the global libsu
+        // job timeout if the daemon lock is wedged.
+        Shell.su("/dev/.vr25/acc/acca -D stop").exec().isSuccess
     }
 
     //Charging switches

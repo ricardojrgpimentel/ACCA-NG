@@ -1,4 +1,16 @@
-# Advanced Charging Controller App (AccA)
+# ACCA-NG (fork of AccA)
+
+
+
+> **Fork** of [MatteCarra/AccA](https://github.com/MatteCarra/AccA), modernised for current Android.
+> Installed as `com.accang.app` (side-by-side with the original app).
+>
+> Key changes vs upstream `develop`:
+> - Build: Gradle 8.12, AGP 8.7.3, Kotlin 2.0, Java 17, `compileSdk`/`targetSdk` 36, `minSdk` 26, KSP (Room/Moshi), Maven Central + JitPack (jcenter removed).
+> - Bundled daemons: ACC v2023.10.16, DJS v2021.12.14.
+> - Android 12–16 runtime fixes: `PendingIntent` mutability, `registerReceiver` exported flags, `AccBootReceiver` registered in the manifest, widget updater as a foreground service, scoped-storage logging, `fitsSystemWindows` edge-to-edge layouts, new-API nullability signatures.
+> - Bug fixes from upstream issues: async ACC config load in the editor (no more `runBlocking` on the UI thread), crash-proof config parser, locale-safe voltage/current/temperature formatting, V/A/W unit normalisation for new ACC `acca -i` output, daemon stop via `acca -D stop` (the old `accd.` shortcut spawned stray processes).
+> - Vendored `CircleProgressBar` view (artifact never reached Maven Central).
 
 
 

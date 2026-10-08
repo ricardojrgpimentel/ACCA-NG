@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import mattecarra.accapp.activities.MainActivity
 import mattecarra.accapp.adapters.OnScheduleClickListener
@@ -41,7 +41,7 @@ class SchedulesFragment : ScopedFragment(), OnScheduleClickListener {
 
 
         activity?.let { activity ->
-            viewModel = ViewModelProviders.of(activity).get(SchedulesViewModel::class.java)
+            viewModel = ViewModelProvider(activity).get(SchedulesViewModel::class.java)
 
             adapter = ScheduleProfileListAdapter(activity)
             adapter.setOnClickListener(this)

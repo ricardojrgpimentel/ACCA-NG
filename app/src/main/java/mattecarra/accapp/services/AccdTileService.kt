@@ -92,7 +92,11 @@ class AccdTileService: TileService(), CoroutineScope
     {
         super.onStartListening()
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+        // READ_EXTERNAL_STORAGE only exists up to Android 12; on newer
+        // releases the check below would always deny and the tile would
+        // never refresh.
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2 &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
         {
         //TODO create a notification and ask for read external storage permission
         }

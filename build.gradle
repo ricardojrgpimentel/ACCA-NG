@@ -1,42 +1,25 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
-buildscript {
-    ext {
-        versions = [
-                kotlin: '1.5.31',
-                libsuVersion: '3.0.2',
-                roomVersion: '2.4.0-beta01',
-                lifecycle: '2.4.0',
-                coroutines: '1.4.3',
-                viewpager: "1.0.0",
-                material: "1.4.0",
-                browser: "1.4.0",
-                multidex: "2.0.1"
-        ]
-    }
-    repositories {
-        google()
-        mavenCentral()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
+// Top-level build file for ACCA-NG.
+plugins {
+    id 'com.android.application' version '8.7.3' apply false
+    id 'org.jetbrains.kotlin.android' version '2.0.21' apply false
+    id 'org.jetbrains.kotlin.plugin.parcelize' version '2.0.21' apply false
+    id 'com.google.devtools.ksp' version '2.0.21-1.0.25' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        jcenter()
-        maven { url 'https://jitpack.io' }
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+ext {
+    versions = [
+            libsuVersion  : '3.0.2',
+            roomVersion   : '2.6.1',
+            lifecycle     : '2.8.6',
+            coroutines    : '1.9.0',
+            viewpager     : "1.0.0",
+            material      : "1.12.0",
+            browser       : "1.8.0",
+            appcompat     : "1.7.0",
+            coreKtx       : "1.15.0",
+            constraint    : "2.1.4",
+            fragmentKtx   : "1.8.2",
+            gson          : "2.11.0",
+            moshi         : "1.15.0"
+    ]
 }

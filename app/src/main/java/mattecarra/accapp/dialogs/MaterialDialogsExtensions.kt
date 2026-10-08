@@ -21,7 +21,7 @@ import java.io.File
             {
                 val intentShareFile = Intent(Intent.ACTION_SEND)
                     .setType("text/plain")
-                    .putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this.context.applicationContext, "mattecarra.accapp.fileprovider", file))
+                    .putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(this.context.applicationContext, "${this.context.applicationContext.packageName}.fileprovider", file))
                     .putExtra(Intent.EXTRA_TEXT, context.getString(extraTextRes))
 
                 context.startActivity(Intent.createChooser(intentShareFile, context.getString(R.string.share_log)))

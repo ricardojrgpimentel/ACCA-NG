@@ -18,8 +18,23 @@ import java.net.URL
 import kotlin.math.abs
 
 object Acc {
-    const val bundledVersion = 202108310
-    private val FILES_DIR = "/data/data/mattecarra.accapp/files"
+    // Bundled daemon updated to v2023.10.16 (was 2021.8.31). Devices running
+    // an older ACC are offered the bundled one on startup.
+    const val bundledVersion = 202310160
+
+    /**
+     * App files dir. Must be initialised from MainApplication.onCreate via
+     * [initAppDirs] because the applicationId of this fork differs from the
+     * original package, so the path cannot be hardcoded.
+     */
+    private var appFilesDir: File? = null
+
+    fun initAppDirs(filesDir: File) {
+        appFilesDir = filesDir
+    }
+
+    private fun filesDir(): File =
+        appFilesDir ?: File("/data/data/mattecarra.accapp/files")
 
     /*
     * This method returns the name of the package with a compatible AccInterface
@@ -52,7 +67,7 @@ object Acc {
 
             synchronized(this) {
                 // Create acc instance here
-                initAcc(File(FILES_DIR))
+                initAcc(filesDir())
                 return createAccInstance()
             }
         }

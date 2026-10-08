@@ -41,6 +41,9 @@ const val WIDGET_ID_NAME = "widget_id"
 const val WIDGET_PREF_NAME = "widget_pref"
 const val WIDGET_ALL_STOP = "widget_manStop"
 
+// Foreground-service notification id for WidgetService.
+const val WIDGET_FGS_ID = 1001
+
 const val WIDGET_TCOLOR = "_tcolor"
 const val WIDGET_TSIZE = "_tsize"
 const val WIDGET_BCOLOR = "_bcolor"
@@ -165,12 +168,12 @@ class BatteryInfoWidget : AppWidgetProvider()
             widgetView.setOnClickPendingIntent(R.id.dash_click_left_zone, // click
                 PendingIntent.getBroadcast(context, widgetId,
                 Intent(context, BatteryInfoWidget::class.java).setAction(WIDGET_ACTION_CLICK).putExtra(WIDGET_ID_NAME, widgetId),
-                PendingIntent.FLAG_CANCEL_CURRENT))
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
 
             widgetView.setOnClickPendingIntent(R.id.dash_click_right_zone, // click
                 PendingIntent.getBroadcast(context, widgetId,
                     Intent(context, BatteryInfoWidget::class.java).setAction(WIDGET_ACTION_REVERSE),
-                    PendingIntent.FLAG_CANCEL_CURRENT))
+                    PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
 
             getInstance(context).updateAppWidget(widgetId, widgetView) // update
             return
@@ -261,12 +264,12 @@ class BatteryInfoWidget : AppWidgetProvider()
                 widgetView.setOnClickPendingIntent(R.id.dash_click_left_zone,
                     PendingIntent.getBroadcast(context, widgetId,
                     Intent(context, BatteryInfoWidget::class.java).setAction(WIDGET_ACTION_CLICK)
-                    .putExtra(WIDGET_ID_NAME, widgetId), PendingIntent.FLAG_CANCEL_CURRENT))
+                    .putExtra(WIDGET_ID_NAME, widgetId), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
 
                 widgetView.setOnClickPendingIntent(R.id.dash_click_right_zone, // click
                     PendingIntent.getBroadcast(context, widgetId,
                         Intent(context, BatteryInfoWidget::class.java).setAction(WIDGET_ACTION_REVERSE),
-                        PendingIntent.FLAG_CANCEL_CURRENT))
+                        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
 
                 getInstance(context).updateAppWidget(widgetId, widgetView)
 

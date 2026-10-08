@@ -166,7 +166,7 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         binding.itemProfileInfo.visibility = View.VISIBLE;
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String)
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?)
     {
         if (key == Constants.PROFILE_KEY) checkProfile()
     }
