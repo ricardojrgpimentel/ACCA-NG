@@ -1,0 +1,26 @@
+<resources>
+    <string name="preset_daily_help">Para o dia a dia, com um limite de carga moderado.</string>
+    <string name="preset_plugged_help">Para um telemóvel que passa muitas horas ligado ao carregador. Mantém um nível de bateria mais baixo; não garante bypass.</string>
+    <string name="preset_travel_help">Para ter mais bateria disponível antes de sair. Permite um nível de carga mais alto.</string>
+    <string name="charge_limits_title">Limites da carga (%)</string>
+    <string name="charge_limits_help">Todos os valores são percentagens do nível da bateria. Para retomar, é preciso ter o carregador ligado e uma temperatura adequada. O ACC tem de estar a funcionar para cumprir estes limites.</string>
+    <string name="charge_pause_label">Parar de carregar aos</string>
+    <string name="charge_pause_help">Pausa o carregamento quando a bateria atinge este nível.</string>
+    <string name="charge_resume_label">Voltar a carregar aos</string>
+    <string name="charge_resume_help">Depois de uma pausa, retoma quando a bateria desce até este nível ou abaixo.</string>
+    <string name="charge_shutdown_label">Desligar o telemóvel aos</string>
+    <string name="charge_shutdown_help">Desliga o telemóvel neste nível ou abaixo se a bateria não estiver a carregar. Não é apenas uma pausa no carregamento.</string>
+    <string name="charge_cycle_summary">O carregamento para aos %1$d%% e retoma aos %2$d%% ou abaixo.</string>
+    <string name="charge_unlimited_summary">∞ em Parar desativa a paragem pela percentagem da bateria. ∞ em Voltar permite retomar o carregamento com qualquer nível de bateria.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Os limites de carga estão desativados neste perfil.</string>
+    <string name="charge_unlimited_hint">∞ indica um limite de percentagem desativado.</string>
+    <string name="charge_restore_limits">Repor os limites de carga iniciais</string>
+    <string name="charge_switch_label">Método de controlo da carga</string>
+    <string name="charge_switch_help">O ACC usa um controlo compatível com o dispositivo para ligar ou pausar a carga. Mantém em Automático, salvo se souberes qual o método necessário.</string>
+    <string name="charge_switch_automatic">Procurar automaticamente um método compatível</string>
+    <string name="charge_power_title">Limites de corrente e tensão</string>
+    <string name="charge_max_current">Corrente máxima (mA):</string>
+</resources>

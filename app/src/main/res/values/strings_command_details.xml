@@ -1,0 +1,13 @@
+<resources>
+    <string name="command_show_details">Show commands ▾</string>
+    <string name="command_hide_details">Hide commands ▴</string>
+    <string name="command_review_details">View commands</string>
+    <string name="command_trace_note">Commands for this action. Some exit codes represent an expected ACC state.</string>
+    <string name="command_trace_waiting">Waiting for the first command…</string>
+    <string name="command_trace_running">Step %1$d · Running…</string>
+    <string name="command_trace_finished">Step %1$d · Finished (exit code %2$d)</string>
+    <string name="command_trace_interrupted">Step %1$d · Execution interrupted</string>
+    <string name="command_trace_output">Output: %1$s</string>
+    <string name="command_result_ready">The action has finished. You can review the details or close.</string>
+    <string name="command_trace_empty">This action did not execute root commands.</string>
+</resources>

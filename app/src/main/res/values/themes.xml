@@ -46,16 +46,29 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.AccaTheme.MediumComponent</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.AccaTheme.LargeComponent</item>
 
-        <!--Component styles-->
+        <!-- Shared native component styling. -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="materialButtonStyle">@style/Widget.Acca.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.Acca.Card</item>
+        <item name="popupMenuStyle">@style/Widget.Acca.Popup</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.Acca.Popup.Overflow</item>
+        <item name="listPreferredItemHeightSmall">48dp</item>
+        <item name="md_corner_radius">24dp</item>
+        <item name="md_button_casing">literal</item>
+        <item name="md_background_color">@color/color_surface</item>
+        <item name="md_color_title">@color/color_on_surface</item>
+        <item name="md_color_content">@color/text_secondary</item>
+        <item name="md_color_button_text">@color/color_primary</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert</item>
         <!--<item name="navigationViewStyle">@style/Widget.AccaTheme.NavigationView</item>-->
-        <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Surface</item>
+        <item name="toolbarStyle">@style/Widget.Acca.Toolbar</item>
     </style>
 
     <style name="Base.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
 <!--        Investigate M/N Light Theme issues -->
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/color_surface</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/color_background</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">?android:colorBackground</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>

@@ -29,6 +29,8 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.topjohnwu.superuser.Shell
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import mattecarra.accapp.utils.CommandTraceContext
 import mattecarra.accapp.Preferences
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
@@ -41,6 +43,7 @@ import mattecarra.accapp.utils.*
 import mattecarra.accapp.viewmodel.ProfilesViewModel
 import mattecarra.accapp.viewmodel.SchedulesViewModel
 import mattecarra.accapp.viewmodel.SharedViewModel
+import mattecarra.accapp.viewmodel.DashboardViewModel
 import xml.BatteryInfoWidget
 import xml.WIDGET_ALL_UPDATE
 import java.io.File
@@ -69,6 +72,26 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
     val schedulesFragment = SchedulesFragment.newInstance()
 
     var selectedNavBarItem = R.id.botNav_home
+
+    fun showProfiles() {
+        binding.mainBottomNav.selectedItemId = R.id.botNav_profiles
+    }
+
+    override fun runAccCommand(label: Int, operation: suspend () -> Boolean) {
+        val dashboard = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        super.runAccCommand(label) {
+            try { operation() } finally {
+                // Dashboard reads refresh the UI; they are not profile/application steps.
+                withContext(CommandTraceContext(null)) { dashboard.refresh() }
+            }
+        }
+    }
+
+    override fun onAccCommandCompleted(successful: Boolean) {
+        if (successful) {
+            (supportFragmentManager.findFragmentById(R.id.main_framelayout) as? DashboardFragment)?.refreshConfig()
+        }
+    }
 
     private fun initUi()
     {
@@ -254,6 +277,12 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
 
     private fun loadFragment(fragment: Fragment)
     {
+        supportActionBar?.setTitle(when (fragment) {
+            is ProfilesFragment -> R.string.title_profiles
+            is ScriptesFragment -> R.string.title_scripts
+            is SchedulesFragment -> R.string.title_schedules
+            else -> R.string.ui_nav_dashboard
+        })
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.main_framelayout, fragment)
         transaction.commit()
@@ -276,6 +305,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
         launch {
             Intent(this@MainActivity, AccConfigEditorActivity::class.java).also { intent ->
                 intent.putExtra(Constants.TITLE_KEY, this@MainActivity.getString(R.string.profile_creator))
+                intent.putExtra(Constants.PROFILE_CREATION_KEY, true)
                 intent.putExtra(Constants.ACC_CONFIG_KEY, Acc.instance.readDefaultConfig())
                 startActivityForResult(intent, ACC_PROFILE_CREATOR_REQUEST)
             }
@@ -480,6 +510,8 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
     {
         setTheme(R.style.AccaTheme_DayNight)
         super.onCreate(savedInstanceState)
+        selectedNavBarItem = savedInstanceState?.getInt("selected_navigation_item", R.id.botNav_home)
+            ?: R.id.botNav_home
         LogExt().d(javaClass.simpleName, "onCreate()")
 
         //--------------------------------------------------
@@ -535,6 +567,11 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt("selected_navigation_item", binding.mainBottomNav.selectedItemId)
+        super.onSaveInstanceState(outState)
+    }
+
     fun checkWritePermission(context: Context)
     {
         // Scoped storage (Android 10+) removed the need for this permission:
@@ -569,11 +606,12 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
             ACC_CONFIG_EDITOR_REQUEST -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data?.getBooleanExtra(Constants.ACC_HAS_CHANGES, false) == true) {
-                        launch {
-                            _sharedViewModel.updateAccConfig(data.getSerializableExtra(Constants.ACC_CONFIG_KEY) as AccConfig) //TODO: Check assertion
-
-                            // Remove the current selected profile
-                            _sharedViewModel.clearCurrentSelectedProfile()
+                        val shared = _sharedViewModel
+                        val config = data.getSerializableExtra(Constants.ACC_CONFIG_KEY) as AccConfig
+                        runAccCommand(R.string.command_apply_settings) {
+                            val successful = shared.updateAccConfig(config)
+                            if (successful) shared.clearCurrentSelectedProfile()
+                            successful
                         }
                     }
                 }
@@ -589,7 +627,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
                             .show {
                                 title(R.string.profile_name)
                                 message(R.string.dialog_profile_name_message)
-                                input(waitForPositiveButton = false) { dialog, charSequence ->
+                                input(prefill = data.getStringExtra(Constants.SUGGESTED_PROFILE_NAME_KEY), waitForPositiveButton = false) { dialog, charSequence ->
                                     val inputField = dialog.getInputField()
                                     val isValid = profileNameRegex.matches(charSequence)
 

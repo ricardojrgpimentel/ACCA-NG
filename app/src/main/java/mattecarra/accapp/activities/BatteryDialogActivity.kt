@@ -15,7 +15,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -35,7 +34,6 @@ import mattecarra.accapp.models.scolorview.ColorPickerView.ColorObserver
 import mattecarra.accapp.viewmodel.ProfilesViewModel
 import mattecarra.accapp.viewmodel.SharedViewModel
 import xml.*
-import com.topjohnwu.superuser.internal.Utils.context
 import mattecarra.accapp.Preferences
 import mattecarra.accapp.databinding.EditChargingLimitOnceDialogBinding
 import mattecarra.accapp.utils.LogExt
@@ -49,6 +47,10 @@ class BatteryDialogActivity : ScopedAppActivity()
     private var isAccdRunning: Boolean = false
     private var isAccdInstalled: Boolean = false
     private var manualStop: Boolean = false
+
+    override fun onAccCommandCompleted(successful: Boolean) {
+        if (successful) finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -130,13 +132,13 @@ class BatteryDialogActivity : ScopedAppActivity()
             {
                 val intent = Intent()
                 intent.action = "android.settings.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
-                intent.data = Uri.parse("package:" + context.packageName)
+                intent.data = Uri.parse("package:$packageName")
                 startActivity(intent)
                 finish()
             }
             catch (e: Exception)
             {
-                Toast.makeText(context, getString(R.string.battery_optimization_fail), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@BatteryDialogActivity, getString(R.string.battery_optimization_fail), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -145,11 +147,9 @@ class BatteryDialogActivity : ScopedAppActivity()
         content.wdtOpenAccaBtn.setOnClickListener {
 
             LogExt().d(javaClass.simpleName, "onClick_OpenAccA")
+            startActivity(Intent(this@BatteryDialogActivity, MainActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtras(intent))
             finish()
-
-            ContextCompat.startActivity(context.applicationContext,
-                Intent(context.applicationContext, MainActivity::class.java)
-                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK).putExtras(intent), null)
 
             //val intent = context.packageManager.getLaunchIntentForPackage(packageName)
             //startActivity(intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
@@ -160,11 +160,11 @@ class BatteryDialogActivity : ScopedAppActivity()
         content.wdtDaemonAccBtn.setOnClickListener {
             LogExt().d(javaClass.simpleName, "onClick_ReverseDaemonAcc")
 
-            launch {
-                //isAccdRunning = Acc.instance.isAccdRunning()
-                if (isAccdRunning) Acc.instance.abcStopDaemon() else Acc.instance.abcStartDaemon()
-                //runOnUiThread( Runnable { updateTextStatusACC() })  // there is no synchronization
-                finish()
+            val shouldRun = !isAccdRunning
+            runAccCommand(if (shouldRun) R.string.command_start_acc else R.string.command_stop_acc) {
+                val successful = if (Acc.instance.isAccdRunning() == shouldRun) true
+                    else if (shouldRun) Acc.instance.abcStartDaemon() else Acc.instance.abcStopDaemon()
+                successful && Acc.instance.isAccdRunning() == shouldRun
             }
         }
 
@@ -199,11 +199,16 @@ class BatteryDialogActivity : ScopedAppActivity()
                             items = temp.map { b -> b.profileName },
                             selection = { _, index, _ ->
                                 launch {
-                                    mSharedViewModel.updateAccConfig(temp[index].accConfig)
-                                    mSharedViewModel.setCurrentSelectedProfile(temp[index].uid)
-                                    Toast.makeText(this@BatteryDialogActivity, getString(R.string.selecting_profile_toast, temp[index].profileName), Toast.LENGTH_SHORT).show()
-                                    sendBroadcast(Intent(this@BatteryDialogActivity, BatteryInfoWidget::class.java).setAction(WIDGET_ALL_UPDATE))
-                                    finish()
+                                    val selected = temp[index]
+                                    val appContext = applicationContext
+                                    runAccCommand(R.string.command_apply_profile) {
+                                        val successful = mSharedViewModel.updateAccConfig(selected.accConfig)
+                                        if (successful) {
+                                            mSharedViewModel.setCurrentSelectedProfile(selected.uid)
+                                            appContext.sendBroadcast(Intent(appContext, BatteryInfoWidget::class.java).setAction(WIDGET_ALL_UPDATE))
+                                        }
+                                        successful
+                                    }
                                 }
                             }
                         )
@@ -227,11 +232,9 @@ class BatteryDialogActivity : ScopedAppActivity()
                 customView(view=dialog.root)
 
                 positiveButton(R.string.apply) {
-                    launch {
-                        val limit = getCustomView().findViewById<NumberPicker>(R.id.charging_limit).value
-                        Toast.makeText(context, getString(R.string.done_applied_charge_limit, limit), Toast.LENGTH_LONG).show()
+                    val limit = getCustomView().findViewById<NumberPicker>(R.id.charging_limit).value
+                    runAccCommand(R.string.command_charge_once) {
                         Acc.instance.setChargingLimitForOneCharge(limit)
-                        finish()
                     }
                 }
                 negativeButton(android.R.string.cancel) {

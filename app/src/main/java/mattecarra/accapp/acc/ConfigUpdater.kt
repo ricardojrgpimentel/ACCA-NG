@@ -37,6 +37,11 @@ data class ConfigUpdaterEnable(  // primary constructor, all values as TRUE
         sendCurrMax = mSharedPrefs.getBoolean("cueCurrMax", true)
         sendVoltage = mSharedPrefs.getBoolean("cueVoltage", true)
     }
+
+    fun skipUnchangedPowerLimits(current: AccConfig, requested: AccConfig) = copy(
+        sendVoltage = sendVoltage && current.configVoltage != requested.configVoltage,
+        sendCurrMax = sendCurrMax && current.configCurrMax != requested.configCurrMax
+    )
 }
 
 //----------------------------------------------------------------------
@@ -142,9 +147,12 @@ data class ConfigUpdateResult(
     val prioritizeBatteryIdleModeSuccessful: ConfigUpdateStatus = ConfigUpdateStatus.STATUS_OFF
 ) {
 
-    fun isSuccessful(): Boolean // check only 8/11 parameters -(?.?)=
+    fun isSuccessful(): Boolean
     {
-        return capacityUpdateSuccessful != ConfigUpdateStatus.STATUS_FAIL
+        return currentMaxUpdateSuccessful != ConfigUpdateStatus.STATUS_FAIL
+         && resetBSOnPauseSuccessful != ConfigUpdateStatus.STATUS_FAIL
+         && prioritizeBatteryIdleModeSuccessful != ConfigUpdateStatus.STATUS_FAIL
+         && capacityUpdateSuccessful != ConfigUpdateStatus.STATUS_FAIL
          && voltControlUpdateSuccessful != ConfigUpdateStatus.STATUS_FAIL
                 && tempUpdateSuccessful != ConfigUpdateStatus.STATUS_FAIL
             && coolDownUpdateSuccessful != ConfigUpdateStatus.STATUS_FAIL

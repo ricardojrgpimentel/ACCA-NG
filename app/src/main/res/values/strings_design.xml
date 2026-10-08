@@ -1,0 +1,19 @@
+<resources>
+    <string name="ui_app_brand">ACCA-NG</string>
+    <string name="ui_nav_dashboard">Overview</string>
+    <string name="ui_nav_schedules">Schedules</string>
+    <string name="ui_profiles_intro">Your charging preferences, ready to apply.</string>
+    <string name="ui_scripts_intro">Quick commands for your charging controller.</string>
+    <string name="ui_schedules_intro">Let your charging routine run automatically.</string>
+    <string name="ui_profiles_empty">No profiles yet\nTap + to save your first charging setup.</string>
+    <string name="ui_scripts_empty">Your commands live here\nTap + to create your first script.</string>
+    <string name="ui_schedules_empty">Build your charging routine\nTap + to schedule a charging profile.</string>
+    <string name="ui_add_profile">Add profile</string>
+    <string name="ui_add_script">Add script</string>
+    <string name="ui_add_schedule">Add schedule</string>
+    <string name="ui_custom_config">Charging settings</string>
+    <string name="ui_charge_once">Charge once to a chosen level</string>
+    <string name="ui_profile_options">Profile options</string>
+    <string name="ui_script_options">Script options</string>
+    <string name="ui_schedule_options">Schedule options</string>
+</resources>

@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,14 +27,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.CancellationException
 import mattecarra.accapp.R
 import mattecarra.accapp._interface.OnProfileClickListener
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.activities.AccConfigEditorActivity
+import mattecarra.accapp.activities.MainActivity
 import mattecarra.accapp.adapters.ProfileListAdapter
 import mattecarra.accapp.databinding.ProfilesFragmentBinding
 import mattecarra.accapp.models.AccConfig
 import mattecarra.accapp.models.AccaProfile
+import mattecarra.accapp.models.ProfileActivation
 import mattecarra.accapp.utils.Constants
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ProfileUtils
@@ -58,6 +63,8 @@ class ProfilesFragment : ScopedFragment(),
     private lateinit var mSharedViewModel: SharedViewModel
     private lateinit var mProfilesAdapter: ProfileListAdapter
     private lateinit var mContext: Context
+    private lateinit var mPrefs: SharedPreferences
+    private var activeProfileJob: Job? = null
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
     {
@@ -92,9 +99,10 @@ class ProfilesFragment : ScopedFragment(),
         mContext = requireContext()
 
         val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        mPrefs = prefs
 
-        mSharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
-        mProfilesAdapter = ProfileListAdapter(mContext, ProfileUtils.getCurrentProfile(prefs))
+        mSharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        mProfilesAdapter = ProfileListAdapter(mContext, -1)
         mProfilesAdapter.setOnClickListener(this)
 
         profilesRecycler.adapter = mProfilesAdapter
@@ -112,6 +120,7 @@ class ProfilesFragment : ScopedFragment(),
                 profilesRecycler.visibility = View.VISIBLE
             }
             mProfilesAdapter.setProfiles(profiles)
+            refreshActiveProfile()
         })
 
         prefs.registerOnSharedPreferenceChangeListener(this)
@@ -234,16 +243,40 @@ class ProfilesFragment : ScopedFragment(),
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?)
     {
-        if (key == Constants.PROFILE_KEY)
-        {
-            launch {
-                val profileId = ProfileUtils.getCurrentProfile(sharedPreferences)
-                val currentConfig = Acc.instance.readConfig()
-                val selectedProfileConfig = mProfilesViewModel.getProfileById(profileId)?.accConfig
+        if (key == Constants.PROFILE_KEY) refreshActiveProfile()
+    }
 
-                if (profileId != -1 && currentConfig != selectedProfileConfig)
-                    ProfileUtils.clearCurrentSelectedProfile(sharedPreferences)
-                else mProfilesAdapter.setActiveProfile(profileId)
+    override fun onResume() {
+        super.onResume()
+        refreshActiveProfile()
+    }
+
+    override fun onDestroyView() {
+        mPrefs.unregisterOnSharedPreferenceChangeListener(this)
+        activeProfileJob?.cancel()
+        super.onDestroyView()
+    }
+
+    private fun refreshActiveProfile() {
+        activeProfileJob?.cancel()
+        val profileId = ProfileUtils.getCurrentProfile(mPrefs)
+        if (profileId == -1) {
+            mProfilesAdapter.setActiveProfile(-1)
+            return
+        }
+        activeProfileJob = viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val saved = mProfilesViewModel.getProfileById(profileId)
+                val current = Acc.instance.readConfig()
+                val matches = saved != null && ProfileActivation.matches(current, saved.accConfig,
+                    mPrefs.getBoolean("cueVoltage", true), mPrefs.getBoolean("cueCurrMax", true))
+                mProfilesAdapter.setActiveProfile(if (matches) profileId else -1)
+                if (!matches && ProfileUtils.getCurrentProfile(mPrefs) == profileId)
+                    ProfileUtils.clearCurrentSelectedProfile(mPrefs)
+            } catch (ex: CancellationException) {
+                throw ex
+            } catch (ex: Exception) {
+                mProfilesAdapter.setActiveProfile(-1)
             }
         }
     }
@@ -256,15 +289,17 @@ class ProfilesFragment : ScopedFragment(),
     {
         LogExt().d(javaClass.simpleName, "onProfileClick(${profile.uid}): "+ profile.profileName)
 
-        launch {
-            mSharedViewModel.setCurrentSelectedProfile(profile.uid)
-            mSharedViewModel.updateAccConfig(profile.accConfig)
-            mContext.sendBroadcast(Intent(mContext, BatteryInfoWidget::class.java)
-                .setAction(WIDGET_ALL_UPDATE).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        val shared = mSharedViewModel
+        val appContext = mContext.applicationContext
+        (requireActivity() as MainActivity).runAccCommand(R.string.command_apply_profile) {
+            val successful = shared.updateAccConfig(profile.accConfig)
+            if (successful) {
+                shared.setCurrentSelectedProfile(profile.uid)
+                appContext.sendBroadcast(Intent(appContext, BatteryInfoWidget::class.java)
+                    .setAction(WIDGET_ALL_UPDATE))
+            }
+            successful
         }
-
-        // Display Toast for the user.
-        Toast.makeText(mContext, getString(R.string.selecting_profile_toast, profile.profileName), Toast.LENGTH_LONG).show()
     }
 
     override fun onProfileLongClick(profile: AccaProfile)

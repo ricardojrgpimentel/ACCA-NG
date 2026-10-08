@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingBottom="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ProgressBar
+            android:id="@+id/command_progress"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:indeterminate="true" />
+        <TextView
+            android:id="@+id/command_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/command_executing"
+            android:textAppearance="@style/TextAppearance.Acca.Body" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/command_details_toggle"
+        style="@style/Widget.Acca.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/command_show_details" />
+
+    <LinearLayout
+        android:id="@+id/command_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/command_trace_note"
+            android:textAppearance="@style/TextAppearance.Acca.Body" />
+        <ScrollView
+            android:id="@+id/command_details_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="224dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/code_surface"
+            android:fillViewport="true">
+            <TextView
+                android:id="@+id/command_details_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:fontFamily="monospace"
+                android:textColor="@color/color_on_surface"
+                android:textIsSelectable="true"
+                android:textSize="13sp"
+                android:lineSpacingExtra="4dp" />
+        </ScrollView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/command_result_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/command_retry"
+            style="@style/Widget.Acca.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:text="@string/retry" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/command_close"
+            style="@style/Widget.Acca.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/command_close" />
+    </LinearLayout>
+</LinearLayout>

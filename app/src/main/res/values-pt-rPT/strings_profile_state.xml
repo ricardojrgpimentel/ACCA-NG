@@ -1,0 +1,18 @@
+<resources>
+    <string name="profile_active_label">Perfil ativo</string>
+    <string name="profile_none_active">Nenhum perfil ativo</string>
+    <string name="profile_custom_title">Configuração personalizada</string>
+    <string name="profile_active_description">Guardar alterações manuais passa para uma configuração personalizada. O perfil fica guardado.</string>
+    <string name="profile_custom_description">Estão a ser usadas definições personalizadas.</string>
+    <string name="profile_reading_config">A ler a configuração…</string>
+    <string name="profile_edit_action">Editar</string>
+    <string name="profile_edit_live_title">Editar configuração em uso</string>
+    <string name="profile_choose_action">Escolher perfil</string>
+    <string name="profile_change_action">Trocar perfil</string>
+    <string name="profile_edit_live_context">Configuração em uso</string>
+    <string name="profile_edit_from_profile">Configuração em uso · %1$s</string>
+    <string name="profile_edit_custom_help">Guardar aplica estas alterações ao ACC. Pode voltar a aplicar um perfil no ecrã Perfis.</string>
+    <string name="profile_edit_active_help">Guardar alterações aplica-as ao ACC e deixa de haver um perfil ativo. O perfil guardado mantém-se inalterado.</string>
+    <string name="profile_edit_saved_context">A editar um perfil guardado</string>
+    <string name="profile_edit_saved_help">Guardar atualiza este perfil na lista. Para usar os novos valores no ACC, aplique-o novamente no ecrã Perfis.</string>
+</resources>

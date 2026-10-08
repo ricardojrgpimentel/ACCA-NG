@@ -251,7 +251,8 @@ open class AccHandler(override val version: Int) : AccInterface {
             CHARGE_CONTROL_LIMIT_MAX_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             CHARGE_CONTROL_LIMIT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             INPUT_CURRENT_MAX_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
-            CYCLE_COUNT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1
+            CYCLE_COUNT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
+            hasCurrentReading = CURRENT_NOW_REGEXP.find(info) != null
         )
     }
 
@@ -303,7 +304,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun setChargingLimitForOneCharge(limit: Int): Boolean = withContext(Dispatchers.IO) {
-        RootShell.exec("(acc -f $limit &) &").isSuccess
+        RootShell.execScript("command -v acc >/dev/null || exit 127; acc -f $limit </dev/null >/dev/null 2>&1 &").isSuccess
     }
 
     val BATTERY_IDLE_SUPPORTED = """^\s*-\s*battIdleMode=true""".toPattern(Pattern.MULTILINE)

@@ -76,7 +76,8 @@ class BatteryInfo(val name: String,
                   val chargeControlLimit: Int,
                   val inputCurrentMax: Int,
                   val cycleCount: Int,
-                  val powerNow: Float = 0.0f): Parcelable
+                  val powerNow: Float = 0.0f,
+                  val hasCurrentReading: Boolean = false): Parcelable
 {
     /**
      * Returns whether the battery is charging or not.

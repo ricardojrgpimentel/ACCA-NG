@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">#8ab4f8</color>
-    <color name="color_primary_variant">#5785c5</color>
+    <color name="color_primary">#7ADCC0</color>
+    <color name="color_primary_variant">#48B89B</color>
+    <color name="color_surface">#192925</color>
+    <color name="color_background">#0F1B18</color>
+    <color name="color_error">#FFB3BE</color>
+    <color name="color_warning">#293D36</color>
+    <color name="color_shadow">#00000000</color>
+    <color name="color_on_primary">#07382D</color>
+    <color name="color_on_background">#E7F2EC</color>
+    <color name="color_on_surface">#E7F2EC</color>
+    <color name="color_on_error">#520018</color>
+    <color name="text_secondary">#A6BDB3</color>
+    <color name="surface_variant">#233A31</color>
+    <color name="accent_container">#284D40</color>
+    <color name="outline_subtle">#30483E</color>
+    <color name="skeleton_base">#2B4137</color>
     <color name="color_secondary">@color/color_primary</color>
     <color name="color_secondary_variant">@color/color_primary_variant</color>
-
-    <color name="color_surface">#202124</color>
-    <color name="color_background">@color/color_surface</color>
-    <color name="color_error">#cf6679</color>
-
-    <color name="color_warning">#323336</color>
-
-    <color name="color_shadow">@android:color/transparent</color>
-
-    <color name="color_on_primary">#000000</color>
-    <color name="color_on_secondary">@color/color_surface</color>
-    <color name="color_on_background">#ffffff</color>
-    <color name="color_on_surface">#ffffff</color>
-    <color name="color_on_error">#000000</color>
-
-    <!-- Muted block colour for loading skeletons (dark theme). -->
-    <color name="skeleton_base">#3C4043</color>
+    <color name="color_on_secondary">@color/color_on_primary</color>
 </resources>

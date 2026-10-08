@@ -1,54 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/script_label"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <EditText
-            android:id="@+id/script_name_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:hint="@string/script_label" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/script_description"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <EditText
-            android:id="@+id/script_description_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:hint="@string/script_description"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/script_body_text"
-            android:textColor="?android:attr/textColorPrimary" />
-
-        <EditText
-            android:id="@+id/script_body_text_ed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:hint="@string/script_body_text" />
-
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:clipToPadding="false" android:paddingStart="24dp"
+    android:paddingEnd="24dp" android:paddingBottom="16dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="@string/script_label" android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/script_name_ed" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="56dp" android:inputType="textCapSentences" android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="@string/script_description" android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/script_description_ed" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="56dp" android:inputType="textCapSentences|textMultiLine" android:maxLines="3" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="@string/script_body_text" android:layout_marginTop="16dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/script_body_text_ed" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:minHeight="56dp" android:inputType="textMultiLine|textNoSuggestions" android:gravity="top|start" android:fontFamily="monospace" android:textSize="14sp" android:minLines="4" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -13,9 +13,94 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/profile_edit_context"
+            style="@style/Widget.Acca.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/card_margin"
+            android:layout_marginTop="@dimen/card_margin"
+            android:visibility="gone"
+            app:contentPadding="@dimen/card_content_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profile_edit_context_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Acca.Title" />
+
+                <TextView
+                    android:id="@+id/profile_edit_context_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textAppearance="@style/TextAppearance.Acca.Body" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/profile_presets"
+            style="@style/Widget.Acca.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/card_margin"
+            android:layout_marginTop="@dimen/card_margin"
+            android:visibility="gone"
+            app:contentPadding="@dimen/card_content_padding"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/preset_title"
+                    android:textAppearance="@style/TextAppearance.Acca.Title" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/preset_description"
+                    android:textAppearance="@style/TextAppearance.Acca.Body" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/preset_daily"
+                    style="@style/Widget.Acca.Button.Preset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    tools:text="Uso diário&#10;Para o dia a dia, com um limite moderado.&#10;Para aos 80% · Retoma aos 75%" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/preset_plugged"
+                    style="@style/Widget.Acca.Button.Preset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    tools:text="Muitas horas no carregador&#10;Mantém um nível de bateria mais baixo.&#10;Para aos 60% · Retoma aos 50%" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/preset_travel"
+                    style="@style/Widget.Acca.Button.Preset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    tools:text="Viagem&#10;Mais bateria disponível antes de sair.&#10;Para aos 95% · Retoma aos 90%" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
         <!-- Capacity Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -23,7 +108,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -42,7 +127,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/title_capacity_control"
+                        android:text="@string/charge_limits_title"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
                     <ImageView
@@ -51,10 +136,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:background="?selectableItemBackground"
-                        android:contentDescription="@string/restore"
+                        android:contentDescription="@string/charge_restore_limits"
                         android:foregroundGravity="center"
                         android:onClick="onCapacityRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -71,89 +156,137 @@
                     android:orientation="vertical"
                     tools:visibility="gone">
 
-                    <LinearLayout
-                        android:id="@+id/limits"
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/card_content_margin"
-                        android:weightSum="3">
+                        android:layout_marginTop="12dp"
+                        android:text="@string/charge_limits_help"
+                        android:textAppearance="@style/TextAppearance.Acca.Body" />
 
-                        <TextView
-                            android:id="@+id/shutdown_capacity_label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:text="@string/shutdown_capacity"
-                            android:textColor="?android:attr/textColorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/resume_capacity_label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="6dp"
-                            android:layout_marginRight="6dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:text="@string/resume_charge"
-                            android:textColor="?android:attr/textColorPrimary"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/pause_capacity_label"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
-                            android:layout_marginLeft="6dp"
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:text="@string/stop_charge"
-                            android:textColor="?android:attr/textColorPrimary"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/num_pickers"
+                    <TextView
+                        android:id="@+id/charge_cycle_summary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/card_content_margin"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:layout_marginTop="16dp"
+                        android:textColor="@color/color_primary"
+                        android:textSize="16sp" />
 
-                        <NumberPicker
-                            android:id="@+id/shutdown_capacity_picker"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="3dp"
-                            android:layout_marginRight="3dp"
                             android:layout_weight="1"
-                            android:theme="@style/NumberPickerText" />
-
-                        <NumberPicker
-                            android:id="@+id/resume_capacity_picker"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="3dp"
-                            android:layout_marginRight="3dp"
-                            android:layout_weight="1"
-                            android:theme="@style/NumberPickerText" />
+                            android:layout_marginEnd="12dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/pause_capacity_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/pause_capacity_picker"
+                                android:text="@string/charge_pause_label"
+                                android:textColor="?android:attr/textColorPrimary"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/charge_pause_help"
+                                android:textAppearance="@style/TextAppearance.Acca.Body" />
+                        </LinearLayout>
 
                         <NumberPicker
                             android:id="@+id/pause_capacity_picker"
+                            android:layout_width="104dp"
+                            android:layout_height="128dp"
+                            android:theme="@style/NumberPickerText" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginLeft="3dp"
                             android:layout_weight="1"
-                            android:theme="@style/NumberPickerText" />
+                            android:layout_marginEnd="12dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/resume_capacity_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/resume_capacity_picker"
+                                android:text="@string/charge_resume_label"
+                                android:textColor="?android:attr/textColorPrimary"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/charge_resume_help"
+                                android:textAppearance="@style/TextAppearance.Acca.Body" />
+                        </LinearLayout>
 
+                        <NumberPicker
+                            android:id="@+id/resume_capacity_picker"
+                            android:layout_width="104dp"
+                            android:layout_height="128dp"
+                            android:theme="@style/NumberPickerText" />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="12dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/shutdown_capacity_label"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/shutdown_capacity_picker"
+                                android:text="@string/charge_shutdown_label"
+                                android:textColor="?android:attr/textColorPrimary"
+                                android:textSize="16sp" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/charge_shutdown_help"
+                                android:textAppearance="@style/TextAppearance.Acca.Body" />
+                        </LinearLayout>
+
+                        <NumberPicker
+                            android:id="@+id/shutdown_capacity_picker"
+                            android:layout_width="104dp"
+                            android:layout_height="128dp"
+                            android:theme="@style/NumberPickerText" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/charge_unlimited_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        android:text="@string/charge_unlimited_hint"
+                        android:textAppearance="@style/TextAppearance.Acca.Body" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -166,9 +299,16 @@
                             android:layout_gravity="center_vertical"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp"
-                            android:text="@string/charging_switch_label"
+                            android:text="@string/charge_switch_label"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="@string/charge_switch_help"
+                            android:textAppearance="@style/TextAppearance.Acca.Body" />
 
                         <TextView
                             android:id="@+id/charging_switch_textview"
@@ -190,7 +330,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_content_margin"
                         android:checked="true"
-                        android:text="@string/automatic_switch_eanbled"
+                        android:text="@string/charge_switch_automatic"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -201,7 +341,7 @@
 
         <!-- Voltage Control Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -209,7 +349,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -227,7 +367,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/title_power_control"
+                        android:text="@string/charge_power_title"
                         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
 
                     <ImageView
@@ -239,7 +379,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onPowerControlRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -261,7 +401,7 @@
                         android:id="@+id/voltage_control_file_ll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="12dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -285,7 +425,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="12dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -310,7 +450,7 @@
                         android:id="@+id/current_max_ll"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="12dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -319,7 +459,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
                             android:layout_marginRight="5dp"
-                            android:text="@string/current_max"
+                            android:text="@string/charge_max_current"
                             android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp" />
 
@@ -349,7 +489,7 @@
 
         <!-- Battery idle control Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -357,7 +497,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -387,7 +527,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onBatteryIdleRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -416,7 +556,7 @@
 
         <!-- Temperature Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -424,7 +564,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -455,7 +595,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onTemperatureControlRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -557,7 +697,7 @@
 
         <!-- Enable Cool Down Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -565,7 +705,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -585,7 +725,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/title_cooldown_control"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.Acca.Title" />
 
                     <ImageView
                         android:id="@+id/cooldown_restore"
@@ -596,7 +736,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onCooldownRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -698,7 +838,7 @@
 
         <!-- Exit On Boot Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -706,7 +846,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -725,7 +865,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/title_on_boot"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.Acca.Title" />
 
                     <ImageView
                         android:id="@+id/apply_on_boot_restore"
@@ -736,7 +876,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onBootRestoreClick"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -784,7 +924,7 @@
 
         <!-- On Plugged Card -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/card_margin"
@@ -792,7 +932,7 @@
             android:layout_marginRight="@dimen/card_margin"
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -811,7 +951,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/title_on_plugged"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.Acca.Title" />
 
                     <ImageView
                         android:id="@+id/on_plugged_restore"
@@ -822,7 +962,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onPluggedRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <androidx.appcompat.widget.SwitchCompat
@@ -869,7 +1009,7 @@
 
         <!-- Bottom most card - include android:layout_marginBottom for proper looks -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.MaterialComponents.CardView"
+            style="@style/Widget.Acca.Card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -880,7 +1020,7 @@
 
             android:foreground="?selectableItemBackground"
             app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardElevation="3dp"
+            app:cardElevation="0dp"
             app:contentPadding="@dimen/card_content_padding">
 
             <LinearLayout
@@ -899,7 +1039,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/title_miscellaneous_control"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                        android:textAppearance="@style/TextAppearance.Acca.Title" />
 
                     <ImageView
                         android:id="@+id/miscellaneous_restore"
@@ -910,7 +1050,7 @@
                         android:contentDescription="@string/restore"
                         android:foregroundGravity="center"
                         android:onClick="onMiscRestore"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_restore_24px" />
 
                     <ImageView
@@ -922,7 +1062,7 @@
                         android:contentDescription="@string/info"
                         android:foregroundGravity="center"
                         android:onClick="onInfoClick"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         app:srcCompat="@drawable/ic_baseline_info" />
                 </LinearLayout>
 
@@ -938,7 +1078,7 @@
                     android:id="@+id/resetBSOnPause_switch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="12dp"
                     android:text="@string/reset_bs_on_pause"
                     android:textSize="16sp"
                     android:checked="true" />

@@ -7,32 +7,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp">
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/schedule_name"
-            android:textColor="?android:attr/textColorPrimary"
-            />
-
-        <EditText
-            android:id="@+id/schedule_name_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:hint="@string/schedule_name"
-            android:inputType="text"/>
+        <com.google.android.material.textfield.TextInputLayout
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:hint="@string/schedule_name">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/schedule_name_edit_text" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:minHeight="56dp"
+                android:inputType="textCapSentences" android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/profile_name"
             android:textColor="?android:attr/textColorPrimary"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginTop="24dp"/>
 
         <Spinner
+            android:minHeight="48dp"
+            android:background="@drawable/spinner_surface"
+            android:paddingStart="12dp"
+            android:paddingEnd="36dp"
+            android:spinnerMode="dropdown"
             android:id="@+id/profile_selector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,9 +44,14 @@
             android:layout_height="wrap_content"
             android:text="@string/schedule_type"
             android:textColor="?android:attr/textColorPrimary"
-            android:layout_marginTop="18dp" />
+            android:layout_marginTop="24dp" />
 
         <Spinner
+            android:minHeight="48dp"
+            android:background="@drawable/spinner_surface"
+            android:paddingStart="12dp"
+            android:paddingEnd="36dp"
+            android:spinnerMode="dropdown"
             android:id="@+id/schedule_type_selector"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,14 +62,14 @@
 
         <LinearLayout
             android:id="@+id/time_picker_container"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/execution_time"
                 android:textColor="?android:attr/textColorPrimary"/>
 
@@ -76,6 +82,8 @@
 
             <mattecarra.accapp.viewmodel.AccaTimePicker
                 android:id="@+id/time_picker"
+                android:layout_gravity="center_horizontal"
+                android:timePickerMode="spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />

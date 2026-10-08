@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.MaterialComponents.CardView"
+    style="@style/Widget.Acca.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/card_margin"
@@ -10,7 +10,7 @@
     android:layout_marginRight="@dimen/card_margin"
     android:layout_marginBottom="@dimen/card_margindiv2"
     app:cardCornerRadius="@dimen/card_corner_radius"
-    app:cardElevation="3dp">
+    app:cardElevation="0dp">
 
     <LinearLayout
         android:id="@+id/item_profile_info"
@@ -41,7 +41,7 @@
                         android:id="@+id/item_script_title_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        android:textAppearance="@style/TextAppearance.Acca.Title"
                         tools:text="@tools:sample/full_names" />
 
                     <TextView
@@ -56,26 +56,29 @@
                 <ImageView
                     android:id="@+id/edit_config_button"
                     style="@style/ActionIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:background="?selectableItemBackground"
                     android:visibility="gone"
                     app:srcCompat="@drawable/ic_outline_settings_24px" />
 
                 <ImageButton
-                    android:id="@+id/item_script_options_ib"
+                    android:id="@+id/item_script_options_ib" android:contentDescription="@string/ui_script_options"
                     style="@style/ActionIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     app:srcCompat="@drawable/ic_outline_more_vert_24px" />
 
             </LinearLayout>
 
             <TextView
                 android:id="@+id/item_script_body_tv"
+                android:background="@drawable/code_surface" android:fontFamily="monospace"
+                android:textColor="@color/color_primary" android:textSize="14sp"
+                android:layout_marginTop="12dp" android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/card_margin"
+
                 tools:text="@tools:sample/full_names" />
 
     </LinearLayout>

@@ -1,34 +1,37 @@
 package mattecarra.accapp.fragments
 
 import android.os.Bundle
+import android.os.BatteryManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getColor
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mattecarra.accapp.Preferences
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
+import mattecarra.accapp.activities.MainActivity
 import mattecarra.accapp.databinding.DashboardFragmentBinding
 import mattecarra.accapp.databinding.EditChargingLimitOnceDialogBinding
+import mattecarra.accapp.models.BatteryPowerState
+import mattecarra.accapp.models.BatteryPowerMode
 import mattecarra.accapp.models.DashboardValues
+import mattecarra.accapp.CurrentUnit
+import java.text.NumberFormat
+import kotlin.math.abs
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ScopedFragment
 import mattecarra.accapp.viewmodel.DashboardViewModel
 import mattecarra.accapp.viewmodel.SharedViewModel
-import java.util.concurrent.atomic.AtomicBoolean
 
 class DashboardFragment : ScopedFragment()
 {
@@ -65,32 +68,27 @@ class DashboardFragment : ScopedFragment()
         LogExt().d(javaClass.simpleName, "onViewCreated()")
 
         super.onViewCreated(view, savedInstanceState)
+        preferences = Preferences(requireContext())
 
         //-----------------------------------------------------------------
 
-        val transaction = activity?.supportFragmentManager?.beginTransaction()
-        mDashboardConfigFrg = DashboardConfigFragment.newInstance()
-        transaction?.replace(R.id.current_profile, mDashboardConfigFrg)
-        transaction?.commit()
+        mDashboardConfigFrg = childFragmentManager.findFragmentById(R.id.current_profile)
+            as? DashboardConfigFragment ?: DashboardConfigFragment.newInstance().also {
+                childFragmentManager.beginTransaction().replace(R.id.current_profile, it).commit()
+            }
 
         //-----------------------------------------------------------------
 
         mViewModel.getDashboardValues().observe(viewLifecycleOwner) { dash ->
-            // Set Status Card text
-            dash.daemon?.let { daemon -> setAccdStatusUi(daemon) }
-
-            // Battery/Charge details
-            binding.dashBatteryCapacityPBar.progress = dash.batteryInfo.capacity
-            binding.dashBatteryStatusTextView.text = getString(R.string.info_status_extended, dash.batteryInfo.status, dash.batteryInfo.chargeType)
-
-            binding.dashBatteryChargingSpeedTextView.text = if (dash.batteryInfo.isCharging()) getString(R.string.info_charging_speed) else getString(R.string.info_discharging_speed)
-
-            val plus = if (Acc.instance.version < 202107280) dash.batteryInfo.isCharging() else true
-            binding.dashChargingSpeedTextView.text = dash.batteryInfo.getCurrentNow(preferences.currentInputUnitOfMeasure, preferences.currentOutputUnitOfMeasure, plus, true)
-
-            binding.dashBatteryTemperatureTextView.text = dash.batteryInfo.getTemperature(preferences.temperatureOutputUnitOfMeasure, true)
-            binding.dashBatteryHealthTextView.text = dash.batteryInfo.health
-            binding.dashBatteryVoltageTextView.text = dash.batteryInfo.getVoltageNow(preferences.voltageInputUnitOfMeasure, preferences.voltageOutputUnitOfMeasure, true)
+            renderEnergy(dash)
+            binding.dashBatteryCyclesTextView.text = dash.diagnostics.cycles?.toString()
+                ?: getString(R.string.battery_data_unavailable)
+            binding.dashBatteryFullCapacityTextView.text = dash.diagnostics.fullCapacityMah?.let {
+                getString(R.string.battery_capacity_mah, it)
+            } ?: getString(R.string.battery_data_unavailable)
+            binding.dashBatteryDesignCapacityTextView.text = dash.diagnostics.designCapacityMah?.let {
+                getString(R.string.battery_capacity_mah, it)
+            } ?: getString(R.string.battery_data_unavailable)
         }
 
         activity?.let { it ->
@@ -99,7 +97,9 @@ class DashboardFragment : ScopedFragment()
             configViewModel = ViewModelProvider(it).get(SharedViewModel::class.java)
 
             binding.dashResetBatteryStatsButton.setOnClickListener {
-                launch { Acc.instance.resetBatteryStats() }
+                (requireActivity() as MainActivity).runAccCommand(R.string.command_reset_stats) {
+                    Acc.instance.resetBatteryStats()
+                }
             }
 
             binding.dashEditCargingLimitOnceButton.setOnClickListener {
@@ -110,10 +110,9 @@ class DashboardFragment : ScopedFragment()
                     cancelOnTouchOutside(false)
                     customView(view=dialog.root)
                     positiveButton(R.string.apply) {
-                        launch {
-                            val limit = getCustomView().findViewById<NumberPicker>(R.id.charging_limit).value
+                        val limit = getCustomView().findViewById<NumberPicker>(R.id.charging_limit).value
+                        (requireActivity() as MainActivity).runAccCommand(R.string.command_charge_once) {
                             Acc.instance.setChargingLimitForOneCharge(limit)
-                            Toast.makeText(context, getString(R.string.done_applied_charge_limit, limit), Toast.LENGTH_LONG).show()
                         }
                     }
                     negativeButton(android.R.string.cancel) {
@@ -131,93 +130,153 @@ class DashboardFragment : ScopedFragment()
         }
 
         binding.dashDaemonToggleButton.setOnClickListener {
-            Toast.makeText(context, R.string.wait, Toast.LENGTH_LONG).show()
-
-            launch {
-                val finished = AtomicBoolean(false)
-                val stopDaemon = Acc.instance.isAccdRunning()
-
-                binding.dashDaemonToggleButton.isEnabled = false
-                binding.dashDaemonRestartButton.isEnabled = false
-
-                val observer = Observer<DashboardValues> { daemonInfo ->
-                    if (daemonInfo?.daemon == !stopDaemon && !finished.getAndSet(true))
-                    { //if accDeamon status is the opposite of the status it had before the action -> change had effect
-                        finished.set(true)
-
-                        binding.dashDaemonToggleButton.isEnabled = true
-                        binding.dashDaemonRestartButton.isEnabled = true
-                    }
-                }
-
-                mViewModel.getDashboardValues().observe(viewLifecycleOwner, observer)
-
-                withContext(Dispatchers.IO) {
-                    if (stopDaemon) Acc.instance.abcStopDaemon()
-                    else Acc.instance.abcStartDaemon()
-                }
-
-                delay(5000)
-
-                mViewModel.getDashboardValues().removeObserver(observer)
-
-                if (!finished.getAndSet(true))
-                {
-                    binding.dashDaemonToggleButton.isEnabled = true
-                    binding.dashDaemonRestartButton.isEnabled = true
-                }
+            val shouldRun = mIsDaemonRunning != true
+            val label = if (shouldRun) R.string.command_start_acc else R.string.command_stop_acc
+            (requireActivity() as MainActivity).runAccCommand(label) {
+                val successful = if (Acc.instance.isAccdRunning() == shouldRun) true
+                    else if (shouldRun) Acc.instance.abcStartDaemon() else Acc.instance.abcStopDaemon()
+                successful && Acc.instance.isAccdRunning() == shouldRun
             }
         }
 
         binding.dashDaemonRestartButton.setOnClickListener {
-            Toast.makeText(context, R.string.wait, Toast.LENGTH_LONG).show()
-
-            binding.dashDaemonToggleButton.isEnabled = false
-            binding.dashDaemonRestartButton.isEnabled = false
-
-            launch {
-                binding.dashDaemonToggleButton.isEnabled = false
-                binding.dashDaemonRestartButton.isEnabled = false
-
-                withContext(Dispatchers.IO) {
-                    Acc.instance.accRestartDaemon()
+            val dashboard = mViewModel
+            if (mIsDaemonRunning == null) {
+                (requireActivity() as MainActivity).runAccCommand(R.string.command_read_status) {
+                    dashboard.refresh()
+                    dashboard.daemonRunning.value != null
                 }
-
-                delay(3000)
-
-                binding.dashDaemonToggleButton.isEnabled = true
-                binding.dashDaemonRestartButton.isEnabled = true
+            } else {
+                (requireActivity() as MainActivity).runAccCommand(R.string.command_restart_acc) {
+                    Acc.instance.accRestartDaemon() && Acc.instance.isAccdRunning()
+                }
             }
         }
 
-        mViewModel.getDashboardValues().observe(viewLifecycleOwner, Observer { d ->
-            toggleAccdStatusUi(d.daemon)
-            mIsDaemonRunning = d.daemon
-        })
+        mViewModel.daemonRunning.observe(viewLifecycleOwner) { running ->
+            mIsDaemonRunning = running
+            setAccdStatusUi(running)
+        }
+        (requireActivity() as MainActivity).accCommands.state.observe(viewLifecycleOwner) {
+            setAccdStatusUi(mIsDaemonRunning)
+        }
     }
 
-    private fun toggleAccdStatusUi(running: Boolean?)
-    {
-        when (mIsDaemonRunning)
-        {
-            null ->
-            {
-                setAccdStatusUi(running)
+    private data class EnergyCopy(val title: Int, val description: Int, val source: Int, val activity: Int)
+
+    private fun renderEnergy(dash: DashboardValues) {
+        val info = dash.batteryInfo
+        val currentMa = (dash.power.currentMa ?: if (dash.batteryReadingFresh && info.hasCurrentReading)
+            info.getCurrentNow(preferences.currentInputUnitOfMeasure) else null)?.takeIf { it.isFinite() }
+        val accStatus = if (dash.batteryReadingFresh) info.status else "Unknown"
+        val status = if (accStatus.equals("Unknown", true)) dash.power.status ?: accStatus else accStatus
+        val plugged = dash.plugged?.let { it != 0 }
+        val state = BatteryPowerState.from(status, plugged, currentMa,
+            dash.power.status.equals("Full", true) || dash.systemBatteryStatus == BatteryManager.BATTERY_STATUS_FULL,
+            dash.power.bypassReported, dash.power.idleThresholdMa)
+        val copy = when (state.mode) {
+            BatteryPowerMode.CHARGING -> EnergyCopy(R.string.energy_charging, R.string.energy_charging_help,
+                R.string.energy_source_charger, R.string.energy_activity_charging)
+            BatteryPowerMode.BATTERY_ONLY -> EnergyCopy(R.string.energy_battery, R.string.energy_battery_help,
+                R.string.energy_source_battery, R.string.energy_activity_discharging)
+            BatteryPowerMode.CONNECTED_DISCHARGING -> EnergyCopy(R.string.energy_connected_discharge,
+                R.string.energy_connected_discharge_help, R.string.energy_source_battery_in_use, R.string.energy_activity_discharging)
+            BatteryPowerMode.DISCHARGING -> EnergyCopy(R.string.energy_discharging, R.string.energy_discharging_help,
+                R.string.energy_source_battery_in_use, R.string.energy_activity_discharging)
+            BatteryPowerMode.IDLE_ESTIMATED -> EnergyCopy(R.string.energy_idle, R.string.energy_idle_help,
+                R.string.energy_source_probable, if (state.full) R.string.energy_activity_full_residual else R.string.energy_activity_residual)
+            BatteryPowerMode.BYPASS_REPORTED -> EnergyCopy(R.string.energy_bypass, R.string.energy_bypass_help,
+                R.string.energy_source_reported, if (currentMa == null) R.string.energy_activity_paused else R.string.energy_activity_residual)
+            BatteryPowerMode.PAUSED -> EnergyCopy(R.string.energy_paused, R.string.energy_paused_help,
+                R.string.energy_not_confirmed, R.string.energy_activity_paused)
+            BatteryPowerMode.FULL -> EnergyCopy(R.string.energy_full, R.string.energy_full_help,
+                R.string.energy_not_confirmed, R.string.energy_activity_full)
+            BatteryPowerMode.UNKNOWN -> EnergyCopy(R.string.energy_unknown, R.string.energy_unknown_help,
+                R.string.energy_not_confirmed, R.string.battery_data_unavailable)
+        }
+        binding.dashBatteryCapacityPBar.isVisible = dash.batteryReadingFresh && info.capacity in 0..100
+        binding.dashBatteryCapacityPBar.progress = info.capacity.coerceIn(0, 100)
+        binding.dashBatteryStatusTextView.setText(copy.title)
+        binding.dashEnergyDescriptionTextView.setText(copy.description)
+        binding.dashEnergySourceTextView.setText(copy.source)
+        binding.dashBatteryActivityTextView.setText(copy.activity)
+        binding.dashBypassModeTextView.setText(when {
+            plugged == false -> R.string.energy_bypass_disconnected
+            state.mode == BatteryPowerMode.BYPASS_REPORTED -> R.string.energy_bypass_reported
+            else -> R.string.energy_not_confirmed
+        })
+        binding.dashPowerConnectionTextView.setText(when (dash.plugged) {
+            0 -> R.string.battery_power_disconnected
+            BatteryManager.BATTERY_PLUGGED_AC -> R.string.battery_power_ac
+            BatteryManager.BATTERY_PLUGGED_USB -> R.string.battery_power_usb
+            BatteryManager.BATTERY_PLUGGED_WIRELESS -> R.string.battery_power_wireless
+            BatteryManager.BATTERY_PLUGGED_DOCK -> R.string.battery_power_dock
+            null -> R.string.battery_power_unknown
+            else -> R.string.battery_power_connected
+        })
+        binding.dashChargingSpeedTextView.text = if (currentMa == null) getString(R.string.battery_data_unavailable) else {
+            val amperes = preferences.currentOutputUnitOfMeasure == CurrentUnit.A
+            val formatter = NumberFormat.getNumberInstance().apply {
+                maximumFractionDigits = if (amperes) 3 else 1
+                minimumFractionDigits = 0
             }
-            false ->
-            {
-                if (running != null && running) setAccdStatusUi(running)
-            }
-            true ->
-            {
-                if (running != null && !running) setAccdStatusUi(running)
+            val value = formatter.format(abs(currentMa) / if (amperes) 1000 else 1) + if (amperes) " A" else " mA"
+            when (state.mode) {
+                BatteryPowerMode.CHARGING -> getString(R.string.energy_current_in, value)
+                BatteryPowerMode.BATTERY_ONLY, BatteryPowerMode.CONNECTED_DISCHARGING, BatteryPowerMode.DISCHARGING ->
+                    getString(R.string.energy_current_out, value)
+                BatteryPowerMode.IDLE_ESTIMATED, BatteryPowerMode.BYPASS_REPORTED ->
+                    getString(R.string.energy_current_residual, value)
+                else -> value
             }
         }
+        binding.dashBatteryTemperatureTextView.text = if (dash.batteryReadingFresh && info.temperature >= 0)
+            info.getTemperature(preferences.temperatureOutputUnitOfMeasure, true) else getString(R.string.battery_data_unavailable)
+        binding.dashBatteryVoltageTextView.text = if (dash.batteryReadingFresh && info.voltageNow > 0)
+            info.getVoltageNow(preferences.voltageInputUnitOfMeasure, preferences.voltageOutputUnitOfMeasure, true)
+            else getString(R.string.battery_data_unavailable)
+        binding.dashBatteryHealthTextView.text = if (!dash.batteryReadingFresh) getString(R.string.battery_data_unavailable) else
+            when (info.health.lowercase()) {
+                "good" -> getString(R.string.energy_health_good)
+                "overheat" -> getString(R.string.energy_health_overheat)
+                "dead" -> getString(R.string.energy_health_dead)
+                "over voltage", "overvoltage" -> getString(R.string.energy_health_overvoltage)
+                "unspecified failure" -> getString(R.string.energy_health_failure)
+                "cold" -> getString(R.string.energy_health_cold)
+                "unknown" -> getString(R.string.battery_data_unavailable)
+                else -> info.health
+            }
+    }
+
+    fun refreshConfig() {
+        if (view != null) (childFragmentManager.findFragmentById(R.id.current_profile) as? DashboardConfigFragment)?.checkProfile()
     }
 
     private fun setAccdStatusUi(running: Boolean?)
     {
-        if (running == null) return
+        val command = (requireActivity() as MainActivity).accCommands.state.value
+        if (command?.running == true) {
+            binding.dashAccdStatusPb.visibility = View.VISIBLE
+            binding.dashAccdStatusImageView.visibility = View.GONE
+            binding.dashAccdStatusTextView.setText(command.label)
+            binding.dashDaemonToggleButton.isEnabled = false
+            binding.dashDaemonRestartButton.isEnabled = false
+            binding.dashResetBatteryStatsButton.isEnabled = false
+            binding.dashEditCargingLimitOnceButton.isEnabled = false
+            return
+        }
+        binding.dashResetBatteryStatsButton.isEnabled = true
+        binding.dashEditCargingLimitOnceButton.isEnabled = true
+        binding.dashDaemonRestartButton.setText(if (running == null) R.string.retry else R.string.restart)
+        if (running == null) {
+            binding.dashAccdStatusPb.visibility = View.GONE
+            binding.dashAccdStatusImageView.visibility = View.VISIBLE
+            binding.dashAccdStatusImageView.setImageResource(R.drawable.ic_outline_error_outline_24px)
+            binding.dashAccdStatusTextView.setText(R.string.acc_status_unavailable)
+            binding.dashDaemonToggleButton.isEnabled = false
+            binding.dashDaemonRestartButton.isEnabled = true
+            return
+        }
 
         if (running)
         {
@@ -225,7 +284,8 @@ class DashboardFragment : ScopedFragment()
             binding.dashAccdStatusPb.visibility = View.GONE
             // Show and change icon
             binding.dashAccdStatusImageView.visibility = View.VISIBLE
-            binding.dashAccdStatusFrameLay.setBackgroundColor(getColor(requireActivity().baseContext, R.color.colorSuccessful))
+            binding.dashAccdStatusImageView.imageTintList = android.content.res.ColorStateList.valueOf(
+                getColor(requireContext(), R.color.colorSuccessful))
             binding.dashAccdStatusImageView.setImageResource(R.drawable.ic_outline_check_circle_24px)
             binding.dashAccdStatusTextView.setText(R.string.acc_daemon_status_running)
             // Enable buttons
@@ -240,7 +300,8 @@ class DashboardFragment : ScopedFragment()
             binding.dashAccdStatusPb.visibility = View.GONE
             // Show and change icon
             binding.dashAccdStatusImageView.visibility = View.VISIBLE
-            binding.dashAccdStatusFrameLay.setBackgroundColor(getColor(requireActivity().baseContext, R.color.color_error))
+            binding.dashAccdStatusImageView.imageTintList = android.content.res.ColorStateList.valueOf(
+                getColor(requireContext(), R.color.color_error))
             binding.dashAccdStatusImageView.setImageResource(R.drawable.ic_outline_error_outline_24px)
             binding.dashAccdStatusTextView.setText(R.string.acc_daemon_status_not_running)
             // Enable buttons

@@ -86,10 +86,10 @@ import java.io.Serializable
     {
         fun toString(context: Context): String
         {
-            return String.format(context.getString(
+            return context.getString(
                     R.string.template_temperature_profile,
                     coolDownTemperature, maxTemperature, pause
-                ))
+                )
         }
     }
 

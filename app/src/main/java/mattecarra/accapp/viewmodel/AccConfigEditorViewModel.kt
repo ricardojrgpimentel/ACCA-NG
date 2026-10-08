@@ -16,6 +16,12 @@ class AccConfigEditorViewModelFactory(val application: Application, val accaProf
 
 class AccConfigEditorViewModel(application: Application, private val _profile: AccaProfile): AndroidViewModel(application)
 {
+    val initialAccConfig = _profile.accConfig.copy(
+        configCapacity = _profile.accConfig.configCapacity.copy(),
+        configVoltage = _profile.accConfig.configVoltage.copy(),
+        configTemperature = _profile.accConfig.configTemperature.copy(),
+        configCoolDown = _profile.accConfig.configCoolDown?.copy()
+    )
     var unsavedChanges = false
     private val profileHistory = CircularFifoQueue<AccaProfile>(10)
     val undoOperationAvailableLiveData = MutableLiveData(false)

@@ -1,0 +1,18 @@
+<resources>
+    <string name="profile_active_label">Perfil ativo</string>
+    <string name="profile_none_active">Nenhum perfil ativo</string>
+    <string name="profile_custom_title">Configuração personalizada</string>
+    <string name="profile_active_description">Salvar alterações manuais passa para uma configuração personalizada. O perfil continua salvo.</string>
+    <string name="profile_custom_description">As configurações personalizadas estão em uso.</string>
+    <string name="profile_reading_config">Lendo a configuração…</string>
+    <string name="profile_edit_action">Editar</string>
+    <string name="profile_edit_live_title">Editar configuração em uso</string>
+    <string name="profile_choose_action">Escolher perfil</string>
+    <string name="profile_change_action">Trocar perfil</string>
+    <string name="profile_edit_live_context">Configuração em uso</string>
+    <string name="profile_edit_from_profile">Configuração em uso · %1$s</string>
+    <string name="profile_edit_custom_help">Salvar aplica estas alterações ao ACC. Você pode voltar a aplicar um perfil na tela Perfis.</string>
+    <string name="profile_edit_active_help">Salvar alterações aplica-as ao ACC e desativa a seleção do perfil. O perfil salvo permanece inalterado.</string>
+    <string name="profile_edit_saved_context">Editando um perfil salvo</string>
+    <string name="profile_edit_saved_help">Salvar atualiza este perfil na lista. Para usar os novos valores no ACC, aplique-o novamente na tela Perfis.</string>
+</resources>

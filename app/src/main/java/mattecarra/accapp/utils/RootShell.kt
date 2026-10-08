@@ -22,5 +22,29 @@ object RootShell {
     const val LONG_TIMEOUT_SECS = 60
 
     fun exec(cmd: String, timeoutSecs: Int = DEFAULT_TIMEOUT_SECS): Shell.Result =
-        Shell.su("timeout $timeoutSecs $cmd").exec()
+        execute(cmd, cmd, timeoutSecs)
+
+    private fun execute(cmd: String, displayedCommand: String, timeoutSecs: Int): Shell.Result {
+        val trace = CommandTraceContext.current()
+        val step = trace?.started(displayedCommand)
+        try {
+            val result = Shell.su("timeout -k 2 $timeoutSecs $cmd").exec()
+            if (step != null) {
+                val error = if (result.isSuccess) null else
+                    result.err.takeLast(6).joinToString("\n").ifBlank {
+                        result.out.takeLast(6).joinToString("\n")
+                    }
+                trace?.finished(step, result.code, error)
+            }
+            return result
+        } catch (ex: Exception) {
+            if (step != null) trace?.finished(step, null, ex.message ?: ex.javaClass.simpleName)
+            throw ex
+        }
+    }
+
+    fun quote(value: String): String = "'" + value.replace("'", "'\"'\"'") + "'"
+
+    fun execScript(script: String, timeoutSecs: Int = DEFAULT_TIMEOUT_SECS): Shell.Result =
+        execute("/system/bin/sh -c ${quote(script)}", script, timeoutSecs)
 }

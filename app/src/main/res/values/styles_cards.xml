@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="CardDetail" parent="CardDetailEnd">
-        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
     </style>
 
     <style name="CardDetailEnd">

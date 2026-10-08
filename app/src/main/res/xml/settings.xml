@@ -6,7 +6,7 @@
         android:title="Acc"
         app:iconSpaceReserved="false">
         <Preference
-            android:key="acc_version"
+            app:layout="@layout/preference_acca"             android:key="acc_version"
             android:summary="@string/acc_version_preference_description"
             android:title="@string/acc_version_preference_title"
             app:iconSpaceReserved="false"></Preference>
@@ -17,7 +17,7 @@
         app:iconSpaceReserved="false">
 
         <ListPreference
-            android:dialogTitle="@string/current_measure_unit_preference_title"
+            app:layout="@layout/preference_acca"             android:dialogTitle="@string/current_measure_unit_preference_title"
             android:entries="@array/current_measure_units_options"
             android:entryValues="@array/current_measure_units_option_values"
             android:key="current_measure_unit"
@@ -26,7 +26,7 @@
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:dialogTitle="@string/voltage_measure_unit_preference_title"
+            app:layout="@layout/preference_acca"             android:dialogTitle="@string/voltage_measure_unit_preference_title"
             android:entries="@array/voltage_measure_units_options"
             android:entryValues="@array/voltage_measure_units_option_values"
             android:key="voltage_measure_unit"
@@ -35,7 +35,7 @@
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:defaultValue="mA"
+            app:layout="@layout/preference_acca"             android:defaultValue="mA"
             android:dialogTitle="@string/current_measure_output_preference_title"
             android:entries="@array/current_measure_output_options"
             android:entryValues="@array/current_measure_output_option_values"
@@ -45,7 +45,7 @@
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:defaultValue="V"
+            app:layout="@layout/preference_acca"             android:defaultValue="V"
             android:dialogTitle="@string/voltage_measure_output_preference_title"
             android:entries="@array/voltage_measure_output_options"
             android:entryValues="@array/voltage_measure_output_option_values"
@@ -55,7 +55,7 @@
             app:iconSpaceReserved="false" />
 
         <ListPreference
-            android:defaultValue="CF"
+            app:layout="@layout/preference_acca"             android:defaultValue="CF"
             android:dialogTitle="@string/temperature_measure_output_preference_title"
             android:entries="@array/temperature_measure_output_options"
             android:entryValues="@array/temperature_measure_output_option_values"
@@ -70,7 +70,7 @@
         android:title="Djs"
         app:iconSpaceReserved="false">
         <CheckBoxPreference
-            android:key="djs_enabled"
+            app:layout="@layout/preference_acca"             android:key="djs_enabled"
             android:summary="@string/install_djs_description"
             android:title="Djs"
             app:iconSpaceReserved="false"></CheckBoxPreference>
@@ -81,18 +81,18 @@
         app:iconSpaceReserved="false">
 
         <Preference
-            android:summary="@string/experimental_pref_summary"
+            app:layout="@layout/preference_acca"             android:summary="@string/experimental_pref_summary"
             app:iconSpaceReserved="false" />
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            app:layout="@layout/preference_acca"             android:defaultValue="true"
             android:key="cueCurrMax"
             android:summary="@string/cue_AccCurrentMax_pref_summary"
             android:title="@string/cue_AccCurrentMax_pref_title"
             app:iconSpaceReserved="false"></CheckBoxPreference>
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            app:layout="@layout/preference_acca"             android:defaultValue="true"
             android:key="cueVoltage"
             android:summary="@string/cue_AccVoltControl_pref_summary"
             android:title="@string/cue_AccVoltControl_pref_title"
@@ -105,7 +105,7 @@
         app:iconSpaceReserved="false">
 
         <ListPreference
-            android:defaultValue="2"
+            app:layout="@layout/preference_acca"             android:defaultValue="2"
             android:dialogTitle="@string/theme_option_setting"
             android:entries="@array/theme_option_options"
             android:entryValues="@array/theme_option_values"
@@ -115,7 +115,7 @@
             android:title="@string/theme_option_setting" />
 
         <ListPreference
-            android:defaultValue="def"
+            app:layout="@layout/preference_acca"             android:defaultValue="def"
             android:dialogTitle="@string/lang_pref_title"
             android:entries="@array/lang_pref_entries"
             android:entryValues="@array/lang_pref_value"
@@ -125,7 +125,7 @@
             android:title="@string/lang_pref_title" />
 
         <ListPreference
-            android:defaultValue="0"
+            app:layout="@layout/preference_acca"             android:defaultValue="0"
             android:dialogTitle="@string/app_debug_title"
             android:entries="@array/acca_debug_options"
             android:entryValues="@array/acca_debug_values"

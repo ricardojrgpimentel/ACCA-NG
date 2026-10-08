@@ -35,6 +35,7 @@ import mattecarra.accapp.dialogs.progress
 import mattecarra.accapp.models.AccConfig
 import mattecarra.accapp.models.AccaProfile
 import mattecarra.accapp.models.ProfileEnables
+import mattecarra.accapp.models.ProfilePreset
 import mattecarra.accapp.utils.Constants
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ScopedAppActivity
@@ -64,9 +65,15 @@ class AccConfigEditorActivity : ScopedAppActivity(),
 
         val returnIntent = Intent()
         returnIntent.putExtra(Constants.PROFILE_ID_KEY, intent.getIntExtra(Constants.PROFILE_ID_KEY, -1))
-        returnIntent.putExtra(Constants.ACC_HAS_CHANGES, viewModel.unsavedChanges)
+        returnIntent.putExtra(Constants.ACC_HAS_CHANGES, if (accConfigOnly)
+            viewModel.profile.accConfig != viewModel.initialAccConfig else viewModel.unsavedChanges)
         returnIntent.putExtra(Constants.ACC_CONFIG_KEY, viewModel.profile.accConfig)
         returnIntent.putExtra(Constants.PROFILE_CONFIG_KEY, viewModel.profile)
+        if (intent.getBooleanExtra(Constants.PROFILE_CREATION_KEY, false)) {
+            ProfilePreset.matching(viewModel.capacity)?.let {
+                returnIntent.putExtra(Constants.SUGGESTED_PROFILE_NAME_KEY, getString(it.nameRes))
+            }
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
@@ -79,6 +86,7 @@ class AccConfigEditorActivity : ScopedAppActivity(),
         this.binding = binding
         setContentView(binding.root)
         content = binding.contentAccConfigEditor
+        accConfigOnly = !intent.hasExtra(Constants.PROFILE_CONFIG_KEY)
 
         // Load preferences
         mPreferences = Preferences(this)
@@ -225,6 +233,39 @@ class AccConfigEditorActivity : ScopedAppActivity(),
 
     private fun initUi()
     {
+        val creating = intent.getBooleanExtra(Constants.PROFILE_CREATION_KEY, false)
+        content.profileEditContext.visibility = if (creating) View.GONE else View.VISIBLE
+        if (accConfigOnly) {
+            val activeName = intent.getStringExtra(Constants.APPLIED_PROFILE_NAME_KEY)
+            content.profileEditContextTitle.text = if (activeName == null)
+                getString(R.string.profile_edit_live_context) else getString(R.string.profile_edit_from_profile, activeName)
+            content.profileEditContextDescription.setText(if (activeName == null)
+                R.string.profile_edit_custom_help else R.string.profile_edit_active_help)
+        } else {
+            content.profileEditContextTitle.setText(R.string.profile_edit_saved_context)
+            content.profileEditContextDescription.setText(R.string.profile_edit_saved_help)
+        }
+        content.profilePresets.visibility =
+            if (intent.getBooleanExtra(Constants.PROFILE_CREATION_KEY, false)) View.VISIBLE else View.GONE
+        val presetButtons = listOf(
+            content.presetDaily to ProfilePreset.DAILY,
+            content.presetPlugged to ProfilePreset.PLUGGED,
+            content.presetTravel to ProfilePreset.TRAVEL
+        )
+        presetButtons.forEach { (button, preset) ->
+            button.text = getString(R.string.preset_option, getString(preset.nameRes),
+                getString(preset.descriptionRes), preset.pause, preset.resume)
+            button.setOnClickListener {
+                viewModel.enables = viewModel.enables.copy(eCapacity = true)
+                viewModel.capacity = preset.applyTo(viewModel.profile.accConfig).configCapacity
+                button.isChecked = true
+            }
+        }
+        viewModel.observeCapacity(this, Observer { capacity ->
+            val selected = ProfilePreset.matching(capacity)
+            presetButtons.forEach { (button, preset) -> button.isChecked = preset == selected }
+        })
+
         viewModel.observeEnables(this, Observer
         {
             content.capacitySwitchEnabled.isChecked = it.eCapacity
@@ -233,6 +274,7 @@ class AccConfigEditorActivity : ScopedAppActivity(),
             content.cooldownSwitchEnabled.isChecked = it.eCoolDown
             content.applyOnBootSwitchEnabled.isChecked = it.eRunOnBoot
             content.onPluggedSwitchEnabled.isChecked = it.eRunOnPlug
+            renderChargeSummary()
         })
 
         viewModel.observePrioritizeBatteryIdleMode(this, Observer { content.batteryPrioritizeIdleSwitchEnabled.isChecked = it })
@@ -242,17 +284,15 @@ class AccConfigEditorActivity : ScopedAppActivity(),
 
         viewModel.observeCapacity(this, Observer
         {
-            content.shutdownCapacityPicker.minValue = 2
-            content.shutdownCapacityPicker.maxValue = 20
-            content.shutdownCapacityPicker.value = it.shutdown
-
-            content.resumeCapacityPicker.minValue = it.shutdown
-            content.resumeCapacityPicker.maxValue = if (it.pause == 101) 101 else it.pause - 1
-            content.resumeCapacityPicker.value = it.resume
-
-            content.pauseCapacityPicker.minValue = if (it.resume == 101) 101 else it.resume + 1
-            content.pauseCapacityPicker.maxValue = 101
-            content.pauseCapacityPicker.value = it.pause
+            configureUnitPicker(content.shutdownCapacityPicker, 2, 20, it.shutdown,
+                R.string.charge_percentage_value)
+            configureUnitPicker(content.resumeCapacityPicker, it.shutdown,
+                if (it.pause == 101) 101 else it.pause - 1, it.resume,
+                R.string.charge_percentage_value)
+            configureUnitPicker(content.pauseCapacityPicker,
+                if (it.resume == 101) 101 else it.resume + 1, 101, it.pause,
+                R.string.charge_percentage_value)
+            renderChargeSummary()
         })
 
         viewModel.observeChargeSwitch(this, Observer
@@ -264,32 +304,22 @@ class AccConfigEditorActivity : ScopedAppActivity(),
 
         viewModel.observeTemperature(this, Observer
         {
-            content.temperatureCooldownPicker.minValue = 20
-            content.temperatureCooldownPicker.maxValue = 90
-            content.temperatureCooldownPicker.value = it.coolDownTemperature
-
-            content.temperatureMaxPicker.minValue = 20
-            content.temperatureMaxPicker.maxValue = 95
-            content.temperatureMaxPicker.value = it.maxTemperature
-
-            content.temperatureMaxPauseSecondsPicker.minValue = 10
-            content.temperatureMaxPauseSecondsPicker.maxValue = 120
-            content.temperatureMaxPauseSecondsPicker.value = it.pause
+            configureUnitPicker(content.temperatureCooldownPicker, 20, 90, it.coolDownTemperature,
+                R.string.charge_temperature_value)
+            configureUnitPicker(content.temperatureMaxPicker, 20, 95, it.maxTemperature,
+                R.string.charge_temperature_value)
+            configureUnitPicker(content.temperatureMaxPauseSecondsPicker, 10, 120, it.pause,
+                R.string.charge_seconds_value)
         })
 
         viewModel.observeCoolDown(this, Observer
         {
-            content.cooldownPercentagePicker.minValue = 0
-            content.cooldownPercentagePicker.maxValue = 100
-            content.cooldownPercentagePicker.value = it?.atPercent ?: 60
-
-            content.cooldownChargeRatioPicker.minValue = 1
-            content.cooldownChargeRatioPicker.maxValue = 120 //no reason behind this value
-            content.cooldownChargeRatioPicker.value = it?.charge ?: 50
-
-            content.cooldownPauseRatioPicker.minValue = 1
-            content.cooldownPauseRatioPicker.maxValue = 120 //no reason behind this value
-            content.cooldownPauseRatioPicker.value = it?.pause ?: 10
+            configureUnitPicker(content.cooldownPercentagePicker, 0, 100, it?.atPercent ?: 60,
+                R.string.charge_percentage_value)
+            configureUnitPicker(content.cooldownChargeRatioPicker, 1, 120, it?.charge ?: 50,
+                R.string.charge_seconds_value)
+            configureUnitPicker(content.cooldownPauseRatioPicker, 1, 120, it?.pause ?: 10,
+                R.string.charge_seconds_value)
         })
 
         viewModel.observeVoltageLimit(this, Observer
@@ -489,6 +519,34 @@ class AccConfigEditorActivity : ScopedAppActivity(),
                 }
 
             }
+        }
+    }
+
+    private fun configureUnitPicker(picker: NumberPicker, min: Int, max: Int, value: Int,
+                                    formatRes: Int) {
+        // Displayed values keep the unit on the selected editable value too;
+        // a formatter alone loses the suffix through the numeric input filter.
+        if (picker.displayedValues == null || picker.minValue != min || picker.maxValue != max) {
+            picker.displayedValues = null
+            picker.minValue = min
+            picker.maxValue = max
+            picker.displayedValues = (min..max).map {
+                if (it == 101 && formatRes == R.string.charge_percentage_value) "∞"
+                else getString(formatRes, it)
+            }.toTypedArray()
+        }
+        if (formatRes == R.string.charge_percentage_value) picker.wrapSelectorWheel = false
+        picker.value = value
+    }
+
+    private fun renderChargeSummary() {
+        val limits = viewModel.capacity
+        val unlimited = limits.pause == 101 || limits.resume == 101
+        content.chargeUnlimitedHint.visibility = if (unlimited) View.VISIBLE else View.GONE
+        content.chargeCycleSummary.text = when {
+            !viewModel.enables.eCapacity -> getString(R.string.charge_limit_disabled)
+            unlimited -> getString(R.string.charge_unlimited_summary)
+            else -> getString(R.string.charge_cycle_summary, limits.pause, limits.resume)
         }
     }
 

@@ -75,40 +75,28 @@ class SharedViewModel(application: Application) : AndroidViewModel(application)
     /*
     * Updates the AccConfig and write on file
     */
-    suspend fun updateAccConfig(value: AccConfig)
+    suspend fun updateAccConfig(value: AccConfig): Boolean
     {
         LogExt().d(javaClass.simpleName,"updateAccConfig()")
-        config.postValue(Pair(value, null))
-        saveAccConfig(value)
+        return saveAccConfig(value)
     }
 
     /*
     * Saves config on file. It's run in an async thread every time config is updated.
     */
-    private suspend fun saveAccConfig(value: AccConfig)
+    private suspend fun saveAccConfig(value: AccConfig): Boolean
     {
-        Acc.instance.updateAccConfig(value, ConfigUpdaterEnable(mSharedPrefs)).also {
-
-            if (!it.isSuccessful())
-            {
-                // TODO show a toast that tells users there was an error
-                // if (!result.voltControlUpdateSuccessful)
-                // Toast.makeText(this@MainActivity, R.string.wrong_volt_file, Toast.LENGTH_LONG).show()
-
-                val currentConfigVal = try
-                {
-                    LogExt().w("saveAccConfig()","Error in updateAccConfig() -> readConfig()")
-                    Acc.instance.readConfig()
-                }
-                catch (ex: Exception)
-                {
-                    LogExt().e("saveAccConfig()","Error in readConfig() -> readDefaultConfig()")
-                    Acc.instance.readDefaultConfig()
-                }
-
-                config.postValue(Pair(currentConfigVal, null))
-            }
+        val result = Acc.instance.updateAccConfig(value, ConfigUpdaterEnable(mSharedPrefs))
+        if (result.isSuccessful()) {
+            config.postValue(Pair(value, null))
+        } else {
+            val currentConfig = try {
+                Acc.instance.readConfig()
+            } catch (ex: kotlinx.coroutines.CancellationException) { throw ex
+            } catch (ex: Exception) { null }
+            config.postValue(Pair(currentConfig, if (currentConfig == null) "Unable to read ACC settings" else null))
         }
+        return result.isSuccessful()
     }
 
     /**

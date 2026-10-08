@@ -1,0 +1,86 @@
+<resources>
+    <style name="TextAppearance.Acca.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/color_on_surface</item>
+    </style>
+    <style name="TextAppearance.Acca.Body" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+    <style name="TextAppearance.Acca.Navigation" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="TextAppearance.Acca.Navigation.Active" parent="TextAppearance.Acca.Navigation">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Widget.Acca.Navigation.Indicator" parent="">
+        <item name="android:color">@color/accent_container</item>
+        <item name="android:height">32dp</item>
+        <item name="android:width">64dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.AccaTheme.LargeComponent</item>
+    </style>
+    <style name="Widget.Acca.Toolbar" parent="Widget.MaterialComponents.Toolbar.Surface">
+        <item name="android:background">@color/color_background</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Acca.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Acca.Body</item>
+        <item name="titleTextColor">@color/color_on_surface</item>
+        <item name="subtitleTextColor">@color/text_secondary</item>
+        <item name="contentInsetStart">24dp</item>
+        <item name="popupTheme">@style/ThemeOverlay.Acca.Popup</item>
+    </style>
+    <style name="ThemeOverlay.Acca.Popup" parent="ThemeOverlay.MaterialComponents">
+        <item name="popupMenuStyle">@style/Widget.Acca.Popup</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.Acca.Popup.Overflow</item>
+        <item name="android:textColorPrimary">@color/color_on_surface</item>
+        <item name="android:colorBackground">@color/color_surface</item>
+        <item name="listPreferredItemHeightSmall">48dp</item>
+    </style>
+    <style name="Widget.Acca.Popup" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/popup_surface</item>
+        <item name="android:popupElevation">8dp</item>
+    </style>
+    <style name="Widget.Acca.Popup.Overflow" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/popup_surface</item>
+        <item name="android:popupElevation">8dp</item>
+    </style>
+    <style name="Widget.Acca.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    <style name="Widget.Acca.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="strokeColor">@color/outline_subtle</item>
+    </style>
+    <style name="Widget.Acca.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/color_surface</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/outline_subtle</item>
+    </style>
+    <style name="Widget.Acca.Button.Preset" parent="Widget.Acca.Button.Outlined">
+        <item name="android:minHeight">72dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:checkable">true</item>
+        <item name="backgroundTint">@color/preset_background</item>
+    </style>
+    <style name="Widget.Acca.Empty" parent="">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:lineSpacingExtra">8dp</item>
+        <item name="android:padding">32dp</item>
+        <item name="android:drawablePadding">24dp</item>
+        <item name="drawableTint">@color/color_primary</item>
+    </style>
+</resources>

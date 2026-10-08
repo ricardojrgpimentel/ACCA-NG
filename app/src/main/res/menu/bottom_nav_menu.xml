@@ -3,7 +3,7 @@
     <item
         android:id="@+id/botNav_home"
         android:icon="@drawable/ic_outline_dashboard_24px"
-        android:title="@string/title_dashboard" />
+        android:title="@string/ui_nav_dashboard" />
     <item
         android:id="@+id/botNav_profiles"
         android:icon="@drawable/ic_outline_recent_actors_24px"
@@ -15,7 +15,7 @@
     <item
         android:id="@+id/botNav_schedules"
         android:icon="@drawable/ic_outline_schedule_24px"
-        android:title="@string/title_schedules" />
+        android:title="@string/ui_nav_schedules" />
     <item
         android:id="@+id/botNav_settings"
         android:icon="@drawable/ic_outline_settings_24px"

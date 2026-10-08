@@ -7,6 +7,9 @@ object Constants {
     val ACC_HAS_CHANGES = "hasChanges"
     val ACC_CONFIG_KEY = "accConfig"
     val TITLE_KEY = "title"
+    val PROFILE_CREATION_KEY = "profileCreation"
+    val SUGGESTED_PROFILE_NAME_KEY = "suggestedProfileName"
+    val APPLIED_PROFILE_NAME_KEY = "appliedProfileName"
     val DATA_KEY = "data"
 
     // CONFIG KEYS

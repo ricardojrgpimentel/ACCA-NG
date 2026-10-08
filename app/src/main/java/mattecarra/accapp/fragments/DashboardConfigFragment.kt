@@ -12,12 +12,17 @@ import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.activities.AccConfigEditorActivity
+import mattecarra.accapp.activities.MainActivity
 import mattecarra.accapp.databinding.ProfilesItemBinding
 import mattecarra.accapp.models.AccConfig
+import mattecarra.accapp.models.ProfileActivation
 import mattecarra.accapp.utils.Constants
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ProfileUtils
@@ -33,6 +38,9 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
 
     private var mActiveProfile: Boolean = false
     private var mLoadFailed: Boolean = false
+    private var mHasLoaded = false
+    private var activeProfileName: String? = null
+    private var readJob: Job? = null
 
     private var _binding: ProfilesItemBinding? = null
     private val binding get() = _binding!!
@@ -45,12 +53,12 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         {
             LogExt().d(javaClass.simpleName,"onActivityResult(): ACC_HAS_CHANGES=true")
 
-            launch {
-                mSharedViewModel.updateAccConfig(data.getSerializableExtra(Constants.ACC_CONFIG_KEY) as AccConfig) //TODO: Check assertion
-                // Remove the current selected profile
-                mSharedViewModel.clearCurrentSelectedProfile()
-
-                updateInfo(getString(R.string.profile_not_selected), data.getSerializableExtra(Constants.ACC_CONFIG_KEY) as AccConfig)
+            val shared = mSharedViewModel
+            val config = data.getSerializableExtra(Constants.ACC_CONFIG_KEY) as AccConfig
+            (requireActivity() as MainActivity).runAccCommand(R.string.command_apply_settings) {
+                val successful = shared.updateAccConfig(config)
+                if (successful) shared.clearCurrentSelectedProfile()
+                successful
             }
         }
     }
@@ -76,8 +84,8 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         binding.editConfigButton.visibility = View.VISIBLE;
 
         mContext = requireContext()
-        mViewModel = ViewModelProvider(this).get(ProfilesViewModel::class.java)
-        mSharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+        mViewModel = ViewModelProvider(requireActivity()).get(ProfilesViewModel::class.java)
+        mSharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(context)
         mPrefs.registerOnSharedPreferenceChangeListener(this)
@@ -85,37 +93,64 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         view.setOnClickListener(View.OnClickListener {
             // After a failed load the card itself becomes the retry button:
             // a loader that never resolves is worse than no loader.
-            if (mLoadFailed) checkProfile() else startAccConfigEditorActivity()
+            if (mLoadFailed) checkProfile()
         })
 
         binding.editConfigButton.setOnClickListener {
             if (mLoadFailed) checkProfile() else startAccConfigEditorActivity()
         }
 
-        checkProfile()
+        binding.chooseProfileButton.isVisible = true
+        binding.chooseProfileButton.setOnClickListener { (requireActivity() as MainActivity).showProfiles() }
+
+        mViewModel.getLiveData().observe(viewLifecycleOwner) { checkProfile() }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if ((requireActivity() as MainActivity).accCommands.state.value?.running != true) checkProfile()
+    }
+
+    override fun onDestroyView() {
+        if (::mPrefs.isInitialized) mPrefs.unregisterOnSharedPreferenceChangeListener(this)
+        readJob?.cancel()
+        mHasLoaded = false
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun startAccConfigEditorActivity()
     {
-        startActivityForResult(Intent(context, AccConfigEditorActivity::class.java), 7)
+        startActivityForResult(Intent(context, AccConfigEditorActivity::class.java)
+            .putExtra(Constants.TITLE_KEY, getString(R.string.profile_edit_live_title))
+            .putExtra(Constants.APPLIED_PROFILE_NAME_KEY, activeProfileName), 7)
     }
 
     fun checkProfile()
     {
-        binding.itemProfileLoadImage.visibility = View.VISIBLE;
-        binding.itemProfileInfo.visibility = View.GONE;
+        if (_binding == null) return
+        readJob?.cancel()
+        binding.itemProfileLoadImage.isVisible = !mHasLoaded
+        binding.itemProfileInfo.isVisible = mHasLoaded
         mLoadFailed = false
 
-        launch {
+        readJob = viewLifecycleOwner.lifecycleScope.launch {
             try {
                 val profileId = ProfileUtils.getCurrentProfile(mPrefs)
                 val currentConfig = Acc.instance.readConfig()
                 val selProfile = mViewModel.getProfileById(profileId)
 
-                var name = getString(R.string.profile_not_selected)
-                if (selProfile != null && currentConfig == selProfile.accConfig) name = selProfile.profileName
+                mActiveProfile = selProfile != null && ProfileActivation.matches(currentConfig, selProfile.accConfig,
+                    mPrefs.getBoolean("cueVoltage", true), mPrefs.getBoolean("cueCurrMax", true))
+                activeProfileName = selProfile?.profileName?.takeIf { mActiveProfile }
+                val name = activeProfileName ?: getString(R.string.profile_custom_title)
 
                 updateInfo(name, currentConfig)
+                if (!mActiveProfile && profileId != -1) ProfileUtils.clearCurrentSelectedProfile(mPrefs)
+            } catch (ex: CancellationException) {
+                // Leaving the screen is not a configuration read failure.
+                throw ex
             } catch (ex: Exception) {
                 ex.printStackTrace()
                 showLoadError()
@@ -131,6 +166,9 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
     private fun showLoadError()
     {
         mLoadFailed = true
+        activeProfileName = null
+        binding.profileStateLabel.isGone = true
+        binding.profileStateDescription.isGone = true
         binding.itemProfileTitleTextView.text = getString(R.string.config_error_title)
         binding.itemProfileCapacityTv.text = getString(R.string.config_error_dialog)
         binding.itemProfileSwitchLl.isGone = true
@@ -145,6 +183,7 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         binding.itemProfileOptionsIb.visibility = View.GONE
         binding.itemProfileLoadImage.visibility = View.GONE;
         binding.itemProfileInfo.visibility = View.VISIBLE;
+        binding.editConfigButton.setText(R.string.retry)
     }
 
     fun updateInfo(nameTitle: String, accConfig: AccConfig)
@@ -152,6 +191,12 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         LogExt().d(javaClass.simpleName, "updateInfo(): name=$nameTitle , accConfig=$accConfig")
 
         binding.itemProfileTitleTextView.text = nameTitle
+        binding.editConfigButton.setText(R.string.profile_edit_action)
+        binding.profileStateLabel.isVisible = true
+        binding.profileStateLabel.setText(if (mActiveProfile) R.string.profile_active_label else R.string.profile_none_active)
+        binding.profileStateDescription.isVisible = true
+        binding.profileStateDescription.setText(if (mActiveProfile) R.string.profile_active_description else R.string.profile_custom_description)
+        binding.chooseProfileButton.setText(if (mActiveProfile) R.string.profile_change_action else R.string.profile_choose_action)
         binding.itemProfileCapacityTv.text = accConfig.configCapacity.toString(mContext)
 
         binding.itemProfileSwitchLl.isGone = accConfig.configChargeSwitch.isNullOrEmpty()
@@ -199,6 +244,7 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
 
         binding.itemProfileLoadImage.visibility = View.GONE;
         binding.itemProfileInfo.visibility = View.VISIBLE;
+        mHasLoaded = true
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?)

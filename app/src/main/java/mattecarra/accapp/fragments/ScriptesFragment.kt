@@ -278,7 +278,7 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
             positiveButton { dialog ->
 
-                if (binding.scriptNameEd.text.trim().isEmpty()) {
+                if (binding.scriptNameEd.text?.isBlank() != false) {
                     binding.scriptNameEd.requestFocus() ; return@positiveButton }
 
                 script.scName = binding.scriptNameEd.text.toString()
@@ -307,7 +307,7 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
             positiveButton { dialog ->
 
-                if (binding.scriptNameEd.text.trim().isEmpty()) {
+                if (binding.scriptNameEd.text?.isBlank() != false) {
                     binding.scriptNameEd.requestFocus() ; return@positiveButton }
 
                 script.scName = binding.scriptNameEd.text.toString()
@@ -351,7 +351,7 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
             positiveButton { dialog ->
 
-                if (binding.scriptNameEd.text.trim().isEmpty()) {
+                if (binding.scriptNameEd.text?.isBlank() != false) {
                     binding.scriptNameEd.requestFocus() ; return@positiveButton }
 
                 script.scName = binding.scriptNameEd.text.toString()

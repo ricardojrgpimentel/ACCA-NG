@@ -107,7 +107,9 @@ open class AccHandler(override val version: Int) : AccInterface {
     @Throws(IOException::class)
     @WorkerThread
     open fun readConfigToString(): String {
-        return RootShell.exec("/dev/.vr25/acc/acca --set --print").out.joinToString(separator = "\n")
+        val result = RootShell.exec("/dev/.vr25/acc/acca --set --print")
+        if (!result.isSuccess || result.out.isEmpty()) throw IOException("Unable to read ACC configuration")
+        return result.out.joinToString(separator = "\n")
     }
 
     // Returns OnBoot value
@@ -150,7 +152,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     private val NAME_REGEXP = """^\s*NAME=([a-zA-Z0-9]+)""".toRegex(RegexOption.MULTILINE)
     // Regex for INPUT_SUSPEND
     private val INPUT_SUSPEND_REGEXP = """^\s*INPUT_SUSPEND=([01])""".toRegex(RegexOption.MULTILINE)
-    private val STATUS_REGEXP = """^\s*STATUS=(${STRING_CHARGING}|${STRING_DISCHARGING}|${STRING_NOT_CHARGING})""".toRegex(RegexOption.MULTILINE)
+    private val STATUS_REGEXP = """^\s*STATUS=(${STRING_CHARGING}|${STRING_DISCHARGING}|${STRING_NOT_CHARGING}|Full|Idle|Unknown)""".toRegex(RegexOption.MULTILINE)
     private val HEALTH_REGEXP = """^\s*HEALTH=([a-zA-Z]+)""".toRegex(RegexOption.MULTILINE)
     // Regex for PRESENT value
     private val PRESENT_REGEXP = """^\s*PRESENT=(\d+)""".toRegex(RegexOption.MULTILINE)
@@ -198,7 +200,9 @@ open class AccHandler(override val version: Int) : AccInterface {
     private val POWER_NOW_REGEXP = """^\s*POWER_NOW=([+-]?([0-9]*[.])?[0-9]+)""".toRegex(RegexOption.MULTILINE)
 
     override suspend fun getBatteryInfo(): BatteryInfo = withContext(Dispatchers.IO) {
-        val info =  RootShell.exec("/dev/.vr25/acc/acca -i").out.joinToString(separator = "\n")
+        val result = RootShell.exec("/dev/.vr25/acc/acca -i")
+        if (!result.isSuccess || result.out.isEmpty()) throw IOException("Unable to read battery information")
+        val info = result.out.joinToString(separator = "\n")
 
         // ACC >= 2022 prints CURRENT_NOW/VOLTAGE_NOW/POWER_NOW in A/V/W
         // (e.g. -0.19, 4.34, -0.82) while older releases used µA/µV/µW.
@@ -216,7 +220,7 @@ open class AccHandler(override val version: Int) : AccInterface {
             INPUT_SUSPEND_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull().let { // If r == true (input is suspended)
                 it == 0
             },
-            STATUS_REGEXP.find(info)?.destructured?.component1() ?: STRING_DISCHARGING,
+            STATUS_REGEXP.find(info)?.destructured?.component1() ?: STRING_UNKNOWN,
             HEALTH_REGEXP.find(info)?.destructured?.component1() ?: STRING_UNKNOWN,
             PRESENT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             CHARGE_TYPE_REGEXP.find(info)?.destructured?.component1() ?: STRING_UNKNOWN,
@@ -266,7 +270,8 @@ open class AccHandler(override val version: Int) : AccInterface {
             CHARGE_CONTROL_LIMIT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             INPUT_CURRENT_MAX_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
             CYCLE_COUNT_REGEXP.find(info)?.destructured?.component1()?.toIntOrNull() ?: -1,
-            powerNow
+            powerNow,
+            hasCurrentReading = CURRENT_NOW_REGEXP.find(info) != null
         )
     }
 
@@ -278,26 +283,19 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun isAccdRunning(): Boolean = withContext(Dispatchers.IO) {
-        val code = RootShell.exec("/dev/.vr25/acc/acca -D").code
-        code == 0 || code == 8
+        mattecarra.accapp.acc.ModernAccDaemon.isRunning()
     }
 
     override suspend fun abcStartDaemon(): Boolean = withContext(Dispatchers.IO) {
-        RootShell.exec("/dev/.vr25/acc/acca -D start").isSuccess
+        mattecarra.accapp.acc.ModernAccDaemon.start()
     }
 
     override fun getAccRestartDaemon(): String =  "/dev/.vr25/acc/acca -D restart"
 
+    override suspend fun accRestartDaemon(): Boolean = mattecarra.accapp.acc.ModernAccDaemon.restart()
+
     override suspend fun abcStopDaemon(): Boolean = withContext(Dispatchers.IO) {
-        // NOTE: the historical "accd." shortcut no longer stops modern ACC
-        // (it resolves to acc.sh, which drops into its main loop and hangs
-        // forever, leaking a stray daemon process per tap). Use the
-        // documented daemon manager instead. Bounded by the global libsu
-        // job timeout if the daemon lock is wedged.
-        RootShell.exec("/dev/.vr25/acc/acca -D stop")
-        // Report the real end state: ACC's lock/status bookkeeping can go
-        // stale, making the stop command "succeed" without effect.
-        !isAccdRunning()
+        mattecarra.accapp.acc.ModernAccDaemon.stop()
     }
 
     //Charging switches
@@ -328,7 +326,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun setChargingLimitForOneCharge(limit: Int): Boolean = withContext(Dispatchers.IO) {
-        RootShell.exec("(acc -f $limit &) &").isSuccess
+        RootShell.execScript("command -v acc >/dev/null || exit 127; acc -f $limit </dev/null >/dev/null 2>&1 &").isSuccess
     }
 
     val BATTERY_IDLE_SUPPORTED = """^\s*-\s*battIdleMode=true""".toPattern(Pattern.MULTILINE)
@@ -352,7 +350,9 @@ open class AccHandler(override val version: Int) : AccInterface {
      * @return ConfigUpdateResult data class.
      */
     override suspend fun updateAccConfig(accConfig: AccConfig, cue: ConfigUpdaterEnable): ConfigUpdateResult {
-        return ConfigUpdater(accConfig, cue)
+        // ACC discovers current-control files before processing a reset; it
+        // can wait for charging even when both current limits are already off.
+        return ConfigUpdater(accConfig, cue.skipUnchangedPowerLimits(readConfig(), accConfig))
             .execute(this)
     }
 

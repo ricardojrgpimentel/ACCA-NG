@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">#1a73e8</color>
-    <color name="color_primary_variant">#0049b5</color>
+    <color name="color_primary">#087F72</color>
+    <color name="color_primary_variant">#056256</color>
+    <color name="color_surface">#FFFFFF</color>
+    <color name="color_background">#F3F6F5</color>
+    <color name="color_error">#BA3345</color>
+    <color name="color_warning">#EDF4F1</color>
+    <color name="color_shadow">#100D302A</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_on_background">#172C29</color>
+    <color name="color_on_surface">#172C29</color>
+    <color name="color_on_error">#FFFFFF</color>
+    <color name="text_secondary">#536B65</color>
+    <color name="surface_variant">#EAF0ED</color>
+    <color name="accent_container">#D7F2E8</color>
+    <color name="outline_subtle">#D6E3DD</color>
+    <color name="skeleton_base">#DDE7E2</color>
     <color name="color_secondary">@color/color_primary</color>
     <color name="color_secondary_variant">@color/color_primary_variant</color>
-
-    <color name="color_surface">#ffffff</color>
-    <color name="color_background">@color/color_surface</color>
-    <color name="color_error">#b00020</color>
-
-    <color name="color_warning">@color/color_surface</color>
-
-    <color name="color_shadow">#4D000000</color>
-
-    <color name="color_on_primary">#000000</color>
-    <color name="color_on_secondary">@color/color_surface</color>
-    <color name="color_on_background">#000000</color>
-    <color name="color_on_surface">#000000</color>
-    <color name="color_on_error">#ffffff</color>
-
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-
-    <!-- Muted block colour for loading skeletons (light theme). -->
-    <color name="skeleton_base">#E1E3E6</color>
-
+    <color name="color_on_secondary">@color/color_on_primary</color>
+    <color name="colorPrimary">@color/color_primary</color>
+    <color name="colorPrimaryDark">@color/color_primary_variant</color>
+    <color name="colorAccent">@color/color_primary</color>
 </resources>

@@ -2,14 +2,14 @@
      <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="appbar_padding_top">8dp</dimen>
 
-    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_corner_radius">20dp</dimen>
     <dimen name="card_content_padding">16dp</dimen>
     <dimen name="card_content_margin">8dp</dimen>
-    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
     <dimen name="card_margindiv2">4dp</dimen>
-    <dimen name="card_bottom_margin">10dp</dimen>
+    <dimen name="card_bottom_margin">12dp</dimen>
 
-    <dimen name="card_text_margin">5dp</dimen>
+    <dimen name="card_text_margin">8dp</dimen>
 
     <dimen name="fab_margin">16dp</dimen>
 
@@ -25,7 +25,7 @@
     <dimen name="about_profile_margin">16dp</dimen>
 
     <!--  Status card status icon  -->
-    <dimen name="acc_status_icon">84dp</dimen>
+    <dimen name="acc_status_icon">48dp</dimen>
     <dimen name="acc_status2_icon">42dp</dimen>
 
     <dimen name="item_profile_info_two_lp">8dp</dimen>

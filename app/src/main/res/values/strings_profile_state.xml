@@ -1,0 +1,18 @@
+<resources>
+    <string name="profile_active_label">Active profile</string>
+    <string name="profile_none_active">No active profile</string>
+    <string name="profile_custom_title">Custom configuration</string>
+    <string name="profile_active_description">Saving manual changes switches to a custom configuration. Your saved profile is kept.</string>
+    <string name="profile_custom_description">Custom settings are currently in use.</string>
+    <string name="profile_reading_config">Reading configuration…</string>
+    <string name="profile_edit_action">Edit</string>
+    <string name="profile_edit_live_title">Edit current settings</string>
+    <string name="profile_choose_action">Choose a profile</string>
+    <string name="profile_change_action">Change profile</string>
+    <string name="profile_edit_live_context">Current configuration</string>
+    <string name="profile_edit_from_profile">Current configuration · %1$s</string>
+    <string name="profile_edit_custom_help">Saving applies these changes to ACC. You can apply a saved profile again from Profiles.</string>
+    <string name="profile_edit_active_help">Saving changes applies them to ACC and clears the active profile. Your saved profile stays unchanged.</string>
+    <string name="profile_edit_saved_context">Editing a saved profile</string>
+    <string name="profile_edit_saved_help">Saving updates this saved profile. To use the new values in ACC, apply it again from Profiles.</string>
+</resources>

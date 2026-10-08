@@ -1,0 +1,26 @@
+<resources>
+    <string name="preset_daily_help">For everyday use with a moderate charge limit.</string>
+    <string name="preset_plugged_help">For a phone that spends many hours connected to a charger. Keeps the battery level lower; does not guarantee bypass.</string>
+    <string name="preset_travel_help">For more battery available before going out. Allows a higher charge level.</string>
+    <string name="charge_limits_title">Battery charge limits (%)</string>
+    <string name="charge_limits_help">All values are percentages of the battery level. Resume requires a connected charger and suitable temperature. ACC must be running to enforce these limits.</string>
+    <string name="charge_pause_label">Stop charging at</string>
+    <string name="charge_pause_help">Pauses charging when the battery reaches this level.</string>
+    <string name="charge_resume_label">Resume charging at</string>
+    <string name="charge_resume_help">After a pause, resumes when the battery falls to this level or below.</string>
+    <string name="charge_shutdown_label">Turn off the phone at</string>
+    <string name="charge_shutdown_help">Shuts down the phone at this level or below if the battery is not charging. This does not just pause charging.</string>
+    <string name="charge_cycle_summary">Charging stops at %1$d%% and resumes at %2$d%% or below.</string>
+    <string name="charge_unlimited_summary">∞ for Stop removes the stop limit based on battery percentage. ∞ for Resume allows charging to resume at any battery level.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Charge limits are disabled for this profile.</string>
+    <string name="charge_unlimited_hint">∞ marks a disabled percentage threshold.</string>
+    <string name="charge_restore_limits">Restore the initial charge limits</string>
+    <string name="charge_switch_label">Charging control method</string>
+    <string name="charge_switch_help">ACC uses a compatible device control to enable or pause charging. Leave this on Automatic unless you know which method your device needs.</string>
+    <string name="charge_switch_automatic">Automatically find a compatible method</string>
+    <string name="charge_power_title">Current and voltage limits</string>
+    <string name="charge_max_current">Maximum current (mA):</string>
+</resources>

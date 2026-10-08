@@ -129,6 +129,8 @@ class ProfileListAdapter internal constructor(context: Context, activeProfileId:
 
         // Make visible or Hide the selectedView
         holder.content.itemProfileSelectedIndicatorView.isVisible = profile.uid == mActiveProfileId
+        holder.content.profileStateLabel.isVisible = profile.uid == mActiveProfileId
+        holder.content.profileStateLabel.setText(R.string.profile_active_label)
     }
 
     internal fun setActiveProfile(id: Int)

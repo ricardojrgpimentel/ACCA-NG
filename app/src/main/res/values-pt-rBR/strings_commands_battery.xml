@@ -1,0 +1,23 @@
+<resources>
+    <string name="command_executing">Executando comandos do ACC. Aguarde…</string>
+    <string name="command_completed">Ação concluída</string>
+    <string name="command_failed_title">Não foi possível concluir a ação</string>
+    <string name="command_failed_message">Não foi possível confirmar a alteração. Verifique o estado atual ou tente novamente.</string>
+    <string name="command_close">Fechar</string>
+    <string name="command_stop_acc">Parando o ACC…</string>
+    <string name="command_start_acc">Iniciando o ACC…</string>
+    <string name="command_restart_acc">Reiniciando o ACC…</string>
+    <string name="command_read_status">Lendo o estado do ACC…</string>
+    <string name="command_apply_settings">Aplicando a configuração…</string>
+    <string name="command_apply_profile">Aplicando o perfil…</string>
+    <string name="command_reset_stats">Redefinindo as estatísticas da bateria…</string>
+    <string name="command_charge_once">Definindo o limite de carga…</string>
+    <string name="acc_status_unavailable">Estado do ACC indisponível</string>
+    <string name="battery_summary_title">Resumo da bateria</string>
+    <string name="battery_cycles_label">Ciclos de carga reportados</string>
+    <string name="battery_full_capacity_label">Capacidade estimada</string>
+    <string name="battery_design_capacity_label">Capacidade de fábrica</string>
+    <string name="battery_diagnostics_note">Valores reportados pelo dispositivo. As leituras ausentes aparecem como indisponíveis.</string>
+    <string name="battery_data_unavailable">Indisponível</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

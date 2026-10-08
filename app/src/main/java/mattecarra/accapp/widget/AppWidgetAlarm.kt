@@ -2,7 +2,6 @@ package mattecarra.accapp.widget
 
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_OPTIONS_CHANGED
 import android.content.Context
 import android.content.Intent
 import xml.BatteryInfoWidget
@@ -24,7 +23,8 @@ open class AppWidgetAlarm(context: Context)
         calendar.add(Calendar.MILLISECOND, LONG_INTERVAL_MILLIS.toInt())
         //
         val updateAllIntent = Intent(mContext, BatteryInfoWidget::class.java).setAction(WIDGET_ALL_UPDATE)
-        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(mContext, ALARM_ID, updateAllIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(mContext, ALARM_ID, updateAllIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         // RTC does not wake the device up
         val alarmManager: AlarmManager = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setRepeating(AlarmManager.RTC, calendar.timeInMillis, LONG_INTERVAL_MILLIS, pendingIntent)
@@ -36,7 +36,9 @@ open class AppWidgetAlarm(context: Context)
         calendar.add(Calendar.MILLISECOND, FAST_INTERVAL_MILLIS.toInt())
         //
         val updateOneIntent = Intent(mContext, BatteryInfoWidget::class.java).setAction(WIDGET_ONE_UPDATE).putExtra(WIDGET_ID_NAME, widgetId)
-        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(mContext, widgetId, updateOneIntent, PendingIntent.FLAG_ONE_SHOT)
+        // A repeating alarm must keep its PendingIntent after the first delivery.
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(mContext, widgetId, updateOneIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         //
         val alarmManager: AlarmManager = mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setRepeating(AlarmManager.RTC, calendar.timeInMillis, FAST_INTERVAL_MILLIS, pendingIntent)
@@ -44,16 +46,20 @@ open class AppWidgetAlarm(context: Context)
 
     fun stopLongUpdateAlarm()
     {
-        val alarmIntent = Intent(WIDGET_ALL_UPDATE)
-        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(mContext, ALARM_ID, alarmIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val alarmIntent = Intent(mContext, BatteryInfoWidget::class.java).setAction(WIDGET_ALL_UPDATE)
+        val pendingIntent = PendingIntent.getBroadcast(mContext, ALARM_ID, alarmIntent,
+            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE) ?: return
         (mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager).cancel(pendingIntent)
+        pendingIntent.cancel()
     }
 
     fun stopFastUpdateAlarm(widgetId: Int)
     {
-        val updateOneIntent = Intent(WIDGET_ONE_UPDATE).putExtra(WIDGET_ID_NAME, widgetId)
-        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(mContext, widgetId, updateOneIntent, PendingIntent.FLAG_CANCEL_CURRENT)
+        val updateOneIntent = Intent(mContext, BatteryInfoWidget::class.java).setAction(WIDGET_ONE_UPDATE).putExtra(WIDGET_ID_NAME, widgetId)
+        val pendingIntent = PendingIntent.getBroadcast(mContext, widgetId, updateOneIntent,
+            PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE) ?: return
         (mContext.getSystemService(Context.ALARM_SERVICE) as AlarmManager).cancel(pendingIntent)
+        pendingIntent.cancel()
     }
 
 }

@@ -2,17 +2,18 @@
 <resources>
 
     <style name="ActionIcon">
-        <item name="android:layout_width">36dp</item>
-        <item name="android:layout_height">36dp</item>
-        <item name="android:padding">6dp</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="tint">@color/text_secondary</item>
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
     <style name="IndexIcon">
         <item name="android:layout_width">18dp</item>
         <item name="android:layout_height">18dp</item>
-        <item name="android:layout_marginEnd">5dp</item>
-        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
     </style>
 
 </resources>

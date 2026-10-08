@@ -35,6 +35,7 @@ class SettingsActivity: AppCompatActivity(), FragmentManager.OnBackStackChangedL
         setSupportActionBar(toolbar)
         val ab = supportActionBar
         ab?.setDisplayHomeAsUpEnabled(true)
+        ab?.setTitle(R.string.title_settings)
     }
 
 
