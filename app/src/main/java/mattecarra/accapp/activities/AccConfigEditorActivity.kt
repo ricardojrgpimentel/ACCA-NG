@@ -44,6 +44,7 @@ import mattecarra.accapp.viewmodel.AccConfigEditorViewModelFactory
 class AccConfigEditorActivity : ScopedAppActivity(),
     NumberPicker.OnValueChangeListener, CompoundButton.OnCheckedChangeListener
 {
+    private lateinit var binding: ActivityAccConfigEditorBinding
     private lateinit var content: ContentAccConfigEditorBinding
     private lateinit var viewModel: AccConfigEditorViewModel
     private lateinit var mUndoMenuItem: MenuItem
@@ -75,6 +76,7 @@ class AccConfigEditorActivity : ScopedAppActivity(),
         super.onCreate(savedInstanceState)
 
         val binding = ActivityAccConfigEditorBinding.inflate(layoutInflater)
+        this.binding = binding
         setContentView(binding.root)
         content = binding.contentAccConfigEditor
 
@@ -111,32 +113,54 @@ class AccConfigEditorActivity : ScopedAppActivity(),
 
             // No config attached: read it from the ACC daemon. This performs
             // root shell I/O, so it must NOT block the UI thread (see issue
-            // #258). Show a loading indicator and initialise the editor once
-            // the config arrives.
+            // #258). Show a centered skeleton while loading and initialise
+            // the editor once the config arrives.
             else -> {
-                content.root.visibility = View.GONE
-                val loading = android.widget.ProgressBar(this).apply {
-                    isIndeterminate = true
+                loadDaemonConfigAsync(profile)
+                return
+            }
+        }
+
+        initializeEditor(profile, config)
+    }
+
+    /**
+     * Reads the live daemon config off the UI thread behind a skeleton
+     * placeholder. Failures degrade to an error dialog with Retry (never an
+     * endless spinner): retry re-runs the load, "use defaults" opens the
+     * editor with stock values.
+     */
+    private fun loadDaemonConfigAsync(profile: AccaProfile) {
+        content.root.visibility = View.GONE
+        val skeleton = layoutInflater.inflate(
+            R.layout.skeleton_acc_config_editor,
+            binding.root as android.view.ViewGroup,
+            false
+        )
+        (binding.root as android.view.ViewGroup).addView(skeleton)
+        skeleton.startAnimation(
+            android.view.animation.AnimationUtils.loadAnimation(this, R.anim.skeleton_pulse)
+        )
+
+        launch {
+            val loaded = withContext(Dispatchers.IO) {
+                try {
+                    Acc.instance.readConfig()
+                } catch (ex: Exception) {
+                    ex.printStackTrace()
+                    null
                 }
-                (binding.root as android.view.ViewGroup).addView(
-                    loading,
-                    android.view.ViewGroup.LayoutParams(
-                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
-                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                )
-                launch {
-                    val loaded = withContext(Dispatchers.IO) {
-                        try {
-                            Acc.instance.readConfig()
-                        } catch (ex: Exception) {
-                            ex.printStackTrace()
-                            null
-                        }
-                    }
-                    val finalConfig = loaded ?: run {
-                        showConfigReadError()
-                        withContext(Dispatchers.IO) {
+            }
+            if (loaded != null) {
+                dismissSkeleton(skeleton)
+                initializeEditor(profile, loaded)
+                return@launch
+            }
+            showConfigReadError(
+                onRetry = { loadDaemonConfigAsync(profile) },
+                onDefaults = {
+                    launch {
+                        val fallback = withContext(Dispatchers.IO) {
                             try {
                                 Acc.instance.readDefaultConfig()
                             } catch (ex: Exception) {
@@ -144,16 +168,18 @@ class AccConfigEditorActivity : ScopedAppActivity(),
                                 AccConfig()
                             }
                         }
+                        dismissSkeleton(skeleton)
+                        initializeEditor(profile, fallback)
                     }
-                    (binding.root as android.view.ViewGroup).removeView(loading)
-                    content.root.visibility = View.VISIBLE
-                    initializeEditor(profile, finalConfig)
                 }
-                return
-            }
+            )
         }
+    }
 
-        initializeEditor(profile, config)
+    private fun dismissSkeleton(skeleton: View) {
+        skeleton.clearAnimation()
+        (binding.root as android.view.ViewGroup).removeView(skeleton)
+        content.root.visibility = View.VISIBLE
     }
 
     /**
@@ -347,12 +373,14 @@ class AccConfigEditorActivity : ScopedAppActivity(),
         }
     }
 
-    private fun showConfigReadError()
+    private fun showConfigReadError(onRetry: () -> Unit, onDefaults: () -> Unit)
     {
         MaterialDialog(this).show {
             title(R.string.config_error_title)
             message(R.string.config_error_dialog)
-            positiveButton(android.R.string.ok)
+            positiveButton(R.string.retry) { onRetry() }
+            negativeButton(R.string.use_default_config) { onDefaults() }
+            cancelOnTouchOutside(false)
         }
     }
 

@@ -23,4 +23,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!-- Muted block colour for loading skeletons (light theme). -->
+    <color name="skeleton_base">#E1E3E6</color>
+
 </resources>

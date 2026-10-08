@@ -23,7 +23,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.input.input
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -216,7 +216,9 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
     suspend fun runScript(script: AccaScript): AccaScript = withContext(Dispatchers.IO)
     {
-        val sr = Shell.su(script.scBody).exec()
+        // User scripts are arbitrary shell: bound them so a hung script
+        // can't wedge the shared root shell for the rest of the app.
+        val sr = RootShell.exec(script.scBody, RootShell.LONG_TIMEOUT_SECS)
         script.scExitCode = sr.code
         script.scOutput = sr.out.joinToString(separator = "\n")
         script

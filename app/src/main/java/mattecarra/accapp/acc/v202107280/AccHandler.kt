@@ -1,7 +1,7 @@
 package mattecarra.accapp.acc.v202107280
 
 import androidx.annotation.WorkerThread
-import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.acc.ConfigUpdateResult
@@ -99,7 +99,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun readDefaultConfig(): AccConfig = withContext(Dispatchers.IO) {
-        val defaultConfig = Shell.su("/dev/.vr25/acc/acca --set --print-default").exec().out.joinToString(separator = "\n")
+        val defaultConfig = RootShell.exec("/dev/.vr25/acc/acca --set --print-default").out.joinToString(separator = "\n")
 
         parseConfig(defaultConfig)
     }
@@ -107,7 +107,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     @Throws(IOException::class)
     @WorkerThread
     open fun readConfigToString(): String {
-        return Shell.su("/dev/.vr25/acc/acca --set --print").exec().out.joinToString(separator = "\n")
+        return RootShell.exec("/dev/.vr25/acc/acca --set --print").out.joinToString(separator = "\n")
     }
 
     // Returns OnBoot value
@@ -131,7 +131,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun listVoltageSupportedControlFiles(): List<String> = withContext(Dispatchers.IO) {
-        val res = Shell.su("/dev/.vr25/acc/acca -v :").exec()
+        val res = RootShell.exec("/dev/.vr25/acc/acca -v :")
 
         if(res.isSuccess)
             res.out.filter { it.isNotEmpty() }
@@ -140,7 +140,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun resetBatteryStats(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/acc/acca -R").exec().isSuccess
+        RootShell.exec("/dev/.vr25/acc/acca -R").isSuccess
     }
 
     /**
@@ -198,7 +198,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     private val POWER_NOW_REGEXP = """^\s*POWER_NOW=([+-]?([0-9]*[.])?[0-9]+)""".toRegex(RegexOption.MULTILINE)
 
     override suspend fun getBatteryInfo(): BatteryInfo = withContext(Dispatchers.IO) {
-        val info =  Shell.su("/dev/.vr25/acc/acca -i").exec().out.joinToString(separator = "\n")
+        val info =  RootShell.exec("/dev/.vr25/acc/acca -i").out.joinToString(separator = "\n")
 
         // ACC >= 2022 prints CURRENT_NOW/VOLTAGE_NOW/POWER_NOW in A/V/W
         // (e.g. -0.19, 4.34, -0.82) while older releases used µA/µV/µW.
@@ -273,17 +273,17 @@ open class AccHandler(override val version: Int) : AccInterface {
     override suspend fun isBatteryCharging(): Boolean = withContext(Dispatchers.IO) {
         STATUS_REGEXP
             .find(
-                Shell.su("/dev/.vr25/acc/acca -i").exec().out.joinToString("\n")
+                RootShell.exec("/dev/.vr25/acc/acca -i").out.joinToString("\n")
             )?.destructured?.component1() == STRING_CHARGING
     }
 
     override suspend fun isAccdRunning(): Boolean = withContext(Dispatchers.IO) {
-        val code = Shell.su("/dev/.vr25/acc/acca -D").exec().code
+        val code = RootShell.exec("/dev/.vr25/acc/acca -D").code
         code == 0 || code == 8
     }
 
     override suspend fun abcStartDaemon(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/acc/acca -D start").exec().isSuccess
+        RootShell.exec("/dev/.vr25/acc/acca -D start").isSuccess
     }
 
     override fun getAccRestartDaemon(): String =  "/dev/.vr25/acc/acca -D restart"
@@ -294,7 +294,7 @@ open class AccHandler(override val version: Int) : AccInterface {
         // forever, leaking a stray daemon process per tap). Use the
         // documented daemon manager instead. Bounded by the global libsu
         // job timeout if the daemon lock is wedged.
-        Shell.su("/dev/.vr25/acc/acca -D stop").exec()
+        RootShell.exec("/dev/.vr25/acc/acca -D stop")
         // Report the real end state: ACC's lock/status bookkeeping can go
         // stale, making the stop command "succeed" without effect.
         !isAccdRunning()
@@ -302,7 +302,7 @@ open class AccHandler(override val version: Int) : AccInterface {
 
     //Charging switches
     override suspend fun listChargingSwitches(): List<String> = withContext(Dispatchers.IO) {
-        val res = Shell.su("/dev/.vr25/acc/acca -s s:").exec()
+        val res = RootShell.exec("/dev/.vr25/acc/acca -s s:")
 
         if(res.isSuccess)
             res.out.map { it.trim() }.filter { it.isNotEmpty() }
@@ -311,7 +311,8 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun testChargingSwitch(chargingSwitch: String?): Int = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/acc/acca -t${chargingSwitch?.let{" $it"} ?: ""}").exec().code
+        // Switch tests sleep and poll hardware: allow a full minute.
+        RootShell.exec("/dev/.vr25/acc/acca -t${chargingSwitch?.let{" $it"} ?: ""}", RootShell.LONG_TIMEOUT_SECS).code
     }
 
     override fun getCurrentChargingSwitch(config: String): String? {
@@ -327,12 +328,16 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun setChargingLimitForOneCharge(limit: Int): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("(acc -f $limit &) &").exec().isSuccess
+        RootShell.exec("(acc -f $limit &) &").isSuccess
     }
 
     val BATTERY_IDLE_SUPPORTED = """^\s*-\s*battIdleMode=true""".toPattern(Pattern.MULTILINE)
     override suspend fun isBatteryIdleSupported(): Pair<Int, Boolean> = withContext(Dispatchers.IO) {
-        val res = Shell.su("/dev/.vr25/acc/acca -t --").exec()
+        // The idle probe hangs forever when the battery isn't charging, so
+        // don't even run it then: exit code 2 already means "plug in to test"
+        // and the UI handles exactly that case.
+        if (!isBatteryCharging()) return@withContext Pair(2, false)
+        val res = RootShell.exec("/dev/.vr25/acc/acca -t --", RootShell.LONG_TIMEOUT_SECS)
         Pair(
             res.code,
             BATTERY_IDLE_SUPPORTED.matcher(res.out.joinToString("\n")).find()

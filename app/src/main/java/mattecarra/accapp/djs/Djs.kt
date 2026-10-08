@@ -2,6 +2,7 @@ package mattecarra.accapp.djs
 
 import android.content.Context
 import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.R
@@ -87,12 +88,12 @@ object Djs {
     }
 
     fun isDjsInstalled(installationDir: File): Boolean {
-        return Shell.su("test -f ${File(installationDir, "djs/service.sh").absolutePath}").exec().isSuccess
+        return RootShell.exec("test -f ${File(installationDir, "djs/service.sh").absolutePath}").isSuccess
     }
 
     fun initDjs(installationDir: File): Boolean {
         return if(isDjsInstalled(installationDir))
-            Shell.su("[ -f /dev/.vr25/djs/djsc ] || ${File(installationDir, "djs/service.sh").absolutePath}").exec().isSuccess
+            RootShell.exec("[ -f /dev/.vr25/djs/djsc ] || ${File(installationDir, "djs/service.sh").absolutePath}").isSuccess
         else
             false
     }
@@ -131,7 +132,7 @@ object Djs {
                 }
             }
 
-            val res = Shell.su("sh ${installShFile.absolutePath} djs").exec()
+            val res = RootShell.exec("sh ${installShFile.absolutePath} djs", RootShell.LONG_TIMEOUT_SECS)
 
             val version = getDjsVersion() ?: throw java.lang.Exception("DJS installation failed")
 
@@ -144,10 +145,10 @@ object Djs {
     }
 
     suspend fun uninstallDjs(installationDir: File): Shell.Result? = withContext(Dispatchers.IO) {
-        Shell.su("sh ${File(installationDir, "djs/uninstall.sh").absolutePath}").exec()
+        RootShell.exec("sh ${File(installationDir, "djs/uninstall.sh").absolutePath}")
     }
 
     private fun getDjsVersion(): Int? {
-        return Shell.su("/dev/.vr25/djs/djs-version").exec().out.joinToString(separator = "\n").trim().toIntOrNull()
+        return RootShell.exec("/dev/.vr25/djs/djs-version").out.joinToString(separator = "\n").trim().toIntOrNull()
     }
 }

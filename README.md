@@ -11,6 +11,19 @@
 > - Android 12–16 runtime fixes: `PendingIntent` mutability, `registerReceiver` exported flags, `AccBootReceiver` registered in the manifest, widget updater as a foreground service, scoped-storage logging, `fitsSystemWindows` edge-to-edge layouts, new-API nullability signatures.
 > - Bug fixes from upstream issues: async ACC config load in the editor (no more `runBlocking` on the UI thread), crash-proof config parser, locale-safe voltage/current/temperature formatting, V/A/W unit normalisation for new ACC `acca -i` output, daemon stop via `acca -D stop` (the old `accd.` shortcut spawned stray processes).
 > - Vendored `CircleProgressBar` view (artifact never reached Maven Central).
+>
+> Visual / reliability pass (ACCA-NG):
+> - New adaptive launcher icon (battery + bolt) with Android 13+ monochrome
+>   themed-icon layer.
+> - All root shell calls go through `RootShell` with a `timeout` bound, so a
+>   wedged daemon command can never freeze the app again (root cause of the
+>   "infinite loading" reports: `set_ch_curr` waits for *charging* state when
+>   control files were never detected).
+> - Config editor loads behind a centered skeleton with pulse; read failures
+>   offer Retry / Use-defaults instead of an endless spinner.
+> - Dashboard config card shows an error-with-retry state instead of spinning
+>   forever; tapping the card retries.
+> - Idle-mode probe is skipped when not charging (it hangs otherwise).
 
 
 

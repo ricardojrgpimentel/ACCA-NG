@@ -1,6 +1,6 @@
 package mattecarra.accapp.djs.v202107280
 
-import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.djs.DjsInterface
@@ -14,7 +14,7 @@ class DjsHandler: DjsInterface {
     val EXECUTE_ON_BOOT_MATCH_REGEX = """: --boot""".toPattern()
 
     override suspend fun list(pattern: String): List<DjsSchedule> = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/djs/djsc --list '$pattern'").exec().out.mapNotNull { line ->
+        RootShell.exec("/dev/.vr25/djs/djsc --list '$pattern'").out.mapNotNull { line ->
             SCHEDULE.find(line)?.destructured?.let { (_, time: String, command: String) ->
                 ID_REGEX.find(command)?.destructured?.component1()?.toIntOrNull()?.let { id ->
                     val executeOnce = EXECUTE_ONCE_MATCH_REGEX.matcher(command).find()
@@ -33,18 +33,18 @@ class DjsHandler: DjsInterface {
     }
 
     override suspend fun append(line: String): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/djs/djsc --append '$line'").exec().isSuccess
+        RootShell.exec("/dev/.vr25/djs/djsc --append '$line'").isSuccess
     }
 
     override suspend fun edit(pattern: String, newLine: String): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("sed -i 's#.*$pattern.*#$newLine#' \$(/dev/.vr25/djs/djsc --edit echo)").exec().isSuccess
+        RootShell.exec("sed -i 's#.*$pattern.*#$newLine#' \$(/dev/.vr25/djs/djsc --edit echo)").isSuccess
     }
 
     override suspend fun delete(pattern: String): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/djs/djsc --delete '$pattern'").exec().isSuccess
+        RootShell.exec("/dev/.vr25/djs/djsc --delete '$pattern'").isSuccess
     }
 
     override suspend fun stop(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/djs/djs-stop").exec().isSuccess
+        RootShell.exec("/dev/.vr25/djs/djs-stop").isSuccess
     }
 }

@@ -2,6 +2,7 @@ package mattecarra.accapp.acc
 
 import android.content.Context
 import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
@@ -78,7 +79,7 @@ object Acc {
     }
 
     fun isAccInstalled(installationDir: File): Boolean {
-        return Shell.su("test -f ${File(installationDir, "acc/service.sh").absolutePath}").exec().isSuccess
+        return RootShell.exec("test -f ${File(installationDir, "acc/service.sh").absolutePath}").isSuccess
     }
 
     fun isInstalledAccOutdated(): Boolean = runBlocking {
@@ -87,7 +88,7 @@ object Acc {
 
     fun initAcc(installationDir: File): Boolean {
         return if(isAccInstalled(installationDir))
-            Shell.su("[ -f /dev/.vr25/acc/acca ] || ${File(installationDir, "acc/service.sh").absolutePath}").exec().isSuccess
+            RootShell.exec("[ -f /dev/.vr25/acc/acca ] || ${File(installationDir, "acc/service.sh").absolutePath}").isSuccess
         else
             false
     }
@@ -147,7 +148,8 @@ object Acc {
                 }
             }
 
-            val res = Shell.su("sh ${installShFile.absolutePath} acc").exec()
+            // Module installs can take a while on slow storage: generous bound.
+            val res = RootShell.exec("sh ${installShFile.absolutePath} acc", RootShell.LONG_TIMEOUT_SECS)
 
             val version = getAccVersion() ?: throw java.lang.Exception("ACC installation failed")
 
@@ -190,14 +192,14 @@ object Acc {
     }
 
     private fun getAccVersion(): Int? {
-        return Shell.su("/dev/.vr25/acc/acc --version").exec().out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull() ?: getAccVersionLegacy()
+        return RootShell.exec("/dev/.vr25/acc/acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull() ?: getAccVersionLegacy()
     }
 
     fun getAccVersionToStr(): String {
-        return Shell.su("/dev/acca --version").exec().out.joinToString(separator = "\n").toString()
+        return RootShell.exec("/dev/acca --version").out.joinToString(separator = "\n").toString()
     }
 
     private fun getAccVersionLegacy(): Int? {
-        return Shell.su("acc --version").exec().out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull()
+        return RootShell.exec("acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull()
     }
 }

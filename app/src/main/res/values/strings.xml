@@ -67,6 +67,7 @@
     <string name="no_root_message">AccA requires ROOT.</string>
     <string name="config_error_title">Config parse error</string>
     <string name="config_error_dialog">Failed to parse ACC config!\nPlease check whether \"su -c acc --set --print\" works.</string>
+    <string name="use_default_config">Use defaults</string>
     <string name="wait">Please wait...\nThis will take a few seconds.</string>
 
     <!-- Exit On Boot Card Strings -->

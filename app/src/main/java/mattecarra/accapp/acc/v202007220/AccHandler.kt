@@ -1,7 +1,7 @@
 package mattecarra.accapp.acc.v202007220
 
 import androidx.annotation.WorkerThread
-import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.acc.ConfigUpdateResult
@@ -90,7 +90,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun readDefaultConfig(): AccConfig = withContext(Dispatchers.IO) {
-        val defaultConfig = Shell.su("/dev/acca --set --print-default").exec().out.joinToString(separator = "\n")
+        val defaultConfig = RootShell.exec("/dev/acca --set --print-default").out.joinToString(separator = "\n")
 
         parseConfig(defaultConfig)
     }
@@ -98,7 +98,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     @Throws(IOException::class)
     @WorkerThread
     open fun readConfigToString(): String {
-        return Shell.su("/dev/acca --set --print").exec().out.joinToString(separator = "\n")
+        return RootShell.exec("/dev/acca --set --print").out.joinToString(separator = "\n")
     }
 
     // Returns OnBoot value
@@ -122,7 +122,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun listVoltageSupportedControlFiles(): List<String> = withContext(Dispatchers.IO) {
-        val res = Shell.su("/dev/acca -v :").exec()
+        val res = RootShell.exec("/dev/acca -v :")
 
         if(res.isSuccess)
             res.out.filter { it.isNotEmpty() }
@@ -131,7 +131,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun resetBatteryStats(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/acca -R").exec().isSuccess
+        RootShell.exec("/dev/acca -R").isSuccess
     }
 
     /**
@@ -189,7 +189,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     private val POWER_NOW_REGEXP = """^\s*POWER_NOW=([+-]?([0-9]*[.])?[0-9]+)""".toRegex(RegexOption.MULTILINE)
 
     override suspend fun getBatteryInfo(): BatteryInfo = withContext(Dispatchers.IO) {
-        val info =  Shell.su("/dev/acca -i").exec().out.joinToString(separator = "\n")
+        val info =  RootShell.exec("/dev/acca -i").out.joinToString(separator = "\n")
 
         BatteryInfo(
             NAME_REGEXP.find(info)?.destructured?.component1() ?: STRING_UNKNOWN,
@@ -253,28 +253,28 @@ open class AccHandler(override val version: Int) : AccInterface {
     override suspend fun isBatteryCharging(): Boolean = withContext(Dispatchers.IO) {
         STATUS_REGEXP
             .find(
-                Shell.su("/dev/acca -i").exec().out.joinToString("\n")
+                RootShell.exec("/dev/acca -i").out.joinToString("\n")
             )?.destructured?.component1() == STRING_CHARGING
     }
 
     override suspend fun isAccdRunning(): Boolean = withContext(Dispatchers.IO) {
-        val code = Shell.su("/dev/acca -D").exec().code
+        val code = RootShell.exec("/dev/acca -D").code
         code == 0 || code == 8
     }
 
     override suspend fun abcStartDaemon(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/acca -D start").exec().isSuccess
+        RootShell.exec("/dev/acca -D start").isSuccess
     }
 
     override fun getAccRestartDaemon(): String =  "/dev/acca -D restart"
 
     override suspend fun abcStopDaemon(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("/dev/acca -D stop").exec().isSuccess
+        RootShell.exec("/dev/acca -D stop").isSuccess
     }
 
     //Charging switches
     override suspend fun listChargingSwitches(): List<String> = withContext(Dispatchers.IO) {
-        val res = Shell.su("/dev/acca -s s:").exec()
+        val res = RootShell.exec("/dev/acca -s s:")
 
         if(res.isSuccess)
             res.out.map { it.trim() }.filter { it.isNotEmpty() }
@@ -283,7 +283,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun testChargingSwitch(chargingSwitch: String?): Int = withContext(Dispatchers.IO) {
-        Shell.su("/dev/acca -t${chargingSwitch?.let{" $it"} ?: ""}").exec().code
+        RootShell.exec("/dev/acca -t${chargingSwitch?.let{" $it"} ?: ""}").code
     }
 
     override fun getCurrentChargingSwitch(config: String): String? {
@@ -299,12 +299,12 @@ open class AccHandler(override val version: Int) : AccInterface {
     }
 
     override suspend fun setChargingLimitForOneCharge(limit: Int): Boolean = withContext(Dispatchers.IO) {
-        Shell.su("(acc -f $limit &) &").exec().isSuccess
+        RootShell.exec("(acc -f $limit &) &").isSuccess
     }
 
     val BATTERY_IDLE_SUPPORTED = """^\s*-\s*battIdleMode=true""".toPattern(Pattern.MULTILINE)
     override suspend fun isBatteryIdleSupported(): Pair<Int, Boolean> = withContext(Dispatchers.IO) {
-        val res = Shell.su("/dev/acca -t --").exec()
+        val res = RootShell.exec("/dev/acca -t --")
         Pair(
             res.code,
             BATTERY_IDLE_SUPPORTED.matcher(res.out.joinToString("\n")).find()

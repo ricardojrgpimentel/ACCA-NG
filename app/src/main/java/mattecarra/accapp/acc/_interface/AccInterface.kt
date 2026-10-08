@@ -2,6 +2,7 @@ package mattecarra.accapp.acc._interface
 
 import androidx.annotation.WorkerThread
 import com.topjohnwu.superuser.Shell
+import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.acc.Acc
@@ -31,7 +32,7 @@ interface AccInterface {
 
     fun getAccRestartDaemon(): String
     suspend fun accRestartDaemon(): Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getAccRestartDaemon()).exec().isSuccess
+        RootShell.exec(getAccRestartDaemon()).isSuccess
     }
 
     suspend fun abcStopDaemon(): Boolean
@@ -59,7 +60,7 @@ interface AccInterface {
      */
     fun getUpdateAccOnBootCommand(command: String?): String
     suspend fun updateAccOnBoot(command: String?) : Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateAccOnBootCommand(command)).exec().isSuccess
+        RootShell.exec(getUpdateAccOnBootCommand(command)).isSuccess
     }
 
     /**
@@ -69,7 +70,7 @@ interface AccInterface {
      */
     fun getUpdateAccOnBootExitCommand(enabled: Boolean): String
     suspend fun updateAccOnBootExit(enabled: Boolean) : Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateAccOnBootExitCommand(enabled)).exec().isSuccess
+        RootShell.exec(getUpdateAccOnBootExitCommand(enabled)).isSuccess
     }
 
     /**
@@ -81,12 +82,12 @@ interface AccInterface {
     fun getUpdateAccVoltControlCommand(voltFile: String?, voltMax: Int?): String
     suspend fun updateAccVoltControl(voltFile: String?, voltMax: Int?) : Boolean = withContext(
         Dispatchers.IO) {
-        Shell.su(getUpdateAccVoltControlCommand(voltFile, voltMax)).exec().isSuccess
+        RootShell.exec(getUpdateAccVoltControlCommand(voltFile, voltMax)).isSuccess
     }
 
     fun getUpdateAccCurrentMaxCommand(currMax: Int?): String
     suspend fun updateAccCurrentMaxCommand(currMax: Int?) : Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateAccCurrentMaxCommand(currMax)).exec().isSuccess
+        RootShell.exec(getUpdateAccCurrentMaxCommand(currMax)).isSuccess
     }
 
     /**
@@ -99,7 +100,7 @@ interface AccInterface {
     fun getUpdateAccTemperatureCommand(coolDownTemperature: Int, temperatureMax: Int, wait: Int): String
     suspend fun updateAccTemperature(coolDownTemperature: Int, temperatureMax: Int, wait: Int) : Boolean = withContext(
         Dispatchers.IO) {
-        Shell.su(getUpdateAccTemperatureCommand(coolDownTemperature, temperatureMax, wait)).exec().isSuccess
+        RootShell.exec(getUpdateAccTemperatureCommand(coolDownTemperature, temperatureMax, wait)).isSuccess
     }
 
     /**
@@ -113,7 +114,7 @@ interface AccInterface {
     fun getUpdateAccCapacityCommand(shutdown: Int, coolDown: Int, resume: Int, pause: Int): String
     suspend fun updateAccCapacity(shutdown: Int, coolDown: Int, resume: Int, pause: Int) : Boolean = withContext(
         Dispatchers.IO) {
-        Shell.su(getUpdateAccCapacityCommand(shutdown, coolDown, resume, pause)).exec().isSuccess
+        RootShell.exec(getUpdateAccCapacityCommand(shutdown, coolDown, resume, pause)).isSuccess
     }
 
     /**
@@ -124,22 +125,22 @@ interface AccInterface {
      */
     fun getUpdateAccCoolDownCommand(charge: Int?, pause: Int?): String
     suspend fun updateAccCoolDown(charge: Int?, pause: Int?) : Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateAccCoolDownCommand(charge, pause)).exec().isSuccess
+        RootShell.exec(getUpdateAccCoolDownCommand(charge, pause)).isSuccess
     }
 
     fun getUpdateResetUnpluggedCommand(resetUnplugged: Boolean): String
     suspend fun updateResetUnplugged(resetUnplugged: Boolean): Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateResetUnpluggedCommand(resetUnplugged)).exec().isSuccess
+        RootShell.exec(getUpdateResetUnpluggedCommand(resetUnplugged)).isSuccess
     }
 
     fun getUpdateResetOnPauseCommand(resetOnPause: Boolean): String
     suspend fun updateResetOnPause(resetOnPause: Boolean): Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateResetOnPauseCommand(resetOnPause)).exec().isSuccess
+        RootShell.exec(getUpdateResetOnPauseCommand(resetOnPause)).isSuccess
     }
 
     fun getUpdateAccChargingSwitchCommand(switch: String?, automaticSwitchingEnabled: Boolean): String
     suspend fun updateAccChargingSwitch(switch: String?, automaticSwitchingEnabled: Boolean) : Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateAccChargingSwitchCommand(switch, automaticSwitchingEnabled)).exec().isSuccess
+        RootShell.exec(getUpdateAccChargingSwitchCommand(switch, automaticSwitchingEnabled)).isSuccess
     }
 
     /**
@@ -149,28 +150,28 @@ interface AccInterface {
      */
     fun getUpdateAccOnPluggedCommand(command: String?): String
     suspend fun updateAccOnPlugged(command: String?) : Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getUpdateAccOnPluggedCommand(command)).exec().isSuccess
+        RootShell.exec(getUpdateAccOnPluggedCommand(command)).isSuccess
     }
 
     fun getUpgradeCommand(version: String): String
     suspend fun upgrade(version: String): Shell.Result? = withContext(Dispatchers.IO){
-        val res = Shell.su(getUpgradeCommand(version)).exec()
+        val res = RootShell.exec(getUpgradeCommand(version))
         Acc.createAccInstance()
         res
     }
 
     fun getUpdatePrioritizeBatteryIdleModeCommand(enabled: Boolean): String
     suspend fun updatePrioritizeBatteryIdleMode(enabled: Boolean): Boolean = withContext(Dispatchers.IO){
-        Shell.su(getUpdatePrioritizeBatteryIdleModeCommand(enabled)).exec().isSuccess
+        RootShell.exec(getUpdatePrioritizeBatteryIdleModeCommand(enabled)).isSuccess
     }
 
 
     fun getAddChargingSwitchCommand(switch: String): String
     suspend fun addChargingSwitch(switch: String): Boolean = withContext(Dispatchers.IO) {
-        Shell.su(getAddChargingSwitchCommand(switch)).exec().isSuccess
+        RootShell.exec(getAddChargingSwitchCommand(switch)).isSuccess
     }
 
     suspend fun getAccVersion(): Int? = withContext(Dispatchers.IO) {
-        Shell.su("/dev/.vr25/acc/acc --version").exec().out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull() ?: Shell.su("acc --version").exec().out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull()
+        RootShell.exec("/dev/.vr25/acc/acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull() ?: RootShell.exec("acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull()
     }
 }

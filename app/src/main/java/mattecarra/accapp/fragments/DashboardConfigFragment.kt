@@ -32,6 +32,7 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
     private lateinit var mPrefs: SharedPreferences
 
     private var mActiveProfile: Boolean = false
+    private var mLoadFailed: Boolean = false
 
     private var _binding: ProfilesItemBinding? = null
     private val binding get() = _binding!!
@@ -82,11 +83,13 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
         mPrefs.registerOnSharedPreferenceChangeListener(this)
 
         view.setOnClickListener(View.OnClickListener {
-            startAccConfigEditorActivity()
+            // After a failed load the card itself becomes the retry button:
+            // a loader that never resolves is worse than no loader.
+            if (mLoadFailed) checkProfile() else startAccConfigEditorActivity()
         })
 
         binding.editConfigButton.setOnClickListener {
-            startAccConfigEditorActivity()
+            if (mLoadFailed) checkProfile() else startAccConfigEditorActivity()
         }
 
         checkProfile()
@@ -99,17 +102,49 @@ class DashboardConfigFragment() : ScopedFragment(), SharedPreferences.OnSharedPr
 
     fun checkProfile()
     {
+        binding.itemProfileLoadImage.visibility = View.VISIBLE;
+        binding.itemProfileInfo.visibility = View.GONE;
+        mLoadFailed = false
+
         launch {
+            try {
+                val profileId = ProfileUtils.getCurrentProfile(mPrefs)
+                val currentConfig = Acc.instance.readConfig()
+                val selProfile = mViewModel.getProfileById(profileId)
 
-            val profileId = ProfileUtils.getCurrentProfile(mPrefs)
-            val currentConfig = Acc.instance.readConfig()
-            val selProfile = mViewModel.getProfileById(profileId)
+                var name = getString(R.string.profile_not_selected)
+                if (selProfile != null && currentConfig == selProfile.accConfig) name = selProfile.profileName
 
-            var name = getString(R.string.profile_not_selected)
-            if (selProfile != null && currentConfig == selProfile.accConfig) name = selProfile.profileName
-
-            updateInfo(name, currentConfig)
+                updateInfo(name, currentConfig)
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+                showLoadError()
+            }
         }
+    }
+
+    /**
+     * Error state for the config card: the loader is hidden and the card
+     * shows what went wrong. Tapping the card retries. This guarantees the
+     * spinner can never spin forever.
+     */
+    private fun showLoadError()
+    {
+        mLoadFailed = true
+        binding.itemProfileTitleTextView.text = getString(R.string.config_error_title)
+        binding.itemProfileCapacityTv.text = getString(R.string.config_error_dialog)
+        binding.itemProfileSwitchLl.isGone = true
+        binding.itemProfileChargingVoltageLl.isGone = true
+        binding.itemProfileTemperatureTv.text = getString(R.string.retry)
+        binding.itemProfileCooldownLl.isGone = true
+        binding.itemProfileOnBootLl.isGone = true
+        binding.itemProfileOnPlugLl.isGone = true
+        binding.itemProfilePrioritizeBatteryIdleTv.isGone = true
+        binding.itemProfileResetBsOnPauseTv.isGone = true
+        binding.itemProfileResettUnpluggedTv.isGone = true
+        binding.itemProfileOptionsIb.visibility = View.GONE
+        binding.itemProfileLoadImage.visibility = View.GONE;
+        binding.itemProfileInfo.visibility = View.VISIBLE;
     }
 
     fun updateInfo(nameTitle: String, accConfig: AccConfig)
