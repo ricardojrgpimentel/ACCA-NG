@@ -8,9 +8,11 @@
     <!-- The background color, preferably the same as your normal theme -->
     <item android:drawable="@color/color_background"/>
 
-    <!-- Your product logo - 144dp color version of your app icon -->
+    <!-- Use the complete yellow energy icon on both light and dark themes. -->
     <item
+        android:width="144dp"
+        android:height="144dp"
         android:gravity="center"
-        android:drawable="@drawable/ic_launcher_foreground" />
+        android:drawable="@mipmap/ic_launcher" />
 
 </layer-list>

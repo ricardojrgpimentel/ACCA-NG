@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="pt"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>ACCA-NG - Painel de Bateria</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration for ACCA-NG Palette -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#171A1F',
+              card: '#20242B',
+              surfaceVariant: '#292E37',
+              yellow: '#FFD600',
+              onPrimary: '#171A1F',
+              outline: '#333842',
+              textPrimary: '#FFFFFF',
+              textSecondary: '#9EA3AE',
+              success: '#4ADE80'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Roboto', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Gauge and Styling -->
+<style data-purpose="custom-elements">
+    .circular-progress {
+      position: relative;
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: conic-gradient(#FFD600 0deg 331.2deg, #333842 331.2deg 360deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circular-progress::before {
+      content: "";
+      position: absolute;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background-color: #20242B;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-brand-textPrimary font-sans antialiased min-h-screen flex justify-center selection:bg-brand-yellow selection:text-brand-onPrimary">
+<!-- Mobile Container (Max iOS/Android Width Emulation) -->
+<div class="w-full max-w-md bg-brand-bg min-h-screen flex flex-col relative shadow-2xl overflow-hidden pb-20">
+<!-- BEGIN: StatusBar -->
+<header class="w-full pt-3 px-6 pb-2 flex justify-between items-center text-xs tracking-wide text-brand-textPrimary select-none z-20" data-purpose="status-bar">
+<span class="font-semibold text-sm">21:35</span>
+<div class="flex items-center space-x-2">
+<!-- Transfer rate indicator -->
+<span class="text-[10px] text-brand-textSecondary leading-none text-right">0 kB/s<br/>1 kB/s</span>
+<!-- Connectivity & Battery icons -->
+<svg class="w-4 h-4 fill-current text-brand-textSecondary" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"></path>
+</svg>
+<svg class="w-4 h-4 fill-current text-brand-textSecondary" viewbox="0 0 24 24">
+<path d="M2 22h20V2z"></path>
+</svg>
+<div class="flex items-center space-x-1 pl-1">
+<!-- Small pill battery badge -->
+<span class="bg-brand-yellow text-brand-onPrimary font-bold text-[10px] px-1.5 py-0.5 rounded-full flex items-center gap-0.5">
+            92
+            <svg class="w-2.5 h-2.5 fill-current" viewbox="0 0 24 24">
+<path d="M7 2v11h3v9l7-12h-4l4-8z"></path>
+</svg>
+</span>
+</div>
+</div>
+</header>
+<!-- END: StatusBar -->
+<!-- BEGIN: TopAppBar -->
+<section class="px-5 py-3 flex items-center justify-between" data-purpose="top-app-bar">
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+          Painel
+        </h1>
+<p class="text-xs font-semibold tracking-wider text-brand-yellow uppercase mt-0.5">ACCA-NG</p>
+</div>
+<div class="flex items-center space-x-2">
+<!-- Log History Icon -->
+<button aria-label="Histórico de Logs" class="p-2 text-brand-textSecondary hover:text-white rounded-full transition-colors active:bg-brand-surfaceVariant">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- 3-dots Menu Button -->
+<button aria-label="Mais opções" class="p-2 text-brand-textSecondary hover:text-white rounded-full transition-colors active:bg-brand-surfaceVariant">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24">
+<circle cx="12" cy="5" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="12" cy="19" r="2"></circle>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: TopAppBar -->
+<!-- Scrollable Content -->
+<main class="flex-1 px-4 space-y-4 overflow-y-auto custom-scroll pb-6">
+<!-- BEGIN: ProfileSwitchBanner -->
+<section class="flex justify-center" data-purpose="profile-pill-card">
+<button class="flex items-center gap-2 px-5 py-2 rounded-full border border-brand-outline bg-brand-card hover:border-brand-yellow/60 transition-all text-sm font-medium text-brand-textSecondary hover:text-brand-yellow group">
+<svg class="w-4 h-4 text-brand-yellow transition-transform group-hover:rotate-180 duration-300" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Trocar perfil</span>
+</button>
+</section>
+<!-- END: ProfileSwitchBanner -->
+<!-- BEGIN: MainBatteryCard -->
+<article class="bg-brand-card border border-brand-outline/60 rounded-3xl p-5 shadow-lg relative" data-purpose="battery-power-card">
+<!-- Header -->
+<div class="flex items-center justify-between mb-5">
+<h2 class="text-xl font-bold tracking-tight text-brand-textPrimary">
+            Bateria e alimentação
+          </h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-brand-surfaceVariant text-brand-yellow border border-brand-outline">
+            USB Conectado
+          </span>
+</div>
+<!-- Gauge & Realtime Status Hero -->
+<div class="flex items-center gap-5 p-3 rounded-2xl bg-brand-surfaceVariant/60 border border-brand-outline/40 mb-4">
+<!-- Electric Yellow Circular Gauge -->
+<div class="circular-progress flex-shrink-0 shadow-inner">
+<div class="relative z-10 flex flex-col items-center justify-center">
+<span class="text-xl font-black text-brand-textPrimary tracking-tight">92%</span>
+</div>
+</div>
+<!-- Status Information -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5">
+<h3 class="text-lg font-bold text-white truncate">A carregar a bateria</h3>
+</div>
+<div class="flex items-center gap-1.5 mt-1 text-sm font-medium text-brand-yellow">
+<svg class="w-4 h-4 fill-current animate-pulse" viewbox="0 0 24 24">
+<path d="M7 2v11h3v9l7-12h-4l4-8z"></path>
+</svg>
+<span>Cabo ligado · USB</span>
+</div>
+</div>
+</div>
+<!-- Description Subtext -->
+<p class="text-xs leading-relaxed text-brand-textSecondary mb-5 px-1">
+          O carregador está ligado e a bateria está a receber carga.
+        </p>
+<!-- Specifications and Details Grid -->
+<div class="space-y-3.5 text-sm bg-brand-surfaceVariant/40 p-4 rounded-2xl border border-brand-outline/30 mb-5" data-purpose="telemetry-list">
+<!-- Fonte de energia -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Fonte de energia</span>
+<span class="text-white font-medium">Carregador</span>
+</div>
+<!-- Atividade da bateria -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Atividade da bateria</span>
+<span class="inline-flex items-center gap-1.5 font-medium text-brand-success text-xs bg-brand-success/10 px-2.5 py-1 rounded-full border border-brand-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-success animate-ping"></span>
+              A receber carga
+            </span>
+</div>
+<!-- Modo direto / bypass -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Modo direto / bypass</span>
+<span class="text-brand-textSecondary font-medium">Não confirmado</span>
+</div>
+<!-- Divider -->
+<div class="h-px bg-brand-outline my-1"></div>
+<!-- Corrente da bateria -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Corrente da bateria</span>
+<span class="text-brand-yellow font-mono font-semibold tracking-wide">225 mA · entrada</span>
+</div>
+<!-- Temperatura -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Temperatura</span>
+<span class="text-white font-mono font-medium">27 °C / 80.6 °F</span>
+</div>
+<!-- Tensão da bateria -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Tensão da bateria</span>
+<span class="text-white font-mono font-medium">4.270 V</span>
+</div>
+<!-- Saúde reportada -->
+<div class="flex justify-between items-center">
+<span class="text-brand-textSecondary font-normal">Saúde reportada</span>
+<span class="text-brand-success font-semibold flex items-center gap-1">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              Boa
+            </span>
+</div>
+</div>
+<!-- Explanatory Warning/Note -->
+<div class="flex gap-2 items-start px-2 mb-6">
+<svg class="w-4 h-4 text-brand-textSecondary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<path d="M12 16v-4m0-4h.01" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+<p class="text-xs leading-relaxed text-brand-textSecondary">
+            Esta é a corrente da bateria, não a corrente total consumida do carregador.
+          </p>
+</div>
+<!-- Action Buttons Group -->
+<div class="space-y-2.5" data-purpose="card-actions">
+<!-- Button: Charge Once -->
+<button class="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl border border-brand-yellow/70 bg-brand-surfaceVariant text-brand-yellow hover:bg-brand-yellow hover:text-brand-onPrimary transition-all duration-200 font-semibold text-sm active:scale-[0.99] shadow-sm">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Carregar uma vez até ao nível escolhido</span>
+</button>
+<!-- Button: Reset Stats -->
+<button class="w-full flex items-center justify-center py-3.5 px-4 rounded-xl border border-brand-outline bg-transparent hover:bg-brand-surfaceVariant text-white font-medium text-sm transition-all duration-200 active:scale-[0.99]">
+<span>Zerar estatísticas da bateria</span>
+</button>
+</div>
+</article>
+<!-- END: MainBatteryCard -->
+<!-- BEGIN: BatterySummaryCard -->
+<section class="bg-brand-card border border-brand-outline/60 rounded-3xl p-5 shadow-lg" data-purpose="battery-summary-card">
+<h2 class="text-xl font-bold tracking-tight text-brand-textPrimary mb-4">
+          Resumo da bateria
+        </h2>
+<div class="flex justify-between items-center bg-brand-surfaceVariant/40 p-4 rounded-2xl border border-brand-outline/30 text-sm">
+<div class="flex items-center gap-2.5">
+<div class="p-2 rounded-lg bg-brand-card text-brand-yellow border border-brand-outline/50">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-brand-textSecondary font-medium">Ciclos de carga reportados</span>
+</div>
+<span class="text-lg font-bold font-mono text-white px-2">1</span>
+</div>
+</section>
+<!-- END: BatterySummaryCard -->
+</main>
+<!-- BEGIN: BottomNavigation -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-brand-card/95 backdrop-blur-md border-t border-brand-outline py-2.5 px-6 flex justify-between items-center z-30" data-purpose="bottom-navigation">
+<!-- Tab 1: Painel (Selected) -->
+<button class="flex flex-col items-center justify-center group focus:outline-none w-16">
+<span class="w-14 h-8 bg-brand-yellow rounded-full flex items-center justify-center text-brand-onPrimary shadow-md transition-transform group-hover:scale-105">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path d="M3 3v8h8V3H3zm2 2h4v4H5V5zm8-2v8h8V3h-8zm2 2h4v4h-4V5zM3 13v8h8v-8H3zm2 2h4v4H5v-4zm8-2v8h8v-8h-8zm2 2h4v4h-4v-4z"></path>
+</svg>
+</span>
+<span class="text-[11px] font-bold text-white mt-1">Painel</span>
+</button>
+<!-- Tab 2: Perfis -->
+<button class="flex flex-col items-center justify-center text-brand-textSecondary hover:text-white group focus:outline-none w-16 transition-colors">
+<span class="w-14 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-[11px] font-medium mt-1">Perfis</span>
+</button>
+<!-- Tab 3: Scripts -->
+<button class="flex flex-col items-center justify-center text-brand-textSecondary hover:text-white group focus:outline-none w-16 transition-colors">
+<span class="w-14 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-[11px] font-medium mt-1">Scripts</span>
+</button>
+<!-- Tab 4: Agenda -->
+<button class="flex flex-col items-center justify-center text-brand-textSecondary hover:text-white group focus:outline-none w-16 transition-colors">
+<span class="w-14 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="text-[11px] font-medium mt-1">Agenda</span>
+</button>
+</nav>
+<!-- END: BottomNavigation -->
+</div>
+</body></html>

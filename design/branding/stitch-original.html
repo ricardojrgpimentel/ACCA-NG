@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCA-NG — Identidade de Marca & Especificação do Ícone</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0E1013;
+      color: #F7F6F0;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
+    }
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .grid-pattern {
+      background-size: 32px 32px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+    .dot-pattern {
+      background-size: 16px 16px;
+      background-image: radial-gradient(rgba(255, 214, 0, 0.15) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0D0F12] text-[#F7F6F0] selection:bg-[#FFD600] selection:text-[#171A1F]">
+
+  <!-- Top Metadata Bar -->
+  <header class="border-b border-[#252830] bg-[#12151A]/80 backdrop-blur px-8 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="inline-block w-2.5 h-2.5 rounded-full bg-[#FFD600] animate-pulse"></span>
+      <h1 class="text-xs uppercase tracking-[0.25em] font-mono-code text-[#A0A5B2] font-semibold">
+        ACCA-NG / Android Advanced Charge Controller Next-Gen
+      </h1>
+      <span class="text-[10px] font-mono-code bg-[#1F232B] text-[#FFD600] px-2 py-0.5 rounded border border-[#FFD600]/30 font-bold">
+        SPEC v2.4 · PRODUCTION
+      </span>
+    </div>
+    <div class="flex items-center gap-6 text-[11px] font-mono-code text-[#7A8090]">
+      <span>FORMAT: VECTOR / ANDROID VD</span>
+      <span class="text-[#FFD600] font-bold">#FFD600 · #171A1F · #F7F6F0</span>
+    </div>
+  </header>
+
+  <!-- Main Presentation Canvas (1440px optimized frame) -->
+  <main class="max-w-[1440px] mx-auto p-6 md:p-10 space-y-8">
+
+    <!-- Top Grid: Hero Lockup & Technical Rationale -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+      <!-- Primary Charcoal Hero Lockup (7 cols) -->
+      <div class="lg:col-span-7 bg-[#171A1F] rounded-2xl p-8 md:p-12 border border-[#2B303B] shadow-2xl relative overflow-hidden flex flex-col justify-between">
+        <div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-[#FFD600]/5 blur-3xl pointer-events-none"></div>
+        <div class="grid-pattern absolute inset-0 opacity-40 pointer-events-none"></div>
+
+        <div class="relative z-10 flex items-center justify-between mb-8">
+          <span class="text-[10px] font-mono-code tracking-[0.2em] uppercase text-[#7E8596] font-medium">
+            Lockup Primário · Fundo Escuro Charcoal (#171A1F)
+          </span>
+          <span class="text-[10px] font-mono-code text-[#FFD600] border border-[#FFD600]/20 bg-[#FFD600]/10 px-2 py-0.5 rounded">
+            SVG MARK + WORDMARK
+          </span>
+        </div>
+
+        <!-- The Hero Mark + Wordmark -->
+        <div class="relative z-10 my-auto py-6 flex items-center gap-6 md:gap-8 flex-wrap sm:flex-nowrap">
+          <!-- Standalone Electric Yellow SVG Mark -->
+          <div class="shrink-0 flex items-center justify-center">
+            <svg class="w-24 h-24 md:w-28 md:h-28" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!--
+                ORIGINAL GEOMETRIC MARK:
+                Abstract architectural letter 'A' converging into a precise lightning shear / controlled energy pulse.
+                Monolithic, bold, high-contrast negative space cutout, completely flat, no gradients, balanced at all scales.
+              -->
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M 50,4
+                       L 92,86
+                       L 67,86
+                       L 55,62
+                       L 68,62
+                       L 47,20
+                       L 26,62
+                       L 39,62
+                       L 27,86
+                       L 8,86
+                       Z
+                       M 50,38
+                       L 57,52
+                       L 43,52
+                       Z"
+                    fill="#FFD600" />
+            </svg>
+          </div>
+
+          <!-- Bold Custom-Spaced Wordmark -->
+          <div class="flex flex-col justify-center">
+            <div class="flex items-baseline tracking-[-0.04em]">
+              <span class="text-4xl md:text-5xl font-black text-[#F7F6F0] tracking-[-0.03em] font-['Plus_Jakarta_Sans']">
+                ACCA<span class="text-[#FFD600] font-light mx-0.5">–</span>NG
+              </span>
+            </div>
+            <p class="text-xs font-mono-code tracking-[0.28em] text-[#8C93A4] uppercase mt-1">
+              Advanced Charge Controller
+            </p>
+          </div>
+        </div>
+
+        <!-- Metric Footer -->
+        <div class="relative z-10 pt-6 mt-6 border-t border-[#262B36] flex items-center justify-between text-[11px] font-mono-code text-[#6F7687]">
+          <span>RAIO DE CONSTRUÇÃO: VÉRTICES GEOMÉTRICOS 90° & 60°</span>
+          <span>FLAT VECTOR · NO SHADOWS</span>
+        </div>
+      </div>
+
+      <!-- Secondary Light Lockup + Short Portuguese Concept (5 cols) -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+
+        <!-- Secondary Warm White Lockup -->
+        <div class="bg-[#F7F6F0] text-[#171A1F] rounded-2xl p-7 border border-[#E5E3D8] shadow-lg flex flex-col justify-between relative overflow-hidden">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono-code tracking-[0.2em] uppercase text-[#888B94] font-semibold">
+              Lockup Secundário · Warm White (#F7F6F0)
+            </span>
+            <span class="text-[10px] font-mono-code bg-[#171A1F] text-[#FFD600] px-2 py-0.5 rounded font-bold">
+              ALTO CONTRASTE
+            </span>
+          </div>
+
+          <div class="my-3 flex items-center gap-5">
+            <!-- Mark in Charcoal (#171A1F) with subtle yellow accent or pure charcoal -->
+            <svg class="w-16 h-16 shrink-0" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M 50,4
+                       L 92,86
+                       L 67,86
+                       L 55,62
+                       L 68,62
+                       L 47,20
+                       L 26,62
+                       L 39,62
+                       L 27,86
+                       L 8,86
+                       Z
+                       M 50,38
+                       L 57,52
+                       L 43,52
+                       Z"
+                    fill="#171A1F" />
+            </svg>
+            <div>
+              <div class="text-3xl font-black text-[#171A1F] tracking-[-0.03em] leading-tight">
+                ACCA<span class="text-[#FFD600] font-light mx-0.5">–</span>NG
+              </div>
+              <span class="text-[10px] font-mono-code tracking-[0.2em] text-[#717682] uppercase">
+                Battery Health Engine
+              </span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-[#E3E0D2] text-[10px] font-mono-code text-[#7A7E8A] flex justify-between">
+            <span>VARIANTE CLARA</span>
+            <span>POLÍGONO VETORIAL IDÊNTICO</span>
+          </div>
+        </div>
+
+        <!-- Concept & Rationale in Portuguese -->
+        <div class="bg-[#15181F] rounded-2xl p-6 border border-[#262B36] flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-2 h-2 rounded bg-[#FFD600]"></div>
+              <h2 class="text-xs uppercase tracking-[0.2em] font-mono-code text-[#FFD600] font-bold">
+                Conceito & Geometria
+              </h2>
+            </div>
+            <p class="text-xs leading-relaxed text-[#D0D4DF] mb-3">
+              O símbolo funde a arquitetura tipográfica do <strong>«A»</strong> (ACCA/Avançado) com um <strong>pulso de corte elétrico central</strong>. Fugindo do clichê literal de bateria retangular com níveis, a forma expressa <span class="text-[#FFD600] font-medium">fluxo controlado de potência</span> e estabilização de voltagem através de linhas angulares limpas e espaço negativo preciso.
+            </p>
+            <p class="text-[11px] leading-relaxed text-[#8B92A4]">
+              O amarelo elétrico atua como catalisador de energia pura, contrastado com o carvão industrial (#171A1F) para conferir autoridade técnica, confiabilidade de baixo nível no sistema Android e máxima legibilidade em microescalas.
+            </p>
+          </div>
+
+          <!-- Color Strip Mini -->
+          <div class="mt-4 pt-4 border-t border-[#222733] grid grid-cols-3 gap-2">
+            <div class="bg-[#FFD600] text-[#171A1F] p-2 rounded-lg font-mono-code text-[10px] flex flex-col justify-between font-bold h-14">
+              <span>ELECTRIC</span>
+              <span>#FFD600</span>
+            </div>
+            <div class="bg-[#171A1F] text-[#F7F6F0] p-2 rounded-lg font-mono-code text-[10px] flex flex-col justify-between border border-[#2E3341] h-14">
+              <span>CHARCOAL</span>
+              <span>#171A1F</span>
+            </div>
+            <div class="bg-[#F7F6F0] text-[#171A1F] p-2 rounded-lg font-mono-code text-[10px] flex flex-col justify-between h-14 font-semibold">
+              <span>WARM WHITE</span>
+              <span>#F7F6F0</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Center Section: Android Adaptive Icon System & Micro-Scales -->
+    <section class="bg-[#14171E] rounded-2xl border border-[#252A36] p-8 md:p-10 shadow-xl relative overflow-hidden">
+      <div class="dot-pattern absolute inset-0 opacity-20 pointer-events-none"></div>
+
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-[#242936] gap-4">
+        <div>
+          <span class="text-[10px] font-mono-code tracking-[0.25em] text-[#FFD600] uppercase font-bold">
+            Android Adaptive Icon & App Launcher System
+          </span>
+          <h2 class="text-xl md:text-2xl font-extrabold text-[#F7F6F0] tracking-tight mt-0.5">
+            Especificação de Ícone de Aplicativo (Yellow Tile + Charcoal Mark)
+          </h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono-code px-3 py-1 rounded-full bg-[#1C202A] text-[#9EA5B5] border border-[#2E3342]">
+            Área Segura Central: <strong class="text-[#FFD600]">60%</strong>
+          </span>
+          <span class="text-xs font-mono-code px-3 py-1 rounded-full bg-[#1C202A] text-[#9EA5B5] border border-[#2E3342]">
+            Sem texto / Sem gradientes
+          </span>
+        </div>
+      </div>
+
+      <!-- Icon Masks Grid -->
+      <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- 1. Rounded Square (Squircle - Android Default) -->
+        <div class="bg-[#1A1E26] rounded-xl p-6 border border-[#2A303E] flex flex-col items-center text-center justify-between">
+          <span class="text-[10px] font-mono-code uppercase tracking-wider text-[#7E8698] mb-4">
+            Squircle Mask (One UI / Pixel)
+          </span>
+
+          <div class="relative w-36 h-36 flex items-center justify-center my-2 group">
+            <!-- Safe area indicator on hover/subtle -->
+            <div class="absolute inset-0 rounded-[28px] border border-dashed border-[#FFD600]/30 pointer-events-none"></div>
+
+            <!-- Android App Icon Tile (Electric Yellow solid, Charcoal Mark centered) -->
+            <div class="w-32 h-32 bg-[#FFD600] rounded-[24px] shadow-xl flex items-center justify-center transition-transform hover:scale-105 duration-300">
+              <svg class="w-[60%] h-[60%]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M 50,4
+                         L 92,86
+                         L 67,86
+                         L 55,62
+                         L 68,62
+                         L 47,20
+                         L 26,62
+                         L 39,62
+                         L 27,86
+                         L 8,86
+                         Z
+                         M 50,38
+                         L 57,52
+                         L 43,52
+                         Z"
+                      fill="#171A1F" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[#262C3A] w-full text-[10px] font-mono-code text-[#949BB0]">
+            TILE: #FFD600 · MARK: #171A1F
+          </div>
+        </div>
+
+        <!-- 2. Full Circle Mask (Android Stock / Circular Launcher) -->
+        <div class="bg-[#1A1E26] rounded-xl p-6 border border-[#2A303E] flex flex-col items-center text-center justify-between">
+          <span class="text-[10px] font-mono-code uppercase tracking-wider text-[#7E8698] mb-4">
+            Circular Mask (Android AOSP)
+          </span>
+
+          <div class="relative w-36 h-36 flex items-center justify-center my-2">
+            <!-- Android Circular Launcher App Icon -->
+            <div class="w-32 h-32 bg-[#FFD600] rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-105 duration-300">
+              <svg class="w-[60%] h-[60%]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M 50,4
+                         L 92,86
+                         L 67,86
+                         L 55,62
+                         L 68,62
+                         L 47,20
+                         L 26,62
+                         L 39,62
+                         L 27,86
+                         L 8,86
+                         Z
+                         M 50,38
+                         L 57,52
+                         L 43,52
+                         Z"
+                      fill="#171A1F" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[#262C3A] w-full text-[10px] font-mono-code text-[#949BB0]">
+            MÁSCARA CIRCULAR 1:1
+          </div>
+        </div>
+
+        <!-- 3. Micro-scale Verification (24px & 48px Notification & Status Bar) -->
+        <div class="bg-[#1A1E26] rounded-xl p-6 border border-[#2A303E] flex flex-col items-center justify-between">
+          <span class="text-[10px] font-mono-code uppercase tracking-wider text-[#7E8698] mb-2">
+            Micro-escalas (24px & 48px)
+          </span>
+
+          <div class="flex items-center justify-around w-full py-4 gap-4">
+            <!-- 48px App drawer / Quick Settings -->
+            <div class="flex flex-col items-center gap-2">
+              <div class="w-12 h-12 bg-[#FFD600] rounded-xl flex items-center justify-center shadow">
+                <svg class="w-[60%] h-[60%]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z"
+                        fill="#171A1F" />
+                </svg>
+              </div>
+              <span class="text-[9px] font-mono-code text-[#7A8294]">48×48 px</span>
+            </div>
+
+            <!-- 24px Android Status Bar / Notification Icon (Monochrome) -->
+            <div class="flex flex-col items-center gap-2">
+              <div class="w-8 h-8 bg-[#171A1F] border border-[#2E3342] rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z"
+                        fill="#FFD600" />
+                </svg>
+              </div>
+              <span class="text-[9px] font-mono-code text-[#FFD600]">24×24 px</span>
+            </div>
+
+            <!-- 24px System Outline/White -->
+            <div class="flex flex-col items-center gap-2">
+              <div class="w-8 h-8 bg-[#0D0F13] rounded-lg flex items-center justify-center border border-[#222630]">
+                <svg class="w-5 h-5" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z"
+                        fill="#F7F6F0" />
+                </svg>
+              </div>
+              <span class="text-[9px] font-mono-code text-[#A0A5B2]">Status Bar</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[#262C3A] w-full text-[10px] font-mono-code text-[#949BB0] text-center">
+            LEGIBILIDADE ÓPTICA GARANTIDA
+          </div>
+        </div>
+
+        <!-- 4. Single-Color / Monocromático (Pure White & Pure Black) -->
+        <div class="bg-[#1A1E26] rounded-xl p-6 border border-[#2A303E] flex flex-col items-center text-center justify-between">
+          <span class="text-[10px] font-mono-code uppercase tracking-wider text-[#7E8698] mb-2">
+            Versão Monocromática (1-Color)
+          </span>
+
+          <div class="grid grid-cols-2 gap-3 w-full my-2">
+            <!-- White on Dark -->
+            <div class="bg-black border border-[#2B303E] rounded-xl p-3 flex flex-col items-center">
+              <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z"
+                      fill="#FFFFFF" />
+              </svg>
+              <span class="text-[8px] font-mono-code text-[#707684] mt-2">100% WHITE</span>
+            </div>
+
+            <!-- Black on White -->
+            <div class="bg-white rounded-xl p-3 flex flex-col items-center">
+              <svg class="w-12 h-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z"
+                      fill="#000000" />
+              </svg>
+              <span class="text-[8px] font-mono-code text-[#444] mt-2 font-bold">100% BLACK</span>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-[#262C3A] w-full text-[10px] font-mono-code text-[#949BB0]">
+            GRAVAÇÃO LASER / IMPRESSÃO
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom Section: Construction Geometry & Production Vector Code -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- Mathematical Grid & Anatomy (5 cols) -->
+      <div class="lg:col-span-5 bg-[#14171E] rounded-2xl border border-[#252A36] p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono-code tracking-[0.2em] text-[#FFD600] uppercase font-bold">
+              Anatomia & Grid Construtivo
+            </span>
+            <span class="text-[10px] font-mono-code text-[#828898]">VIEWBOX 0 0 100 100</span>
+          </div>
+
+          <!-- Diagnostic Wireframe SVG -->
+          <div class="relative bg-[#0E1015] rounded-xl p-6 border border-[#242936] flex items-center justify-center my-3 overflow-hidden">
+            <!-- Grid lines -->
+            <div class="absolute inset-0 grid grid-cols-4 grid-rows-4 pointer-events-none opacity-20">
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-r border-b border-[#FFD600]"></div>
+              <div class="border-b border-[#FFD600]"></div>
+            </div>
+
+            <!-- Wireframe & Polygon Outline -->
+            <svg class="w-40 h-40 relative z-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Geometric Guide lines -->
+              <line x1="50" y1="0" x2="50" y2="100" stroke="#FFD600" stroke-width="0.75" stroke-dasharray="2 2" opacity="0.4" />
+              <line x1="0" y1="62" x2="100" y2="62" stroke="#FFD600" stroke-width="0.75" stroke-dasharray="2 2" opacity="0.4" />
+              <line x1="0" y1="86" x2="100" y2="86" stroke="#FFD600" stroke-width="0.75" stroke-dasharray="2 2" opacity="0.4" />
+
+              <!-- Shape with fill and technical stroke -->
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z"
+                    fill="rgba(255, 214, 0, 0.15)"
+                    stroke="#FFD600"
+                    stroke-width="1.8" />
+
+              <!-- Vertex nodes -->
+              <circle cx="50" cy="4" r="2.5" fill="#FFD600" />
+              <circle cx="92" cy="86" r="2.5" fill="#FFD600" />
+              <circle cx="8" cy="86" r="2.5" fill="#FFD600" />
+              <circle cx="47" cy="20" r="2" fill="#F7F6F0" />
+            </svg>
+          </div>
+
+          <ul class="space-y-1.5 text-[11px] font-mono-code text-[#A5ACB9] mt-3">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FFD600]"></span>
+              Vértice superior unificado a (50, 4) para vetor de pico limpo.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FFD600]"></span>
+              Recorte interno dinâmico em 38° simbolizando pulso de carga.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FFD600]"></span>
+              Base aberta com esteio lateral estável (8px a 92px).
+            </li>
+          </ul>
+        </div>
+
+        <div class="pt-4 mt-4 border-t border-[#232733] text-[10px] font-mono-code text-[#6F7585]">
+          100% MATEMÁTICO · ZERO POLUIÇÃO DE VÉRTICES
+        </div>
+      </div>
+
+      <!-- Raw SVG Path & Android VectorDrawable Ready Snippet (7 cols) -->
+      <div class="lg:col-span-7 bg-[#14171E] rounded-2xl border border-[#252A36] p-7 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded bg-[#FFD600]"></span>
+              <span class="text-[10px] font-mono-code tracking-[0.2em] text-[#FFD600] uppercase font-bold">
+                Exportação Standalone (SVG & Android VectorDrawable)
+              </span>
+            </div>
+            <span class="text-[10px] font-mono-code text-[#888E9E]">ic_acca_ng_energy.xml</span>
+          </div>
+
+          <div class="bg-[#0B0C10] rounded-xl p-4 border border-[#202530] font-mono-code text-[11px] leading-relaxed text-[#ABB2C2] overflow-x-auto">
+            <div class="text-[#6C7280] mb-2">&lt;!-- ANDROID VECTOR DRAWABLE FORMAT --&gt;</div>
+            <p><span class="text-[#E06C75]">&lt;vector</span> <span class="text-[#D19A66]">xmlns:android=</span><span class="text-[#98C379]">"http://schemas.android.com/apk/res/android"</span></p>
+            <p class="pl-4"><span class="text-[#D19A66]">android:width=</span><span class="text-[#98C379]">"108dp"</span> <span class="text-[#D19A66]">android:height=</span><span class="text-[#98C379]">"108dp"</span></p>
+            <p class="pl-4"><span class="text-[#D19A66]">android:viewportWidth=</span><span class="text-[#98C379]">"100"</span> <span class="text-[#D19A66]">android:viewportHeight=</span><span class="text-[#98C379]">"100"</span><span class="text-[#E06C75]">&gt;</span></p>
+            <p class="pl-4 mt-1.5"><span class="text-[#E06C75]">&lt;path</span></p>
+            <p class="pl-8"><span class="text-[#D19A66]">android:fillColor=</span><span class="text-[#FFD600] font-bold">"#FFD600"</span></p>
+            <p class="pl-8"><span class="text-[#D19A66]">android:fillType=</span><span class="text-[#98C379]">"evenOdd"</span></p>
+            <p class="pl-8"><span class="text-[#D19A66]">android:pathData=</span><span class="text-[#98C379]">"M50,4 L92,86 L67,86 L55,62 L68,62 L47,20 L26,62 L39,62 L27,86 L8,86 Z M50,38 L57,52 L43,52 Z"</span> <span class="text-[#E06C75]">/&gt;</span></p>
+            <p><span class="text-[#E06C75]">&lt;/vector&gt;</span></p>
+          </div>
+
+          <div class="mt-4 bg-[#181C24] p-4 rounded-xl border border-[#2B313F] flex items-center justify-between">
+            <div class="text-xs">
+              <span class="font-bold text-[#F7F6F0]">Vetor Unificado:</span>
+              <span class="text-[#9CA3B5] ml-1">O logotipo e o ícone de launcher utilizam rigorosamente as mesmas coordenadas de path.</span>
+            </div>
+            <span class="text-[10px] font-mono-code bg-[#FFD600] text-[#171A1F] px-2.5 py-1 rounded font-bold shrink-0 ml-4">
+              READY TO SHIP
+            </span>
+          </div>
+        </div>
+
+        <div class="pt-4 mt-4 border-t border-[#232733] flex items-center justify-between text-[11px] font-mono-code text-[#737A8C]">
+          <span>COMPATIBILIDADE: ANDROID 5.0+ (API 21+) ATÉ ANDROID 15</span>
+          <span>PESO DO ATIVO: &lt; 1 KB</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer System Stamp -->
+    <footer class="pt-6 border-t border-[#222631] flex flex-col md:flex-row items-center justify-between text-xs font-mono-code text-[#626877] gap-3">
+      <div>
+        PROJETO: <span class="text-[#A5ACB9]">ACCA-NG BRAND PRESENTATION</span> · AUTORIDADE: <span class="text-[#FFD600]">SISTEMA DE ENERGIA & BATERIA</span>
+      </div>
+      <div>
+        CORES: #FFD600 (ENERGIA) · #171A1F (CHARCOAL) · #F7F6F0 (WARM WHITE)
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

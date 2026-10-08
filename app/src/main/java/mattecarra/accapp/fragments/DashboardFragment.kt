@@ -271,6 +271,8 @@ class DashboardFragment : ScopedFragment()
         if (running == null) {
             binding.dashAccdStatusPb.visibility = View.GONE
             binding.dashAccdStatusImageView.visibility = View.VISIBLE
+            binding.dashAccdStatusImageView.imageTintList = android.content.res.ColorStateList.valueOf(
+                getColor(requireContext(), R.color.color_error))
             binding.dashAccdStatusImageView.setImageResource(R.drawable.ic_outline_error_outline_24px)
             binding.dashAccdStatusTextView.setText(R.string.acc_status_unavailable)
             binding.dashDaemonToggleButton.isEnabled = false

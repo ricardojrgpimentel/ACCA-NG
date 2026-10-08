@@ -168,7 +168,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:textColor="@color/color_primary"
+                        android:textColor="@color/color_primary_content"
                         android:textSize="16sp" />
 
                     <LinearLayout
@@ -473,13 +473,13 @@
 
                     <Button
                         android:id="@+id/edit_voltage_limit"
-                        style="@style/Widget.AppCompat.Button.Colored"
+                        style="@style/Widget.Acca.Button.Legacy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:onClick="editPowerOnClick"
                         android:text="@string/edit_power_limit"
-                        android:textColor="@color/color_surface" />
+                        android:textColor="@color/button_filled_text" />
 
                 </LinearLayout>
 
@@ -540,14 +540,14 @@
 
                 <Button
                     android:id="@+id/battery_idle_test_button"
-                    style="@style/Widget.AppCompat.Button.Colored"
+                    style="@style/Widget.Acca.Button.Legacy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/card_content_padding"
                     android:onClick="onBatteryIdleTestButtonClick"
                     android:text="@string/test_battery_idle"
-                    android:textColor="@color/color_surface"
+                    android:textColor="@color/button_filled_text"
                     tools:visibility="gone" />
 
             </LinearLayout>

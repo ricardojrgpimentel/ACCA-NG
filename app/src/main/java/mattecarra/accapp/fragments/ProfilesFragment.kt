@@ -129,7 +129,8 @@ class ProfilesFragment : ScopedFragment(),
 
             private var swipeBack: Boolean = true
             private val background = ColorDrawable()
-            private val backgroundColour = ContextCompat.getColor(mContext, R.color.colorSuccessful)
+            private val backgroundColour = ContextCompat.getColor(mContext, R.color.color_primary)
+            private val applyIconColour = ContextCompat.getColor(mContext, R.color.color_on_primary)
             private val applyIcon = ContextCompat.getDrawable(mContext, R.drawable.ic_outline_check_circle_24px
             )
             private val intrinsicWidth = applyIcon!!.intrinsicWidth
@@ -171,7 +172,7 @@ class ProfilesFragment : ScopedFragment(),
 
                     // Draw the apply icon
                     val wrapped = DrawableCompat.wrap(applyIcon!!)
-                    DrawableCompat.setTint(wrapped, Color.WHITE)
+                    DrawableCompat.setTint(wrapped, applyIconColour)
                     wrapped.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
                     wrapped.draw(c)
@@ -191,7 +192,7 @@ class ProfilesFragment : ScopedFragment(),
 
                     // Draw the apply icon
                     val wrapped = DrawableCompat.wrap(applyIcon!!)
-                    DrawableCompat.setTint(wrapped, Color.WHITE)
+                    DrawableCompat.setTint(wrapped, applyIconColour)
                     wrapped.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
                     wrapped.draw(c)

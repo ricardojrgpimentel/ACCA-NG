@@ -37,7 +37,7 @@
         app:elevation="0dp"
         app:itemHorizontalTranslationEnabled="false"
         app:itemIconSize="24dp"
-        app:itemIconTint="@color/navigation_item_color"
+        app:itemIconTint="@color/navigation_item_icon_color"
         app:itemTextColor="@color/navigation_item_color"
         app:itemTextAppearanceActive="@style/TextAppearance.Acca.Navigation.Active"
         app:itemTextAppearanceInactive="@style/TextAppearance.Acca.Navigation"

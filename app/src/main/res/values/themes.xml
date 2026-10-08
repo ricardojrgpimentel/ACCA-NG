@@ -25,6 +25,10 @@
         <item name="colorOnBackground">@color/color_on_background</item>
         <item name="colorOnSurface">@color/color_on_surface</item>
         <item name="colorOnError">@color/color_on_error</item>
+        <item name="colorAccent">@color/color_primary_content</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="colorControlActivated">@color/color_primary_content</item>
+        <item name="android:textColorLink">@color/color_primary_content</item>
 
         <!--Material type attributes-->
         <!--<item name="textAppearanceHeadline1">@style/TextAppearance.AccaTheme.Headline1</item>-->
@@ -59,7 +63,7 @@
         <item name="md_background_color">@color/color_surface</item>
         <item name="md_color_title">@color/color_on_surface</item>
         <item name="md_color_content">@color/text_secondary</item>
-        <item name="md_color_button_text">@color/color_primary</item>
+        <item name="md_color_button_text">@color/color_primary_content</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.MaterialComponents.Dialog.Alert</item>
         <!--<item name="navigationViewStyle">@style/Widget.AccaTheme.NavigationView</item>-->
         <item name="toolbarStyle">@style/Widget.Acca.Toolbar</item>

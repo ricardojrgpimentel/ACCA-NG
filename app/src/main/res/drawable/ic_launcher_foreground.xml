@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- ACCA-NG launcher foreground: battery with a charge bolt.
-     All-white single-layer glyph: safe for masks, circles, squircles and
-     reused verbatim as the Android 13+ monochrome (themed) icon. -->
+<!-- ACCA-NG energy monogram, designed with Google Stitch.
+     Geometry shared with design/branding/mark-path.json.
+     Fits within the adaptive icon's central 66dp safe circle. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
-
-    <!-- Battery body -->
-    <path
-        android:fillColor="#00000000"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="5"
-        android:strokeLineCap="round"
-        android:strokeLineJoin="round"
-        android:pathData="M30,44 h36 a6,6 0 0 1 6,6 v14 a6,6 0 0 1 -6,6 h-36 a6,6 0 0 1 -6,-6 v-14 a6,6 0 0 1 6,-6 z" />
-
-    <!-- Battery tip -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M79,51 h5 a2,2 0 0 1 2,2 v8 a2,2 0 0 1 -2,2 h-5 z" />
-
-    <!-- Charge bolt -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:strokeColor="#FFFFFF"
-        android:strokeWidth="2"
-        android:strokeLineJoin="round"
-        android:pathData="M58,35 L45,57 h7 L49,71 L65,51 h-8 Z" />
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:translateX="26.5" android:translateY="29.25"
+        android:scaleX="0.55" android:scaleY="0.55">
+        <path android:fillColor="#171A1F" android:fillType="evenOdd"
+            android:pathData="M 50,4 L 92,86 L 67,86 L 55,62 L 68,62 L 47,20 L 26,62 L 39,62 L 27,86 L 8,86 Z M 50,38 L 57,52 L 43,52 Z" />
+    </group>
 </vector>

@@ -13,8 +13,9 @@
 > - Vendored `CircleProgressBar` view (artifact never reached Maven Central).
 >
 > Visual / reliability pass (ACCA-NG):
-> - New adaptive launcher icon (battery + bolt) with Android 13+ monochrome
->   themed-icon layer.
+> - Electric-yellow energy monogram designed with Google Stitch, with adaptive
+>   launcher icons and an Android 13+ monochrome themed-icon layer. Logo sources
+>   and previews are in [design/branding](design/branding).
 > - All root shell calls go through `RootShell` with a `timeout` bound, so a
 >   wedged daemon command can never freeze the app again (root cause of the
 >   "infinite loading" reports: `set_ch_curr` waits for *charging* state when

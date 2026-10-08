@@ -74,7 +74,7 @@
             <TextView
                 android:id="@+id/item_script_body_tv"
                 android:background="@drawable/code_surface" android:fontFamily="monospace"
-                android:textColor="@color/color_primary" android:textSize="14sp"
+                android:textColor="@color/color_primary_content" android:textSize="14sp"
                 android:layout_marginTop="12dp" android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

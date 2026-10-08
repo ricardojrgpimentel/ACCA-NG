@@ -1,0 +1,49 @@
+{
+  "outputComponents": [
+    {
+      "design": {
+        "screens": [
+          {
+            "deviceType": "DESKTOP",
+            "generatedBy": "create_datastore_entry",
+            "height": "3564",
+            "htmlCode": {
+              "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzUxZGM4ZTA2NjM0NjQzMzJiMjdiZDFhODA1NWFhNjUwEgsSBxDkr9nNoBQYAZIBJAoKcHJvamVjdF9pZBIWQhQxNzYyNTM4MDU3NjA2MzUxMzE1NQ&filename=&opi=96797242",
+              "mimeType": "text/html",
+              "name": "projects/17625380576063513155/files/07393fffa54046c0a9fc48aee517633c"
+            },
+            "id": "8f8a5efcfbec4e23944f31898ed2a8eb",
+            "name": "projects/17625380576063513155/screens/8f8a5efcfbec4e23944f31898ed2a8eb",
+            "screenMetadata": {
+              "agentType": "PRO_AGENT",
+              "status": "COMPLETE"
+            },
+            "screenType": "DESIGN",
+            "screenshot": {
+              "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1WCdtzS3Lg2ekTbegNuBdcTh0jqGREo3TrnenRc7bveVkf2wokxhbl31vobJLoiuu3ILFT9YVwf-Pqy6gMDUAim2D03B68bZK1sD08agiaf-AsRodGD0LjK7emDQvmo-tfmMcV5BVACFeAjGYkiikaYvB8wIB8dVDkVEYG7DE3DBEgrVhsdoSCsIYer9C4AoWXV9mSun1PxTm2hfx2SsapQEaq7fdfTKXiIYrg-vJMcBFVkpNBfTxF7pcZ2",
+              "name": "projects/17625380576063513155/files/a79e5b5f38a544778829222a39e8c3d1"
+            },
+            "theme": {},
+            "title": "ACCA-NG Brand Identity & Icon Specification Board",
+            "width": "2560"
+          }
+        ],
+        "theme": {}
+      }
+    },
+    {
+      "text": "Criei a prancha editorial de apresentação de identidade visual e especificação técnica para o **ACCA-NG** (Android Advanced Charge Controller Next-Gen), focada na precisão vetorial e na entrega do símbolo definitivo e ícone de aplicativo.\n\n### Destaques do Projeto:\n1. **Símbolo Original de Energia (Marca Única)**:\n   - Um monograma geométrico que sintetiza a arquitetura do **«A»** com um corte de pulso elétrico e fluxo de potência controlado através de espaço negativo nítido.\n   - Fugimos de clichês literais de baterias de smartphone, conferindo autoridade de engenharia de sistema de baixo nível.\n   - Construção vetorial plana (*flat vector*), sem sombras internas ou gradientes, com vértice superior agudo e esteio de base estável.\n\n2. **Tipografia e Wordmark ACCA-NG**:\n   - Wordmark em peso Black com kerning ajustado e hífen de acento elétrico, contrastando com *charcoal* (#171A1F) e *warm white* (#F7F6F0).\n\n3. **Sistema de Ícone do Android**:\n   - Ícone de launcher estruturado sobre ladrilho amarelo elétrico sólido (`#FFD600`) com o símbolo em *charcoal* ocupando exatamente a área segura central (~60%).\n   - Demonstração em máscara squircle (One UI / Pixel) e máscara circular (Android AOSP).\n   - Validação de microescalas em **48px** e **24px** (notificações e barra de status do Android), além de versões monocromáticas 100% branco e 100% preto.\n\n4. **Exportação & Código de Produção**:\n   - Todos os logos e ícones compartilham exatamente o mesmo `pathData` vetorial inline (`M50,4 L92,86 L67,86...`), pronto para uso direto em arquivos `.xml` do **Android VectorDrawable** (`ic_acca_ng_energy.xml`) e exportação standalone SVG leve (< 1 KB)."
+    },
+    {
+      "suggestion": "Deseja gerar variações de layout de tela para o app ACCA-NG aplicando essa nova identidade?"
+    },
+    {
+      "suggestion": "Gostaria de ver o XML completo do Adaptive Icon com foreground e background separados?"
+    },
+    {
+      "suggestion": "Quer ajustar as proporções ou espessura do corte de energia do símbolo?"
+    }
+  ],
+  "projectId": "17625380576063513155",
+  "sessionId": "15360473900032736596"
+}

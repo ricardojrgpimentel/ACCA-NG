@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">#087F72</color>
-    <color name="color_primary_variant">#056256</color>
+    <!-- Yellow is a fill; dark amber is the readable action color on white. -->
+    <color name="color_primary">#FFD600</color>
+    <color name="color_primary_variant">#C5A600</color>
+    <color name="color_primary_content">#855800</color>
     <color name="color_surface">#FFFFFF</color>
-    <color name="color_background">#F3F6F5</color>
+    <color name="color_background">#F7F6F0</color>
     <color name="color_error">#BA3345</color>
-    <color name="color_warning">#EDF4F1</color>
-    <color name="color_shadow">#100D302A</color>
-    <color name="color_on_primary">#FFFFFF</color>
-    <color name="color_on_background">#172C29</color>
-    <color name="color_on_surface">#172C29</color>
+    <color name="color_warning">#FFF4CC</color>
+    <color name="color_shadow">#10171A1F</color>
+    <color name="color_on_primary">#171A1F</color>
+    <color name="color_on_background">#171A1F</color>
+    <color name="color_on_surface">#171A1F</color>
     <color name="color_on_error">#FFFFFF</color>
-    <color name="text_secondary">#536B65</color>
-    <color name="surface_variant">#EAF0ED</color>
-    <color name="accent_container">#D7F2E8</color>
-    <color name="outline_subtle">#D6E3DD</color>
-    <color name="skeleton_base">#DDE7E2</color>
+    <color name="text_secondary">#626975</color>
+    <color name="text_disabled">#8C929A</color>
+    <color name="surface_variant">#F0EEE6</color>
+    <color name="accent_container">#FFF2B3</color>
+    <color name="color_on_accent_container">#654F00</color>
+    <color name="outline_subtle">#E2DFD2</color>
+    <color name="outline_control">#8F949C</color>
+    <color name="skeleton_base">#E3E5E8</color>
+    <color name="color_success">#216C42</color>
     <color name="color_secondary">@color/color_primary</color>
     <color name="color_secondary_variant">@color/color_primary_variant</color>
     <color name="color_on_secondary">@color/color_on_primary</color>
     <color name="colorPrimary">@color/color_primary</color>
     <color name="colorPrimaryDark">@color/color_primary_variant</color>
-    <color name="colorAccent">@color/color_primary</color>
+    <color name="colorAccent">@color/color_primary_content</color>
 </resources>

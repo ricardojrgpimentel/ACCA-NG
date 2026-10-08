@@ -1,0 +1,40 @@
+{
+  "projectId": "8703406586496560780",
+  "uploads": [
+    {
+      "file": "design/redesign/before/dashboard.png",
+      "title": "BEFORE — Dashboard / Painel",
+      "screenIds": [
+        "14782918362553054083"
+      ]
+    },
+    {
+      "file": "design/redesign/before/profiles.png",
+      "title": "BEFORE — Profiles / Perfis",
+      "screenIds": [
+        "1410744368778176011"
+      ]
+    },
+    {
+      "file": "design/redesign/before/battery-and-power.png",
+      "title": "BEFORE — Battery and power details",
+      "screenIds": [
+        "10525471869665436818"
+      ]
+    },
+    {
+      "file": "design/branding/preview.png",
+      "title": "BRAND REFERENCE — yellow and charcoal ACCA-NG identity",
+      "screenIds": [
+        "9524597780311865903"
+      ]
+    },
+    {
+      "file": "design/redesign/before/charge-editor.png",
+      "title": "BEFORE — Charge configuration editor",
+      "screenIds": [
+        "13747709581754029053"
+      ]
+    }
+  ]
+}

@@ -93,7 +93,8 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
             private var swipeBack: Boolean = true
             private val background = ColorDrawable()
-            private val backgroundColour = ContextCompat.getColor(context as Context, R.color.colorSuccessful)
+            private val backgroundColour = ContextCompat.getColor(context as Context, R.color.color_primary)
+            private val applyIconColour = ContextCompat.getColor(context as Context, R.color.color_on_primary)
             private val applyIcon = ContextCompat.getDrawable(context as Context, R.drawable.ic_outline_check_circle_24px)
             private val intrinsicWidth = applyIcon!!.intrinsicWidth
             private val intrinsicHeight = applyIcon!!.intrinsicHeight
@@ -138,7 +139,7 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
                     // Draw the apply icon
                     val wrapped = DrawableCompat.wrap(applyIcon!!)
-                    DrawableCompat.setTint(wrapped, Color.WHITE)
+                    DrawableCompat.setTint(wrapped, applyIconColour)
                     wrapped.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
                     wrapped.draw(c)
@@ -159,7 +160,7 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
                     // Draw the apply icon
                     val wrapped = DrawableCompat.wrap(applyIcon!!)
-                    DrawableCompat.setTint(wrapped, Color.WHITE)
+                    DrawableCompat.setTint(wrapped, applyIconColour)
                     wrapped.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
                     wrapped.draw(c)

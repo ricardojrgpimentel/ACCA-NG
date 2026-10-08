@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ACCA-NG - Painel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FFD600',
+              charcoal: '#171A1F',
+              bgWarm: '#F7F6F0',
+              surface: '#FFFFFF',
+              surfaceVar: '#F0EEE6',
+              border: '#E2DFD2',
+              secondaryText: '#6B7280',
+              amberLink: '#855800',
+              success: '#16A34A',
+            }
+          },
+          fontFamily: {
+            sans: ['Roboto', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-layout">
+    body {
+      background-color: #F7F6F0;
+      color: #171A1F;
+      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', system-ui, -apple-system, sans-serif;
+    }
+  </style>
+<style data-purpose="custom-utilities">
+    /* Subtle touch active state for Android M3 feel */
+    .touch-ripple:active {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    .circular-progress {
+      transform: rotate(-90deg);
+    }
+  </style>
+</head>
+<body class="bg-brand-bgWarm min-h-screen flex justify-center antialiased">
+<!-- Mobile Container simulating Android Screen -->
+<div class="w-full max-w-md min-h-screen flex flex-col justify-between relative shadow-xl bg-brand-bgWarm overflow-hidden pb-24">
+<div>
+<!-- BEGIN: AndroidStatusBar -->
+<header class="w-full px-5 pt-3 pb-1 flex justify-between items-center text-xs font-medium text-brand-charcoal select-none" data-purpose="status-bar">
+<span class="tracking-tight font-semibold text-sm">21:34</span>
+<div class="flex items-center space-x-2">
+<!-- Network speed indicators -->
+<span class="text-[10px] text-brand-secondaryText font-mono">0 kB/s</span>
+<!-- Signal & Wifi icons -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"></path></svg>
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4zm0 3.32c3.48 0 6.64 1.34 9.03 3.53L12 19.53 2.97 10.85A13.25 13.25 0 0 1 12 7.32z"></path></svg>
+<!-- Battery icon with 92% indication -->
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-bold">92%</span>
+<svg class="w-4 h-4 fill-current text-brand-charcoal" viewbox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"></path></svg>
+</div>
+</div>
+</header>
+<!-- END: AndroidStatusBar -->
+<!-- BEGIN: TopAppBar -->
+<section class="px-5 pt-3 pb-4 flex items-center justify-between" data-purpose="top-app-bar">
+<div>
+<h1 class="text-2xl font-bold text-brand-charcoal tracking-tight">Painel</h1>
+<p class="text-xs font-medium text-brand-secondaryText uppercase tracking-wider mt-0.5">ACCA-NG</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center space-x-1">
+<!-- Log/Receipt Icon -->
+<button aria-label="Logs" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/5 active:bg-black/10 transition" type="button">
+<svg class="w-5 h-5 text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Overflow Menu (3-dots) -->
+<button aria-label="Mais opções" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/5 active:bg-black/10 transition" type="button">
+<svg class="w-5 h-5 text-brand-charcoal" fill="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="5" r="2"></circle>
+<circle cx="12" cy="12" r="2"></circle>
+<circle cx="12" cy="19" r="2"></circle>
+</svg>
+</button>
+</div>
+</section>
+<!-- END: TopAppBar -->
+<!-- BEGIN: MainContent -->
+<main class="px-4 space-y-4" data-purpose="dashboard-content">
+<!-- BEGIN: AccServiceStatusCard -->
+<article class="bg-brand-surface rounded-2xl p-4 border border-brand-border shadow-sm" data-purpose="service-status">
+<h2 class="text-xs font-bold text-brand-secondaryText uppercase tracking-wider mb-3">ACC</h2>
+<div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+<!-- Status Badge & Title -->
+<div class="flex items-center space-x-3.5">
+<div class="w-12 h-12 rounded-2xl bg-green-50 border border-green-200 flex items-center justify-center shrink-0">
+<svg class="w-6 h-6 text-brand-success" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-brand-success inline-block"></span>
+<span class="font-bold text-brand-charcoal text-base leading-tight">Serviço ACC está Ativado</span>
+</div>
+<p class="text-xs text-brand-secondaryText mt-0.5">Operando normalmente</p>
+</div>
+</div>
+<!-- Action Buttons Grid -->
+<div class="grid grid-cols-2 gap-2 w-full sm:w-auto">
+<!-- Button Parar -->
+<button class="px-4 py-2 rounded-xl border border-brand-border bg-white text-xs font-semibold text-brand-charcoal hover:bg-brand-surfaceVar transition flex items-center justify-center gap-1.5 shadow-xs" type="button">
+<svg class="w-3.5 h-3.5 text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<rect height="14" rx="1.5" width="14" x="5" y="5"></rect>
+</svg>
+                Parar
+              </button>
+<!-- Button Reiniciar -->
+<button class="px-4 py-2 rounded-xl border border-brand-border bg-white text-xs font-semibold text-brand-charcoal hover:bg-brand-surfaceVar transition flex items-center justify-center gap-1.5 shadow-xs" type="button">
+<svg class="w-3.5 h-3.5 text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+                Reiniciar
+              </button>
+</div>
+</div>
+</article>
+<!-- END: AccServiceStatusCard -->
+<!-- BEGIN: ActiveProfileCard -->
+<article class="bg-brand-surface rounded-2xl p-5 border-2 border-brand-yellow shadow-sm relative overflow-hidden" data-purpose="active-profile-card">
+<!-- Subtle warm yellow tint accent backdrop -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-yellow/10 rounded-full blur-xl pointer-events-none"></div>
+<!-- Header pill & Edit button -->
+<div class="flex items-center justify-between mb-2.5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-yellow text-brand-charcoal tracking-wide uppercase">
+              Perfil ativo
+            </span>
+<button class="px-3 py-1 rounded-lg border border-brand-border text-xs font-semibold text-brand-amberLink hover:bg-brand-surfaceVar transition" type="button">
+              Editar
+            </button>
+</div>
+<!-- Profile Title & Description verbatim -->
+<h3 class="text-xl font-bold text-brand-charcoal leading-snug">Sempre ligado</h3>
+<p class="text-xs text-brand-secondaryText mt-1 mb-4 leading-relaxed">
+            Guardar alterações manuais passa para uma configuração personalizada. O perfil fica guardado.
+          </p>
+<!-- Specifications List -->
+<div class="space-y-3 border-t border-brand-border/60 pt-3.5">
+<!-- Battery thresholds -->
+<div class="flex items-start gap-2.5">
+<div class="mt-0.5 p-1 rounded-md bg-brand-surfaceVar text-brand-charcoal shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<rect height="10" rx="2" stroke-linecap="round" width="16" x="2" y="7"></rect>
+<line stroke-linecap="round" x1="20" x2="20" y1="10" y2="14"></line>
+<line stroke-linecap="round" x1="6" x2="6" y1="10" y2="14"></line>
+</svg>
+</div>
+<div class="text-xs">
+<p class="font-semibold text-brand-charcoal">Limites da carga (%)</p>
+<p class="text-brand-secondaryText text-[11px] mt-0.5">Shutdown: 2% - Resume: 50% - Stop: 80%</p>
+</div>
+</div>
+<!-- Temperature thresholds -->
+<div class="flex items-start gap-2.5">
+<div class="mt-0.5 p-1 rounded-md bg-brand-surfaceVar text-brand-charcoal shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="text-xs">
+<p class="font-semibold text-brand-charcoal">Controle de temperatura</p>
+<p class="text-brand-secondaryText text-[11px] mt-0.5">Temperature: 35°C - Max: 55°C - Pause: 45s</p>
+</div>
+</div>
+<!-- Reset stats on pause -->
+<div class="flex items-center gap-2.5">
+<div class="p-1 rounded-md bg-brand-surfaceVar text-brand-charcoal shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-linecap="round"></circle>
+<line stroke-linecap="round" x1="12" x2="12" y1="8" y2="12"></line>
+<line stroke-linecap="round" x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+</div>
+<p class="text-xs font-normal text-brand-charcoal">Reset battery stats on pause %</p>
+</div>
+<!-- Reset stats on disconnect -->
+<div class="flex items-center gap-2.5">
+<div class="p-1 rounded-md bg-brand-surfaceVar text-brand-charcoal shrink-0">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-linecap="round"></circle>
+<line stroke-linecap="round" x1="12" x2="12" y1="8" y2="12"></line>
+<line stroke-linecap="round" x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+</div>
+<p class="text-xs font-normal text-brand-charcoal">Zerar estatísticas da bateria ao desconectar o carregador</p>
+</div>
+</div>
+<!-- Trocar Perfil Action Button -->
+<div class="mt-5">
+<button class="w-full py-2.5 rounded-xl border border-brand-border bg-white text-xs font-bold text-brand-charcoal hover:bg-brand-surfaceVar active:scale-[0.99] transition flex items-center justify-center gap-2 shadow-xs" type="button">
+<svg class="w-4 h-4 text-brand-amberLink" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+              Trocar perfil
+            </button>
+</div>
+</article>
+<!-- END: ActiveProfileCard -->
+<!-- BEGIN: BatteryPreviewCard -->
+<article class="bg-brand-surface rounded-2xl p-4 border border-brand-border shadow-sm" data-purpose="battery-status">
+<h2 class="text-xs font-bold text-brand-secondaryText uppercase tracking-wider mb-3">Bateria e alimentação</h2>
+<div class="flex items-center space-x-4">
+<!-- Circular Gauge -->
+<div class="relative w-16 h-16 shrink-0 flex items-center justify-center">
+<svg class="w-16 h-16 circular-progress" viewbox="0 0 36 36">
+<!-- Track -->
+<path class="text-brand-border" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<!-- 92% Arc with Electric Yellow -->
+<path class="text-brand-yellow" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-linecap="round" stroke-width="3.8"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-sm font-extrabold text-brand-charcoal">92%</span>
+</div>
+</div>
+<!-- Battery State Details -->
+<div class="flex-1">
+<div class="flex items-center gap-1.5">
+<h4 class="text-base font-bold text-brand-charcoal">A carregar a bateria</h4>
+<!-- Charging lightning icon -->
+<svg class="w-4 h-4 text-brand-amberLink fill-current" viewbox="0 0 20 20">
+<path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"></path>
+</svg>
+</div>
+<p class="text-xs text-brand-secondaryText mt-0.5">Cabo ligado · USB · 4.12V</p>
+</div>
+</div>
+</article>
+<!-- END: BatteryPreviewCard -->
+</main>
+<!-- END: MainContent -->
+</div>
+<!-- BEGIN: BottomNavigation -->
+<nav aria-label="Navegação Principal" class="fixed bottom-0 max-w-md w-full bg-brand-surface border-t border-brand-border px-4 py-2 flex justify-around items-center z-50 shadow-md" data-purpose="material-bottom-navigation">
+<!-- Nav Item 1: Painel (Selected) -->
+<a aria-current="page" class="flex flex-col items-center group focus:outline-none" href="#painel">
+<div class="w-16 h-8 rounded-full bg-brand-yellow flex items-center justify-center transition-colors">
+<svg class="w-5 h-5 text-brand-charcoal" fill="currentColor" viewbox="0 0 24 24">
+<path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path>
+</svg>
+</div>
+<span class="text-[11px] font-bold text-brand-charcoal mt-1 tracking-tight">Painel</span>
+</a>
+<!-- Nav Item 2: Perfis -->
+<a class="flex flex-col items-center group focus:outline-none" href="#perfis">
+<div class="w-16 h-8 rounded-full flex items-center justify-center group-hover:bg-brand-surfaceVar transition-colors">
+<svg class="w-5 h-5 text-brand-secondaryText group-hover:text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[11px] font-medium text-brand-secondaryText group-hover:text-brand-charcoal mt-1 tracking-tight">Perfis</span>
+</a>
+<!-- Nav Item 3: Scripts -->
+<a class="flex flex-col items-center group focus:outline-none" href="#scripts">
+<div class="w-16 h-8 rounded-full flex items-center justify-center group-hover:bg-brand-surfaceVar transition-colors">
+<svg class="w-5 h-5 text-brand-secondaryText group-hover:text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-[11px] font-medium text-brand-secondaryText group-hover:text-brand-charcoal mt-1 tracking-tight">Scripts</span>
+</a>
+<!-- Nav Item 4: Agenda -->
+<a class="flex flex-col items-center group focus:outline-none" href="#agenda">
+<div class="w-16 h-8 rounded-full flex items-center justify-center group-hover:bg-brand-surfaceVar transition-colors">
+<svg class="w-5 h-5 text-brand-secondaryText group-hover:text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-linecap="round"></circle>
+<polyline points="12 6 12 12 16 14" stroke-linecap="round" stroke-linejoin="round"></polyline>
+</svg>
+</div>
+<span class="text-[11px] font-medium text-brand-secondaryText group-hover:text-brand-charcoal mt-1 tracking-tight">Agenda</span>
+</a>
+</nav>
+<!-- END: BottomNavigation -->
+</div>
+</body></html>

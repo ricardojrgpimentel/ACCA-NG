@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorSuccessful">@color/color_primary</color>
-    <color name="colorError">#F44336</color>
+    <color name="colorSuccessful">@color/color_success</color>
+    <color name="colorError">@color/color_error</color>
 
     <color name="white">#fafafa</color>
     <color name="black">#000000</color>

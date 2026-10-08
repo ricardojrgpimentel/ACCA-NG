@@ -1,0 +1,135 @@
+{
+  "id": 2,
+  "jsonrpc": "2.0",
+  "result": {
+    "content": [
+      {
+        "text": "{\"screens\":[{\"name\":\"projects/8703406586496560780/screens/6ff21d77276941b08365ea23829ab993\",\"title\":\"Perfis ACCA-NG (Dark Mode)\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/17cd0d94189a4989a745e193570ce8cd\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1XEKAAW_QEw1EBdLo_5Vkzf4CJc5jErA8F_KQ7LvShAAPfPc1_SVLvY4rtXXNmD_lbEzGzV_3jT6BgmZth9zH8gegRUdfWkBQslj1HBhEEp0YH94KWO8ozCREnhwV_biJIQrao5du7iiNG6m1K8pVfDq-wtjbq6JBXJMWcmSl4E4YLBHCiGJYMsKz_WLnXHyiafev6eEgqpyGKd5_MkNlnbiOdUhuYHN8FuMleyw9zjJbP0SoSaOEL3Cl0\"},\"htmlCode\":{\"name\":\"projects/8703406586496560780/files/b0b52a3637a141888dafddf596ec6c27\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzkxZWVkYjJjN2UwZTQ2YThhOTA1NTMyMGZmYTk4N2ZjEgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242\",\"mimeType\":\"text/html\"},\"width\":\"780\",\"height\":\"1768\",\"deviceType\":\"MOBILE\"},{\"name\":\"projects/8703406586496560780/screens/13747709581754029053\",\"title\":\"BEFORE \u2014 Charge configuration editor\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/13747709581754029742\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1U4vfzTGzqn6IXFUiFGeSxviz0_hM3E38ODFLjjsaCIvNSFbvJKBelwPKzWG9Lt9kGZ99UrE2W1-v9QLrRao3uuUSz08VD8oKYoZXicbUV6MvbtTuSdwlft2cubxBr4mu_xGQyshKnwnb5EYzVHhSLQuB7JBeGSorgJqXLq81ljJGwMUjEracN9JOdahA5DazUJixEkV9MLN92ELHT4xRAv7DGvyR6GM-E_jNY330vOBixHT0opOoid6PcDOPpwypYn_LYhWd0_wg\"},\"htmlCode\":{},\"width\":\"1440\",\"height\":\"3040\"},{\"name\":\"projects/8703406586496560780/screens/1410744368778176011\",\"title\":\"BEFORE \u2014 Profiles / Perfis\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/1410744368778174676\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1XKuEtTpdbtjZLaIwmk8D9EWYKBeHrUcB6EnHWK2lIkloao2MU51pSI1hWOv6tR3jBZO6myBZSPviqylxvUmGd_vBnObXnOPlQZsQ_i1316a3mwLdnKTJqgdcM956yg-cbnO4medD9K1OCurQSZe_KPnHcC37nPPmFS69TdTOLS6sXZNoWsvFmb4rN_iTZGRRp_BOadbDYJBRycAFkVOGUTsQC2W-OJykdFVJauIzMwEAa9ZqpFdihUWbgI0KFbgJIN2A6b45Danw\"},\"htmlCode\":{},\"width\":\"1440\",\"height\":\"3040\"},{\"name\":\"projects/8703406586496560780/screens/b9ee125445184ddd86e1fe94cfb0948d\",\"title\":\"Bateria e Alimenta\u00e7\u00e3o ACCA-NG (Dark Mode)\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/e1572f86a4a240f4ba794c795c25361e\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1V6KXGmY54sKaYKf_uzshhP9Awv7-p7aj2uu-BHgXTiAHRPI-FJOXu8loPWWUKLS5EH5WmXaDLDfFR8NDVrZ04z4DP9b6QoyZcwvkV7E0I_ufmJCaNAiSol7duvQuJZfNo86Imy-Q5R7eR34YZyrrKUST5_z7CcowuEUlMwXSNMZ4NPyz3M98-JkcCXPFZWM8Ih6h4E4mgpkuhJiu62lj_5K3U2R3AepYfBKXurrqI7wUzORdgTY9kC6g\"},\"htmlCode\":{\"name\":\"projects/8703406586496560780/files/95cb5c8cca534705832ab77e4154e32e\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2RlYWVjNzNlNTljOTRiNjhhNjBhNDllMGQ3ZTVkM2MzEgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242\",\"mimeType\":\"text/html\"},\"width\":\"780\",\"height\":\"2414\",\"deviceType\":\"MOBILE\"},{\"name\":\"projects/8703406586496560780/screens/617c690862414f2e94f26a4e1d3e0215\",\"title\":\"Painel ACCA-NG (Dark Mode)\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/a93a85b7c0f94e6cb9c6ad6e7bbf866c\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1UeQmRA_d5Zf9163Ihum6fJseRahqea9cX8gAJ8TDx93yizIR8M6GkO1uxXTyPtRhjzAw9ghPH_ydd7sfZR3pOOXkpLfr5eVwQG1hSrDPGHBvIxwJpF-Cu8_3JYJ-JJMUqmrBY7U6kOx_qUzlNwk-PeabF3jZFPT2b6oTbG08xOOZcnsk5QEJ8ihj9JVlNBlUYdGIn_Sn7P-G-IIEsQvF5f_ELPOeM8Ni88Ept5CvAfX7P8AUSuQl41ww\"},\"htmlCode\":{\"name\":\"projects/8703406586496560780/files/90f5c88d6681473aa63887eff2439c03\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzI0OTk4MDhlYjUzYzQxZTg4ODgwMWI3MzY3NDBkNGM4EgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242\",\"mimeType\":\"text/html\"},\"width\":\"780\",\"height\":\"1850\",\"deviceType\":\"MOBILE\"},{\"name\":\"projects/8703406586496560780/screens/10525471869665436818\",\"title\":\"BEFORE \u2014 Battery and power details\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/10525471869665439233\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1UtGa_hUiXKDLno6WX1m2HR1oYnqYdtEHZAK17fPeio03QXjNA57ZA4DA4aQzP-CPtp7tUVn4GkYMCrdKWvwYPDzQOpzzH7BPNAmSqZ-2v9fj7N48hNMI7bqM6MSYtSjaSlJeWc70B6x-BgfO3unjdDgwAPg9tE3xAUbhy4SQIPWJR3o0HDbs2qq1PC3TG5qy1RJ4xcdAH09vNN1U2tNbzwfIJ9H154LMPhu5Wep4VwdFatSnqWLJajq4r8cSJ2MKlGTHTrkKhwwA\"},\"htmlCode\":{},\"width\":\"1440\",\"height\":\"3040\"},{\"name\":\"projects/8703406586496560780/screens/9524597780311865903\",\"title\":\"BRAND REFERENCE \u2014 yellow and charcoal ACCA-NG identity\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/9524597780311866330\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1Vz2eA7mPwaKS84M2_QAcjrB3uwUZfcGlIbBSGPtUrefQMIxuYbostofH_GVQ_rZkskamFekJqxyL7LtAO_WqrmgyXJaRQaErlsVlr-zrUuKIw01eUF3S4FSGvV-aQRlYd9T4ULcYsiDFOxVMqhHY8KgRmPtcF5Iao--8IALIuwrhoXC0rHwHeGVcz3YWlsABGItCGWCkUTDZrCg4HzZ_QeHhnk7bIP_34yFeC9uY-tVJQcVvN4XFW0E-tbxi_d6NEhxgMkX8CGwg\"},\"htmlCode\":{},\"width\":\"1440\",\"height\":\"920\"},{\"name\":\"projects/8703406586496560780/screens/14782918362553054083\",\"title\":\"BEFORE \u2014 Dashboard / Painel\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/14782918362553056582\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1XIfaSkOSVejMOQfCghsT4XPJjegapj1OO-T-mjsDJE694wXUOGpNwxSIrstKhdlQbeCJ45JWuFBxx0Q5fRNiLnG-HGusGMuN6vpIwpsuPWqB6wCeVz26TgkuZZj3ROxbnpx7Mb_I5Mv--wb-RlSm0PrxchjkYGOHwuBI4aQ6kcCXRukSdae_5Qq7QowUZXRT7k_SM7wHY_-uJYNCq7mrM1bZrxTVEM2IoCsj_tI05dVqYPX5wy93CahJ7yolT2jQG47kdHsOT9nw\"},\"htmlCode\":{},\"width\":\"1440\",\"height\":\"3040\"},{\"name\":\"projects/8703406586496560780/screens/e99569485eb04919a761cd22390251db\",\"title\":\"Painel ACCA-NG (Light Mode)\",\"screenshot\":{\"name\":\"projects/8703406586496560780/files/270ed8724117440ea90c622036393775\",\"downloadUrl\":\"https://lh3.googleusercontent.com/aida/AEtjO1UK6fNF5o6C3voyVhHVqpc-j6I0jVimUrL3XrXuIihIQJnFkAQ8NTmx4WUPErFkyVVR8plhk4AAXgx94TtlWRn4QkWH2L8m0koBfh5JxrObLBin3TyVYdtw3TL7v5jQGoccEx1ghVMnIujm9nfDCt9obKcSKiFAZwdczRApUZysGk3vJkegOc8ja75yNNJqoJOYwUZZMmRhAhNkyIW6jvSt9ZdYBE_ZxWJPzlVkY0KZC2PwLaUZIZTRJGE\"},\"htmlCode\":{\"name\":\"projects/8703406586496560780/files/4dbc2827556f41d3857076db1f26d36b\",\"downloadUrl\":\"https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzlkOTc1N2ViOTdkNTRmM2U4N2VlOThiNjc3OGJlOWRmEgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242\",\"mimeType\":\"text/html\"},\"width\":\"780\",\"height\":\"1856\",\"deviceType\":\"MOBILE\"}]}",
+        "type": "text"
+      }
+    ],
+    "structuredContent": {
+      "screens": [
+        {
+          "deviceType": "MOBILE",
+          "height": "1768",
+          "htmlCode": {
+            "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzkxZWVkYjJjN2UwZTQ2YThhOTA1NTMyMGZmYTk4N2ZjEgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242",
+            "mimeType": "text/html",
+            "name": "projects/8703406586496560780/files/b0b52a3637a141888dafddf596ec6c27"
+          },
+          "name": "projects/8703406586496560780/screens/6ff21d77276941b08365ea23829ab993",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1XEKAAW_QEw1EBdLo_5Vkzf4CJc5jErA8F_KQ7LvShAAPfPc1_SVLvY4rtXXNmD_lbEzGzV_3jT6BgmZth9zH8gegRUdfWkBQslj1HBhEEp0YH94KWO8ozCREnhwV_biJIQrao5du7iiNG6m1K8pVfDq-wtjbq6JBXJMWcmSl4E4YLBHCiGJYMsKz_WLnXHyiafev6eEgqpyGKd5_MkNlnbiOdUhuYHN8FuMleyw9zjJbP0SoSaOEL3Cl0",
+            "name": "projects/8703406586496560780/files/17cd0d94189a4989a745e193570ce8cd"
+          },
+          "title": "Perfis ACCA-NG (Dark Mode)",
+          "width": "780"
+        },
+        {
+          "height": "3040",
+          "htmlCode": {},
+          "name": "projects/8703406586496560780/screens/13747709581754029053",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1U4vfzTGzqn6IXFUiFGeSxviz0_hM3E38ODFLjjsaCIvNSFbvJKBelwPKzWG9Lt9kGZ99UrE2W1-v9QLrRao3uuUSz08VD8oKYoZXicbUV6MvbtTuSdwlft2cubxBr4mu_xGQyshKnwnb5EYzVHhSLQuB7JBeGSorgJqXLq81ljJGwMUjEracN9JOdahA5DazUJixEkV9MLN92ELHT4xRAv7DGvyR6GM-E_jNY330vOBixHT0opOoid6PcDOPpwypYn_LYhWd0_wg",
+            "name": "projects/8703406586496560780/files/13747709581754029742"
+          },
+          "title": "BEFORE \u2014 Charge configuration editor",
+          "width": "1440"
+        },
+        {
+          "height": "3040",
+          "htmlCode": {},
+          "name": "projects/8703406586496560780/screens/1410744368778176011",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1XKuEtTpdbtjZLaIwmk8D9EWYKBeHrUcB6EnHWK2lIkloao2MU51pSI1hWOv6tR3jBZO6myBZSPviqylxvUmGd_vBnObXnOPlQZsQ_i1316a3mwLdnKTJqgdcM956yg-cbnO4medD9K1OCurQSZe_KPnHcC37nPPmFS69TdTOLS6sXZNoWsvFmb4rN_iTZGRRp_BOadbDYJBRycAFkVOGUTsQC2W-OJykdFVJauIzMwEAa9ZqpFdihUWbgI0KFbgJIN2A6b45Danw",
+            "name": "projects/8703406586496560780/files/1410744368778174676"
+          },
+          "title": "BEFORE \u2014 Profiles / Perfis",
+          "width": "1440"
+        },
+        {
+          "deviceType": "MOBILE",
+          "height": "2414",
+          "htmlCode": {
+            "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2RlYWVjNzNlNTljOTRiNjhhNjBhNDllMGQ3ZTVkM2MzEgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242",
+            "mimeType": "text/html",
+            "name": "projects/8703406586496560780/files/95cb5c8cca534705832ab77e4154e32e"
+          },
+          "name": "projects/8703406586496560780/screens/b9ee125445184ddd86e1fe94cfb0948d",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1V6KXGmY54sKaYKf_uzshhP9Awv7-p7aj2uu-BHgXTiAHRPI-FJOXu8loPWWUKLS5EH5WmXaDLDfFR8NDVrZ04z4DP9b6QoyZcwvkV7E0I_ufmJCaNAiSol7duvQuJZfNo86Imy-Q5R7eR34YZyrrKUST5_z7CcowuEUlMwXSNMZ4NPyz3M98-JkcCXPFZWM8Ih6h4E4mgpkuhJiu62lj_5K3U2R3AepYfBKXurrqI7wUzORdgTY9kC6g",
+            "name": "projects/8703406586496560780/files/e1572f86a4a240f4ba794c795c25361e"
+          },
+          "title": "Bateria e Alimenta\u00e7\u00e3o ACCA-NG (Dark Mode)",
+          "width": "780"
+        },
+        {
+          "deviceType": "MOBILE",
+          "height": "1850",
+          "htmlCode": {
+            "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzI0OTk4MDhlYjUzYzQxZTg4ODgwMWI3MzY3NDBkNGM4EgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242",
+            "mimeType": "text/html",
+            "name": "projects/8703406586496560780/files/90f5c88d6681473aa63887eff2439c03"
+          },
+          "name": "projects/8703406586496560780/screens/617c690862414f2e94f26a4e1d3e0215",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UeQmRA_d5Zf9163Ihum6fJseRahqea9cX8gAJ8TDx93yizIR8M6GkO1uxXTyPtRhjzAw9ghPH_ydd7sfZR3pOOXkpLfr5eVwQG1hSrDPGHBvIxwJpF-Cu8_3JYJ-JJMUqmrBY7U6kOx_qUzlNwk-PeabF3jZFPT2b6oTbG08xOOZcnsk5QEJ8ihj9JVlNBlUYdGIn_Sn7P-G-IIEsQvF5f_ELPOeM8Ni88Ept5CvAfX7P8AUSuQl41ww",
+            "name": "projects/8703406586496560780/files/a93a85b7c0f94e6cb9c6ad6e7bbf866c"
+          },
+          "title": "Painel ACCA-NG (Dark Mode)",
+          "width": "780"
+        },
+        {
+          "height": "3040",
+          "htmlCode": {},
+          "name": "projects/8703406586496560780/screens/10525471869665436818",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UtGa_hUiXKDLno6WX1m2HR1oYnqYdtEHZAK17fPeio03QXjNA57ZA4DA4aQzP-CPtp7tUVn4GkYMCrdKWvwYPDzQOpzzH7BPNAmSqZ-2v9fj7N48hNMI7bqM6MSYtSjaSlJeWc70B6x-BgfO3unjdDgwAPg9tE3xAUbhy4SQIPWJR3o0HDbs2qq1PC3TG5qy1RJ4xcdAH09vNN1U2tNbzwfIJ9H154LMPhu5Wep4VwdFatSnqWLJajq4r8cSJ2MKlGTHTrkKhwwA",
+            "name": "projects/8703406586496560780/files/10525471869665439233"
+          },
+          "title": "BEFORE \u2014 Battery and power details",
+          "width": "1440"
+        },
+        {
+          "height": "920",
+          "htmlCode": {},
+          "name": "projects/8703406586496560780/screens/9524597780311865903",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1Vz2eA7mPwaKS84M2_QAcjrB3uwUZfcGlIbBSGPtUrefQMIxuYbostofH_GVQ_rZkskamFekJqxyL7LtAO_WqrmgyXJaRQaErlsVlr-zrUuKIw01eUF3S4FSGvV-aQRlYd9T4ULcYsiDFOxVMqhHY8KgRmPtcF5Iao--8IALIuwrhoXC0rHwHeGVcz3YWlsABGItCGWCkUTDZrCg4HzZ_QeHhnk7bIP_34yFeC9uY-tVJQcVvN4XFW0E-tbxi_d6NEhxgMkX8CGwg",
+            "name": "projects/8703406586496560780/files/9524597780311866330"
+          },
+          "title": "BRAND REFERENCE \u2014 yellow and charcoal ACCA-NG identity",
+          "width": "1440"
+        },
+        {
+          "height": "3040",
+          "htmlCode": {},
+          "name": "projects/8703406586496560780/screens/14782918362553054083",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1XIfaSkOSVejMOQfCghsT4XPJjegapj1OO-T-mjsDJE694wXUOGpNwxSIrstKhdlQbeCJ45JWuFBxx0Q5fRNiLnG-HGusGMuN6vpIwpsuPWqB6wCeVz26TgkuZZj3ROxbnpx7Mb_I5Mv--wb-RlSm0PrxchjkYGOHwuBI4aQ6kcCXRukSdae_5Qq7QowUZXRT7k_SM7wHY_-uJYNCq7mrM1bZrxTVEM2IoCsj_tI05dVqYPX5wy93CahJ7yolT2jQG47kdHsOT9nw",
+            "name": "projects/8703406586496560780/files/14782918362553056582"
+          },
+          "title": "BEFORE \u2014 Dashboard / Painel",
+          "width": "1440"
+        },
+        {
+          "deviceType": "MOBILE",
+          "height": "1856",
+          "htmlCode": {
+            "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzlkOTc1N2ViOTdkNTRmM2U4N2VlOThiNjc3OGJlOWRmEgsSBxDkr9nNoBQYAZIBIwoKcHJvamVjdF9pZBIVQhM4NzAzNDA2NTg2NDk2NTYwNzgw&filename=&opi=96797242",
+            "mimeType": "text/html",
+            "name": "projects/8703406586496560780/files/4dbc2827556f41d3857076db1f26d36b"
+          },
+          "name": "projects/8703406586496560780/screens/e99569485eb04919a761cd22390251db",
+          "screenshot": {
+            "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UK6fNF5o6C3voyVhHVqpc-j6I0jVimUrL3XrXuIihIQJnFkAQ8NTmx4WUPErFkyVVR8plhk4AAXgx94TtlWRn4QkWH2L8m0koBfh5JxrObLBin3TyVYdtw3TL7v5jQGoccEx1ghVMnIujm9nfDCt9obKcSKiFAZwdczRApUZysGk3vJkegOc8ja75yNNJqoJOYwUZZMmRhAhNkyIW6jvSt9ZdYBE_ZxWJPzlVkY0KZC2PwLaUZIZTRJGE",
+            "name": "projects/8703406586496560780/files/270ed8724117440ea90c622036393775"
+          },
+          "title": "Painel ACCA-NG (Light Mode)",
+          "width": "780"
+        }
+      ]
+    }
+  }
+}
