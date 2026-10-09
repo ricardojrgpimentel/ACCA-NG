@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AccA</string>
     <string name="app_name_full">Aplicación avanzada de controlador de carga</string>
     <string name="title_activity_log_view">Registros</string>
     <string name="title_activity_log_view_file_name">Registros</string>

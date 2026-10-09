@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AccA</string>
+    <string name="app_name" translatable="false">acca-ng</string>
     <string name="app_name_full">Advanced Charging Controller App</string>
     <string name="title_activity_log_view">Logs</string>
     <string name="title_activity_log_view_file_name">Logs</string>
