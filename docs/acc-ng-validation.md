@@ -242,3 +242,30 @@ latency and automatic discovery remain separate open work; locked boot and
 other pending physical checks above are still unverified. Pre-reboot engine
 configuration and boot identity are saved privately on the phone for the next
 check.
+
+
+### Candidate locked boot
+
+The user rebooted with USB connected and left the device at its first PIN
+prompt. Root ADB remained available before credential unlock.
+
+- The kernel boot identity changed; uptime was 107.51 seconds at the first
+  check, independently confirming a new boot.
+- Both dumpsys user and activity processes reported user 0 RUNNING_LOCKED.
+  Neither the official nor debug app had a running process at that check.
+- ACC-NG v1.0.5-ng started automatically through the enabled Magisk module.
+  One daemon was running, PID 8586, matching the runtime lock. Process start
+  ticks and CLK_TCK placed its launch at 30.63 seconds after boot.
+- The configuration SHA-256 matched the pre-reboot backup exactly:
+  3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2.
+  Resume 70%, pause 80%, cooldown, thermal limits, polarity and notification
+  preferences persisted. NG state reported connected=true with USB online=1.
+- Battery capacity was 79% and temperature 28.7 °C. The single current sample
+  was negative despite the reported Charging state; this startup observation
+  is not evidence of positive net battery charging or a new physical cutoff
+  cycle. The earlier known-switch cycle remains the physical cutoff evidence.
+
+Locked boot persistence passes on this Samsung/Magisk combination without
+opening either app. The user was told they could unlock after the check.
+Automatic discovery/state freshness, current/voltage reset/reapplication,
+rollback, OEM thermal policy and other root managers remain separate work.
