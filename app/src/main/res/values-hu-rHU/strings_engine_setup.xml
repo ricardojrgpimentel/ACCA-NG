@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">ACC-NG beállítása</string>
+    <string name="ng_setup_message">Az AccA-NG-nek szüksége van az ACC-NG töltőmotorra. Az alkalmazás root hozzáféréssel telepíti azt. A Magiskban Advanced Charging Controller NG (ACC-NG) néven jelenik meg.\n\nNem szükséges ZIP-et manuálisan letölteni vagy telepíteni. Ha másik ACC van telepítve, az ki lesz cserélve, miközben a beállítások megmaradnak.\n\nHa kalibráció szükséges, válasszon le minden töltőt, majd kövesse a Töltési diagnosztika lépéseit. Ezután válassza ki a töltési határokat, vagy alkalmazzon egy profilt az alkalmazásban.</string>
+    <string name="ng_setup_install">Beállítás</string>
+    <string name="ng_setup_installing">ACC-NG beállítása</string>
+    <string name="ng_setup_root_required">Az AccA-NG-nek root hozzáférés szükséges az ACC-NG telepítéséhez és a töltés vezérléséhez. Engedélyezze az AccA-NG-t a root kezelő Superuser szekciójában, majd nyissa meg újra az alkalmazást.</string>
+</resources>

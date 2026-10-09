@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Mostra comandi ▾</string>
+    <string name="command_hide_details">Nascondi comandi ▴</string>
+    <string name="command_review_details">Visualizza comandi</string>
+    <string name="command_trace_note">Comandi di questa azione. Alcuni codici di uscita rappresentano uno stato ACC previsto.</string>
+    <string name="command_trace_waiting">In attesa del primo comando…</string>
+    <string name="command_trace_running">Passaggio %1$d · In esecuzione…</string>
+    <string name="command_trace_finished">Passaggio %1$d · Terminato (codice di uscita %2$d)</string>
+    <string name="command_trace_interrupted">Passaggio %1$d · Esecuzione interrotta</string>
+    <string name="command_trace_output">Output: %1$s</string>
+    <string name="command_result_ready">L’azione è terminata. Puoi esaminare i dettagli o chiudere.</string>
+    <string name="command_trace_empty">Questa azione non ha eseguito comandi root.</string>
+</resources>

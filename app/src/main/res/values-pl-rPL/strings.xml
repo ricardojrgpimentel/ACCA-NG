@@ -254,4 +254,15 @@ Wersja Bundled jest testowana pod kątem działania z aplikacją AccA, dlatego j
         \n\nJeśli błąd będzie się powtarzał, udostępnij poniższy stacktrace  wraz z ACC &amp; Wersja AccA (poprzez menu 3-kropkowe &gt; O programistach) za pośrednictwem Telegram.\n\n%s</string>
     <string name="automatic_switch_eanbled">Automatyczny przełącznik aktywowany</string>
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">Wersja ACC-NG</string>
+    <string name="ng_engine_summary">Silnik ładowania utrzymywany dla AccA-NG. Dołączona wersja jest testowana z tą aplikacją.</string>
+    <string name="ng_engine_picker_message">Wybierz wersję ACC-NG.</string>
+    <string name="ng_engine_bundled">ACC-NG dołączony (zalecany)</string>
+    <string name="ng_engine_main">ACC-NG w fazie rozwoju (main)</string>
+    <string name="ng_engine_main_warning">Wersja deweloperska może zawierać zmiany, które nie były testowane z tą aplikacją.</string>
+    <string name="ng_engine_notifications_title">Powiadomienia o ładowaniu</string>
+    <string name="ng_engine_notifications_summary">Powiadomienia o połączeniu, wstrzymaniu, wznowieniu, temperaturze i niskim poziomie baterii z ACC-NG. Ochrona ładowania pozostaje aktywna, gdy te powiadomienia są wyłączone.</string>
+    <string name="ng_engine_setting_failed">Nie udało się potwierdzić ustawienia w ACC-NG.</string>
+    <string name="use_default_config">Użyj ustawień domyślnych</string>
 </resources>

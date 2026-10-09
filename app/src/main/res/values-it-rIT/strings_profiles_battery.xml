@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Scegli un punto di partenza</string>
+    <string name="preset_description">Queste opzioni impostano i limiti di carica. Scegline una, regola i valori sottostanti e salva il profilo. Ha effetto quando applichi il profilo.</string>
+    <string name="preset_daily_name">Uso quotidiano</string>
+    <string name="preset_plugged_name">Collegato a lungo</string>
+    <string name="preset_travel_name">Viaggio</string>
+    <string name="preset_option">%1$s\n%2$s\nSi ferma al %3$d%% · Riprende al %4$d%%</string>
+    <string name="battery_state_charging">In carica</string>
+    <string name="battery_state_paused">Ricarica in pausa</string>
+    <string name="battery_state_full">Batteria piena</string>
+    <string name="battery_state_discharging">In scarica</string>
+    <string name="battery_state_not_charging">Non in carica</string>
+    <string name="battery_state_unknown">Stato di ricarica sconosciuto</string>
+    <string name="battery_power_disconnected">Caricatore scollegato</string>
+    <string name="battery_power_ac">Cavo collegato · CA</string>
+    <string name="battery_power_usb">Cavo collegato · USB</string>
+    <string name="battery_power_wireless">Caricatore wireless collegato</string>
+    <string name="battery_power_dock">Base di ricarica collegata</string>
+    <string name="battery_power_connected">Caricatore collegato</string>
+    <string name="battery_power_unknown">Collegamento del caricatore sconosciuto</string>
+    <string name="battery_paused_hint">Il caricatore è collegato, ma la batteria non è in carica.</string>
+</resources>

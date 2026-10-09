@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACC parancsok végrehajtása. Kérlek, várj…</string>
+    <string name="command_completed">Művelet befejezve</string>
+    <string name="command_failed_title">A művelet nem fejeződött be</string>
+    <string name="command_failed_message">A változtatás nem erősíthető meg. Ellenőrizd az aktuális állapotot vagy próbáld újra.</string>
+    <string name="command_close">Bezárás</string>
+    <string name="command_stop_acc">ACC leállítása…</string>
+    <string name="command_start_acc">ACC indítása…</string>
+    <string name="command_restart_acc">ACC újraindítása…</string>
+    <string name="command_read_status">ACC állapotának olvasása…</string>
+    <string name="command_apply_settings">Beállítások alkalmazása…</string>
+    <string name="command_apply_profile">Profil alkalmazása…</string>
+    <string name="command_reset_stats">Akkumulátor-statisztikák visszaállítása…</string>
+    <string name="command_charge_once">Töltési korlát beállítása…</string>
+    <string name="acc_status_unavailable">ACC állapot nem elérhető</string>
+    <string name="battery_summary_title">Akkumulátor összefoglaló</string>
+    <string name="battery_cycles_label">Jelentett töltési ciklusok</string>
+    <string name="battery_full_capacity_label">Becsült teljes kapacitás</string>
+    <string name="battery_design_capacity_label">Tervezett kapacitás</string>
+    <string name="battery_diagnostics_note">Az eszköz által jelentett értékek. A nem elérhető mérések egyértelműen megjelennek.</string>
+    <string name="battery_data_unavailable">Nem elérhető</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

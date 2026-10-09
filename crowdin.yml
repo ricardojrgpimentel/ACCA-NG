@@ -1,3 +1,23 @@
 files:
   - source: app/src/main/res/values/strings.xml
     translation: /app/src/main/res/values-%android_code%/strings.xml
+  - source: app/src/main/res/values/strings_about.xml
+    translation: /app/src/main/res/values-%android_code%/strings_about.xml
+  - source: app/src/main/res/values/strings_charge_editor.xml
+    translation: /app/src/main/res/values-%android_code%/strings_charge_editor.xml
+  - source: app/src/main/res/values/strings_command_details.xml
+    translation: /app/src/main/res/values-%android_code%/strings_command_details.xml
+  - source: app/src/main/res/values/strings_commands_battery.xml
+    translation: /app/src/main/res/values-%android_code%/strings_commands_battery.xml
+  - source: app/src/main/res/values/strings_design.xml
+    translation: /app/src/main/res/values-%android_code%/strings_design.xml
+  - source: app/src/main/res/values/strings_energy.xml
+    translation: /app/src/main/res/values-%android_code%/strings_energy.xml
+  - source: app/src/main/res/values/strings_engine_setup.xml
+    translation: /app/src/main/res/values-%android_code%/strings_engine_setup.xml
+  - source: app/src/main/res/values/strings_profile_state.xml
+    translation: /app/src/main/res/values-%android_code%/strings_profile_state.xml
+  - source: app/src/main/res/values/strings_profiles_battery.xml
+    translation: /app/src/main/res/values-%android_code%/strings_profiles_battery.xml
+  - source: app/src/main/res/values/strings_troubleshoot.xml
+    translation: /app/src/main/res/values-%android_code%/strings_troubleshoot.xml

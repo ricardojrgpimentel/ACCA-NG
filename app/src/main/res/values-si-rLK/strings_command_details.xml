@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">විධාන පෙන්වන්න ▾</string>
+    <string name="command_hide_details">විධාන සඟවන්න ▴</string>
+    <string name="command_review_details">විධාන බලන්න</string>
+    <string name="command_trace_note">මෙම ක්‍රියාව සඳහා විධාන. සමහර පිටවීමේ කේත අපේක්ෂිත ACC තත්ත්වයන් නියෝජනය කරයි.</string>
+    <string name="command_trace_waiting">පළමු විධානය සඳහා රැඳී සිටී…</string>
+    <string name="command_trace_running">පියවර %1$d · ක්‍රියාත්මක වෙමින්…</string>
+    <string name="command_trace_finished">පියවර %1$d · අවසන් (පිටවන කේතය %2$d)</string>
+    <string name="command_trace_interrupted">පියවර %1$d · ක්‍රියාත්මක කිරීම අතරමග නැවතුණි</string>
+    <string name="command_trace_output">නිමැවුම: %1$s</string>
+    <string name="command_result_ready">ක්‍රියාව අවසන් වී ඇත. ඔබට විස්තර සමාලෝචනය කළ හැකිය හෝ වසා දැමිය හැක.</string>
+    <string name="command_trace_empty">මෙම ක්‍රියාව root විධාන ක්‍රියාත්මක කළේ නැත.</string>
+</resources>

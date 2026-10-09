@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Tổng quan</string>
+    <string name="ui_nav_schedules">Lịch trình</string>
+    <string name="ui_profiles_intro">Sở thích sạc của bạn, sẵn sàng để áp dụng.</string>
+    <string name="ui_scripts_intro">Lệnh nhanh cho bộ điều khiển sạc của bạn.</string>
+    <string name="ui_schedules_intro">Cho phép lịch trình sạc của bạn chạy tự động.</string>
+    <string name="ui_profiles_empty">Chưa có hồ sơ nào\nNhấn + để lưu thiết lập sạc đầu tiên của bạn.</string>
+    <string name="ui_scripts_empty">Lệnh của bạn nằm ở đây\nNhấn + để tạo script đầu tiên của bạn.</string>
+    <string name="ui_schedules_empty">Xây dựng lịch trình sạc của bạn\nNhấn + để lập lịch hồ sơ sạc.</string>
+    <string name="ui_add_profile">Thêm hồ sơ</string>
+    <string name="ui_add_script">Thêm script</string>
+    <string name="ui_add_schedule">Thêm lịch trình</string>
+    <string name="ui_custom_config">Cài đặt sạc</string>
+    <string name="ui_charge_once">Sạc một lần đến mức đã chọn</string>
+    <string name="ui_profile_options">Tùy chọn hồ sơ</string>
+    <string name="ui_script_options">Tùy chọn script</string>
+    <string name="ui_schedule_options">Tùy chọn lịch trình</string>
+    <string name="resume_temperature">Tiếp tục dưới đây</string>
+    <string name="template_temperature_profile_resume">Làm mát: %1$d°C · Tạm dừng: %2$d°C · Tiếp tục: %3$d°C</string>
+    <string name="command_copy_details">Sao chép chi tiết</string>
+    <string name="command_details_copied">Chi tiết lệnh đã được sao chép</string>
+</resources>

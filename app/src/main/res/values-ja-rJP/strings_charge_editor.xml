@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">適度な充電制限での日常使用向け。</string>
+    <string name="preset_plugged_help">長時間充電器に接続する電話向け。バッテリーレベルを低く保つ; バイパスを保証しない。</string>
+    <string name="preset_travel_help">出かける前により多くのバッテリーを確保するため。より高い充電レベルを許可。</string>
+    <string name="charge_limits_title">バッテリー充電制限 (%)</string>
+    <string name="charge_limits_help">すべての値はバッテリーレベルの割合です。再開には、接続された充電器と適切な温度が必要です。これらの制限を適用するには、ACC（アクセサリー電源）が作動している必要があります。</string>
+    <string name="charge_pause_label">充電停止</string>
+    <string name="charge_pause_help">バッテリーがこのレベルに達したときに充電を一時停止します。</string>
+    <string name="charge_resume_label">充電再開</string>
+    <string name="charge_resume_help">一時停止後、バッテリーがこのレベル以下になると充電を再開します。</string>
+    <string name="charge_shutdown_label">携帯電話をオフにする</string>
+    <string name="charge_shutdown_help">バッテリーが充電されていない場合、このレベル以下で電話をシャットダウンします。これは充電を一時停止するだけではありません。</string>
+    <string name="charge_cycle_summary">充電は%1$d%%で停止し、%2$d%%以下で再開します。</string>
+    <string name="charge_unlimited_summary">停止の∞は、バッテリーのパーセンテージに基づく停止制限を解除します。再開の∞は、どのバッテリーレベルでも充電の再開を可能にします。</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d 秒</string>
+    <string name="charge_limit_disabled">このプロファイルの充電制限は無効です。</string>
+    <string name="charge_unlimited_hint">∞は無効になったパーセンテージの閾値を示します。</string>
+    <string name="charge_restore_limits">初期の充電制限を復元</string>
+    <string name="charge_switch_label">充電制御方法</string>
+    <string name="charge_switch_help">ACCは互換デバイス制御を使用して充電を有効または一時停止します。デバイスに必要な方法がわかっている場合を除き、自動のままにしてください。</string>
+    <string name="charge_switch_automatic">互換方法を自動で検索</string>
+    <string name="charge_power_title">電流および電圧の制限</string>
+    <string name="charge_max_current">最大電流（mA）:</string>
+</resources>

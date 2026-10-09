@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">명령 표시 ▾</string>
+    <string name="command_hide_details">명령 숨기기 ▴</string>
+    <string name="command_review_details">명령 보기</string>
+    <string name="command_trace_note">이 동작을 위한 명령. 일부 종료 코드는 예상되는 ACC 상태를 나타냅니다.</string>
+    <string name="command_trace_waiting">첫 번째 명령을 기다리는 중…</string>
+    <string name="command_trace_running">단계 %1$d · 실행 중…</string>
+    <string name="command_trace_finished">단계 %1$d · 완료 (종료 코드 %2$d)</string>
+    <string name="command_trace_interrupted">단계 %1$d · 실행 중단</string>
+    <string name="command_trace_output">출력: %1$s</string>
+    <string name="command_result_ready">동작이 완료되었습니다. 세부 정보를 검토하거나 닫을 수 있습니다.</string>
+    <string name="command_trace_empty">이 동작은 루트 명령을 실행하지 않았습니다.</string>
+</resources>

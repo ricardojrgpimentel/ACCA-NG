@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">情報</string>
+    <string name="about_ng_intro">高度な充電制御。\nAccA の独立フォークです。</string>
+    <string name="about_ng_debug">デバッグ</string>
+    <string name="about_ng_release">リリース</string>
+    <string name="about_ng_maintained_by">維持者</string>
+    <string name="about_ng_maintainer_role">フォークの開発と維持</string>
+    <string name="about_ng_profile">GitHub プロフィール</string>
+    <string name="about_ng_project">GitHub 上のプロジェクト</string>
+    <string name="about_ng_issues">問題を報告</string>
+    <string name="about_ng_origin">出典とクレジット</string>
+    <string name="about_ng_origin_blurb">AccA-NG は AccA を基にしており、インターフェース、互換性、信頼性が改善されています。</string>
+    <string name="about_ng_original_team">オリジナルの AccA チーム</string>
+    <string name="about_ng_acc_author">ACC と DJS の作者</string>
+    <string name="about_ng_original_project">オリジナルの AccA プロジェクト</string>
+    <string name="about_ng_community">ACC コミュニティ</string>
+    <string name="about_ng_technical">技術情報</string>
+    <string name="about_ng_app_version">アプリバージョン</string>
+    <string name="about_ng_acc_version">インストール済みACC</string>
+    <string name="about_ng_api_version">ACCインターフェースバージョン</string>
+    <string name="about_ng_loading">読み込み中…</string>
+    <string name="about_ng_unavailable">利用不可</string>
+    <string name="about_ng_licenses">ライセンスと帰属</string>
+    <string name="about_ng_license_blurb">GPL-3.0のオープンソースソフトウェア。元のAccA著作権: © 2019–2021 MatteCarra、Squabbi、VR25。</string>
+    <string name="about_ng_view_license">GPL-3.0ライセンスを読む</string>
+    <string name="about_ng_attributions">AndroidX、Material Components、libsu、Room、Moshi、Material Dialogs およびその他のオープンソースライブラリで構築。\n\nTelegramアイコン: ピクセルパーフェクト / Flaticon。</string>
+    <string name="about_ng_footer">オープンソースプロジェクト · 独立フォーク</string>
+    <string name="about_ng_expanded">展開</string>
+    <string name="about_ng_collapsed">折りたたみ</string>
+</resources>

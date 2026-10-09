@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">顯示指令 ▾</string>
+    <string name="command_hide_details">隱藏指令 ▴</string>
+    <string name="command_review_details">查看指令</string>
+    <string name="command_trace_note">此操作的指令。有些退出代碼代表預期的 ACC 狀態。</string>
+    <string name="command_trace_waiting">等待第一個指令…</string>
+    <string name="command_trace_running">步驟 %1$d · 執行中…</string>
+    <string name="command_trace_finished">步驟 %1$d · 已完成 (退出代碼 %2$d)</string>
+    <string name="command_trace_interrupted">步驟 %1$d · 執行中斷</string>
+    <string name="command_trace_output">輸出：%1$s</string>
+    <string name="command_result_ready">操作已完成。您可以檢視詳細資訊或關閉。</string>
+    <string name="command_trace_empty">此操作未執行 root 指令。</string>
+</resources>

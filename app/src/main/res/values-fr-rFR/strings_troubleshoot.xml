@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnostic de charge</string>
+    <string name="troubleshoot_intro">Vérifiez le service de charge, l’étalonnage et les limites appliquées. Le diagnostic s’actualise automatiquement tant que cet écran reste ouvert.</string>
+    <string name="troubleshoot_no_issue">Aucun problème détecté dans les mesures actuelles. Cela ne confirme pas un cycle complet de charge et de reprise.</string>
+    <string name="troubleshoot_unavailable">Diagnostic indisponible. Vérifiez l’accès root et l’installation d’ACC, puis réessayez.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Ce service ACC modifié utilise des limites fixes de 90%/80% et ignore celles des profils. Restaurez le service intégré pour rétablir le contrôle par profils.</string>
+    <string name="troubleshoot_different_module">Le service installé diffère de celui intégré à l’application. Il peut s’agir d’une version légitime ou modifiée ; la différence seule ne prouve pas un défaut.</string>
+    <string name="troubleshoot_calibration_pending">ACC fonctionne mais attend l’étalonnage du courant. Débranchez tous les chargeurs et utilisez Étalonner le courant pour terminer cette étape.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC attend l’étalonnage</string>
+    <string name="troubleshoot_stopped">Le service ACC est arrêté. Démarrez-le depuis le tableau de bord pour appliquer les limites de charge.</string>
+    <string name="troubleshoot_above_limit">La batterie continue de charger à la limite configurée ou au-dessus depuis au moins 30 secondes. Vérifiez l’étalonnage et le module ; le mécanisme de coupure choisi peut également être inefficace.</string>
+    <string name="troubleshoot_refresh">Vérifier à nouveau</string>
+    <string name="troubleshoot_calibrate">Étalonner le courant</string>
+    <string name="troubleshoot_calibrate_now">Démarrer l’étalonnage</string>
+    <string name="troubleshoot_calibration_instructions">Débranchez l’USB, la charge sans fil et tous les autres chargeurs. Attendez quelques secondes, puis démarrez. L’application collecte cinq mesures de décharge sur 10 secondes et sauvegarde la configuration. Laissez les chargeurs débranchés jusqu’à la fin. Si les mesures sont instables ou indisponibles, l’étalonnage reste inchangé.</string>
+    <string name="troubleshoot_calibration_failed">L’étalonnage n’a pas pu être confirmé. Laissez tous les chargeurs débranchés, attendez que les mesures se stabilisent et réessayez.</string>
+    <string name="troubleshoot_calibration_success">Étalonnage du courant enregistré et vérifié. Rebranchez le chargeur et consultez le diagnostic.</string>
+    <string name="troubleshoot_restore">Restaurer le service intégré</string>
+    <string name="troubleshoot_restore_confirmation">Remplace le service de charge ACC par le service d’origine intégré de la même version. Les modifications du service seront supprimées. L’application sauvegarde d’abord le module et la configuration, conserve vos réglages, redémarre le service et vérifie la réparation. Si la vérification échoue, elle tente de restaurer le service précédent.</string>
+    <string name="troubleshoot_restore_success">Le service d’origine a été restauré et vérifié. Les limites de charge ont été conservées. Si l’étalonnage est encore en attente, terminez-le avant de tester le contrôle de charge.</string>
+    <string name="troubleshoot_restore_failed">La récupération du service a échoué. Consultez les détails des commandes pour connaître l’emplacement de la sauvegarde et l’erreur. Vérifiez le diagnostic avant de réessayer.</string>
+    <string name="troubleshoot_incompatible_version">La récupération nécessite la même version d’ACC que celle intégrée à l’application. Les autres versions ne sont ni remplacées ni rétrogradées ici.</string>
+    <string name="troubleshoot_details">Code de version ACC : %1$s\nBatterie : %2$s%%\nArrêt : %3$s%% · Reprise : %4$s%%\nÉtat de la batterie : %5$s\nCourant : %6$s mA\nPolarité de décharge : %7$s\nMécanisme de coupure : %8$s</string>
+    <string name="troubleshoot_backup">Sauvegarde : %1$s</string>
+    <string name="troubleshoot_copy">Copier le diagnostic</string>
+    <string name="troubleshoot_copied">Diagnostic copié</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">Thiết lập ACC-NG</string>
+    <string name="ng_setup_message">AccA-NG cần động cơ sạc ACC-NG. Ứng dụng cài đặt nó với quyền root. Trong Magisk, nó xuất hiện dưới tên Advanced Charging Controller NG (ACC-NG).\n\nBạn không cần tải hoặc cài đặt ZIP thủ công. Nếu một ACC khác đã được cài, nó sẽ bị thay thế trong khi giữ nguyên cài đặt.\n\nNếu cần hiệu chỉnh, hãy ngắt kết nối tất cả các bộ sạc và làm theo Hướng dẫn chẩn đoán sạc. Sau đó chọn giới hạn sạc của bạn hoặc áp dụng một hồ sơ trong ứng dụng.</string>
+    <string name="ng_setup_install">Thiết lập</string>
+    <string name="ng_setup_installing">Đang thiết lập ACC-NG</string>
+    <string name="ng_setup_root_required">AccA-NG cần quyền root để cài đặt ACC-NG và điều khiển sạc. Cho phép AccA-NG trong phần Superuser của trình quản lý root của bạn, sau đó mở lại ứng dụng.</string>
+</resources>

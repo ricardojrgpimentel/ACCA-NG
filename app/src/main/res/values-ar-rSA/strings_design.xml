@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">نظرة عامة</string>
+    <string name="ui_nav_schedules">الجداول</string>
+    <string name="ui_profiles_intro">تفضيلات الشحن الخاصة بك، جاهزة للتطبيق.</string>
+    <string name="ui_scripts_intro">أوامر سريعة لوحدة تحكم الشحن الخاصة بك.</string>
+    <string name="ui_schedules_intro">دع روتين الشحن يعمل تلقائيًا.</string>
+    <string name="ui_profiles_empty">لا توجد ملفات شخصية بعد\nاضغط + لحفظ إعداد الشحن الأول الخاص بك.</string>
+    <string name="ui_scripts_empty">أوامرك موجودة هنا\nاضغط + لإنشاء البرنامج النصي الأول الخاص بك.</string>
+    <string name="ui_schedules_empty">بناء روتين الشحن الخاص بك\nاضغط + لجدولة ملف شحن.</string>
+    <string name="ui_add_profile">إضافة ملف شخصي</string>
+    <string name="ui_add_script">إضافة برنامج نصي</string>
+    <string name="ui_add_schedule">إضافة جدول</string>
+    <string name="ui_custom_config">إعدادات الشحن</string>
+    <string name="ui_charge_once">شحن مرة واحدة إلى المستوى المختار</string>
+    <string name="ui_profile_options">خيارات الملف الشخصي</string>
+    <string name="ui_script_options">خيارات البرنامج النصي</string>
+    <string name="ui_schedule_options">خيارات الجدول</string>
+    <string name="resume_temperature">استئناف أدناه</string>
+    <string name="template_temperature_profile_resume">التبريد: %1$d°C · الإيقاف المؤقت: %2$d°C · الاستئناف: %3$d°C</string>
+    <string name="command_copy_details">نسخ التفاصيل</string>
+    <string name="command_details_copied">تم نسخ تفاصيل الأمر</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Untuk penggunaan sehari-hari dengan batas pengisian sedang.</string>
+    <string name="preset_plugged_help">Untuk ponsel yang menghabiskan banyak jam terhubung ke pengisi daya. Menjaga level baterai lebih rendah; tidak menjamin bypass.</string>
+    <string name="preset_travel_help">Untuk lebih banyak baterai tersedia sebelum keluar. Memungkinkan tingkat pengisian yang lebih tinggi.</string>
+    <string name="charge_limits_title">Batas pengisian baterai (%)</string>
+    <string name="charge_limits_help">Semua nilai adalah persentase dari tingkat baterai. Melanjutkan membutuhkan charger yang terhubung dan suhu yang sesuai. ACC harus menyala untuk menerapkan batas ini.</string>
+    <string name="charge_pause_label">Berhenti mengisi daya pada</string>
+    <string name="charge_pause_help">Menjeda pengisian saat baterai mencapai tingkat ini.</string>
+    <string name="charge_resume_label">Lanjutkan mengisi daya pada</string>
+    <string name="charge_resume_help">Setelah jeda, melanjutkan saat baterai turun ke tingkat ini atau lebih rendah.</string>
+    <string name="charge_shutdown_label">Matikan ponsel pada</string>
+    <string name="charge_shutdown_help">Mematikan ponsel pada tingkat ini atau lebih rendah jika baterai tidak sedang mengisi daya. Ini tidak hanya menjeda pengisian.</string>
+    <string name="charge_cycle_summary">Pengisian berhenti pada %1$d%% dan dilanjutkan pada %2$d%% atau lebih rendah.</string>
+    <string name="charge_unlimited_summary">∞ untuk Berhenti menghapus batas berhenti berdasarkan persentase baterai. ∞ untuk Lanjutkan memungkinkan pengisian dilanjutkan pada tingkat baterai apa pun.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d d</string>
+    <string name="charge_limit_disabled">Batas pengisian dinonaktifkan untuk profil ini.</string>
+    <string name="charge_unlimited_hint">∞ menandai ambang persentase yang dinonaktifkan.</string>
+    <string name="charge_restore_limits">Pulihkan batas pengisian awal</string>
+    <string name="charge_switch_label">Metode kontrol pengisian</string>
+    <string name="charge_switch_help">ACC menggunakan kontrol perangkat yang kompatibel untuk mengaktifkan atau menjeda pengisian daya. Biarkan ini pada mode Otomatis kecuali Anda tahu metode yang dibutuhkan perangkat Anda.</string>
+    <string name="charge_switch_automatic">Temukan metode yang kompatibel secara otomatis</string>
+    <string name="charge_power_title">Batas arus dan tegangan</string>
+    <string name="charge_max_current">Arus maksimum (mA):</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Giới thiệu</string>
+    <string name="about_ng_intro">Kiểm soát sạc nâng cao.\nMột fork độc lập của AccA.</string>
+    <string name="about_ng_debug">Gỡ lỗi</string>
+    <string name="about_ng_release">Phát hành</string>
+    <string name="about_ng_maintained_by">Được duy trì bởi</string>
+    <string name="about_ng_maintainer_role">Phát triển và duy trì fork</string>
+    <string name="about_ng_profile">Hồ sơ GitHub</string>
+    <string name="about_ng_project">Dự án trên GitHub</string>
+    <string name="about_ng_issues">Báo cáo vấn đề</string>
+    <string name="about_ng_origin">Nguồn gốc và công hàm</string>
+    <string name="about_ng_origin_blurb">AccA-NG xây dựng dựa trên AccA, với các cải tiến về giao diện, tương thích và độ tin cậy.</string>
+    <string name="about_ng_original_team">Nhóm AccA gốc</string>
+    <string name="about_ng_acc_author">Tác giả của ACC và DJS</string>
+    <string name="about_ng_original_project">Dự án AccA gốc</string>
+    <string name="about_ng_community">Cộng đồng ACC</string>
+    <string name="about_ng_technical">Thông tin kỹ thuật</string>
+    <string name="about_ng_app_version">Phiên bản ứng dụng</string>
+    <string name="about_ng_acc_version">ACC đã cài đặt</string>
+    <string name="about_ng_api_version">Phiên bản giao diện ACC</string>
+    <string name="about_ng_loading">Đang đọc…</string>
+    <string name="about_ng_unavailable">Không khả dụng</string>
+    <string name="about_ng_licenses">Giấy phép và ghi nhận</string>
+    <string name="about_ng_license_blurb">Phần mềm mã nguồn mở theo GPL-3.0. Bản quyền AccA gốc: © 2019–2021 MatteCarra, Squabbi và VR25.</string>
+    <string name="about_ng_view_license">Đọc giấy phép GPL-3.0</string>
+    <string name="about_ng_attributions">Xây dựng với AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs và các thư viện mã nguồn mở khác.\n\nBiểu tượng Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Dự án mã nguồn mở · Nhánh độc lập</string>
+    <string name="about_ng_expanded">Mở rộng</string>
+    <string name="about_ng_collapsed">Thu gọn</string>
+</resources>

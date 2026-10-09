@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">Налаштувати ACC-NG</string>
+    <string name="ng_setup_message">AccA-NG потребує двигун зарядки ACC-NG. Додаток встановлює його з доступом root. У Magisk він з’являється як Advanced Charging Controller NG (ACC-NG).\n\nВам не потрібно вручну завантажувати або встановлювати ZIP. Якщо інший ACC встановлений, він буде замінений із збереженням його налаштувань.\n\nЯкщо потрібна калібрування, від’єднайте всі зарядні пристрої та дотримуйтесь інструкцій Діагностика зарядки. Потім оберіть ваші обмеження зарядки або застосуйте профіль у додатку.</string>
+    <string name="ng_setup_install">Налаштувати</string>
+    <string name="ng_setup_installing">Налаштування ACC-NG</string>
+    <string name="ng_setup_root_required">AccA-NG потребує доступу root для встановлення ACC-NG та контролю зарядки. Дозвольте AccA-NG у секції Superuser вашого менеджера root, потім знову відкрийте додаток.</string>
+</resources>

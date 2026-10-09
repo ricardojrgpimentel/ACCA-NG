@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">تنفيذ أوامر ACC. الرجاء الانتظار…</string>
+    <string name="command_completed">اكتمل الإجراء</string>
+    <string name="command_failed_title">لم يتمكن الإجراء من الاكتمال</string>
+    <string name="command_failed_message">لم يتم تأكيد التغيير. تحقق من الحالة الحالية أو حاول مرة أخرى.</string>
+    <string name="command_close">إغلاق</string>
+    <string name="command_stop_acc">إيقاف ACC…</string>
+    <string name="command_start_acc">بدء ACC…</string>
+    <string name="command_restart_acc">إعادة تشغيل ACC…</string>
+    <string name="command_read_status">قراءة حالة ACC…</string>
+    <string name="command_apply_settings">يتم تطبيق الإعدادات…</string>
+    <string name="command_apply_profile">يتم تطبيق الملف الشخصي…</string>
+    <string name="command_reset_stats">إعادة ضبط إحصائيات البطارية…</string>
+    <string name="command_charge_once">تعيين حد الشحن…</string>
+    <string name="acc_status_unavailable">حالة ACC غير متوفرة</string>
+    <string name="battery_summary_title">ملخص البطارية</string>
+    <string name="battery_cycles_label">دورات الشحن المبلغ عنها</string>
+    <string name="battery_full_capacity_label">السعة التقديرية الكاملة</string>
+    <string name="battery_design_capacity_label">سعة التصميم</string>
+    <string name="battery_diagnostics_note">القيم المبلغ عنها بواسطة الجهاز. يتم عرض القراءات غير المتوفرة بشكل صريح.</string>
+    <string name="battery_data_unavailable">غير متوفر</string>
+    <string name="battery_capacity_mah">%1$d مللي أمبير/ساعة</string>
+</resources>

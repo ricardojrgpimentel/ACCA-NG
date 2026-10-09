@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">Виконується команда ACC. Будь ласка, зачекайте…</string>
+    <string name="command_completed">Дія завершена</string>
+    <string name="command_failed_title">Дія не могла бути виконана</string>
+    <string name="command_failed_message">Зміни не вдалося підтвердити. Перевірте поточний стан або спробуйте ще раз.</string>
+    <string name="command_close">Закрити</string>
+    <string name="command_stop_acc">Зупинка ACC…</string>
+    <string name="command_start_acc">Запуск ACC…</string>
+    <string name="command_restart_acc">Перезапуск ACC…</string>
+    <string name="command_read_status">Читання стану ACC…</string>
+    <string name="command_apply_settings">Застосування налаштувань…</string>
+    <string name="command_apply_profile">Застосування профілю…</string>
+    <string name="command_reset_stats">Скидання статистики батареї…</string>
+    <string name="command_charge_once">Встановлення ліміту заряду…</string>
+    <string name="acc_status_unavailable">Статус ACC недоступний</string>
+    <string name="battery_summary_title">Зведення по батареї</string>
+    <string name="battery_cycles_label">Зареєстровані цикли заряду</string>
+    <string name="battery_full_capacity_label">Оцінена повна ємність</string>
+    <string name="battery_design_capacity_label">Проєктна ємність</string>
+    <string name="battery_diagnostics_note">Значення, зафіксовані пристроєм. Недоступні показники показані явно.</string>
+    <string name="battery_data_unavailable">Недоступно</string>
+    <string name="battery_capacity_mah">%1$d мА·г</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Chọn điểm bắt đầu</string>
+    <string name="preset_description">Các tùy chọn này thiết lập giới hạn sạc pin. Nhấn một tùy chọn, điều chỉnh các giá trị bên dưới và lưu hồ sơ. Nó sẽ có hiệu lực khi bạn áp dụng hồ sơ.</string>
+    <string name="preset_daily_name">Sử dụng hàng ngày</string>
+    <string name="preset_plugged_name">Cắm sạc lâu dài</string>
+    <string name="preset_travel_name">Du lịch</string>
+    <string name="preset_option">%1$s\n%2$s\nDừng ở %3$d%% · Tiếp tục ở %4$d%%</string>
+    <string name="battery_state_charging">Đang sạc</string>
+    <string name="battery_state_paused">Sạc tạm dừng</string>
+    <string name="battery_state_full">Pin đầy</string>
+    <string name="battery_state_discharging">Đang xả</string>
+    <string name="battery_state_not_charging">Không sạc</string>
+    <string name="battery_state_unknown">Trạng thái sạc không xác định</string>
+    <string name="battery_power_disconnected">Bộ sạc đã ngắt kết nối</string>
+    <string name="battery_power_ac">Cáp đã kết nối · AC</string>
+    <string name="battery_power_usb">Cáp đã kết nối · USB</string>
+    <string name="battery_power_wireless">Bộ sạc không dây đã kết nối</string>
+    <string name="battery_power_dock">Đế sạc đã kết nối</string>
+    <string name="battery_power_connected">Bộ sạc đã kết nối</string>
+    <string name="battery_power_unknown">Kết nối bộ sạc không xác định</string>
+    <string name="battery_paused_hint">Bộ sạc đã kết nối, nhưng pin không sạc.</string>
+</resources>

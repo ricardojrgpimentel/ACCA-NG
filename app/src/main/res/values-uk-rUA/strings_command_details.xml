@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Показати команди ▾</string>
+    <string name="command_hide_details">Сховати команди ▴</string>
+    <string name="command_review_details">Переглянути команди</string>
+    <string name="command_trace_note">Команди для цієї дії. Деякі коди виходу відображають очікуваний стан ACC.</string>
+    <string name="command_trace_waiting">Очікування першої команди…</string>
+    <string name="command_trace_running">Крок %1$d · Виконується…</string>
+    <string name="command_trace_finished">Крок %1$d · Завершено (код виходу %2$d)</string>
+    <string name="command_trace_interrupted">Крок %1$d · Виконання перервано</string>
+    <string name="command_trace_output">Вивід: %1$s</string>
+    <string name="command_result_ready">Дія завершена. Ви можете переглянути деталі або закрити.</string>
+    <string name="command_trace_empty">Ця дія не виконувала команди від імені root.</string>
+</resources>

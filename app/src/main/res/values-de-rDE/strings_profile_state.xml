@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Aktives Profil</string>
+    <string name="profile_none_active">Kein aktives Profil</string>
+    <string name="profile_custom_title">Benutzerdefinierte Konfiguration</string>
+    <string name="profile_active_description">Das Speichern manueller Änderungen aktiviert eine benutzerdefinierte Konfiguration. Dein gespeichertes Profil bleibt erhalten.</string>
+    <string name="profile_custom_description">Zurzeit werden benutzerdefinierte Einstellungen verwendet.</string>
+    <string name="profile_reading_config">Konfiguration wird gelesen…</string>
+    <string name="profile_edit_action">Bearbeiten</string>
+    <string name="profile_edit_live_title">Aktuelle Einstellungen bearbeiten</string>
+    <string name="profile_choose_action">Profil wählen</string>
+    <string name="profile_change_action">Profil wechseln</string>
+    <string name="profile_edit_live_context">Aktuelle Konfiguration</string>
+    <string name="profile_edit_from_profile">Aktuelle Konfiguration · %1$s</string>
+    <string name="profile_edit_custom_help">Speichern wendet diese Änderungen auf ACC an. Ein gespeichertes Profil kannst du unter Profile erneut anwenden.</string>
+    <string name="profile_edit_active_help">Speichern wendet die Änderungen auf ACC an und hebt die aktive Profilauswahl auf. Dein gespeichertes Profil bleibt unverändert.</string>
+    <string name="profile_edit_saved_context">Gespeichertes Profil wird bearbeitet</string>
+    <string name="profile_edit_saved_help">Speichern aktualisiert dieses Profil. Wende es unter Profile erneut an, um die neuen Werte in ACC zu verwenden.</string>
+</resources>

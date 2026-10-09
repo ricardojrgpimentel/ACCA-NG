@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnostik pengisian</string>
+    <string name="troubleshoot_intro">Periksa layanan pengisian, kalibrasi, dan batas yang diterapkan. Diagnostik diperbarui secara otomatis saat layar ini terbuka.</string>
+    <string name="troubleshoot_no_issue">Tidak ada masalah yang terdeteksi pada pembacaan saat ini. Ini tidak mengonfirmasi siklus pengisian penuh dan melanjutkan.</string>
+    <string name="troubleshoot_unavailable">Diagnostik tidak tersedia. Periksa akses root dan instalasi ACC, lalu coba lagi.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Layanan ACC yang dimodifikasi ini menggunakan batas tetap 90%/80% dan mengabaikan batas profil. Pulihkan layanan bawaan untuk mengembalikan kontrol profil.</string>
+    <string name="troubleshoot_different_module">Layanan yang terpasang berbeda dari yang dibundel dengan aplikasi. Ini bisa merupakan versi sah atau modifikasi; perbedaan saja tidak membuktikan adanya kesalahan.</string>
+    <string name="troubleshoot_calibration_pending">ACC berjalan tetapi menunggu kalibrasi arus listrik. Putuskan semua pengisi daya dan gunakan Kalibrasi arus listrik untuk menyelesaikan langkah ini.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC menunggu kalibrasi</string>
+    <string name="troubleshoot_stopped">Layanan ACC telah dihentikan. Mulai dari dasbor untuk menerapkan batas pengisian.</string>
+    <string name="troubleshoot_above_limit">Baterai telah terus mengisi daya pada atau di atas batas yang dikonfigurasikan selama setidaknya 30 detik. Periksa kalibrasi dan modul; saklar pengisian yang dipilih mungkin juga tidak efektif.</string>
+    <string name="troubleshoot_refresh">Periksa lagi</string>
+    <string name="troubleshoot_calibrate">Kalibrasi arus listrik</string>
+    <string name="troubleshoot_calibrate_now">Mulai kalibrasi</string>
+    <string name="troubleshoot_calibration_instructions">Putuskan USB, pengisian nirkabel, dan semua pengisi daya lainnya. Tunggu beberapa detik, kemudian mulai. Aplikasi mengumpulkan lima pembacaan pelepasan daya selama 10 detik dan menyimpan cadangan konfigurasi. Biarkan pengisi daya terputus sampai selesai. Pembacaan yang tidak stabil atau tidak tersedia membuat kalibrasi tetap tidak berubah.</string>
+    <string name="troubleshoot_calibration_failed">Kalibrasi tidak dapat dikonfirmasi. Biarkan semua pengisi daya terputus, tunggu pembacaan stabil, dan coba lagi.</string>
+    <string name="troubleshoot_calibration_success">Kalibrasi arus listrik telah disimpan dan diverifikasi. Sambungkan kembali pengisi daya Anda dan periksa diagnostik.</string>
+    <string name="troubleshoot_restore">Pulihkan layanan bawaan</string>
+    <string name="troubleshoot_restore_confirmation">Ini menggantikan layanan pengisian daya ACC dengan layanan bawaan asli versi yang sama. Perubahan layanan kustom akan dihapus. Aplikasi pertama-tama mencadangkan modul dan konfigurasi, mempertahankan pengaturan Anda, memulai ulang layanan, dan memverifikasi perbaikan. Jika verifikasi gagal, aplikasi mencoba mengembalikan layanan sebelumnya.</string>
+    <string name="troubleshoot_restore_success">Layanan asli telah dipulihkan dan diverifikasi. Batas pengisian daya tetap dipertahankan. Jika kalibrasi masih tertunda, selesaikan terlebih dahulu sebelum menguji kontrol pengisian daya.</string>
+    <string name="troubleshoot_restore_failed">Pemulihan layanan gagal. Tinjau detail perintah untuk lokasi cadangan dan penyebab kegagalan. Periksa diagnostik sebelum mencoba lagi.</string>
+    <string name="troubleshoot_incompatible_version">Pemulihan layanan memerlukan versi ACC yang sama dengan bundle aplikasi. Versi lain tidak akan diganti atau diturunkan di sini.</string>
+    <string name="troubleshoot_details">Kode versi ACC: %1$s\nBaterai: %2$s%%\nBerhenti: %3$s%% · Lanjut: %4$s%%\nStatus baterai: %5$s\nArus: %6$s mA\nPolaritas pelepasan: %7$s\nSakelar pengisian: %8$s</string>
+    <string name="troubleshoot_backup">Cadangan: %1$s</string>
+    <string name="troubleshoot_copy">Salin diagnostik</string>
+    <string name="troubleshoot_copied">Diagnostik disalin</string>
+</resources>

@@ -201,4 +201,15 @@
         \n\nΕάν το σφάλμα παραμένει, παρακαλούμε να κοινοποιήσετε το stack trace πιο κάτω μαζί με την ACC &amp; AccA έκδοση (μέσω του μενού 3-κουκκίδων &gt; Σχετικά με) στους προγραμματιστές μέσω του Telegram.\n\n%s</string>
     <string name="automatic_switch_eanbled">Αυτόματη περιήγηση των διακοπτών</string>
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">έκδοση ACC-NG</string>
+    <string name="ng_engine_summary">Η μηχανή φόρτισης διατηρείται για το AccA-NG. Η συνοδευόμενη έκδοση έχει δοκιμαστεί με αυτή την εφαρμογή.</string>
+    <string name="ng_engine_picker_message">Επιλέξτε μια έκδοση ACC-NG.</string>
+    <string name="ng_engine_bundled">Συνοδευόμενη έκδοση ACC-NG (συνιστάται)</string>
+    <string name="ng_engine_main">Ανάπτυξη ACC-NG (main)</string>
+    <string name="ng_engine_main_warning">Η έκδοση ανάπτυξης μπορεί να περιέχει αλλαγές που δεν έχουν δοκιμαστεί με αυτή την εφαρμογή.</string>
+    <string name="ng_engine_notifications_title">Ειδοποιήσεις φόρτισης</string>
+    <string name="ng_engine_notifications_summary">Ειδοποιήσεις σύνδεσης, παύσης, συνέχισης, θερμοκρασίας και χαμηλής μπαταρίας από το ACC-NG. Η προστασία φόρτισης παραμένει ενεργή όταν αυτές οι ειδοποιήσεις είναι απενεργοποιημένες.</string>
+    <string name="ng_engine_setting_failed">Αποτυχία επιβεβαίωσης της ρύθμισης στο ACC-NG.</string>
+    <string name="use_default_config">Χρήση προεπιλογών</string>
 </resources>

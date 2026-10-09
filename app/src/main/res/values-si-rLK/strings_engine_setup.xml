@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">ACC-NG පිහිටුවන්න</string>
+    <string name="ng_setup_message">AccA-NG සඳහා ACC-NG ආරෝපණ පාලකය අවශ්‍යයි. යෙදුම root ප්‍රවේශයෙන් එය ස්ථාපනය කරයි. Magisk තුළ එය Advanced Charging Controller NG (ACC-NG) ලෙස දිස් වේ.\n\nZIP ගොනුවක් අතින් බාගත කර ස්ථාපනය කිරීම අවශ්‍ය නැත. වෙනත් ACC එකක් දැනටමත් ස්ථාපිත නම් එහි සැකසුම් රැකගෙන එය ප්‍රතිස්ථාපනය කෙරේ.\n\nක්‍රමාංකනය අවශ්‍ය නම් සියලු චාජර් විසන්ධි කර ආරෝපණ විශ්ලේෂණය අනුගමනය කරන්න. ඉන්පසු ආරෝපණ සීමා තෝරන්න හෝ යෙදුම තුළ පැතිකඩක් යොදන්න.</string>
+    <string name="ng_setup_install">පිහිටුවන්න</string>
+    <string name="ng_setup_installing">ACC-NG පිහිටුවමින්</string>
+    <string name="ng_setup_root_required">AccA-NG සඳහා ACC-NG ස්ථාපනය කිරීම සහ ආරෝපණ පාලනය කිරීම සඳහා root ප්‍රවේශය අවශ්‍ය වේ. ඔබේ root කළමනාකරුගේ Superuser කොටසේ AccA-NG අනුමත කරන්න, පසුව යෙදුම නැවත විවෘත කරන්න.</string>
+</resources>

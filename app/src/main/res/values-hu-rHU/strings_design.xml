@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Áttekintés</string>
+    <string name="ui_nav_schedules">Ütemezések</string>
+    <string name="ui_profiles_intro">Töltési beállításaid készen állnak az alkalmazásra.</string>
+    <string name="ui_scripts_intro">Gyorsparancsok a töltésvezérlőd számára.</string>
+    <string name="ui_schedules_intro">Hagyd, hogy a töltési rutin automatikusan fusson.</string>
+    <string name="ui_profiles_empty">Még nincsen profil\nÉrintsd a + gombot első töltési beállításod elmentéséhez.</string>
+    <string name="ui_scripts_empty">Parancsaid itt élnek\nÉrintsd a + gombot első szkripted létrehozásához.</string>
+    <string name="ui_schedules_empty">Építsd meg töltési rutinodat\nÉrintsd a + gombot töltési profil ütemezéséhez.</string>
+    <string name="ui_add_profile">Profil hozzáadása</string>
+    <string name="ui_add_script">Szkript hozzáadása</string>
+    <string name="ui_add_schedule">Ütemezés hozzáadása</string>
+    <string name="ui_custom_config">Töltési beállítások</string>
+    <string name="ui_charge_once">Egyszeri töltés a kiválasztott szintre</string>
+    <string name="ui_profile_options">Profilopciók</string>
+    <string name="ui_script_options">Szkript opciók</string>
+    <string name="ui_schedule_options">Ütemezés opciók</string>
+    <string name="resume_temperature">Folytatás alább</string>
+    <string name="template_temperature_profile_resume">Leállítási hőmérséklet: %1$d°C · Szünet: %2$d°C · Folytatás: %3$d°C</string>
+    <string name="command_copy_details">Részletek másolása</string>
+    <string name="command_details_copied">Parancs részletei másolva</string>
+</resources>

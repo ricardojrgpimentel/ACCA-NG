@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Για καθημερινή χρήση με μέτριο όριο φόρτισης.</string>
+    <string name="preset_plugged_help">Για ένα τηλέφωνο που μένει πολλές ώρες συνδεδεμένο σε φορτιστή. Διατηρεί το επίπεδο μπαταρίας χαμηλότερο· δεν εγγυάται παράκαμψη.</string>
+    <string name="preset_travel_help">Για περισσότερη διαθέσιμη μπαταρία πριν την έξοδο. Επιτρέπει υψηλότερο επίπεδο φόρτισης.</string>
+    <string name="charge_limits_title">Όρια φόρτισης μπαταρίας (%)</string>
+    <string name="charge_limits_help">Όλες οι τιμές είναι ποσοστά του επιπέδου της μπαταρίας. Η επανεκκίνηση απαιτεί συνδεδεμένο φορτιστή και κατάλληλη θερμοκρασία. Το ACC πρέπει να είναι σε λειτουργία για να εφαρμοστούν αυτά τα όρια.</string>
+    <string name="charge_pause_label">Σταματήστε τη φόρτιση στο</string>
+    <string name="charge_pause_help">Παύει τη φόρτιση όταν η μπαταρία φτάνει σε αυτό το επίπεδο.</string>
+    <string name="charge_resume_label">Επανεκκίνηση φόρτισης στο</string>
+    <string name="charge_resume_help">Μετά από μια παύση, επανεκκινεί όταν η μπαταρία πέσει σε αυτό το επίπεδο ή χαμηλότερα.</string>
+    <string name="charge_shutdown_label">Απενεργοποιήστε το τηλέφωνο στο</string>
+    <string name="charge_shutdown_help">Κλείνει το τηλέφωνο σε αυτό το επίπεδο ή χαμηλότερο αν η μπαταρία δεν φορτίζεται. Αυτό δεν είναι απλώς παύση της φόρτισης.</string>
+    <string name="charge_cycle_summary">Η φόρτιση σταματά στο %1$d%% και επανεκκινεί στο %2$d%% ή χαμηλότερα.</string>
+    <string name="charge_unlimited_summary">∞ για Σταμάτημα αφαιρεί το όριο διακοπής με βάση το ποσοστό μπαταρίας. ∞ για Επανεκκίνηση επιτρέπει τη φόρτιση να επανεκκινήσει σε οποιοδήποτε επίπεδο μπαταρίας.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Τα όρια φόρτισης είναι απενεργοποιημένα για αυτό το προφίλ.</string>
+    <string name="charge_unlimited_hint">∞ σημειώνει ένα απενεργοποιημένο ποσοστό ορίου.</string>
+    <string name="charge_restore_limits">Επαναφέρετε τα αρχικά όρια φόρτισης</string>
+    <string name="charge_switch_label">Μέθοδος ελέγχου φόρτισης</string>
+    <string name="charge_switch_help">Το ACC χρησιμοποιεί έναν συμβατό έλεγχο συσκευής για να ενεργοποιήσει ή να σταματήσει τη φόρτιση. Αφήστε το σε Αυτόματο εκτός αν γνωρίζετε ποια μέθοδο χρειάζεται η συσκευή σας.</string>
+    <string name="charge_switch_automatic">Εύρεση συμβατής μεθόδου αυτόματα</string>
+    <string name="charge_power_title">Όρια ρεύματος και τάσης</string>
+    <string name="charge_max_current">Μέγιστο ρεύμα (mA):</string>
+</resources>

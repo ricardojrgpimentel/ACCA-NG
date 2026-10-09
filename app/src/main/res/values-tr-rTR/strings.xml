@@ -254,4 +254,15 @@
         \n\nEğer hata almaya devam ederseniz, lütfen aşağıdaki bilgileri ACC yardımıyla &amp; AccA versiyonu(3 noktalı menü ile &gt; Hakkında) Telegram ile geliştiricilerle paylaşın.\n\n%s</string>
     <string name="automatic_switch_eanbled">Anahtarlar arasında otomatik olarak geçiş yap</string>
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">ACC-NG sürümü</string>
+    <string name="ng_engine_summary">AccA-NG için şarj motoru bakımda. Bu uygulama ile test edilen sürüm paketlenmiştir.</string>
+    <string name="ng_engine_picker_message">Bir ACC-NG sürümü seçin.</string>
+    <string name="ng_engine_bundled">ACC-NG paketlenmiş (önerilen)</string>
+    <string name="ng_engine_main">ACC-NG geliştirme (main)</string>
+    <string name="ng_engine_main_warning">Geliştirme sürümü, bu uygulama ile test edilmemiş değişiklikler içerebilir.</string>
+    <string name="ng_engine_notifications_title">Şarj bildirimleri</string>
+    <string name="ng_engine_notifications_summary">ACC-NG’den bağlantı, duraklatma, devam etme, sıcaklık ve düşük pil bildirimleri. Bu bildirimler kapalı olduğunda bile şarj koruması aktif kalır.</string>
+    <string name="ng_engine_setting_failed">ACC-NG’de ayar doğrulanamadı.</string>
+    <string name="use_default_config">Varsayılanları kullan</string>
 </resources>

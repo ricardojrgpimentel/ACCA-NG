@@ -7,6 +7,7 @@ import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.topjohnwu.superuser.Shell
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.utils.LogExt
+import mattecarra.accapp.utils.AppLanguages
 
 class MainApplication: Application()
 {
@@ -30,6 +31,7 @@ class MainApplication: Application()
     override fun onCreate()
     {
         super.onCreate()
+        AppLanguages.initialize(this)
         appContext = applicationContext
         // Point Acc at this fork's files dir (applicationId changed from the
         // original mattecarra.accapp, so the path must not be hardcoded).

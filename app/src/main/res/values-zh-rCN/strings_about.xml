@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">关于</string>
+    <string name="about_ng_intro">高级充电控制。\nAccA 的独立分支。</string>
+    <string name="about_ng_debug">调试</string>
+    <string name="about_ng_release">发布</string>
+    <string name="about_ng_maintained_by">维护者</string>
+    <string name="about_ng_maintainer_role">分支的开发和维护</string>
+    <string name="about_ng_profile">GitHub 个人资料</string>
+    <string name="about_ng_project">GitHub 上的项目</string>
+    <string name="about_ng_issues">报告问题</string>
+    <string name="about_ng_origin">起源和致谢</string>
+    <string name="about_ng_origin_blurb">AccA-NG 基于 AccA 构建，对界面、兼容性和可靠性进行了改进。</string>
+    <string name="about_ng_original_team">原始 AccA 团队</string>
+    <string name="about_ng_acc_author">ACC 和 DJS 的作者</string>
+    <string name="about_ng_original_project">原始 AccA 项目</string>
+    <string name="about_ng_community">ACC 社区</string>
+    <string name="about_ng_technical">技术信息</string>
+    <string name="about_ng_app_version">应用版本</string>
+    <string name="about_ng_acc_version">已安装的ACC</string>
+    <string name="about_ng_api_version">ACC接口版本</string>
+    <string name="about_ng_loading">读取中…</string>
+    <string name="about_ng_unavailable">不可用</string>
+    <string name="about_ng_licenses">许可和署名</string>
+    <string name="about_ng_license_blurb">基于GPL-3.0开源软件。原始AccA版权：© 2019–2021 MatteCarra, Squabbi 和 VR25。</string>
+    <string name="about_ng_view_license">阅读GPL-3.0许可证</string>
+    <string name="about_ng_attributions">使用AndroidX、Material Components、libsu、Room、Moshi、Material Dialogs及其他开源库构建。\n\nTelegram图标：像素完美 / Flaticon。</string>
+    <string name="about_ng_footer">开源项目 · 独立分支</string>
+    <string name="about_ng_expanded">展开</string>
+    <string name="about_ng_collapsed">折叠</string>
+</resources>

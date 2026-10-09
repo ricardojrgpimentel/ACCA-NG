@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACC-Befehle werden ausgeführt. Bitte warten…</string>
+    <string name="command_completed">Aktion abgeschlossen</string>
+    <string name="command_failed_title">Aktion konnte nicht abgeschlossen werden</string>
+    <string name="command_failed_message">Die Änderung konnte nicht bestätigt werden. Prüfe den aktuellen Zustand oder versuche es erneut.</string>
+    <string name="command_close">Schließen</string>
+    <string name="command_stop_acc">ACC wird gestoppt…</string>
+    <string name="command_start_acc">ACC wird gestartet…</string>
+    <string name="command_restart_acc">ACC wird neu gestartet…</string>
+    <string name="command_read_status">ACC-Status wird gelesen…</string>
+    <string name="command_apply_settings">Einstellungen werden angewendet…</string>
+    <string name="command_apply_profile">Profil wird angewendet…</string>
+    <string name="command_reset_stats">Akkustatistik wird zurückgesetzt…</string>
+    <string name="command_charge_once">Ladegrenze wird eingestellt…</string>
+    <string name="acc_status_unavailable">ACC-Status nicht verfügbar</string>
+    <string name="battery_summary_title">Akkuübersicht</string>
+    <string name="battery_cycles_label">Gemeldete Ladezyklen</string>
+    <string name="battery_full_capacity_label">Geschätzte volle Kapazität</string>
+    <string name="battery_design_capacity_label">Nennkapazität</string>
+    <string name="battery_diagnostics_note">Vom Gerät gemeldete Werte. Nicht verfügbare Messwerte werden ausdrücklich gekennzeichnet.</string>
+    <string name="battery_data_unavailable">Nicht verfügbar</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Informacje</string>
+    <string name="about_ng_intro">Zaawansowana kontrola ładowania.\nNiezależny fork AccA.</string>
+    <string name="about_ng_debug">Debug</string>
+    <string name="about_ng_release">Wydanie</string>
+    <string name="about_ng_maintained_by">Utrzymywany przez</string>
+    <string name="about_ng_maintainer_role">Rozwój i utrzymanie forka</string>
+    <string name="about_ng_profile">Profil GitHub</string>
+    <string name="about_ng_project">Projekt na GitHub</string>
+    <string name="about_ng_issues">Zgłoś problem</string>
+    <string name="about_ng_origin">Pochodzenie i uznania</string>
+    <string name="about_ng_origin_blurb">AccA-NG opiera się na AccA, z ulepszeniami w interfejsie, kompatybilności i niezawodności.</string>
+    <string name="about_ng_original_team">Oryginalny zespół AccA</string>
+    <string name="about_ng_acc_author">Autor ACC i DJS</string>
+    <string name="about_ng_original_project">Oryginalny projekt AccA</string>
+    <string name="about_ng_community">Społeczność ACC</string>
+    <string name="about_ng_technical">Informacje techniczne</string>
+    <string name="about_ng_app_version">Wersja aplikacji</string>
+    <string name="about_ng_acc_version">Zainstalowane ACC</string>
+    <string name="about_ng_api_version">Wersja interfejsu ACC</string>
+    <string name="about_ng_loading">Odczytywanie…</string>
+    <string name="about_ng_unavailable">Niedostępne</string>
+    <string name="about_ng_licenses">Licencja i przypisy</string>
+    <string name="about_ng_license_blurb">Oprogramowanie open-source na licencji GPL-3.0. Oryginalne prawa autorskie AccA: © 2019–2021 MatteCarra, Squabbi i VR25.</string>
+    <string name="about_ng_view_license">Przeczytaj licencję GPL-3.0</string>
+    <string name="about_ng_attributions">Zbudowano z AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs i innych bibliotek open-source.\n\nIkona Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Projekt open-source · Niezależny fork</string>
+    <string name="about_ng_expanded">Rozwinięte</string>
+    <string name="about_ng_collapsed">Zwinięte</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">للاستخدام اليومي مع حد شحن متوسط.</string>
+    <string name="preset_plugged_help">لهاتف يقضي ساعات عديدة متصلاً بالشاحن. يحافظ على مستوى البطارية أقل؛ لا يضمن التجاوز.</string>
+    <string name="preset_travel_help">لمزيد من البطارية المتاحة قبل الخروج. يسمح بمستوى شحن أعلى.</string>
+    <string name="charge_limits_title">حدود شحن البطارية (%)</string>
+    <string name="charge_limits_help">جميع القيم هي نسب مئوية لمستوى البطارية. يتطلب الاستئناف شاحن متصل ودرجة حرارة مناسبة. يجب تشغيل ACC لفرض هذه الحدود.</string>
+    <string name="charge_pause_label">التوقف عن الشحن عند</string>
+    <string name="charge_pause_help">يوقف الشحن عند وصول البطارية إلى هذا المستوى.</string>
+    <string name="charge_resume_label">استئناف الشحن عند</string>
+    <string name="charge_resume_help">بعد التوقف، يتم الاستئناف عندما تصل البطارية إلى هذا المستوى أو أقل.</string>
+    <string name="charge_shutdown_label">إيقاف تشغيل الهاتف عند</string>
+    <string name="charge_shutdown_help">يقوم بإيقاف الهاتف عند هذا المستوى أو أقل إذا لم تكن البطارية تشحن. هذا لا يوقف الشحن مؤقتًا فقط.</string>
+    <string name="charge_cycle_summary">يتوقف الشحن عند %1$d%% ويتم الاستئناف عند %2$d%% أو أقل.</string>
+    <string name="charge_unlimited_summary">∞ للتوقف يزيل حد التوقف بناءً على نسبة البطارية. ∞ للاستئناف يسمح باستئناف الشحن عند أي مستوى للبطارية.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d ثانية</string>
+    <string name="charge_limit_disabled">تم تعطيل حدود الشحن لهذا الملف الشخصي.</string>
+    <string name="charge_unlimited_hint">∞ تشير إلى حد النسبة المئوية المعطل.</string>
+    <string name="charge_restore_limits">استعادة حدود الشحن الأولية</string>
+    <string name="charge_switch_label">طريقة التحكم بالشحن</string>
+    <string name="charge_switch_help">يستخدم ACC جهاز تحكم متوافق لتمكين أو إيقاف الشحن مؤقتًا. اترك هذا على أوتوماتيكي ما لم تكن تعرف الطريقة التي يحتاجها جهازك.</string>
+    <string name="charge_switch_automatic">العثور تلقائيًا على طريقة متوافقة</string>
+    <string name="charge_power_title">حدود التيار والجهد</string>
+    <string name="charge_max_current">التيار الأقصى (مللي أمبير):</string>
+</resources>

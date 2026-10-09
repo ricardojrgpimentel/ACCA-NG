@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">ආරම්භක සැකසුමක් තෝරන්න</string>
+    <string name="preset_description">මෙම විකල්ප බැටරි ආරෝපණ සීමා සකසයි. එකක් ස්පර්ශ කරන්න, පහත අගයන් වෙනස් කරන්න සහ පැතිකඩ සුරකින්න. පැතිකඩ අදාළ කළ විට එය ක්‍රියාත්මක වේ.</string>
+    <string name="preset_daily_name">දෛනික භාවිතය</string>
+    <string name="preset_plugged_name">දිගු වේලාවක් චාජරයට සම්බන්ධව</string>
+    <string name="preset_travel_name">ගමන් කිරීම</string>
+    <string name="preset_option">%1$s\n%2$s\n%3$d%% හි නවතා · %4$d%% හි නැවත ආරම්භ</string>
+    <string name="battery_state_charging">ආරෝපණය වෙමින්</string>
+    <string name="battery_state_paused">ආරෝපණය තාවකාලිකව නතර කරන ලදී</string>
+    <string name="battery_state_full">බැටරි පූර්ණයි</string>
+    <string name="battery_state_discharging">විසර්ජනය වෙමින්</string>
+    <string name="battery_state_not_charging">ආරෝපණය නොවේ</string>
+    <string name="battery_state_unknown">ආරෝපණ තත්ත්වය නොදන්නා</string>
+    <string name="battery_power_disconnected">චාජරය විසන්ධියි</string>
+    <string name="battery_power_ac">කේබලය සම්බන්ධ · AC</string>
+    <string name="battery_power_usb">කේබලය සම්බන්ධයි · USB</string>
+    <string name="battery_power_wireless">රැහැන් රහිත චාජරය සම්බන්ධයි</string>
+    <string name="battery_power_dock">ආරෝපණ තටාකය සම්බන්ධයි</string>
+    <string name="battery_power_connected">චාජරය සම්බන්ධයි</string>
+    <string name="battery_power_unknown">චාජරයේ සම්බන්ධතාව නොදනී</string>
+    <string name="battery_paused_hint">චාජරය සම්බන්ධ කර ඇතත් බැටරිය ආරෝපණය නොවේ.</string>
+</resources>

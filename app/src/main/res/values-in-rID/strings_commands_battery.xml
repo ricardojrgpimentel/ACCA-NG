@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">Menjalankan perintah ACC. Harap tunggu…</string>
+    <string name="command_completed">Tindakan selesai</string>
+    <string name="command_failed_title">Tindakan tidak dapat diselesaikan</string>
+    <string name="command_failed_message">Perubahan tidak dapat dikonfirmasi. Periksa status saat ini atau coba lagi.</string>
+    <string name="command_close">Tutup</string>
+    <string name="command_stop_acc">Menghentikan ACC…</string>
+    <string name="command_start_acc">Memulai ACC…</string>
+    <string name="command_restart_acc">Memulai ulang ACC…</string>
+    <string name="command_read_status">Membaca status ACC…</string>
+    <string name="command_apply_settings">Menerapkan pengaturan…</string>
+    <string name="command_apply_profile">Menerapkan profil…</string>
+    <string name="command_reset_stats">Mengatur ulang statistik baterai…</string>
+    <string name="command_charge_once">Menetapkan batas pengisian…</string>
+    <string name="acc_status_unavailable">Status ACC tidak tersedia</string>
+    <string name="battery_summary_title">Ringkasan baterai</string>
+    <string name="battery_cycles_label">Siklus pengisian yang dilaporkan</string>
+    <string name="battery_full_capacity_label">Perkiraan kapasitas penuh</string>
+    <string name="battery_design_capacity_label">Kapasitas desain</string>
+    <string name="battery_diagnostics_note">Nilai yang dilaporkan oleh perangkat. Bacaan yang tidak tersedia ditampilkan secara eksplisit.</string>
+    <string name="battery_data_unavailable">Tidak tersedia</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

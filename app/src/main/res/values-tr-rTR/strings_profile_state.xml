@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Aktif profil</string>
+    <string name="profile_none_active">Aktif profil yok</string>
+    <string name="profile_custom_title">Özel yapılandırma</string>
+    <string name="profile_active_description">Manuel değişiklikleri kaydetmek, özel bir yapılandırmaya geçiş yapar. Kaydedilmiş profiliniz korunur.</string>
+    <string name="profile_custom_description">Özel ayarlar şu anda kullanılıyor.</string>
+    <string name="profile_reading_config">Yapılandırma okunuyor…</string>
+    <string name="profile_edit_action">Düzenle</string>
+    <string name="profile_edit_live_title">Mevcut ayarları düzenle</string>
+    <string name="profile_choose_action">Bir profil seç</string>
+    <string name="profile_change_action">Profili değiştir</string>
+    <string name="profile_edit_live_context">Mevcut yapılandırma</string>
+    <string name="profile_edit_from_profile">Mevcut yapılandırma · %1$s</string>
+    <string name="profile_edit_custom_help">Kaydetme, bu değişiklikleri ACC\'ye uygular. Kaydedilmiş bir profili tekrar Profillerden uygulayabilirsiniz.</string>
+    <string name="profile_edit_active_help">Değişiklikleri kaydetmek, bunları ACC\'ye uygular ve aktif profili temizler. Kaydedilmiş profiliniz değişmeden kalır.</string>
+    <string name="profile_edit_saved_context">Kaydedilmiş bir profili düzenliyor</string>
+    <string name="profile_edit_saved_help">Kaydetme, bu kaydedilmiş profili günceller. Yeni değerleri ACC\'de kullanmak için Profillerden tekrar uygulayın.</string>
+</resources>

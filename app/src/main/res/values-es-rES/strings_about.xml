@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Acerca de</string>
+    <string name="about_ng_intro">Control avanzado de carga.\nUna bifurcación independiente de AccA.</string>
+    <string name="about_ng_debug">Depuración</string>
+    <string name="about_ng_release">Versión publicada</string>
+    <string name="about_ng_maintained_by">Mantenido por</string>
+    <string name="about_ng_maintainer_role">Desarrollo y mantenimiento de la bifurcación</string>
+    <string name="about_ng_profile">Perfil de GitHub</string>
+    <string name="about_ng_project">Proyecto en GitHub</string>
+    <string name="about_ng_issues">Informar de un problema</string>
+    <string name="about_ng_origin">Origen y créditos</string>
+    <string name="about_ng_origin_blurb">AccA-NG se basa en AccA e incorpora mejoras de interfaz, compatibilidad y fiabilidad.</string>
+    <string name="about_ng_original_team">Equipo original de AccA</string>
+    <string name="about_ng_acc_author">Autor de ACC y DJS</string>
+    <string name="about_ng_original_project">Proyecto original de AccA</string>
+    <string name="about_ng_community">Comunidad de ACC</string>
+    <string name="about_ng_technical">Información técnica</string>
+    <string name="about_ng_app_version">Versión de la aplicación</string>
+    <string name="about_ng_acc_version">ACC instalado</string>
+    <string name="about_ng_api_version">Versión de la interfaz ACC</string>
+    <string name="about_ng_loading">Leyendo…</string>
+    <string name="about_ng_unavailable">No disponible</string>
+    <string name="about_ng_licenses">Licencia y atribuciones</string>
+    <string name="about_ng_license_blurb">Software de código abierto bajo GPL-3.0. Derechos de autor originales de AccA: © 2019–2021 MatteCarra, Squabbi y VR25.</string>
+    <string name="about_ng_view_license">Leer la licencia GPL-3.0</string>
+    <string name="about_ng_attributions">Creado con AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs y otras bibliotecas de código abierto.\n\nIcono de Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Proyecto de código abierto · Bifurcación independiente</string>
+    <string name="about_ng_expanded">Expandido</string>
+    <string name="about_ng_collapsed">Contraído</string>
+</resources>

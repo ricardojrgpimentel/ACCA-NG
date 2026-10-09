@@ -9,6 +9,7 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import androidx.preference.PreferenceManager
 import kotlinx.coroutines.*
+import mattecarra.accapp.utils.AppLanguages
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.acc.ConfigUpdaterEnable
@@ -51,16 +52,16 @@ class AccProfileTileService: TileService(), CoroutineScope {
 
             if(currProfile != null)
             {
-                tile.label =  getString(R.string.profile_tile_label, currProfile.profileName)
+                tile.label =  AppLanguages.localizedContext(this@AccProfileTileService).getString(R.string.profile_tile_label, currProfile.profileName)
                 tile.state =  Tile.STATE_ACTIVE
             } else {
-                tile.label = getString(R.string.profile_not_selected)
+                tile.label = AppLanguages.localizedContext(this@AccProfileTileService).getString(R.string.profile_not_selected)
                 tile.state =  Tile.STATE_INACTIVE
             }
             tile.icon = Icon.createWithResource(this, R.drawable.ic_battery_charging_80) //use acc icon once ready
 
         } else {
-            tile.label = getString(R.string.no_profiles)
+            tile.label = AppLanguages.localizedContext(this@AccProfileTileService).getString(R.string.no_profiles)
             tile.state =  Tile.STATE_UNAVAILABLE
             tile.icon = Icon.createWithResource(this, R.drawable.ic_battery_charging_full) //use acc icon once ready
         }
@@ -107,7 +108,7 @@ class AccProfileTileService: TileService(), CoroutineScope {
 
                 //Update tile infos
                 qsTile.state = if (successful) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-                qsTile.label = if (successful) getString(R.string.profile_tile_label, profile.profileName) else getString(R.string.error_occurred)
+                qsTile.label = if (successful) AppLanguages.localizedContext(this@AccProfileTileService).getString(R.string.profile_tile_label, profile.profileName) else AppLanguages.localizedContext(this@AccProfileTileService).getString(R.string.error_occurred)
                 qsTile.updateTile()
 
                 if (successful) ProfileUtils.saveCurrentProfile(profile.uid, mSharedPrefs)

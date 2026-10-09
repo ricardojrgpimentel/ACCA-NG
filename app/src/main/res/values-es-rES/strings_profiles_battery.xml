@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Elige un punto de partida</string>
+    <string name="preset_description">Estas opciones establecen límites de carga. Pulsa una, ajusta los valores de abajo y guarda el perfil. Surte efecto al aplicar el perfil.</string>
+    <string name="preset_daily_name">Uso diario</string>
+    <string name="preset_plugged_name">Conectado durante mucho tiempo</string>
+    <string name="preset_travel_name">Viaje</string>
+    <string name="preset_option">%1$s\n%2$s\nSe detiene al %3$d%% · Se reanuda al %4$d%%</string>
+    <string name="battery_state_charging">Cargando</string>
+    <string name="battery_state_paused">Carga en pausa</string>
+    <string name="battery_state_full">Batería llena</string>
+    <string name="battery_state_discharging">Descargando</string>
+    <string name="battery_state_not_charging">Sin cargar</string>
+    <string name="battery_state_unknown">Estado de carga desconocido</string>
+    <string name="battery_power_disconnected">Cargador desconectado</string>
+    <string name="battery_power_ac">Cable conectado · CA</string>
+    <string name="battery_power_usb">Cable conectado · USB</string>
+    <string name="battery_power_wireless">Cargador inalámbrico conectado</string>
+    <string name="battery_power_dock">Base de carga conectada</string>
+    <string name="battery_power_connected">Cargador conectado</string>
+    <string name="battery_power_unknown">Conexión del cargador desconocida</string>
+    <string name="battery_paused_hint">El cargador está conectado, pero la batería no se está cargando.</string>
+</resources>

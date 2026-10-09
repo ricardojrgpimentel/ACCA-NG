@@ -1,0 +1,1 @@
+Traduz 230 novos textos nos 21 idiomas existentes. Aplica a mudança de idioma de imediato e guarda a escolha. Melhora as traduções portuguesas e a seleção de grego/indonésio. Inclui correções de temperatura nos perfis do ACC-NG e Copiar detalhes nos resultados dos comandos.

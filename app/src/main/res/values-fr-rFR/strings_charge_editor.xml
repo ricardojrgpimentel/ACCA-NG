@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Pour un usage quotidien avec une limite de charge modérée.</string>
+    <string name="preset_plugged_help">Pour un téléphone restant longtemps branché. Maintient un niveau de batterie plus bas ; ne garantit pas le bypass.</string>
+    <string name="preset_travel_help">Pour disposer de plus de batterie avant de sortir. Autorise un niveau de charge plus élevé.</string>
+    <string name="charge_limits_title">Limites de charge de la batterie (%)</string>
+    <string name="charge_limits_help">Toutes les valeurs sont des pourcentages du niveau de batterie. La reprise nécessite un chargeur branché et une température adaptée. ACC doit fonctionner pour appliquer ces limites.</string>
+    <string name="charge_pause_label">Arrêter la charge à</string>
+    <string name="charge_pause_help">Suspend la charge lorsque la batterie atteint ce niveau.</string>
+    <string name="charge_resume_label">Reprendre la charge à</string>
+    <string name="charge_resume_help">Après une pause, reprend lorsque la batterie atteint ce niveau ou descend en dessous.</string>
+    <string name="charge_shutdown_label">Éteindre le téléphone à</string>
+    <string name="charge_shutdown_help">Éteint le téléphone à ce niveau ou en dessous si la batterie ne charge pas. Cela ne suspend pas simplement la charge.</string>
+    <string name="charge_cycle_summary">La charge s’arrête à %1$d%% et reprend à %2$d%% ou en dessous.</string>
+    <string name="charge_unlimited_summary">∞ pour Arrêter supprime la limite d’arrêt liée au pourcentage. ∞ pour Reprendre permet la reprise quel que soit le niveau de batterie.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Les limites de charge sont désactivées pour ce profil.</string>
+    <string name="charge_unlimited_hint">∞ indique un seuil de pourcentage désactivé.</string>
+    <string name="charge_restore_limits">Rétablir les limites de charge initiales</string>
+    <string name="charge_switch_label">Méthode de contrôle de la charge</string>
+    <string name="charge_switch_help">ACC utilise une commande compatible avec l’appareil pour activer ou suspendre la charge. Laissez Automatique, sauf si vous connaissez la méthode nécessaire.</string>
+    <string name="charge_switch_automatic">Trouver automatiquement une méthode compatible</string>
+    <string name="charge_power_title">Limites de courant et de tension</string>
+    <string name="charge_max_current">Courant maximal (mA) :</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Pro každodenní použití s mírným limitem nabíjení.</string>
+    <string name="preset_plugged_help">Pro telefon, který tráví mnoho hodin připojený k nabíječce. Udržuje nižší úroveň baterie; nezaručuje obcházení.</string>
+    <string name="preset_travel_help">Pro více dostupné baterie před odchodem. Umožňuje vyšší úroveň nabití.</string>
+    <string name="charge_limits_title">Limity nabití baterie (%)</string>
+    <string name="charge_limits_help">Všechny hodnoty jsou procenta úrovně baterie. Obnovení vyžaduje připojenou nabíječku a vhodnou teplotu. ACC musí být zapnutý, aby se tyto limity dodržovaly.</string>
+    <string name="charge_pause_label">Zastavit nabíjení při</string>
+    <string name="charge_pause_help">Pozastavuje nabíjení, když baterie dosáhne této úrovně.</string>
+    <string name="charge_resume_label">Obnovit nabíjení při</string>
+    <string name="charge_resume_help">Po pauze obnovuje nabíjení, když baterie klesne na tuto úroveň nebo níže.</string>
+    <string name="charge_shutdown_label">Vypnout telefon při</string>
+    <string name="charge_shutdown_help">Vypne telefon při této úrovni nebo nižší, pokud baterie není nabíjena. Toto nepauzuje pouze nabíjení.</string>
+    <string name="charge_cycle_summary">Nabíjení se zastaví při %1$d%% a obnoví při %2$d%% nebo nižší.</string>
+    <string name="charge_unlimited_summary">∞ pro Zastavit odstraňuje limit zastavení založený na procentu baterie. ∞ pro Obnovit umožňuje obnovení nabíjení při jakékoliv úrovni baterie.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Limity nabíjení jsou pro tento profil vypnuté.</string>
+    <string name="charge_unlimited_hint">∞ označuje vypnutý procentní práh.</string>
+    <string name="charge_restore_limits">Obnovit počáteční limity nabíjení</string>
+    <string name="charge_switch_label">Metoda řízení nabíjení</string>
+    <string name="charge_switch_help">ACC používá kompatibilní ovládání zařízení pro povolení nebo pozastavení nabíjení. Nechte toto nastavené na Automaticky, pokud nevíte, kterou metodu vaše zařízení potřebuje.</string>
+    <string name="charge_switch_automatic">Automaticky najít kompatibilní metodu</string>
+    <string name="charge_power_title">Limity proudu a napětí</string>
+    <string name="charge_max_current">Maximální proud (mA):</string>
+</resources>

@@ -228,4 +228,15 @@
     <!-- Config Parse Error -->
     <string name="parse_failed_title">Échec de l\'analyse de la configuration ACC</string>
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">Version d’ACC-NG</string>
+    <string name="ng_engine_summary">Moteur de charge maintenu pour AccA-NG. La version intégrée est testée avec cette application.</string>
+    <string name="ng_engine_picker_message">Sélectionnez une version d’ACC-NG.</string>
+    <string name="ng_engine_bundled">ACC-NG intégré (recommandé)</string>
+    <string name="ng_engine_main">ACC-NG en développement (main)</string>
+    <string name="ng_engine_main_warning">La version de développement peut contenir des modifications non testées avec cette application.</string>
+    <string name="ng_engine_notifications_title">Notifications de charge</string>
+    <string name="ng_engine_notifications_summary">Notifications ACC-NG de connexion, pause, reprise, température et batterie faible. La protection de la charge reste active lorsque ces notifications sont désactivées.</string>
+    <string name="ng_engine_setting_failed">Impossible de confirmer le réglage dans ACC-NG.</string>
+    <string name="use_default_config">Utiliser les valeurs par défaut</string>
 </resources>

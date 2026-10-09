@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">O aplikaci</string>
+    <string name="about_ng_intro">Pokročilá kontrola nabíjení.\nNezávislý fork AccA.</string>
+    <string name="about_ng_debug">Ladění</string>
+    <string name="about_ng_release">Verze pro vydání</string>
+    <string name="about_ng_maintained_by">Udržuje</string>
+    <string name="about_ng_maintainer_role">Vývoj a údržba forku</string>
+    <string name="about_ng_profile">GitHub profil</string>
+    <string name="about_ng_project">Projekt na GitHubu</string>
+    <string name="about_ng_issues">Nahlásit problém</string>
+    <string name="about_ng_origin">Původ a poděkování</string>
+    <string name="about_ng_origin_blurb">AccA-NG staví na AccA, s vylepšeními rozhraní, kompatibility a spolehlivosti.</string>
+    <string name="about_ng_original_team">Původní tým AccA</string>
+    <string name="about_ng_acc_author">Autor ACC a DJS</string>
+    <string name="about_ng_original_project">Původní projekt AccA</string>
+    <string name="about_ng_community">Komunita ACC</string>
+    <string name="about_ng_technical">Technické informace</string>
+    <string name="about_ng_app_version">Verze aplikace</string>
+    <string name="about_ng_acc_version">Nainstalované ACC</string>
+    <string name="about_ng_api_version">Verze rozhraní ACC</string>
+    <string name="about_ng_loading">Čtení…</string>
+    <string name="about_ng_unavailable">Nedostupné</string>
+    <string name="about_ng_licenses">Licence a uznání</string>
+    <string name="about_ng_license_blurb">Open-source software pod GPL-3.0. Původní autorská práva AccA: © 2019–2021 MatteCarra, Squabbi a VR25.</string>
+    <string name="about_ng_view_license">Přečtěte si licenci GPL-3.0</string>
+    <string name="about_ng_attributions">Postaveno s AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs a dalšími open-source knihovnami.\n\nIkona Telegramu: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Open-source projekt · Nezávislý fork</string>
+    <string name="about_ng_expanded">Rozbaleno</string>
+    <string name="about_ng_collapsed">Sbaleno</string>
+</resources>

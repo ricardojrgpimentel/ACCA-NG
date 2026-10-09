@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">À propos</string>
+    <string name="about_ng_intro">Contrôle avancé de la charge.\nUn fork indépendant d’AccA.</string>
+    <string name="about_ng_debug">Débogage</string>
+    <string name="about_ng_release">Version publiée</string>
+    <string name="about_ng_maintained_by">Maintenu par</string>
+    <string name="about_ng_maintainer_role">Développement et maintenance du fork</string>
+    <string name="about_ng_profile">Profil GitHub</string>
+    <string name="about_ng_project">Projet sur GitHub</string>
+    <string name="about_ng_issues">Signaler un problème</string>
+    <string name="about_ng_origin">Origine et crédits</string>
+    <string name="about_ng_origin_blurb">AccA-NG repose sur AccA et améliore son interface, sa compatibilité et sa fiabilité.</string>
+    <string name="about_ng_original_team">Équipe AccA d’origine</string>
+    <string name="about_ng_acc_author">Auteur d’ACC et de DJS</string>
+    <string name="about_ng_original_project">Projet AccA d’origine</string>
+    <string name="about_ng_community">Communauté ACC</string>
+    <string name="about_ng_technical">Informations techniques</string>
+    <string name="about_ng_app_version">Version de l’application</string>
+    <string name="about_ng_acc_version">ACC installé</string>
+    <string name="about_ng_api_version">Version de l’interface ACC</string>
+    <string name="about_ng_loading">Lecture…</string>
+    <string name="about_ng_unavailable">Indisponible</string>
+    <string name="about_ng_licenses">Licence et crédits</string>
+    <string name="about_ng_license_blurb">Logiciel libre sous GPL-3.0. Droits d’auteur d’AccA d’origine : © 2019–2021 MatteCarra, Squabbi et VR25.</string>
+    <string name="about_ng_view_license">Lire la licence GPL-3.0</string>
+    <string name="about_ng_attributions">Créé avec AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs et d’autres bibliothèques libres.\n\nIcône Telegram : Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Projet libre · Fork indépendant</string>
+    <string name="about_ng_expanded">Développé</string>
+    <string name="about_ng_collapsed">Réduit</string>
+</resources>

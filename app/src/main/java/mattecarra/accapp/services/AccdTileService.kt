@@ -13,6 +13,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import mattecarra.accapp.utils.AppLanguages
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
 import mattecarra.accapp.utils.LogExt
@@ -56,13 +57,13 @@ class AccdTileService: TileService(), CoroutineScope
                 if (accdRunning)
                 {
                     val tile = qsTile
-                    tile.label = getString(R.string.wait) //stop deamon a bit, so I moved _updateTile before that
+                    tile.label = AppLanguages.localizedContext(this@AccdTileService).getString(R.string.wait) //stop deamon a bit, so I moved _updateTile before that
                     tile.updateTile()
 
                     //TODO add a mutex instead of relaunching the coroutine
                     launch {
                         Acc.instance.abcStopDaemon()
-                        tile.label = getString(R.string.tile_acc_disabled)
+                        tile.label = AppLanguages.localizedContext(this@AccdTileService).getString(R.string.tile_acc_disabled)
                         tile.updateTile()
                     }
 
@@ -108,7 +109,7 @@ class AccdTileService: TileService(), CoroutineScope
         if(Shell.rootAccess()) _updateTile() else
         {
             val tile = qsTile
-            tile.label = getString(R.string.tile_acc_no_root)
+            tile.label = AppLanguages.localizedContext(this@AccdTileService).getString(R.string.tile_acc_no_root)
             tile.state = Tile.STATE_UNAVAILABLE
             tile.icon = Icon.createWithResource(this, R.drawable.ic_battery_charging_full)
             tile.updateTile() // you need to call this method to apply changes
@@ -124,7 +125,7 @@ class AccdTileService: TileService(), CoroutineScope
             LogExt().d(LOG_TAG, "_updateTile $mAccdRunning $mCharging")
 
             val tile = qsTile
-            tile.label = getString(if(mAccdRunning) R.string.tile_acc_enabled else R.string.tile_acc_disabled)
+            tile.label = AppLanguages.localizedContext(this@AccdTileService).getString(if(mAccdRunning) R.string.tile_acc_enabled else R.string.tile_acc_disabled)
             tile.state = if(mAccdRunning) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
 
             tile.icon = Icon.createWithResource(this@AccdTileService,

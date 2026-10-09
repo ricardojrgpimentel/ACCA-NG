@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">정보</string>
+    <string name="about_ng_intro">고급 충전 제어.\nAccA의 독립 포크.</string>
+    <string name="about_ng_debug">디버그</string>
+    <string name="about_ng_release">릴리스</string>
+    <string name="about_ng_maintained_by">유지 관리 담당</string>
+    <string name="about_ng_maintainer_role">포크의 개발 및 유지 관리</string>
+    <string name="about_ng_profile">GitHub 프로필</string>
+    <string name="about_ng_project">GitHub에서 프로젝트</string>
+    <string name="about_ng_issues">이슈 보고</string>
+    <string name="about_ng_origin">출처 및 크레딧</string>
+    <string name="about_ng_origin_blurb">AccA-NG는 AccA를 기반으로 인터페이스, 호환성 및 안정성을 향상시켰습니다.</string>
+    <string name="about_ng_original_team">원래 AccA 팀</string>
+    <string name="about_ng_acc_author">ACC 및 DJS의 작가</string>
+    <string name="about_ng_original_project">원래 AccA 프로젝트</string>
+    <string name="about_ng_community">ACC 커뮤니티</string>
+    <string name="about_ng_technical">기술 정보</string>
+    <string name="about_ng_app_version">앱 버전</string>
+    <string name="about_ng_acc_version">설치된 ACC</string>
+    <string name="about_ng_api_version">ACC 인터페이스 버전</string>
+    <string name="about_ng_loading">읽는 중…</string>
+    <string name="about_ng_unavailable">이용 불가</string>
+    <string name="about_ng_licenses">라이선스 및 출처</string>
+    <string name="about_ng_license_blurb">GPL-3.0 하에 오픈 소스 소프트웨어. 원본 AccA 저작권: © 2019–2021 MatteCarra, Squabbi and VR25.</string>
+    <string name="about_ng_view_license">GPL-3.0 라이선스 읽기</string>
+    <string name="about_ng_attributions">AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs 및 기타 오픈 소스 라이브러리로 제작.\n\n텔레그램 아이콘: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">오픈 소스 프로젝트 · 독립 포크</string>
+    <string name="about_ng_expanded">확장됨</string>
+    <string name="about_ng_collapsed">축소됨</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">當前使用的配置檔</string>
+    <string name="profile_none_active">無當前使用的配置檔</string>
+    <string name="profile_custom_title">自訂設定</string>
+    <string name="profile_active_description">保存手動更改會切換到自訂設定。您保存的配置檔會保留。</string>
+    <string name="profile_custom_description">目前正在使用自訂設定。</string>
+    <string name="profile_reading_config">讀取配置中…</string>
+    <string name="profile_edit_action">編輯</string>
+    <string name="profile_edit_live_title">編輯目前設定</string>
+    <string name="profile_choose_action">選擇一個設定檔</string>
+    <string name="profile_change_action">更改設定檔</string>
+    <string name="profile_edit_live_context">目前配置</string>
+    <string name="profile_edit_from_profile">目前配置 · %1$s</string>
+    <string name="profile_edit_custom_help">儲存會將這些更改套用到 ACC。你可以從設定檔再次套用已儲存的設定檔。</string>
+    <string name="profile_edit_active_help">儲存更改會將它們套用到 ACC 並清除活動設定檔。你已儲存的設定檔將保持不變。</string>
+    <string name="profile_edit_saved_context">編輯已儲存的設定檔</string>
+    <string name="profile_edit_saved_help">儲存會更新此已儲存的設定檔。要在 ACC 使用新數值，請再次從設定檔套用它。</string>
+</resources>

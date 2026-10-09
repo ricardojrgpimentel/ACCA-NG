@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Для щоденного використання з помірним лімітом заряджання.</string>
+    <string name="preset_plugged_help">Для телефону, який проводить багато годин підключеним до зарядного пристрою. Тримає рівень батареї нижчим; не гарантує обхід.</string>
+    <string name="preset_travel_help">Для більшої доступної батареї перед виходом. Дозволяє вищий рівень зарядки.</string>
+    <string name="charge_limits_title">Ліміти зарядки батареї (%)</string>
+    <string name="charge_limits_help">Всі значення вказані у відсотках рівня заряду батареї. Відновлення вимагає підключеного зарядного пристрою та відповідної температури. Для застосування цих обмежень ACC має бути увімкнено.</string>
+    <string name="charge_pause_label">Зупинити зарядку на</string>
+    <string name="charge_pause_help">Зупиняє зарядку, коли батарея досягає цього рівня.</string>
+    <string name="charge_resume_label">Відновити зарядку на</string>
+    <string name="charge_resume_help">Після паузи відновлює зарядку, коли рівень батареї падає до цього рівня або нижче.</string>
+    <string name="charge_shutdown_label">Вимкнути телефон на</string>
+    <string name="charge_shutdown_help">Вимикає телефон на цьому рівні або нижче, якщо батарея не заряджається. Це не просто пауза зарядки.</string>
+    <string name="charge_cycle_summary">Зарядка зупиняється на %1$d%% і відновлюється на %2$d%% або нижче.</string>
+    <string name="charge_unlimited_summary">∞ для Зупинки скасовує обмеження на основі відсотка заряду батареї. ∞ для Відновлення дозволяє відновити зарядку на будь-якому рівні заряду батареї.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d с</string>
+    <string name="charge_limit_disabled">Обмеження зарядки вимкнені для цього профілю.</string>
+    <string name="charge_unlimited_hint">∞ означає вимкнений поріг відсотка.</string>
+    <string name="charge_restore_limits">Відновити початкові обмеження зарядки</string>
+    <string name="charge_switch_label">Метод контролю зарядки</string>
+    <string name="charge_switch_help">ACC використовує сумісний контроль пристрою для увімкнення або призупинення заряджання. Залиште цей параметр на Автоматичному, якщо ви не знаєте, який метод потрібен вашому пристрою.</string>
+    <string name="charge_switch_automatic">Автоматично знайти сумісний метод</string>
+    <string name="charge_power_title">Ліміти струму та напруги</string>
+    <string name="charge_max_current">Максимальний струм (мА):</string>
+</resources>

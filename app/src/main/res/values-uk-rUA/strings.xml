@@ -243,4 +243,15 @@
         \n\nЯкщо помилка не зникає, поділіться наведеним нижче стеком разом із ACC &amp; AccA версіями (через меню з трьома крапками &gt; Про додаток) з розробниками через Telegram.\n\n%s</string>
     <string name="automatic_switch_eanbled">Автоматичний цикл при перемиканні</string>
     <!-- Widget Label and Activity -->
+    <string name="use_default_config">Використати типові налаштування</string>
+
+    <string name="ng_engine_title">Версія ACC-NG</string>
+    <string name="ng_engine_summary">Двигун зарядки підтримується для AccA-NG. Вбудована версія протестована з цим додатком.</string>
+    <string name="ng_engine_picker_message">Виберіть версію ACC-NG.</string>
+    <string name="ng_engine_bundled">Вбудована версія ACC-NG (рекомендовано)</string>
+    <string name="ng_engine_main">Розробницька версія ACC-NG (main)</string>
+    <string name="ng_engine_main_warning">Розробницька версія може містити зміни, які не були протестовані з цим додатком.</string>
+    <string name="ng_engine_notifications_title">Сповіщення про зарядку</string>
+    <string name="ng_engine_notifications_summary">Сповіщення ACC-NG про підключення, паузу, відновлення, температуру та низький рівень заряду. Захист зарядки залишається активним, коли ці сповіщення вимкнені.</string>
+    <string name="ng_engine_setting_failed">Не вдалося підтвердити налаштування в ACC-NG.</string>
 </resources>

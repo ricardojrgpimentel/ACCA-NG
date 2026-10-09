@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Επισκόπηση</string>
+    <string name="ui_nav_schedules">Προγράμματα</string>
+    <string name="ui_profiles_intro">Οι προτιμήσεις φόρτισής σας, έτοιμες προς εφαρμογή.</string>
+    <string name="ui_scripts_intro">Γρήγορες εντολές για τον ελεγκτή φόρτισής σας.</string>
+    <string name="ui_schedules_intro">Αφήστε το πρόγραμμα φόρτισής σας να τρέχει αυτόματα.</string>
+    <string name="ui_profiles_empty">Δεν υπάρχουν ακόμα προφίλ\nΠατήστε + για να αποθηκεύσετε την πρώτη σας ρύθμιση φόρτισης.</string>
+    <string name="ui_scripts_empty">Οι εντολές σας βρίσκονται εδώ\nΠατήστε + για να δημιουργήσετε το πρώτο σας σενάριο.</string>
+    <string name="ui_schedules_empty">Δημιουργήστε το πρόγραμμα φόρτισής σας\nΠατήστε + για να προγραμματίσετε ένα προφίλ φόρτισης.</string>
+    <string name="ui_add_profile">Προσθήκη προφίλ</string>
+    <string name="ui_add_script">Προσθήκη σεναρίου</string>
+    <string name="ui_add_schedule">Προσθήκη προγράμματος</string>
+    <string name="ui_custom_config">Ρυθμίσεις φόρτισης</string>
+    <string name="ui_charge_once">Φορτίστε μία φορά σε επιλεγμένο επίπεδο</string>
+    <string name="ui_profile_options">Επιλογές προφίλ</string>
+    <string name="ui_script_options">Επιλογές σεναρίου</string>
+    <string name="ui_schedule_options">Επιλογές προγράμματος</string>
+    <string name="resume_temperature">Συνέχιση παρακάτω</string>
+    <string name="template_temperature_profile_resume">Ψύξη: %1$d°C · Παύση: %2$d°C · Επαναφορά: %3$d°C</string>
+    <string name="command_copy_details">Αντιγραφή λεπτομερειών</string>
+    <string name="command_details_copied">Λεπτομέρειες εντολής αντιγράφηκαν</string>
+</resources>

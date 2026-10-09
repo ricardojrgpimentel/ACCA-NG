@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Ενεργό προφίλ</string>
+    <string name="profile_none_active">Δεν υπάρχει ενεργό προφίλ</string>
+    <string name="profile_custom_title">Προσαρμοσμένη διαμόρφωση</string>
+    <string name="profile_active_description">Η αποθήκευση χειροκίνητων αλλαγών μεταβαίνει σε προσαρμοσμένη διαμόρφωση. Το αποθηκευμένο προφίλ σας διατηρείται.</string>
+    <string name="profile_custom_description">Οι προσαρμοσμένες ρυθμίσεις χρησιμοποιούνται αυτή τη στιγμή.</string>
+    <string name="profile_reading_config">Ανάγνωση διαμόρφωσης…</string>
+    <string name="profile_edit_action">Επεξεργασία</string>
+    <string name="profile_edit_live_title">Επεξεργασία τρεχουσών ρυθμίσεων</string>
+    <string name="profile_choose_action">Επιλογή προφίλ</string>
+    <string name="profile_change_action">Αλλαγή προφίλ</string>
+    <string name="profile_edit_live_context">Τρέχουσα διαμόρφωση</string>
+    <string name="profile_edit_from_profile">Τρέχουσα διαμόρφωση · %1$s</string>
+    <string name="profile_edit_custom_help">Η αποθήκευση εφαρμόζει αυτές τις αλλαγές στο ACC. Μπορείτε να εφαρμόσετε ξανά ένα αποθηκευμένο προφίλ από τα Προφίλ.</string>
+    <string name="profile_edit_active_help">Η αποθήκευση αλλαγών τις εφαρμόζει στο ACC και διαγράφει το ενεργό προφίλ. Το αποθηκευμένο σας προφίλ παραμένει αμετάβλητο.</string>
+    <string name="profile_edit_saved_context">Επεξεργασία αποθηκευμένου προφίλ</string>
+    <string name="profile_edit_saved_help">Η αποθήκευση ενημερώνει αυτό το αποθηκευμένο προφίλ. Για να χρησιμοποιήσετε τις νέες τιμές στο ACC, εφαρμόστε το ξανά από τα Προφίλ.</string>
+</resources>

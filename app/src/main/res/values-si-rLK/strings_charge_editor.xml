@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">මධ්‍යස්ථ ආරෝපණ සීමාවක් සමඟ දෛනික භාවිතය සඳහා.</string>
+    <string name="preset_plugged_help">පැය ගණනක් චාජරයට සම්බන්ධව තබන දුරකථනයක් සඳහා. බැටරි මට්ටම අඩුවෙන් තබයි; bypass ක්‍රියාකාරිත්වය සහතික නොකරයි.</string>
+    <string name="preset_travel_help">පිටතට යාමට පෙර වැඩි බැටරි ආරෝපණයක් ලබා ගැනීමට. ඉහළ ආරෝපණ මට්ටමකට ඉඩ දෙයි.</string>
+    <string name="charge_limits_title">බැටරි ආරෝපණ සීමා (%)</string>
+    <string name="charge_limits_help">සියලු අගයන් බැටරි මට්ටමේ ප්‍රතිශත වේ. නැවත ආරෝපණයට සම්බන්ධිත චාජරයක් සහ සුදුසු උෂ්ණත්වයක් අවශ්‍යයි. මෙම සීමා ක්‍රියාත්මක කිරීමට ACC ක්‍රියාත්මක විය යුතුය.</string>
+    <string name="charge_pause_label">ආරෝපණය නවත්වන මට්ටම</string>
+    <string name="charge_pause_help">බැටරි මට්ටම මෙම අගයට ළඟා වූ විට ආරෝපණය නවතී.</string>
+    <string name="charge_resume_label">ආරෝපණය නැවත අරඹන මට්ටම</string>
+    <string name="charge_resume_help">නවතා දැමීමෙන් පසු, බැටරි මට්ටම මෙම අගයට හෝ පහළට වැටුන විට නැවත ආරම්භ වේ.</string>
+    <string name="charge_shutdown_label">දුරකථනය නිවා දමන මට්ටම</string>
+    <string name="charge_shutdown_help">බැටරිය ආරෝපණය නොවන විට මෙම මට්ටමේදී හෝ ඊට පහළදී දුරකථනය නිවා දමයි. මෙය ආරෝපණයට විරාමයක් දීම පමණක් නොවේ.</string>
+    <string name="charge_cycle_summary">ආරෝපණය %1$d%%දී නවත්වන අතර %2$d%% හෝ පහළට පත් වන විට නැවත ආරම්භ වේ.</string>
+    <string name="charge_unlimited_summary">නැවැත්වීම සඳහා ∞ යෙදීමෙන් බැටරි ප්‍රතිශතය අනුව නැවැත්වීමේ සීමාව ඉවත් වේ. නැවත ආරම්භයට ∞ යෙදීමෙන් ඕනෑම බැටරි මට්ටමකදී ආරෝපණය නැවත ආරම්භ කළ හැක.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">මෙම පැතිකඩ සඳහා ආරෝපණ සීමා අක්‍රියයි.</string>
+    <string name="charge_unlimited_hint">∞ අක්‍රිය කළ ප්‍රතිශත සීමාවක් දැක්වෙයි.</string>
+    <string name="charge_restore_limits">මුල් ආරෝපණ සීමා ප්‍රතිස්ථාපනය කරන්න</string>
+    <string name="charge_switch_label">ආරෝපණ පාලන ක්‍රමය</string>
+    <string name="charge_switch_help">ආරෝපණය සක්‍රිය කිරීමට හෝ විරාමයක් දීමට ACC උපාංගයට ගැළපෙන පාලනයක් භාවිත කරයි. උපාංගයට අවශ්‍ය ක්‍රමය ඔබ නොදන්නේ නම් ස්වයංක්‍රීය සැකසුම තබන්න.</string>
+    <string name="charge_switch_automatic">අනුකූල ක්‍රමයක් ස්වයංක්‍රීයව සොයන්න</string>
+    <string name="charge_power_title">විදුලි ධාරා සහ වෝල්ටීයතා සීමා</string>
+    <string name="charge_max_current">උපරිම විදුලි ධාරාව (mA):</string>
+</resources>

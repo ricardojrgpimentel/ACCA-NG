@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">正在执行 ACC 命令，请稍候…</string>
+    <string name="command_completed">操作完成</string>
+    <string name="command_failed_title">操作无法完成</string>
+    <string name="command_failed_message">变更无法确认。请检查当前状态或重试。</string>
+    <string name="command_close">关闭</string>
+    <string name="command_stop_acc">正在停止 ACC…</string>
+    <string name="command_start_acc">正在启动 ACC…</string>
+    <string name="command_restart_acc">正在重启 ACC…</string>
+    <string name="command_read_status">正在读取 ACC 状态…</string>
+    <string name="command_apply_settings">应用设置…</string>
+    <string name="command_apply_profile">应用配置文件…</string>
+    <string name="command_reset_stats">重置电池统计信息…</string>
+    <string name="command_charge_once">设置充电上限…</string>
+    <string name="acc_status_unavailable">ACC 状态不可用</string>
+    <string name="battery_summary_title">电池概览</string>
+    <string name="battery_cycles_label">报告的充电循环次数</string>
+    <string name="battery_full_capacity_label">估计的满额容量</string>
+    <string name="battery_design_capacity_label">设计容量</string>
+    <string name="battery_diagnostics_note">设备报告的数值。不可用的读数将明确显示。</string>
+    <string name="battery_data_unavailable">不可用</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

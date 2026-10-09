@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">الملف الشخصي النشط</string>
+    <string name="profile_none_active">لا يوجد ملف شخصي نشط</string>
+    <string name="profile_custom_title">إعدادات مخصصة</string>
+    <string name="profile_active_description">حفظ التغييرات اليدوية يتحول إلى إعداد مخصص. يتم الاحتفاظ بملفك الشخصي المحفوظ.</string>
+    <string name="profile_custom_description">الإعدادات المخصصة قيد الاستخدام حاليًا.</string>
+    <string name="profile_reading_config">جارٍ قراءة التكوين…</string>
+    <string name="profile_edit_action">تحرير</string>
+    <string name="profile_edit_live_title">تعديل الإعدادات الحالية</string>
+    <string name="profile_choose_action">اختر ملف التعريف</string>
+    <string name="profile_change_action">تغيير ملف التعريف</string>
+    <string name="profile_edit_live_context">التكوين الحالي</string>
+    <string name="profile_edit_from_profile">التكوين الحالي · %1$s</string>
+    <string name="profile_edit_custom_help">يؤدي الحفظ إلى تطبيق هذه التغييرات على ACC. يمكنك تطبيق ملف تعريف محفوظ مرة أخرى من الملفات الشخصية.</string>
+    <string name="profile_edit_active_help">يؤدي حفظ التغييرات إلى تطبيقها على ACC ومسح ملف التعريف النشط. يظل ملف التعريف المحفوظ دون تغيير.</string>
+    <string name="profile_edit_saved_context">تحرير ملف تعريف محفوظ</string>
+    <string name="profile_edit_saved_help">يؤدي الحفظ إلى تحديث هذا الملف المحفوظ. لاستخدام القيم الجديدة في ACC، قم بتطبيقه مرة أخرى من الملفات الشخصية.</string>
+</resources>

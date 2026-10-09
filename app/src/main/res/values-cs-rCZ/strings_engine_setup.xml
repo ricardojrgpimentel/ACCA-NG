@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">Nastavit ACC-NG</string>
+    <string name="ng_setup_message">AccA-NG potřebuje nabíjecí engine ACC-NG. Aplikace jej instaluje s root přístupem. V Magisku se zobrazuje jako Advanced Charging Controller NG (ACC-NG).\n\nNemusíte stahovat ani instalovat ZIP ručně. Pokud je nainstalován jiný ACC, bude nahrazen při zachování jeho nastavení.\n\nPokud je potřebná kalibrace, odpojte všechny nabíječky a postupujte podle Diagnostiky nabíjení. Poté zvolte své limity nabíjení nebo aplikujte profil v aplikaci.</string>
+    <string name="ng_setup_install">Nastavit</string>
+    <string name="ng_setup_installing">Nastavování ACC-NG</string>
+    <string name="ng_setup_root_required">AccA-NG potřebuje root přístup k instalaci ACC-NG a ovládání nabíjení. Povolit AccA-NG v sekci Superuser vašeho root manageru a poté znovu otevřete aplikaci.</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Dùng hàng ngày với giới hạn sạc vừa phải.</string>
+    <string name="preset_plugged_help">Dành cho điện thoại thường xuyên kết nối với bộ sạc trong nhiều giờ. Giữ mức pin thấp hơn; không đảm bảo bỏ qua.</string>
+    <string name="preset_travel_help">Để có nhiều pin hơn trước khi ra ngoài. Cho phép mức sạc cao hơn.</string>
+    <string name="charge_limits_title">Giới hạn sạc pin (%)</string>
+    <string name="charge_limits_help">Tất cả các giá trị là phần trăm của mức pin. Tiếp tục yêu cầu một bộ sạc được kết nối và nhiệt độ phù hợp. ACC phải đang chạy để thực thi những giới hạn này.</string>
+    <string name="charge_pause_label">Dừng sạc tại</string>
+    <string name="charge_pause_help">Tạm dừng sạc khi pin đạt mức này.</string>
+    <string name="charge_resume_label">Tiếp tục sạc tại</string>
+    <string name="charge_resume_help">Sau khi tạm dừng, tiếp tục khi pin giảm xuống mức này hoặc thấp hơn.</string>
+    <string name="charge_shutdown_label">Tắt điện thoại tại</string>
+    <string name="charge_shutdown_help">Tắt điện thoại ở mức này hoặc thấp hơn nếu pin không đang sạc. Điều này không chỉ tạm dừng việc sạc.</string>
+    <string name="charge_cycle_summary">Sạc dừng ở %1$d%% và tiếp tục tại %2$d%% hoặc thấp hơn.</string>
+    <string name="charge_unlimited_summary">∞ cho Dừng loại bỏ giới hạn dừng dựa trên phần trăm pin. ∞ cho Tiếp tục cho phép sạc tiếp tục ở bất kỳ mức pin nào.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Giới hạn sạc bị vô hiệu cho hồ sơ này.</string>
+    <string name="charge_unlimited_hint">∞ đánh dấu ngưỡng phần trăm bị vô hiệu.</string>
+    <string name="charge_restore_limits">Khôi phục giới hạn sạc ban đầu</string>
+    <string name="charge_switch_label">Phương pháp kiểm soát sạc</string>
+    <string name="charge_switch_help">ACC sử dụng một điều khiển thiết bị tương thích để bật hoặc tạm dừng sạc. Giữ ở chế độ Tự động trừ khi bạn biết thiết bị của mình cần phương pháp nào.</string>
+    <string name="charge_switch_automatic">Tìm tự động một phương pháp tương thích</string>
+    <string name="charge_power_title">Giới hạn dòng điện và điện áp</string>
+    <string name="charge_max_current">Dòng điện tối đa (mA):</string>
+</resources>

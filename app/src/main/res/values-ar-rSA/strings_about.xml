@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">حول</string>
+    <string name="about_ng_intro">التحكم المتقدم في الشحن.\nنسخة مستقلة من AccA.</string>
+    <string name="about_ng_debug">تصحيح الأخطاء</string>
+    <string name="about_ng_release">الإصدار</string>
+    <string name="about_ng_maintained_by">صيانة بواسطة</string>
+    <string name="about_ng_maintainer_role">تطوير وصيانة النسخة المستقلة</string>
+    <string name="about_ng_profile">ملف GitHub الشخصي</string>
+    <string name="about_ng_project">المشروع على GitHub</string>
+    <string name="about_ng_issues">الإبلاغ عن مشكلة</string>
+    <string name="about_ng_origin">الأصل والاعتمادات</string>
+    <string name="about_ng_origin_blurb">تقوم AccA-NG بالبناء على AccA، مع تحسينات في الواجهة، التوافق والموثوقية.</string>
+    <string name="about_ng_original_team">فريق AccA الأصلي</string>
+    <string name="about_ng_acc_author">مؤلف ACC وDJS</string>
+    <string name="about_ng_original_project">مشروع AccA الأصلي</string>
+    <string name="about_ng_community">مجتمع ACC</string>
+    <string name="about_ng_technical">المعلومات التقنية</string>
+    <string name="about_ng_app_version">إصدار التطبيق</string>
+    <string name="about_ng_acc_version">ACC المثبت</string>
+    <string name="about_ng_api_version">إصدار واجهة ACC</string>
+    <string name="about_ng_loading">جاري القراءة…</string>
+    <string name="about_ng_unavailable">غير متاح</string>
+    <string name="about_ng_licenses">الترخيص والنسب</string>
+    <string name="about_ng_license_blurb">برنامج مفتوح المصدر بموجب GPL-3.0. حقوق AccA الأصلية: © 2019–2021 ماتّي كارّا، سكوابي و VR25.</string>
+    <string name="about_ng_view_license">قراءة ترخيص GPL-3.0</string>
+    <string name="about_ng_attributions">تم البناء باستخدام AndroidX وMaterial Components وlibsu وRoom وMoshi وMaterial Dialogs ومكتبات مفتوحة المصدر أخرى.\n\nأيقونة Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">مشروع مفتوح المصدر · فرع مستقل</string>
+    <string name="about_ng_expanded">موسّع</string>
+    <string name="about_ng_collapsed">مصغّر</string>
+</resources>

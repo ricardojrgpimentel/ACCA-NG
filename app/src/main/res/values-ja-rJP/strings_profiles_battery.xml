@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">開始点を選択</string>
+    <string name="preset_description">これらのオプションはバッテリー充電制限を設定します。1つをタップし、下の値を調整してプロフィールを保存してください。プロフィールを適用すると有効になります。</string>
+    <string name="preset_daily_name">日常使用</string>
+    <string name="preset_plugged_name">長時間接続</string>
+    <string name="preset_travel_name">旅行</string>
+    <string name="preset_option">%1$s\n%2$s\n%3$d%%で停止 · %4$d%%で再開</string>
+    <string name="battery_state_charging">充電中</string>
+    <string name="battery_state_paused">充電停止中</string>
+    <string name="battery_state_full">バッテリー満充電</string>
+    <string name="battery_state_discharging">放電中</string>
+    <string name="battery_state_not_charging">充電していません</string>
+    <string name="battery_state_unknown">充電状況不明</string>
+    <string name="battery_power_disconnected">充電器切断</string>
+    <string name="battery_power_ac">ケーブル接続 · AC</string>
+    <string name="battery_power_usb">ケーブル接続済み · USB</string>
+    <string name="battery_power_wireless">ワイヤレス充電器接続済み</string>
+    <string name="battery_power_dock">充電ドック接続済み</string>
+    <string name="battery_power_connected">充電器接続済み</string>
+    <string name="battery_power_unknown">充電器接続不明</string>
+    <string name="battery_paused_hint">充電器は接続されていますが、バッテリーは充電されていません。</string>
+</resources>

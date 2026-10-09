@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Kezdőpont kiválasztása</string>
+    <string name="preset_description">Ezek az opciók az akkumulátor töltési korlátokat állítják be. Érints meg egyet, állítsd be az alábbi értékeket, majd mentsd a profilt. A hatás az alkalmazás után lép életbe.</string>
+    <string name="preset_daily_name">Napi használat</string>
+    <string name="preset_plugged_name">Hosszú ideig csatlakoztatva</string>
+    <string name="preset_travel_name">Utazás</string>
+    <string name="preset_option">%1$s\n%2$s\nMegáll %3$d%%-nél · Folytatás %4$d%%-nél</string>
+    <string name="battery_state_charging">Töltés</string>
+    <string name="battery_state_paused">Töltés szüneteltetve</string>
+    <string name="battery_state_full">Akkumulátor tele</string>
+    <string name="battery_state_discharging">Kisütés</string>
+    <string name="battery_state_not_charging">Nem tölt</string>
+    <string name="battery_state_unknown">Töltési állapot ismeretlen</string>
+    <string name="battery_power_disconnected">Töltő leválasztva</string>
+    <string name="battery_power_ac">Kábel csatlakoztatva · AC</string>
+    <string name="battery_power_usb">Kábel csatlakoztatva · USB</string>
+    <string name="battery_power_wireless">Vezeték nélküli töltő csatlakoztatva</string>
+    <string name="battery_power_dock">Töltődokkoló csatlakoztatva</string>
+    <string name="battery_power_connected">Töltő csatlakoztatva</string>
+    <string name="battery_power_unknown">Töltő csatlakozás ismeretlen</string>
+    <string name="battery_paused_hint">A töltő csatlakoztatva van, de az akkumulátor nem töltődik.</string>
+</resources>

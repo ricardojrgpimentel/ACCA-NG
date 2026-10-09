@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">تشخيص الشحن</string>
+    <string name="troubleshoot_intro">تحقق من خدمة الشحن والمعايرة والحدود المطبقة. يتم تحديث التشخيص تلقائيًا أثناء فتح هذه الشاشة.</string>
+    <string name="troubleshoot_no_issue">لم يتم اكتشاف أي مشكلة في القراءات الحالية. هذا لا يؤكد دورة الشحن الكاملة والاستئناف.</string>
+    <string name="troubleshoot_unavailable">التشخيص غير متوفر. تحقق من وصول الروت وتثبيت ACC، ثم أعد المحاولة.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">تستخدم خدمة ACC المعدلة هذه حدود 90٪/80٪ ثابتة وتتجاهل حدود الملف الشخصي. استعد الخدمة المرفقة لاستعادة التحكم في الملف الشخصي.</string>
+    <string name="troubleshoot_different_module">تختلف الخدمة المثبتة عن تلك المرفقة مع التطبيق. قد تكون نسخة شرعية أو تعديل؛ الاختلاف وحده لا يثبت وجود خطأ.</string>
+    <string name="troubleshoot_calibration_pending">نظام ACC يعمل لكنه في انتظار معايرة التيار الكهربائي. افصل جميع الشواحن واستخدم خيار معايرة التيار الكهربائي لإكمال هذه الخطوة.</string>
+    <string name="troubleshoot_calibration_pending_short">نظام ACC في انتظار المعايرة</string>
+    <string name="troubleshoot_stopped">تم إيقاف خدمة ACC. ابدأها من لوحة التحكم لتطبيق حدود الشحن.</string>
+    <string name="troubleshoot_above_limit">استمرت البطارية في الشحن عند الحد المضبوط أو أعلى منه لمدة لا تقل عن 30 ثانية. تحقق من المعايرة والوحدة؛ قد يكون مفتاح الشحن المختار غير فعال أيضًا.</string>
+    <string name="troubleshoot_refresh">تحقق مرة أخرى</string>
+    <string name="troubleshoot_calibrate">معايرة التيار الكهربائي</string>
+    <string name="troubleshoot_calibrate_now">بدء المعايرة</string>
+    <string name="troubleshoot_calibration_instructions">افصل USB والشحن اللاسلكي وجميع الشواحن الأخرى. انتظر بضع ثوانٍ، ثم ابدأ. يقوم التطبيق بجمع خمس قراءات تفريغ خلال 10 ثوانٍ ويحفظ نسخة احتياطية من الإعدادات. حافظ على فصل الشواحن حتى الانتهاء. القراءات غير المستقرة أو غير المتوفرة تترك المعايرة دون تغيير.</string>
+    <string name="troubleshoot_calibration_failed">لم يمكن تأكيد المعايرة. حافظ على فصل جميع الشواحن، وانتظر استقرار القراءات وأعد المحاولة.</string>
+    <string name="troubleshoot_calibration_success">تم حفظ معايرة التيار الكهربائي والتحقق منها. أعد توصيل الشاحن وافحص التشخيصات.</string>
+    <string name="troubleshoot_restore">استعادة الخدمة المجمعة</string>
+    <string name="troubleshoot_restore_confirmation">هذا يستبدل خدمة شحن ACC بالخدمة المجمعة الأصلية من نفس الإصدار. سيتم إزالة تغييرات الخدمة المخصصة. يقوم التطبيق أولاً بعمل نسخة احتياطية للوحدة والتكوين، ويحافظ على إعداداتك، ويعيد تشغيل الخدمة ويضمن الإصلاح. إذا فشل التحقق، يحاول استعادة الخدمة السابقة.</string>
+    <string name="troubleshoot_restore_success">تم استعادة الخدمة الأصلية والتحقق منها. تم الحفاظ على حدود الشحن. إذا كانت المعايرة لا تزال معلقة، أكملها قبل اختبار التحكم في الشحن.</string>
+    <string name="troubleshoot_restore_failed">فشل في استعادة الخدمة. راجع تفاصيل الأمر لموقع النسخة الاحتياطية والفشل. تحقق من التشخيصات قبل المحاولة مرة أخرى.</string>
+    <string name="troubleshoot_incompatible_version">تتطلب استعادة الخدمة نفس إصدار ACC مثل حزمة التطبيق. الإصدارات الأخرى لا يتم استبدالها أو تخفيضها هنا.</string>
+    <string name="troubleshoot_details">رمز إصدار ACC: %1$s\nالبطارية: %2$s%%\nتوقف: %3$s%% · استئناف: %4$s%%\nحالة البطارية: %5$s\nالتيار: %6$s مللي أمبير\nقطبية التفريغ: %7$s\nمفتاح الشحن: %8$s</string>
+    <string name="troubleshoot_backup">النسخ الاحتياطي: %1$s</string>
+    <string name="troubleshoot_copy">نسخ التشخيصات</string>
+    <string name="troubleshoot_copied">تم نسخ التشخيصات</string>
+</resources>

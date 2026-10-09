@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">概要</string>
+    <string name="ui_nav_schedules">スケジュール</string>
+    <string name="ui_profiles_intro">適用準備ができている充電設定。</string>
+    <string name="ui_scripts_intro">充電コントローラー用のクイックコマンド。</string>
+    <string name="ui_schedules_intro">充電ルーチンを自動で実行させる。</string>
+    <string name="ui_profiles_empty">プロファイルがまだありません\n+ をタップして最初の充電設定を保存してください。</string>
+    <string name="ui_scripts_empty">コマンドはこちらに保存されます\n+ をタップして最初のスクリプトを作成してください。</string>
+    <string name="ui_schedules_empty">充電ルーチンを作成\n+ をタップして充電プロファイルをスケジュールしてください。</string>
+    <string name="ui_add_profile">プロファイルを追加</string>
+    <string name="ui_add_script">スクリプトを追加</string>
+    <string name="ui_add_schedule">スケジュールを追加</string>
+    <string name="ui_custom_config">充電設定</string>
+    <string name="ui_charge_once">選択したレベルまで一度だけ充電</string>
+    <string name="ui_profile_options">プロファイルオプション</string>
+    <string name="ui_script_options">スクリプトオプション</string>
+    <string name="ui_schedule_options">スケジュールオプション</string>
+    <string name="resume_temperature">下記から再開</string>
+    <string name="template_temperature_profile_resume">冷却: %1$d°C · 一時停止: %2$d°C · 再開: %3$d°C</string>
+    <string name="command_copy_details">詳細をコピー</string>
+    <string name="command_details_copied">コマンドの詳細をコピーしました</string>
+</resources>

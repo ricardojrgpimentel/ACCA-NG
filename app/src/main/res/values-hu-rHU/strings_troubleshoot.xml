@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Töltés diagnosztika</string>
+    <string name="troubleshoot_intro">Ellenőrizze a töltő szolgáltatást, kalibrálást és az alkalmazott korlátokat. A diagnosztika automatikusan frissül, amíg ez a képernyő nyitva van.</string>
+    <string name="troubleshoot_no_issue">A jelenlegi mérésekben nem észleltek problémát. Ez nem igazolja a teljes töltést és a folytatási ciklust.</string>
+    <string name="troubleshoot_unavailable">Diagnosztika nem elérhető. Ellenőrizze a root hozzáférést és az ACC telepítést, majd próbálja újra.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Ez a módosított ACC szolgáltatás rögzített 90%/80% korlátokat használ, és figyelmen kívül hagyja a profil korlátokat. A profilkontroll visszaállításához állítsa vissza a csomagolt szolgáltatást.</string>
+    <string name="troubleshoot_different_module">A telepített szolgáltatás eltér az alkalmazással csomagolt verziótól. Ez lehet egy legális verzió vagy egy módosítás; maga az eltérés nem bizonyít hibát.</string>
+    <string name="troubleshoot_calibration_pending">Az ACC fut, de az áramerősség kalibrálására vár. Válassza le az összes töltőt, majd válassza az Áram kalibrálása lehetőséget a lépés befejezéséhez.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC a kalibrációra vár</string>
+    <string name="troubleshoot_stopped">Az ACC szolgáltatás leállt. Indítsa el a műszerfalról a töltési korlátok alkalmazásához.</string>
+    <string name="troubleshoot_above_limit">Az akkumulátor a beállított vagy feletti limitek szerint töltődött legalább 30 másodpercig. Ellenőrizze a kalibrációt és a modult; a kiválasztott töltéskapcsoló is hatástalan lehet.</string>
+    <string name="troubleshoot_refresh">Ellenőrizze újra</string>
+    <string name="troubleshoot_calibrate">Áram kalibrálása</string>
+    <string name="troubleshoot_calibrate_now">Kalibráció indítása</string>
+    <string name="troubleshoot_calibration_instructions">Húzza ki az USB-t, a vezeték nélküli töltést és minden más töltőt. Várjon néhány másodpercet, majd indítsa el. Az alkalmazás 10 másodperc alatt öt kisütési adatot gyűjt, és ment egy konfigurációs biztonsági mentést. Tartsa a töltőket kihúzva, amíg a folyamat be nem fejeződik. Instabil vagy nem elérhető adatok esetén a kalibráció változatlan marad.</string>
+    <string name="troubleshoot_calibration_failed">A kalibráció nem volt megerősíthető. Tartsa minden töltőt kihúzva, várja meg, amíg az adatok stabilizálódnak, majd próbálja újra.</string>
+    <string name="troubleshoot_calibration_success">Az elektromos áram kalibrációja elmentésre került és ellenőrizve lett. Csatlakoztassa újra a töltőt, és ellenőrizze a diagnosztikát.</string>
+    <string name="troubleshoot_restore">A csomagolt szolgáltatás visszaállítása</string>
+    <string name="troubleshoot_restore_confirmation">Ez az ACC töltési szolgáltatást azonos verziójú eredeti csomagolt szolgáltatásra cseréli. A testreszabott szolgáltatásváltoztatások eltávolításra kerülnek. Az alkalmazás először biztonsági másolatot készít a modulról és a konfigurációról, megőrzi a beállításokat, újraindítja a szolgáltatást, és ellenőrzi a javítást. Ha az ellenőrzés sikertelen, megpróbálja visszaállítani az előző szolgáltatást.</string>
+    <string name="troubleshoot_restore_success">Az eredeti szolgáltatás visszaállításra és ellenőrzésre került. A töltési korlátok megőrzésre kerültek. Ha a kalibráció még folyamatban van, fejezze be azt a töltésvezérlés tesztelése előtt.</string>
+    <string name="troubleshoot_restore_failed">A szolgáltatás helyreállítása sikertelen volt. Tekintse át a parancs részleteit a biztonsági mentés helyével és a hibával kapcsolatban. Ellenőrizze a diagnosztikát, mielőtt újra megpróbálná.</string>
+    <string name="troubleshoot_incompatible_version">A szolgáltatás helyreállításához az alkalmazás csomagjával azonos ACC verzió szükséges. Más verziókat itt nem cserélnek vagy vissza nem vonnak.</string>
+    <string name="troubleshoot_details">ACC verzió kód: %1$s\nAkkumulátor: %2$s%%\nLeállítás: %3$s%% · Folytatás: %4$s%%\nAkkumulátor állapota: %5$s\nÁram: %6$s mA\nKisütés polaritása: %7$s\nTöltés kapcsoló: %8$s</string>
+    <string name="troubleshoot_backup">Biztonsági mentés: %1$s</string>
+    <string name="troubleshoot_copy">Diagnosztika másolása</string>
+    <string name="troubleshoot_copied">Diagnosztika másolva</string>
+</resources>

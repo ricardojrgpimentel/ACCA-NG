@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">アクティブなプロファイル</string>
+    <string name="profile_none_active">アクティブなプロファイルはありません</string>
+    <string name="profile_custom_title">カスタム構成</string>
+    <string name="profile_active_description">手動で変更を保存するとカスタム構成に切り替わります。保存済みのプロファイルは保持されます。</string>
+    <string name="profile_custom_description">現在カスタム設定が使用されています。</string>
+    <string name="profile_reading_config">設定を読み込み中…</string>
+    <string name="profile_edit_action">編集</string>
+    <string name="profile_edit_live_title">現在の設定を編集</string>
+    <string name="profile_choose_action">プロフィールを選択</string>
+    <string name="profile_change_action">プロフィールを変更</string>
+    <string name="profile_edit_live_context">現在の構成</string>
+    <string name="profile_edit_from_profile">現在の構成 · %1$s</string>
+    <string name="profile_edit_custom_help">保存するとこれらの変更がACCに適用されます。保存したプロフィールは、プロファイルから再度適用できます。</string>
+    <string name="profile_edit_active_help">変更を保存するとACCに適用され、アクティブなプロフィールはクリアされます。保存されたプロフィールは変更されません。</string>
+    <string name="profile_edit_saved_context">保存されたプロフィールを編集</string>
+    <string name="profile_edit_saved_help">保存するとこの保存されたプロフィールが更新されます。新しい値をACCで使用するには、プロファイルから再度適用してください。</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Hiển thị lệnh ▾</string>
+    <string name="command_hide_details">Ẩn lệnh ▴</string>
+    <string name="command_review_details">Xem lệnh</string>
+    <string name="command_trace_note">Lệnh cho hành động này. Một số mã thoát đại diện cho trạng thái ACC mong đợi.</string>
+    <string name="command_trace_waiting">Đang chờ lệnh đầu tiên…</string>
+    <string name="command_trace_running">Bước %1$d · Đang chạy…</string>
+    <string name="command_trace_finished">Bước %1$d · Hoàn tất (mã thoát %2$d)</string>
+    <string name="command_trace_interrupted">Bước %1$d · Thực thi bị gián đoạn</string>
+    <string name="command_trace_output">Đầu ra: %1$s</string>
+    <string name="command_result_ready">Hành động đã hoàn tất. Bạn có thể xem chi tiết hoặc đóng.</string>
+    <string name="command_trace_empty">Hành động này không thực thi lệnh root.</string>
+</resources>

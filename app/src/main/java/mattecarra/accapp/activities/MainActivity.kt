@@ -538,20 +538,6 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
 
         //--------------------------------------------------
 
-        val spl = PreferenceManager.getDefaultSharedPreferences(this).getString("language", "def")
-
-        val config = resources.configuration
-        val locale = if (spl.equals("def")) Locale.getDefault() else Locale(spl)
-
-        Locale.setDefault(locale)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) config.setLocale(locale) else config.locale = locale
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) createConfigurationContext(config)
-
-        resources.updateConfiguration(config, resources.displayMetrics)
-
-        //--------------------------------------------------
-
         sendBroadcast(Intent(this, BatteryInfoWidget::class.java).setAction(WIDGET_ALL_UPDATE))
 
         //--------------------------------------------------

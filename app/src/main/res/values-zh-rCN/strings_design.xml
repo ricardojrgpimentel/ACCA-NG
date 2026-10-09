@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">概览</string>
+    <string name="ui_nav_schedules">日程安排</string>
+    <string name="ui_profiles_intro">您的充电偏好，准备应用。</string>
+    <string name="ui_scripts_intro">为您的充电控制器提供快捷命令。</string>
+    <string name="ui_schedules_intro">让您的充电程序自动运行。</string>
+    <string name="ui_profiles_empty">暂无配置文件\n点击 + 保存您的第一个充电设置。</string>
+    <string name="ui_scripts_empty">您的命令存放在这里\n点击 + 创建您的第一个脚本。</string>
+    <string name="ui_schedules_empty">构建您的充电程序\n点击 + 安排一个充电配置文件。</string>
+    <string name="ui_add_profile">添加配置文件</string>
+    <string name="ui_add_script">添加脚本</string>
+    <string name="ui_add_schedule">添加日程</string>
+    <string name="ui_custom_config">充电设置</string>
+    <string name="ui_charge_once">充电至选定级别一次</string>
+    <string name="ui_profile_options">配置文件选项</string>
+    <string name="ui_script_options">脚本选项</string>
+    <string name="ui_schedule_options">日程选项</string>
+    <string name="resume_temperature">继续以下内容</string>
+    <string name="template_temperature_profile_resume">冷却：%1$d°C · 暂停：%2$d°C · 恢复：%3$d°C</string>
+    <string name="command_copy_details">复制详情</string>
+    <string name="command_details_copied">命令详情已复制</string>
+</resources>

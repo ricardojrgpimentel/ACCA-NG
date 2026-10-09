@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Voor dagelijks gebruik met een gematigde laadtoestand.</string>
+    <string name="preset_plugged_help">Voor een telefoon die vele uren aangesloten blijft op een oplader. Houdt het batterijniveau lager; garandeert geen bypass.</string>
+    <string name="preset_travel_help">Voor meer beschikbare batterij voordat je weggaat. Staat een hoger laadniveau toe.</string>
+    <string name="charge_limits_title">Batterijlaadlimieten (%)</string>
+    <string name="charge_limits_help">Alle waarden zijn percentages van het batterijniveau. Hervatten vereist een aangesloten oplader en geschikte temperatuur. ACC moet draaien om deze limieten af te dwingen.</string>
+    <string name="charge_pause_label">Stop met opladen bij</string>
+    <string name="charge_pause_help">Pauzeert het opladen wanneer de batterij dit niveau bereikt.</string>
+    <string name="charge_resume_label">Hervat opladen bij</string>
+    <string name="charge_resume_help">Na een pauze, hervat wanneer de batterij tot dit niveau daalt of lager.</string>
+    <string name="charge_shutdown_label">Zet de telefoon uit bij</string>
+    <string name="charge_shutdown_help">Schakelt de telefoon uit bij dit niveau of lager als de batterij niet oplaadt. Dit pauzeert het opladen niet gewoon.</string>
+    <string name="charge_cycle_summary">Opladen stopt bij %1$d%% en hervat bij %2$d%% of lager.</string>
+    <string name="charge_unlimited_summary">∞ voor Stop verwijdert de stoplimiet op basis van het batterijniveau. ∞ voor Hervatten maakt opladen mogelijk bij elk batterijniveau.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Oplaadlimieten zijn uitgeschakeld voor dit profiel.</string>
+    <string name="charge_unlimited_hint">∞ geeft een uitgeschelde percentage-drempel aan.</string>
+    <string name="charge_restore_limits">Herstel de oorspronkelijke oplaadlimieten</string>
+    <string name="charge_switch_label">Oplaadbeheer methode</string>
+    <string name="charge_switch_help">ACC gebruikt een compatibele apparaatbesturing om opladen in te schakelen of te pauzeren. Laat dit op Automatisch staan tenzij u weet welke methode uw apparaat nodig heeft.</string>
+    <string name="charge_switch_automatic">Zoek automatisch een compatibele methode</string>
+    <string name="charge_power_title">Stroom- en spanningslimieten</string>
+    <string name="charge_max_current">Maximale stroom (mA):</string>
+</resources>

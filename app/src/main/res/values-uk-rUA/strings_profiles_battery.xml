@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Вибрати початкову точку</string>
+    <string name="preset_description">Ці параметри встановлюють обмеження заряду батареї. Натисніть один, відрегулюйте значення нижче та збережіть профіль. Він набере чинності після застосування профілю.</string>
+    <string name="preset_daily_name">Щоденне використання</string>
+    <string name="preset_plugged_name">Тривале підключення до мережі</string>
+    <string name="preset_travel_name">Подорож</string>
+    <string name="preset_option">%1$s\n%2$s\nЗупиняється на %3$d%% · Відновлюється на %4$d%%</string>
+    <string name="battery_state_charging">Зарядка</string>
+    <string name="battery_state_paused">Зарядка призупинена</string>
+    <string name="battery_state_full">Батарея повна</string>
+    <string name="battery_state_discharging">Розрядка</string>
+    <string name="battery_state_not_charging">Не заряджається</string>
+    <string name="battery_state_unknown">Статус зарядки невідомий</string>
+    <string name="battery_power_disconnected">Зарядний пристрій від’єднано</string>
+    <string name="battery_power_ac">Кабель підключено · AC</string>
+    <string name="battery_power_usb">Кабель підключено · USB</string>
+    <string name="battery_power_wireless">Підключено бездротовий зарядний пристрій</string>
+    <string name="battery_power_dock">Підключено док-станцію для зарядки</string>
+    <string name="battery_power_connected">Зарядний пристрій підключено</string>
+    <string name="battery_power_unknown">Підключення зарядного пристрою невідоме</string>
+    <string name="battery_paused_hint">Зарядний пристрій підключено, але батарея не заряджається.</string>
+</resources>

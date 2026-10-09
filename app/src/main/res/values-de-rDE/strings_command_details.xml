@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Befehle anzeigen ▾</string>
+    <string name="command_hide_details">Befehle ausblenden ▴</string>
+    <string name="command_review_details">Befehle ansehen</string>
+    <string name="command_trace_note">Befehle dieser Aktion. Einige Rückgabecodes stehen für einen erwarteten ACC-Zustand.</string>
+    <string name="command_trace_waiting">Warten auf den ersten Befehl…</string>
+    <string name="command_trace_running">Schritt %1$d · Wird ausgeführt…</string>
+    <string name="command_trace_finished">Schritt %1$d · Beendet (Rückgabecode %2$d)</string>
+    <string name="command_trace_interrupted">Schritt %1$d · Ausführung unterbrochen</string>
+    <string name="command_trace_output">Ausgabe: %1$s</string>
+    <string name="command_result_ready">Die Aktion ist beendet. Du kannst die Details prüfen oder schließen.</string>
+    <string name="command_trace_empty">Diese Aktion hat keine Root-Befehle ausgeführt.</string>
+</resources>

@@ -22,6 +22,7 @@ import mattecarra.accapp.djs.Djs
 import mattecarra.accapp.utils.Constants.DJS_ENABLED
 import mattecarra.accapp.utils.GithubUtils
 import mattecarra.accapp.utils.LogExt
+import mattecarra.accapp.utils.AppLanguages
 import java.io.File
 import kotlin.coroutines.CoroutineContext
 
@@ -51,6 +52,24 @@ class SettingsFragment : PreferenceFragmentCompat(), CoroutineScope {
         LogExt().d(javaClass.simpleName, "onCreatePreferences()")
 
         setPreferencesFromResource(R.xml.settings, rootKey)
+
+        findPreference<ListPreference>("language")?.let { language ->
+            // Android 13 also allows changing this preference from system settings.
+            // AppLanguages handles persistence rather than ListPreference writing stale values.
+            language.isPersistent = false
+            val selected = AppLanguages.selectedTag(requireContext())
+            val choices = language.entryValues.map { it.toString() }
+            language.value = when {
+                selected.isEmpty() -> "def"
+                selected in choices -> selected
+                else -> selected.substringBefore('-')
+            }
+            language.summaryProvider = ListPreference.SimpleSummaryProvider.getInstance()
+            language.setOnPreferenceChangeListener { _, newValue ->
+                AppLanguages.apply(requireContext(), newValue as String)
+                true
+            }
+        }
 
         val telegram = findPreference<Preference>("acc_telegram")
         telegram?.onPreferenceClickListener = Preference.OnPreferenceClickListener {

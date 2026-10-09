@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACC komutları çalıştırılıyor. Lütfen bekleyin…</string>
+    <string name="command_completed">İşlem tamamlandı</string>
+    <string name="command_failed_title">İşlem tamamlanamadı</string>
+    <string name="command_failed_message">Değişiklik doğrulanamadı. Mevcut durumu kontrol edin veya tekrar deneyin.</string>
+    <string name="command_close">Kapat</string>
+    <string name="command_stop_acc">ACC durduruluyor…</string>
+    <string name="command_start_acc">ACC başlatılıyor…</string>
+    <string name="command_restart_acc">ACC yeniden başlatılıyor…</string>
+    <string name="command_read_status">ACC durumu okunuyor…</string>
+    <string name="command_apply_settings">Ayarlar uygulanıyor…</string>
+    <string name="command_apply_profile">Profil uygulanıyor…</string>
+    <string name="command_reset_stats">Pil istatistikleri sıfırlanıyor…</string>
+    <string name="command_charge_once">Şarj limiti ayarlanıyor…</string>
+    <string name="acc_status_unavailable">ACC durumu kullanılamıyor</string>
+    <string name="battery_summary_title">Pil özeti</string>
+    <string name="battery_cycles_label">Bildirilen şarj döngüleri</string>
+    <string name="battery_full_capacity_label">Tahmini tam kapasite</string>
+    <string name="battery_design_capacity_label">Tasarım kapasitesi</string>
+    <string name="battery_diagnostics_note">Cihaz tarafından bildirilen değerler. Kullanılamayan okumalar açıkça gösterilmektedir.</string>
+    <string name="battery_data_unavailable">Kullanılamıyor</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

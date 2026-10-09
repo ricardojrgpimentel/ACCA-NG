@@ -264,4 +264,15 @@
     <string name="automatic_switch_eanbled">Wissel automatisch door schakelaars</string>
     <string name="info_voltage">Spanning</string>
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">ACC-NG versie</string>
+    <string name="ng_engine_summary">Laadmotor onderhouden voor AccA-NG. De meegeleverde versie is getest met deze app.</string>
+    <string name="ng_engine_picker_message">Selecteer een ACC-NG versie.</string>
+    <string name="ng_engine_bundled">ACC-NG meegeleverd (aanbevolen)</string>
+    <string name="ng_engine_main">ACC-NG ontwikkeling (main)</string>
+    <string name="ng_engine_main_warning">De ontwikkelingsversie kan wijzigingen bevatten die niet met deze app zijn getest.</string>
+    <string name="ng_engine_notifications_title">Laadmeldingen</string>
+    <string name="ng_engine_notifications_summary">Verbinding, pauze, hervatten, temperatuur- en laag-batterijmeldingen van ACC-NG. Laadbescherming blijft actief wanneer deze meldingen uitgeschakeld zijn.</string>
+    <string name="ng_engine_setting_failed">Kon de instelling in ACC-NG niet bevestigen.</string>
+    <string name="use_default_config">Standaardwaarden gebruiken</string>
 </resources>

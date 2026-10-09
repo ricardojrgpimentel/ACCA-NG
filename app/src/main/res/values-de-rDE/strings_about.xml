@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Über</string>
+    <string name="about_ng_intro">Erweiterte Ladesteuerung.\nEine unabhängige Abspaltung von AccA.</string>
+    <string name="about_ng_debug">Debug</string>
+    <string name="about_ng_release">Veröffentlichung</string>
+    <string name="about_ng_maintained_by">Betreut von</string>
+    <string name="about_ng_maintainer_role">Entwicklung und Pflege der Abspaltung</string>
+    <string name="about_ng_profile">GitHub-Profil</string>
+    <string name="about_ng_project">Projekt auf GitHub</string>
+    <string name="about_ng_issues">Problem melden</string>
+    <string name="about_ng_origin">Ursprung und Mitwirkende</string>
+    <string name="about_ng_origin_blurb">AccA-NG baut auf AccA auf und verbessert Oberfläche, Kompatibilität und Zuverlässigkeit.</string>
+    <string name="about_ng_original_team">Ursprüngliches AccA-Team</string>
+    <string name="about_ng_acc_author">Autor von ACC und DJS</string>
+    <string name="about_ng_original_project">Ursprüngliches AccA-Projekt</string>
+    <string name="about_ng_community">ACC-Community</string>
+    <string name="about_ng_technical">Technische Informationen</string>
+    <string name="about_ng_app_version">App-Version</string>
+    <string name="about_ng_acc_version">Installiertes ACC</string>
+    <string name="about_ng_api_version">Version der ACC-Schnittstelle</string>
+    <string name="about_ng_loading">Wird gelesen…</string>
+    <string name="about_ng_unavailable">Nicht verfügbar</string>
+    <string name="about_ng_licenses">Lizenz und Danksagungen</string>
+    <string name="about_ng_license_blurb">Quelloffene Software unter GPL-3.0. Ursprüngliches AccA-Copyright: © 2019–2021 MatteCarra, Squabbi und VR25.</string>
+    <string name="about_ng_view_license">GPL-3.0-Lizenz lesen</string>
+    <string name="about_ng_attributions">Erstellt mit AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs und weiteren quelloffenen Bibliotheken.\n\nTelegram-Symbol: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Quelloffenes Projekt · Unabhängige Abspaltung</string>
+    <string name="about_ng_expanded">Ausgeklappt</string>
+    <string name="about_ng_collapsed">Eingeklappt</string>
+</resources>

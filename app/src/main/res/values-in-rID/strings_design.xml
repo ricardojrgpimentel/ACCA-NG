@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Ikhtisar</string>
+    <string name="ui_nav_schedules">Jadwal</string>
+    <string name="ui_profiles_intro">Preferensi pengisian Anda, siap diterapkan.</string>
+    <string name="ui_scripts_intro">Perintah cepat untuk pengontrol pengisian Anda.</string>
+    <string name="ui_schedules_intro">Biarkan rutinitas pengisian Anda berjalan secara otomatis.</string>
+    <string name="ui_profiles_empty">Belum ada profil\nKetuk + untuk menyimpan pengaturan pengisian pertama Anda.</string>
+    <string name="ui_scripts_empty">Perintah Anda berada di sini\nKetuk + untuk membuat skrip pertama Anda.</string>
+    <string name="ui_schedules_empty">Bangun rutinitas pengisian Anda\nKetuk + untuk menjadwalkan profil pengisian.</string>
+    <string name="ui_add_profile">Tambah profil</string>
+    <string name="ui_add_script">Tambah skrip</string>
+    <string name="ui_add_schedule">Tambah jadwal</string>
+    <string name="ui_custom_config">Pengaturan pengisian</string>
+    <string name="ui_charge_once">Isi sekali hingga level yang dipilih</string>
+    <string name="ui_profile_options">Opsi profil</string>
+    <string name="ui_script_options">Opsi skrip</string>
+    <string name="ui_schedule_options">Opsi jadwal</string>
+    <string name="resume_temperature">Lanjutkan di bawah</string>
+    <string name="template_temperature_profile_resume">Pendinginan: %1$d°C · Jeda: %2$d°C · Lanjutkan: %3$d°C</string>
+    <string name="command_copy_details">Salin detail</string>
+    <string name="command_details_copied">Detail perintah disalin</string>
+</resources>

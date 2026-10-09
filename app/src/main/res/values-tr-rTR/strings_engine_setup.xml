@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">ACC-NG kurulumu</string>
+    <string name="ng_setup_message">AccA-NG, ACC-NG şarj motoruna ihtiyaç duyar. Uygulama bunu root erişimi ile kurar. Magisk\'te, Advanced Charging Controller NG (ACC-NG) olarak görünür.\n\nZIP dosyasını manuel olarak indirmenize veya kurmanıza gerek yoktur. Başka bir ACC yüklüyse, ayarları korunarak değiştirilecektir.\n\nKalibrasyon gerekiyorsa, tüm şarj cihazlarını çıkarın ve Şarj teşhislerini izleyin. Ardından şarj sınırlarınızı seçin veya uygulamada bir profil uygulayın.</string>
+    <string name="ng_setup_install">Kur</string>
+    <string name="ng_setup_installing">ACC-NG kuruluyor</string>
+    <string name="ng_setup_root_required">AccA-NG, ACC-NG\'yi yüklemek ve şarjı kontrol etmek için root erişimine ihtiyaç duyar. Root yöneticinizin Süper Kullanıcı bölümünde AccA-NG\'ye izin verin, ardından uygulamayı yeniden açın.</string>
+</resources>

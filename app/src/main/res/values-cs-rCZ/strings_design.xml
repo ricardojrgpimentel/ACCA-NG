@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Přehled</string>
+    <string name="ui_nav_schedules">Plány</string>
+    <string name="ui_profiles_intro">Vaše preference nabíjení, připravené k použití.</string>
+    <string name="ui_scripts_intro">Rychlé příkazy pro váš nabíjecí řadič.</string>
+    <string name="ui_schedules_intro">Nechte svou rutinu nabíjení běžet automaticky.</string>
+    <string name="ui_profiles_empty">Žádné profily zatím\nKlepněte na + pro uložení vašeho prvního nastavení nabíjení.</string>
+    <string name="ui_scripts_empty">Vaše příkazy žijí zde\nKlepněte na + pro vytvoření vašeho prvního skriptu.</string>
+    <string name="ui_schedules_empty">Vytvořte svou rutinu nabíjení\nKlepněte na + pro naplánování nabíjecího profilu.</string>
+    <string name="ui_add_profile">Přidat profil</string>
+    <string name="ui_add_script">Přidat skript</string>
+    <string name="ui_add_schedule">Přidat plán</string>
+    <string name="ui_custom_config">Nastavení nabíjení</string>
+    <string name="ui_charge_once">Nabít jednorázově na zvolenou úroveň</string>
+    <string name="ui_profile_options">Možnosti profilu</string>
+    <string name="ui_script_options">Možnosti skriptu</string>
+    <string name="ui_schedule_options">Možnosti plánu</string>
+    <string name="resume_temperature">Pokračovat níže</string>
+    <string name="template_temperature_profile_resume">Chlazení: %1$d°C · Pauza: %2$d°C · Obnovení: %3$d°C</string>
+    <string name="command_copy_details">Kopírovat detaily</string>
+    <string name="command_details_copied">Detaily příkazu zkopírovány</string>
+</resources>

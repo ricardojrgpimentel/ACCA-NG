@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">设置 ACC-NG</string>
+    <string name="ng_setup_message">AccA-NG 需要 ACC-NG 充电引擎。该应用程序通过 root 权限安装它。在 Magisk 中，它显示为Advanced Charging Controller NG (ACC-NG)。\n\n您无需手动下载或安装 ZIP 文件。如果已安装其他 ACC，将在保留其设置的同时替换它。\n\n如果需要校准，请断开所有充电器并按照充电诊断操作。然后在应用中选择您的充电限制或应用配置文件。</string>
+    <string name="ng_setup_install">设置</string>
+    <string name="ng_setup_installing">正在设置 ACC-NG</string>
+    <string name="ng_setup_root_required">AccA-NG 需要 root 权限来安装 ACC-NG 并控制充电。在您的 root 管理器的超级用户部分允许 AccA-NG，然后重新打开应用程序。</string>
+</resources>

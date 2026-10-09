@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Σχετικά</string>
+    <string name="about_ng_intro">Προηγμένος έλεγχος φόρτισης.\nΜια ανεξάρτητη διακλάδωση του AccA.</string>
+    <string name="about_ng_debug">Αποσφαλμάτωση</string>
+    <string name="about_ng_release">Έκδοση κυκλοφορίας</string>
+    <string name="about_ng_maintained_by">Συντηρείται από</string>
+    <string name="about_ng_maintainer_role">Ανάπτυξη και συντήρηση της διακλάδωσης</string>
+    <string name="about_ng_profile">Προφίλ GitHub</string>
+    <string name="about_ng_project">Έργο στο GitHub</string>
+    <string name="about_ng_issues">Αναφορά προβλήματος</string>
+    <string name="about_ng_origin">Προέλευση και εύσημα</string>
+    <string name="about_ng_origin_blurb">Το AccA-NG βασίζεται στο AccA, με βελτιώσεις στη διεπαφή, τη συμβατότητα και την αξιοπιστία.</string>
+    <string name="about_ng_original_team">Αρχική ομάδα AccA</string>
+    <string name="about_ng_acc_author">Συγγραφέας των ACC και DJS</string>
+    <string name="about_ng_original_project">Αρχικό έργο AccA</string>
+    <string name="about_ng_community">Κοινότητα ACC</string>
+    <string name="about_ng_technical">Τεχνικές πληροφορίες</string>
+    <string name="about_ng_app_version">Έκδοση εφαρμογής</string>
+    <string name="about_ng_acc_version">Εγκατεστημένο ACC</string>
+    <string name="about_ng_api_version">Έκδοση διεπαφής ACC</string>
+    <string name="about_ng_loading">Ανάγνωση…</string>
+    <string name="about_ng_unavailable">Μη διαθέσιμο</string>
+    <string name="about_ng_licenses">Άδεια και αναφορές</string>
+    <string name="about_ng_license_blurb">Λογισμικό ανοικτού κώδικα υπό GPL-3.0. Αρχικό πνευματικό δικαίωμα AccA: © 2019–2021 MatteCarra, Squabbi και VR25.</string>
+    <string name="about_ng_view_license">Διάβασε την άδεια GPL-3.0</string>
+    <string name="about_ng_attributions">Δημιουργήθηκε με AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs και άλλες βιβλιοθήκες ανοικτού κώδικα.\n\nΕικονίδιο Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Έργο ανοικτού κώδικα · Ανεξάρτητο fork</string>
+    <string name="about_ng_expanded">Ανοικτό</string>
+    <string name="about_ng_collapsed">Κλειστό</string>
+</resources>

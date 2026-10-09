@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">ACC-NG 설정</string>
+    <string name="ng_setup_message">AccA-NG는 ACC-NG 충전 엔진이 필요합니다. 앱은 루트 접근 권한으로 이를 설치합니다. Magisk에서는 Advanced Charging Controller NG (ACC-NG)로 표시됩니다.\n\nZIP을 수동으로 다운로드하거나 설치할 필요가 없습니다. 다른 ACC가 설치되어 있으면, 설정을 유지하면서 대체됩니다.\n\n보정이 필요하면 모든 충전기를 분리하고 충전 진단을 따릅니다. 그런 다음 앱에서 충전 한도를 선택하거나 프로필을 적용하세요.</string>
+    <string name="ng_setup_install">설정</string>
+    <string name="ng_setup_installing">ACC-NG 설정 중</string>
+    <string name="ng_setup_root_required">AccA-NG는 ACC-NG를 설치하고 충전을 제어하기 위해 루트 접근 권한이 필요합니다. 루트 관리자에서 Superuser 섹션에 AccA-NG를 허용한 후 앱을 다시 엽니다.</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">Spouští se příkazy ACC. Prosím čekejte…</string>
+    <string name="command_completed">Akce dokončena</string>
+    <string name="command_failed_title">Akci se nepodařilo dokončit</string>
+    <string name="command_failed_message">Změnu se nepodařilo potvrdit. Zkontrolujte aktuální stav nebo zkuste znovu.</string>
+    <string name="command_close">Zavřít</string>
+    <string name="command_stop_acc">Zastavení ACC…</string>
+    <string name="command_start_acc">Spouštění ACC…</string>
+    <string name="command_restart_acc">Restartování ACC…</string>
+    <string name="command_read_status">Čtení stavu ACC…</string>
+    <string name="command_apply_settings">Používání nastavení…</string>
+    <string name="command_apply_profile">Používání profilu…</string>
+    <string name="command_reset_stats">Resetování statistik baterie…</string>
+    <string name="command_charge_once">Nastavování limitu nabití…</string>
+    <string name="acc_status_unavailable">Stav ACC nedostupný</string>
+    <string name="battery_summary_title">Souhrn baterie</string>
+    <string name="battery_cycles_label">Nahlášené nabíjecí cykly</string>
+    <string name="battery_full_capacity_label">Odhadovaná plná kapacita</string>
+    <string name="battery_design_capacity_label">Návrhová kapacita</string>
+    <string name="battery_diagnostics_note">Hodnoty hlášené zařízením. Nedostupná měření jsou zobrazeny explicitně.</string>
+    <string name="battery_data_unavailable">Nedostupné</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

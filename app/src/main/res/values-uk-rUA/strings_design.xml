@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Огляд</string>
+    <string name="ui_nav_schedules">Розклади</string>
+    <string name="ui_profiles_intro">Ваші переваги заряджання, готові до застосування.</string>
+    <string name="ui_scripts_intro">Швидкі команди для вашого контролера заряду.</string>
+    <string name="ui_schedules_intro">Дозвольте вашому режиму заряджання працювати автоматично.</string>
+    <string name="ui_profiles_empty">Профілі відсутні\nНатисніть +, щоб зберегти першу налаштування заряджання.</string>
+    <string name="ui_scripts_empty">Ваші команди тут\nНатисніть +, щоб створити свій перший скрипт.</string>
+    <string name="ui_schedules_empty">Створіть свій режим заряджання\nНатисніть +, щоб запланувати профіль заряджання.</string>
+    <string name="ui_add_profile">Додати профіль</string>
+    <string name="ui_add_script">Додати скрипт</string>
+    <string name="ui_add_schedule">Додати розклад</string>
+    <string name="ui_custom_config">Налаштування заряджання</string>
+    <string name="ui_charge_once">Заряджати один раз до обраного рівня</string>
+    <string name="ui_profile_options">Опції профілю</string>
+    <string name="ui_script_options">Опції скрипту</string>
+    <string name="ui_schedule_options">Опції розкладу</string>
+    <string name="resume_temperature">Продовжити нижче</string>
+    <string name="template_temperature_profile_resume">Охолодження: %1$d°C · Пауза: %2$d°C · Відновлення: %3$d°C</string>
+    <string name="command_copy_details">Копіювати деталі</string>
+    <string name="command_details_copied">Деталі команди скопійовані</string>
+</resources>

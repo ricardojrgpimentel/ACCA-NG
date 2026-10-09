@@ -243,4 +243,15 @@ Nếu đơn vị được phát hiện không chính xác, bạn có thể đặ
         \n\nIf lỗi vẫn còn, vui lòng chia sẻ dấu vết ngăn xếp bên dưới cùng với phiên bản của ACC &amp; AccA (qua menu 3 chấm &gt; Giới thiệu) với các nhà phát triển qua Telegram.\n\n%s</string>
     <string name="automatic_switch_eanbled">Tự động xoay vòng qua các bộ chuyển</string>
     <!-- Widget Label and Activity -->
+    <string name="use_default_config">Dùng giá trị mặc định</string>
+
+    <string name="ng_engine_title">Phiên bản ACC-NG</string>
+    <string name="ng_engine_summary">Bộ sạc được duy trì cho AccA-NG. Phiên bản đi kèm đã được thử nghiệm với ứng dụng này.</string>
+    <string name="ng_engine_picker_message">Chọn một phiên bản ACC-NG.</string>
+    <string name="ng_engine_bundled">ACC-NG đi kèm (được khuyến nghị)</string>
+    <string name="ng_engine_main">ACC-NG phát triển (main)</string>
+    <string name="ng_engine_main_warning">Phiên bản phát triển có thể chứa các thay đổi chưa được thử nghiệm với ứng dụng này.</string>
+    <string name="ng_engine_notifications_title">Thông báo sạc</string>
+    <string name="ng_engine_notifications_summary">Thông báo kết nối, tạm dừng, tiếp tục, nhiệt độ và pin yếu từ ACC-NG. Bảo vệ sạc vẫn hoạt động khi các thông báo này tắt.</string>
+    <string name="ng_engine_setting_failed">Không thể xác nhận cài đặt trong ACC-NG.</string>
 </resources>

@@ -284,4 +284,15 @@
     <string name="automatic_switch_eanbled">Automatisch durch die Schalter wechseln</string>
     <string name="info_voltage">Spannung</string>
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">ACC-NG-Version</string>
+    <string name="ng_engine_summary">Ladesteuerung für AccA-NG. Die mitgelieferte Version wird mit dieser App getestet.</string>
+    <string name="ng_engine_picker_message">Wähle eine ACC-NG-Version.</string>
+    <string name="ng_engine_bundled">Mitgeliefertes ACC-NG (empfohlen)</string>
+    <string name="ng_engine_main">ACC-NG-Entwicklungsversion (main)</string>
+    <string name="ng_engine_main_warning">Die Entwicklungsversion kann Änderungen enthalten, die noch nicht mit dieser App getestet wurden.</string>
+    <string name="ng_engine_notifications_title">Ladehinweise</string>
+    <string name="ng_engine_notifications_summary">ACC-NG-Hinweise zu Verbindung, Pause, Fortsetzen, Temperatur und niedrigem Akkustand. Der Ladeschutz bleibt auch bei deaktivierten Hinweisen aktiv.</string>
+    <string name="ng_engine_setting_failed">Die Einstellung in ACC-NG konnte nicht bestätigt werden.</string>
+    <string name="use_default_config">Standardwerte verwenden</string>
 </resources>

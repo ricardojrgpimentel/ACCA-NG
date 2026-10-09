@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Névjegy</string>
+    <string name="about_ng_intro">Fejlett töltésvezérlés.\nAz AccA független ága.</string>
+    <string name="about_ng_debug">Hibakeresés</string>
+    <string name="about_ng_release">Kiadás</string>
+    <string name="about_ng_maintained_by">Karbantartó</string>
+    <string name="about_ng_maintainer_role">Az ág fejlesztése és karbantartása</string>
+    <string name="about_ng_profile">GitHub profil</string>
+    <string name="about_ng_project">Projekt a GitHub-on</string>
+    <string name="about_ng_issues">Hibabejelentés</string>
+    <string name="about_ng_origin">Eredet és köszönet</string>
+    <string name="about_ng_origin_blurb">Az AccA-NG az AccA-ra épül, a felületet, kompatibilitást és megbízhatóságot javítva.</string>
+    <string name="about_ng_original_team">Eredeti AccA csapat</string>
+    <string name="about_ng_acc_author">ACC és DJS szerzője</string>
+    <string name="about_ng_original_project">Eredeti AccA projekt</string>
+    <string name="about_ng_community">ACC közösség</string>
+    <string name="about_ng_technical">Műszaki információk</string>
+    <string name="about_ng_app_version">Alkalmazás verzió</string>
+    <string name="about_ng_acc_version">Telepített ACC</string>
+    <string name="about_ng_api_version">ACC felület verzió</string>
+    <string name="about_ng_loading">Olvasás…</string>
+    <string name="about_ng_unavailable">Nem elérhető</string>
+    <string name="about_ng_licenses">Licenc és forrásmegjelölések</string>
+    <string name="about_ng_license_blurb">Nyílt forráskódú szoftver a GPL-3.0 alatt. Eredeti AccA szerzői jog: © 2019–2021 MatteCarra, Squabbi és VR25.</string>
+    <string name="about_ng_view_license">Olvassa el a GPL-3.0 licencet</string>
+    <string name="about_ng_attributions">AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs és más nyílt forráskódú könyvtárak felhasználásával készült.\n\nTelegram ikon: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Nyílt forráskódú projekt · Független fork</string>
+    <string name="about_ng_expanded">Kinyitva</string>
+    <string name="about_ng_collapsed">Összecsukva</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Zobrazit příkazy ▾</string>
+    <string name="command_hide_details">Skrýt příkazy ▴</string>
+    <string name="command_review_details">Zobrazit příkazy</string>
+    <string name="command_trace_note">Příkazy pro tuto akci. Některé návratové kódy představují očekávaný stav ACC.</string>
+    <string name="command_trace_waiting">Čeká se na první příkaz…</string>
+    <string name="command_trace_running">Krok %1$d · Probíhá…</string>
+    <string name="command_trace_finished">Krok %1$d · Dokončeno (návratový kód %2$d)</string>
+    <string name="command_trace_interrupted">Krok %1$d · Provádění přerušeno</string>
+    <string name="command_trace_output">Výstup: %1$s</string>
+    <string name="command_result_ready">Akce byla dokončena. Můžete si prohlédnout podrobnosti nebo zavřít.</string>
+    <string name="command_trace_empty">Tato akce nespustila příkazy s oprávněním root.</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnostyka ładowania</string>
+    <string name="troubleshoot_intro">Sprawdź usługę ładowania, kalibrację i zastosowane limity. Diagnostyka odświeża się automatycznie, gdy ten ekran jest otwarty.</string>
+    <string name="troubleshoot_no_issue">W aktualnych odczytach nie wykryto problemu. Nie potwierdza to pełnego ładowania ani cyklu wznowienia.</string>
+    <string name="troubleshoot_unavailable">Diagnostyka niedostępna. Sprawdź dostęp root i instalację ACC, a następnie spróbuj ponownie.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Ta zmodyfikowana usługa ACC używa stałych limitów 90%/80% i ignoruje limity profilu. Przywróć dołączoną usługę, aby odzyskać kontrolę nad profilem.</string>
+    <string name="troubleshoot_different_module">Zainstalowana usługa różni się od tej dołączonej do aplikacji. Może to być legalna wersja lub modyfikacja; sama różnica nie dowodzi usterki.</string>
+    <string name="troubleshoot_calibration_pending">ACC działa, ale oczekuje na kalibrację prądu. Odłącz wszystkie ładowarki i użyj funkcji Kalibruj prąd, aby zakończyć ten krok.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC oczekuje na kalibrację</string>
+    <string name="troubleshoot_stopped">Usługa ACC jest zatrzymana. Uruchom ją z pulpitu, aby zastosować ograniczenia ładowania.</string>
+    <string name="troubleshoot_above_limit">Bateria kontynuowała ładowanie na poziomie ustawionego limitu lub powyżej niego przez co najmniej 30 sekund. Sprawdź kalibrację i moduł; wybrany przełącznik ładowania może być również nieskuteczny.</string>
+    <string name="troubleshoot_refresh">Sprawdź ponownie</string>
+    <string name="troubleshoot_calibrate">Kalibruj prąd</string>
+    <string name="troubleshoot_calibrate_now">Rozpocznij kalibrację</string>
+    <string name="troubleshoot_calibration_instructions">Odłącz USB, ładowanie bezprzewodowe i wszystkie inne ładowarki. Odczekaj kilka sekund, a następnie rozpocznij. Aplikacja zbiera pięć odczytów rozładowania w ciągu 10 sekund i zapisuje kopię zapasową konfiguracji. Trzymać ładowarki odłączone aż do zakończenia. Niestabilne lub niedostępne odczyty pozostawią kalibrację bez zmian.</string>
+    <string name="troubleshoot_calibration_failed">Nie udało się potwierdzić kalibracji. Trzymaj wszystkie ładowarki odłączone, poczekaj, aż odczyty się ustabilizują, i spróbuj ponownie.</string>
+    <string name="troubleshoot_calibration_success">Kalibracja prądu została zapisana i zweryfikowana. Ponownie podłącz ładowarkę i sprawdź diagnostykę.</string>
+    <string name="troubleshoot_restore">Przywróć dołączoną usługę</string>
+    <string name="troubleshoot_restore_confirmation">To zastępuje usługę ładowania ACC oryginalną usługą dołączoną o tej samej wersji. Zmiany w niestandardowej usłudze zostaną usunięte. Aplikacja najpierw tworzy kopię modułu i konfiguracji, zachowuje Twoje ustawienia, uruchamia ponownie usługę i weryfikuje naprawę. Jeśli weryfikacja się nie powiedzie, próbuje przywrócić poprzednią usługę.</string>
+    <string name="troubleshoot_restore_success">Oryginalna usługa została przywrócona i zweryfikowana. Limity ładowania zostały zachowane. Jeśli kalibracja nadal jest oczekująca, zakończ ją przed testowaniem sterowania ładowaniem.</string>
+    <string name="troubleshoot_restore_failed">Odzyskiwanie usługi nie powiodło się. Przejrzyj szczegóły polecenia dotyczące lokalizacji kopii zapasowej i przyczyny niepowodzenia. Sprawdź diagnostykę przed ponowną próbą.</string>
+    <string name="troubleshoot_incompatible_version">Odzyskiwanie usługi wymaga tej samej wersji ACC, co pakiet aplikacji. Inne wersje nie są tutaj zastępowane ani obniżane.</string>
+    <string name="troubleshoot_details">Kod wersji ACC: %1$s\nBateria: %2$s%%\nStop: %3$s%% · Wznów: %4$s%%\nStan baterii: %5$s\nPrąd: %6$s mA\nPolaryzacja rozładowania: %7$s\nPrzełącznik ładowania: %8$s</string>
+    <string name="troubleshoot_backup">Kopia zapasowa: %1$s</string>
+    <string name="troubleshoot_copy">Skopiuj diagnostykę</string>
+    <string name="troubleshoot_copied">Diagnostyka skopiowana</string>
+</resources>

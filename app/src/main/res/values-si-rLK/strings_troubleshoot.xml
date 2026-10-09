@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">ආරෝපණ විශ්ලේෂණය</string>
+    <string name="troubleshoot_intro">ආරෝපණ සේවාව, ක්‍රමාංකනය සහ යෙදූ සීමා පරීක්ෂා කරන්න. මෙම තිරය විවෘතව ඇති විට විශ්ලේෂණය ස්වයංක්‍රීයව යාවත්කාලීන වේ.</string>
+    <string name="troubleshoot_no_issue">දැනට මිනුම් කරන ලද දත්ත තුළ කිසිදු ගැටළුවක් හමුව නැත. මෙය සම්පූර්ණ ආරෝපණය සහ නැවත ආරම්භ කිරීමේ චක්‍රය තහවුරු නොකරයි.</string>
+    <string name="troubleshoot_unavailable">විශ්ලේෂණ නොලැබේ. රුට් ප්‍රවේශය සහ ACC ස්ථාපනය පරීක්ෂා කර නැවත උත්සහ කරන්න.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">මෙම වෙනස් කළ ACC සේවාව ස්ථිර 90%/80% සීමා භාවිත කරන අතර පැතිකඩ සීමා නොසලකා හරියි. පැතිකඩ පාලනය නැවත ලබා ගැනීමට යෙදුම සමඟ ඇතුළත් සේවාව ප්‍රතිස්ථාපනය කරන්න.</string>
+    <string name="troubleshoot_different_module">ස්ථාපිත සේවාව යෙදුම සමඟ ඇතුළත් සේවාවට වඩා වෙනස්ය. එය වලංගු අනුවාදයක් හෝ වෙනස් කිරීමක් විය හැක; වෙනසක් තිබීම පමණක් දෝෂයක් ඇති බවට සාක්ෂියක් නොවේ.</string>
+    <string name="troubleshoot_calibration_pending">ACC ක්‍රියාත්මක වන නමුත් විදුලි ධාරා ක්‍රමාංකනය සඳහා රැඳී සිටී. සියලු චාජර් විසන්ධි කර මෙම පියවර සම්පූර්ණ කිරීමට විදුලි ධාරාව ක්‍රමාංකනය කරන්න තෝරන්න.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC ක්‍රමාංකනය සඳහා රැඳී සිටී</string>
+    <string name="troubleshoot_stopped">ACC සේවාව නවතා ඇත. ආරෝපණ සීමා යෙදීමට ප්‍රධාන තිරයෙන් එය ආරම්භ කරන්න.</string>
+    <string name="troubleshoot_above_limit">අවම වශයෙන් තත්පර 30ක් පුරා බැටරිය සැකසූ සීමාවේදී හෝ ඊට ඉහළදී දිගටම ආරෝපණය වී ඇත. ක්‍රමාංකනය සහ මොඩියුලය පරීක්ෂා කරන්න; තෝරාගත් ආරෝපණ ස්විචයද ක්‍රියා නොකරනවා විය හැක.</string>
+    <string name="troubleshoot_refresh">නැවත පරීක්ෂා කරන්න</string>
+    <string name="troubleshoot_calibrate">විදුලි ධාරාව ක්‍රමාංකනය කරන්න</string>
+    <string name="troubleshoot_calibrate_now">ක්‍රමාංකනය අරඹන්න</string>
+    <string name="troubleshoot_calibration_instructions">USB, රැහැන් රහිත ආරෝපණය සහ අනෙකුත් සියලු චාජර් විසන්ධි කරන්න. තත්පර කිහිපයක් රැඳී සිට පසුව ආරම්භ කරන්න. යෙදුම තත්පර 10ක් තුළ විසර්ජන මිනුම් පහක් ලබාගෙන වින්‍යාසයේ උපස්ථ පිටපතක් සුරකියි. අවසන් වන තුරු චාජර් විසන්ධි කර තබන්න. මිනුම් අස්ථිර හෝ ලබාගත නොහැකි නම් ක්‍රමාංකනය නොවෙනස්ව පවතී.</string>
+    <string name="troubleshoot_calibration_failed">ක්‍රමාංකනය තහවුරු කළ නොහැකි විය. සියලු චාජර් විසන්ධි කර තබා මිනුම් ස්ථාවර වන තුරු රැඳී සිට නැවත උත්සාහ කරන්න.</string>
+    <string name="troubleshoot_calibration_success">විදුලි ධාරා ක්‍රමාංකනය සුරැක තහවුරු කර ඇත. චාජරය නැවත සම්බන්ධ කර විශ්ලේෂණය පරීක්ෂා කරන්න.</string>
+    <string name="troubleshoot_restore">ඇතුළත් සේවාව ප්‍රතිස්ථාපනය කරන්න</string>
+    <string name="troubleshoot_restore_confirmation">මෙය ACC ආරෝපණ සේවාව වෙනුවට යෙදුම සමඟ ඇතුළත් එම අනුවාදයේම මුල් සේවාව යොදයි. සේවාවට කළ අභිරුචි වෙනස්කම් ඉවත් වේ. යෙදුම පළමුව මොඩියුලයේ සහ වින්‍යාසයේ උපස්ථයක් සාදා, සැකසුම් රැකගෙන, සේවාව නැවත අරඹා අලුත්වැඩියාව තහවුරු කරයි. තහවුරු කිරීම අසාර්ථක වුවහොත් පෙර සේවාව ප්‍රතිස්ථාපනය කිරීමට උත්සාහ කරයි.</string>
+    <string name="troubleshoot_restore_success">මුල් සේවාව ප්‍රතිස්ථාපනය කර තහවුරු කරන ලදී. ආරෝපණ සීමා රැකගෙන ඇත. ක්‍රමාංකනය තවම සම්පූර්ණ නැතිනම් ආරෝපණ පාලනය පරීක්ෂා කිරීමට පෙර එය සම්පූර්ණ කරන්න.</string>
+    <string name="troubleshoot_restore_failed">සේවාව ප්‍රතිස්ථාපනය අසාර්ථක විය. උපස්ථ ස්ථානය සහ දෝෂය සඳහා විධාන විස්තර බලන්න. නැවත උත්සාහ කිරීමට පෙර විශ්ලේෂණය පරීක්ෂා කරන්න.</string>
+    <string name="troubleshoot_incompatible_version">සේවාව ප්‍රතිස්ථාපනයට යෙදුම සමඟ ඇතුළත් ACC අනුවාදයම අවශ්‍යයි. වෙනත් අනුවාද මෙහිදී ප්‍රතිස්ථාපනය හෝ පහළ අනුවාදයකට මාරු කිරීම සිදු නොවේ.</string>
+    <string name="troubleshoot_details">ACC අනුවාද කේතය: %1$s\nබැටරිය: %2$s%%\nනැවැත්වීම: %3$s%% · නැවත ඇරඹීම: %4$s%%\nබැටරි තත්ත්වය: %5$s\nවිදුලි ධාරාව: %6$s mA\nවිසර්ජන ධ්‍රැවීයතාව: %7$s\nආරෝපණ ස්විචය: %8$s</string>
+    <string name="troubleshoot_backup">උපස්ථය: %1$s</string>
+    <string name="troubleshoot_copy">විශ්ලේෂණය පිටපත් කරන්න</string>
+    <string name="troubleshoot_copied">විශ්ලේෂණය පිටපත් කරන ලදී</string>
+</resources>

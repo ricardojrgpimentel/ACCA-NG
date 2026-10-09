@@ -489,6 +489,7 @@
     <string name="ng_engine_summary">Charging engine maintained for AccA-NG. The bundled version is tested with this app.</string>
     <string name="ng_engine_picker_message">Select an ACC-NG version.</string>
     <string name="ng_engine_bundled">ACC-NG bundled (recommended)</string>
+    <!-- main is the Git branch name; do not translate it. -->
     <string name="ng_engine_main">ACC-NG development (main)</string>
     <string name="ng_engine_main_warning">The development version may contain changes that have not been tested with this app.</string>
     <string name="ng_engine_notifications_title">Charging notices</string>

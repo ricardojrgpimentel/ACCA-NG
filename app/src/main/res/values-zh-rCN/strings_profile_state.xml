@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">活动配置文件</string>
+    <string name="profile_none_active">无活动配置文件</string>
+    <string name="profile_custom_title">自定义配置</string>
+    <string name="profile_active_description">保存手动更改后会切换到自定义配置。您保存的配置文件将被保留。</string>
+    <string name="profile_custom_description">当前正在使用自定义设置。</string>
+    <string name="profile_reading_config">读取配置中…</string>
+    <string name="profile_edit_action">编辑</string>
+    <string name="profile_edit_live_title">编辑当前设置</string>
+    <string name="profile_choose_action">选择配置文件</string>
+    <string name="profile_change_action">更改配置文件</string>
+    <string name="profile_edit_live_context">当前配置</string>
+    <string name="profile_edit_from_profile">当前配置 · %1$s</string>
+    <string name="profile_edit_custom_help">保存将这些更改应用到 ACC。你可以从配置文件再次应用已保存的配置文件。</string>
+    <string name="profile_edit_active_help">保存更改会将其应用到 ACC 并清除活动配置文件。你保存的配置文件保持不变。</string>
+    <string name="profile_edit_saved_context">编辑已保存的配置文件</string>
+    <string name="profile_edit_saved_help">保存将更新此已保存的配置文件。要在 ACC 中使用新值，请再次从配置文件应用它。</string>
+</resources>

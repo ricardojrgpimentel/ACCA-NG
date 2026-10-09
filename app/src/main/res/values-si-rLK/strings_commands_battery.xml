@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACC විධාන ක්‍රියාත්මක කරමින්. කරුණාකර රැඳී සිටින්න…</string>
+    <string name="command_completed">ක්‍රියාව අවසන්</string>
+    <string name="command_failed_title">ක්‍රියාව අවසන් කළ නොහැක</string>
+    <string name="command_failed_message">වෙනස තහවුරු කළ නොහැක. වත්මන් තත්ත්වය සොයා බලන්න හෝ නැවත උත්සාහ කරන්න.</string>
+    <string name="command_close">වසන්න</string>
+    <string name="command_stop_acc">ACC නතර කිරීම…</string>
+    <string name="command_start_acc">ACC ආරම්භ කිරීම…</string>
+    <string name="command_restart_acc">ACC නැවත ආරම්භ කිරීම…</string>
+    <string name="command_read_status">ACC තත්ත්වය කියවමින්…</string>
+    <string name="command_apply_settings">සැකසුම් අදාළ කරමින්…</string>
+    <string name="command_apply_profile">පැතිකඩ අදාළ කරමින්…</string>
+    <string name="command_reset_stats">බැටරි සංඛ්‍යාලේඛන යළි සකසමින්…</string>
+    <string name="command_charge_once">ආරෝපණ සීමාව සකසමින්…</string>
+    <string name="acc_status_unavailable">ACC තත්වය ලබාගත නොහැක</string>
+    <string name="battery_summary_title">බැටරි සාරාංශය</string>
+    <string name="battery_cycles_label">වාර්තා කළ ආරෝපණ චක්‍ර</string>
+    <string name="battery_full_capacity_label">අනුමාන සම්පූර්ණ ධාරිතාව</string>
+    <string name="battery_design_capacity_label">නිර්මාණ ධාරිතාව</string>
+    <string name="battery_diagnostics_note">උපාංගයෙන් වාර්තා කරන ලද අගයන්. ලබාගත නොහැකි මිනුම් පැහැදිලිව පෙන්වනු ලැබේ.</string>
+    <string name="battery_data_unavailable">ලබාගත නොහැක</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Chẩn đoán sạc</string>
+    <string name="troubleshoot_intro">Kiểm tra dịch vụ sạc, hiệu chuẩn và giới hạn áp dụng. Chẩn đoán tự động làm mới khi màn hình này được mở.</string>
+    <string name="troubleshoot_no_issue">Không phát hiện vấn đề trong các số liệu hiện tại. Điều này không xác nhận quá trình sạc đầy và tiếp tục.</string>
+    <string name="troubleshoot_unavailable">Chẩn đoán không khả dụng. Kiểm tra quyền root và cài đặt ACC, sau đó thử lại.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Dịch vụ ACC đã chỉnh sửa này sử dụng giới hạn cố định 90%/80% và bỏ qua giới hạn hồ sơ. Khôi phục dịch vụ đi kèm để lấy lại kiểm soát hồ sơ.</string>
+    <string name="troubleshoot_different_module">Dịch vụ đã cài đặt khác với dịch vụ đi kèm ứng dụng. Đây có thể là phiên bản hợp pháp hoặc một sửa đổi; chỉ sự khác biệt không chứng minh lỗi.</string>
+    <string name="troubleshoot_calibration_pending">ACC đang chạy nhưng đang chờ hiệu chuẩn dòng điện. Ngắt kết nối tất cả các bộ sạc và sử dụng Hiệu chuẩn dòng điện để hoàn tất bước này.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC đang chờ hiệu chuẩn</string>
+    <string name="troubleshoot_stopped">Dịch vụ ACC đã dừng. Khởi động nó từ bảng điều khiển để áp dụng giới hạn sạc.</string>
+    <string name="troubleshoot_above_limit">Pin đã tiếp tục sạc ở mức bằng hoặc cao hơn giới hạn đã cấu hình trong ít nhất 30 giây. Kiểm tra hiệu chuẩn và mô-đun; công tắc sạc được chọn cũng có thể không hiệu quả.</string>
+    <string name="troubleshoot_refresh">Kiểm tra lại</string>
+    <string name="troubleshoot_calibrate">Hiệu chuẩn dòng điện</string>
+    <string name="troubleshoot_calibrate_now">Bắt đầu hiệu chuẩn</string>
+    <string name="troubleshoot_calibration_instructions">Ngắt kết nối USB, sạc không dây và tất cả các bộ sạc khác. Chờ vài giây, sau đó bắt đầu. Ứng dụng sẽ thu thập năm kết quả xả trong 10 giây và lưu bản sao cấu hình. Giữ các bộ sạc ngắt kết nối cho đến khi quá trình hoàn tất. Kết quả không ổn định hoặc không khả dụng sẽ giữ nguyên hiệu chuẩn.</string>
+    <string name="troubleshoot_calibration_failed">Không thể xác nhận hiệu chuẩn. Giữ tất cả bộ sạc ngắt kết nối, đợi các kết quả ổn định và thử lại.</string>
+    <string name="troubleshoot_calibration_success">Hiệu chuẩn dòng điện đã được lưu và xác minh. Kết nối lại bộ sạc của bạn và kiểm tra chẩn đoán.</string>
+    <string name="troubleshoot_restore">Khôi phục dịch vụ đi kèm</string>
+    <string name="troubleshoot_restore_confirmation">Điều này thay thế dịch vụ sạc ACC bằng dịch vụ đi kèm gốc cùng phiên bản. Các thay đổi dịch vụ tùy chỉnh sẽ bị loại bỏ. Ứng dụng sẽ sao lưu mô-đun và cấu hình trước, giữ nguyên cài đặt của bạn, khởi động lại dịch vụ và xác minh việc sửa chữa. Nếu việc xác minh thất bại, nó sẽ cố gắng khôi phục dịch vụ trước đó.</string>
+    <string name="troubleshoot_restore_success">Dịch vụ gốc đã được khôi phục và xác minh. Giới hạn sạc đã được giữ nguyên. Nếu hiệu chuẩn vẫn đang chờ, hãy hoàn tất trước khi kiểm tra điều khiển sạc.</string>
+    <string name="troubleshoot_restore_failed">Khôi phục dịch vụ thất bại. Xem chi tiết lệnh để biết vị trí sao lưu và lý do thất bại. Kiểm tra chẩn đoán trước khi thử lại.</string>
+    <string name="troubleshoot_incompatible_version">Khôi phục dịch vụ yêu cầu cùng phiên bản ACC với gói ứng dụng. Các phiên bản khác sẽ không được thay thế hoặc hạ cấp ở đây.</string>
+    <string name="troubleshoot_details">Mã phiên bản ACC: %1$s\nPin: %2$s%%\nDừng: %3$s%% · Tiếp tục: %4$s%%\nTình trạng pin: %5$s\nDòng điện: %6$s mA\nCực phân tán điện: %7$s\nCông tắc sạc: %8$s</string>
+    <string name="troubleshoot_backup">Sao lưu: %1$s</string>
+    <string name="troubleshoot_copy">Sao chép chẩn đoán</string>
+    <string name="troubleshoot_copied">Chẩn đoán đã được sao chép</string>
+</resources>

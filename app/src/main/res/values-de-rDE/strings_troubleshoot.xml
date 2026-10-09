@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Ladediagnose</string>
+    <string name="troubleshoot_intro">Prüfe Ladedienst, Kalibrierung und angewendete Grenzen. Die Diagnose aktualisiert sich automatisch, solange dieser Bildschirm geöffnet ist.</string>
+    <string name="troubleshoot_no_issue">Keine Probleme in den aktuellen Messwerten erkannt. Das bestätigt keinen vollständigen Lade- und Fortsetzungszyklus.</string>
+    <string name="troubleshoot_unavailable">Diagnose nicht verfügbar. Prüfe Root-Zugriff und ACC-Installation und versuche es erneut.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Dieser veränderte ACC-Dienst verwendet feste Grenzen von 90%/80% und ignoriert Profilgrenzen. Stelle den mitgelieferten Dienst wieder her, um die Profilsteuerung zurückzuerhalten.</string>
+    <string name="troubleshoot_different_module">Der installierte Dienst weicht vom mitgelieferten ab. Es kann eine legitime Version oder eine Änderung sein; allein der Unterschied beweist keinen Fehler.</string>
+    <string name="troubleshoot_calibration_pending">ACC läuft, wartet aber auf die Stromkalibrierung. Trenne alle Ladegeräte und verwende Strom kalibrieren, um diesen Schritt abzuschließen.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC wartet auf Kalibrierung</string>
+    <string name="troubleshoot_stopped">Der ACC-Dienst ist gestoppt. Starte ihn über die Übersicht, um Ladegrenzen anzuwenden.</string>
+    <string name="troubleshoot_above_limit">Der Akku lädt seit mindestens 30 Sekunden an oder über der eingestellten Grenze weiter. Prüfe Kalibrierung und Modul; auch der gewählte Ladeschalter kann unwirksam sein.</string>
+    <string name="troubleshoot_refresh">Erneut prüfen</string>
+    <string name="troubleshoot_calibrate">Strom kalibrieren</string>
+    <string name="troubleshoot_calibrate_now">Kalibrierung starten</string>
+    <string name="troubleshoot_calibration_instructions">Trenne USB, kabelloses Laden und alle anderen Ladegeräte. Warte einige Sekunden und starte dann. Die App erfasst fünf Entladungsmesswerte über 10 Sekunden und sichert die Konfiguration. Lasse alle Ladegeräte bis zum Abschluss getrennt. Bei instabilen oder fehlenden Messwerten bleibt die Kalibrierung unverändert.</string>
+    <string name="troubleshoot_calibration_failed">Die Kalibrierung konnte nicht bestätigt werden. Lasse alle Ladegeräte getrennt, warte auf stabile Messwerte und versuche es erneut.</string>
+    <string name="troubleshoot_calibration_success">Stromkalibrierung gespeichert und überprüft. Schließe das Ladegerät wieder an und prüfe die Diagnose.</string>
+    <string name="troubleshoot_restore">Mitgelieferten Dienst wiederherstellen</string>
+    <string name="troubleshoot_restore_confirmation">Ersetzt den ACC-Ladedienst durch den mitgelieferten Originaldienst derselben Version. Eigene Dienständerungen werden entfernt. Die App sichert zuerst Modul und Konfiguration, behält deine Einstellungen bei, startet den Dienst neu und prüft die Reparatur. Schlägt die Prüfung fehl, versucht sie, den vorherigen Dienst wiederherzustellen.</string>
+    <string name="troubleshoot_restore_success">Der Originaldienst wurde wiederhergestellt und überprüft. Ladegrenzen wurden beibehalten. Falls die Kalibrierung noch aussteht, schließe sie vor dem Test der Ladesteuerung ab.</string>
+    <string name="troubleshoot_restore_failed">Die Dienstwiederherstellung ist fehlgeschlagen. In den Befehlsdetails findest du Sicherungsort und Fehler. Prüfe die Diagnose vor einem weiteren Versuch.</string>
+    <string name="troubleshoot_incompatible_version">Die Wiederherstellung erfordert dieselbe ACC-Version wie die mitgelieferte. Andere Versionen werden hier weder ersetzt noch herabgestuft.</string>
+    <string name="troubleshoot_details">ACC-Versionscode: %1$s\nAkku: %2$s%%\nStoppen: %3$s%% · Fortsetzen: %4$s%%\nAkkustatus: %5$s\nStrom: %6$s mA\nEntladungspolarität: %7$s\nLadeschalter: %8$s</string>
+    <string name="troubleshoot_backup">Sicherung: %1$s</string>
+    <string name="troubleshoot_copy">Diagnose kopieren</string>
+    <string name="troubleshoot_copied">Diagnose kopiert</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Aktivní profil</string>
+    <string name="profile_none_active">Žádný aktivní profil</string>
+    <string name="profile_custom_title">Vlastní konfigurace</string>
+    <string name="profile_active_description">Uložení ručních změn přepne na vlastní konfiguraci. Váš uložený profil je zachován.</string>
+    <string name="profile_custom_description">Vlastní nastavení jsou momentálně používána.</string>
+    <string name="profile_reading_config">Čtení konfigurace…</string>
+    <string name="profile_edit_action">Upravit</string>
+    <string name="profile_edit_live_title">Upravit aktuální nastavení</string>
+    <string name="profile_choose_action">Vybrat profil</string>
+    <string name="profile_change_action">Změnit profil</string>
+    <string name="profile_edit_live_context">Aktuální konfigurace</string>
+    <string name="profile_edit_from_profile">Aktuální konfigurace · %1$s</string>
+    <string name="profile_edit_custom_help">Uložením se tyto změny použijí v ACC. Uložený profil můžete znovu použít z Profilů.</string>
+    <string name="profile_edit_active_help">Uložením změn se tyto změny použijí v ACC a aktivní profil se vymaže. Váš uložený profil zůstane nezměněn.</string>
+    <string name="profile_edit_saved_context">Úprava uloženého profilu</string>
+    <string name="profile_edit_saved_help">Uložením se tento uložený profil aktualizuje. Chcete-li použít nové hodnoty v ACC, znovu jej použijte z Profilů.</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Hồ sơ đang hoạt động</string>
+    <string name="profile_none_active">Không có hồ sơ hoạt động</string>
+    <string name="profile_custom_title">Cấu hình tùy chỉnh</string>
+    <string name="profile_active_description">Lưu thay đổi thủ công sẽ chuyển sang cấu hình tùy chỉnh. Hồ sơ đã lưu của bạn được giữ lại.</string>
+    <string name="profile_custom_description">Cài đặt tùy chỉnh hiện đang được sử dụng.</string>
+    <string name="profile_reading_config">Đang đọc cấu hình…</string>
+    <string name="profile_edit_action">Chỉnh sửa</string>
+    <string name="profile_edit_live_title">Chỉnh sửa cài đặt hiện tại</string>
+    <string name="profile_choose_action">Chọn hồ sơ</string>
+    <string name="profile_change_action">Thay đổi hồ sơ</string>
+    <string name="profile_edit_live_context">Cấu hình hiện tại</string>
+    <string name="profile_edit_from_profile">Cấu hình hiện tại · %1$s</string>
+    <string name="profile_edit_custom_help">Lưu sẽ áp dụng các thay đổi này cho ACC. Bạn có thể áp dụng lại một hồ sơ đã lưu từ Hồ sơ.</string>
+    <string name="profile_edit_active_help">Lưu thay đổi sẽ áp dụng chúng cho ACC và xóa hồ sơ đang hoạt động. Hồ sơ đã lưu của bạn vẫn không thay đổi.</string>
+    <string name="profile_edit_saved_context">Chỉnh sửa một hồ sơ đã lưu</string>
+    <string name="profile_edit_saved_help">Lưu sẽ cập nhật hồ sơ đã lưu này. Để sử dụng các giá trị mới trong ACC, hãy áp dụng lại từ Hồ sơ.</string>
+</resources>

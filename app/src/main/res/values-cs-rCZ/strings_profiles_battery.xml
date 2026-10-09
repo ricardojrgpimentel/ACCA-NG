@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Vybrat výchozí bod</string>
+    <string name="preset_description">Tyto možnosti nastavují limity nabití baterie. Klepněte na jednu, upravte níže uvedené hodnoty a uložte profil. Když profil použijete, vstoupí v platnost.</string>
+    <string name="preset_daily_name">Denní použití</string>
+    <string name="preset_plugged_name">Dlouhé období připojení k síti</string>
+    <string name="preset_travel_name">Cestování</string>
+    <string name="preset_option">%1$s\n%2$s\nZastaví se na %3$d%% · Pokračuje na %4$d%%</string>
+    <string name="battery_state_charging">Nabíjení</string>
+    <string name="battery_state_paused">Nabíjení pozastaveno</string>
+    <string name="battery_state_full">Baterie plná</string>
+    <string name="battery_state_discharging">Vybíjení</string>
+    <string name="battery_state_not_charging">Nenabíjí se</string>
+    <string name="battery_state_unknown">Stav nabíjení neznámý</string>
+    <string name="battery_power_disconnected">Nabíječka odpojena</string>
+    <string name="battery_power_ac">Kabel připojen · AC</string>
+    <string name="battery_power_usb">Kabel připojen · USB</string>
+    <string name="battery_power_wireless">Bezdrátová nabíječka připojena</string>
+    <string name="battery_power_dock">Nabíjecí dok připojen</string>
+    <string name="battery_power_connected">Nabíječka připojena</string>
+    <string name="battery_power_unknown">Připojení nabíječky neznámé</string>
+    <string name="battery_paused_hint">Nabíječka je připojena, ale baterie se nenabíjí.</string>
+</resources>

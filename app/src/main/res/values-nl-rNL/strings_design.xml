@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Overzicht</string>
+    <string name="ui_nav_schedules">Schema\'s</string>
+    <string name="ui_profiles_intro">Uw laadvoorkeuren, klaar om toe te passen.</string>
+    <string name="ui_scripts_intro">Snelopdrachten voor uw laadcontroller.</string>
+    <string name="ui_schedules_intro">Laat uw laadroutine automatisch verlopen.</string>
+    <string name="ui_profiles_empty">Nog geen profielen\nTik op + om uw eerste laadinstelling op te slaan.</string>
+    <string name="ui_scripts_empty">Uw opdrachten staan hier\nTik op + om uw eerste script te maken.</string>
+    <string name="ui_schedules_empty">Bouw uw laadroutine\nTik op + om een laadprofiel te plannen.</string>
+    <string name="ui_add_profile">Profiel toevoegen</string>
+    <string name="ui_add_script">Script toevoegen</string>
+    <string name="ui_add_schedule">Schema toevoegen</string>
+    <string name="ui_custom_config">Laadinstellingen</string>
+    <string name="ui_charge_once">Eenmalig opladen tot een gekozen niveau</string>
+    <string name="ui_profile_options">Profielopties</string>
+    <string name="ui_script_options">Scriptopties</string>
+    <string name="ui_schedule_options">Schema-opties</string>
+    <string name="resume_temperature">Hervatten hieronder</string>
+    <string name="template_temperature_profile_resume">Afkoelen: %1$d°C · Pauze: %2$d°C · Hervatten: %3$d°C</string>
+    <string name="command_copy_details">Details kopiëren</string>
+    <string name="command_details_copied">Opdrachtgegevens gekopieerd</string>
+</resources>

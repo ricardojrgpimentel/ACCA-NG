@@ -154,4 +154,15 @@
     <string name="import_profile_success">A %d profil importálása sikerült</string>
     <!-- Config Parse Error -->
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">ACC-NG verzió</string>
+    <string name="ng_engine_summary">Töltőmotor karbantartva az AccA-NG számára. Az alkalmazáshoz tesztelt csomagolt verzió.</string>
+    <string name="ng_engine_picker_message">Válasszon egy ACC-NG verziót.</string>
+    <string name="ng_engine_bundled">ACC-NG csomagolt (ajánlott)</string>
+    <string name="ng_engine_main">ACC-NG fejlesztés (main)</string>
+    <string name="ng_engine_main_warning">A fejlesztési verzió tartalmazhat olyan változtatásokat, amelyeket ezzel az alkalmazással nem teszteltek.</string>
+    <string name="ng_engine_notifications_title">Töltési értesítések</string>
+    <string name="ng_engine_notifications_summary">Csatlakozás, szünet, folytatás, hőmérséklet és alacsony akkumulátorszint értesítések az ACC-NG-től. A töltésvédelem továbbra is aktív, amikor ezek az értesítések ki vannak kapcsolva.</string>
+    <string name="ng_engine_setting_failed">Nem sikerült megerősíteni a beállítást az ACC-NG-ben.</string>
+    <string name="use_default_config">Alapértékek használata</string>
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Ausgangspunkt wählen</string>
+    <string name="preset_description">Diese Optionen legen Ladegrenzen fest. Wähle eine, passe die Werte unten an und speichere das Profil. Es wird wirksam, wenn du das Profil anwendest.</string>
+    <string name="preset_daily_name">Tägliche Nutzung</string>
+    <string name="preset_plugged_name">Lange am Ladegerät</string>
+    <string name="preset_travel_name">Reise</string>
+    <string name="preset_option">%1$s\n%2$s\nStoppt bei %3$d%% · Setzt bei %4$d%% fort</string>
+    <string name="battery_state_charging">Wird geladen</string>
+    <string name="battery_state_paused">Laden pausiert</string>
+    <string name="battery_state_full">Akku voll</string>
+    <string name="battery_state_discharging">Wird entladen</string>
+    <string name="battery_state_not_charging">Lädt nicht</string>
+    <string name="battery_state_unknown">Ladestatus unbekannt</string>
+    <string name="battery_power_disconnected">Ladegerät getrennt</string>
+    <string name="battery_power_ac">Kabel angeschlossen · Netzstrom</string>
+    <string name="battery_power_usb">Kabel angeschlossen · USB</string>
+    <string name="battery_power_wireless">Kabelloses Ladegerät verbunden</string>
+    <string name="battery_power_dock">Ladestation verbunden</string>
+    <string name="battery_power_connected">Ladegerät angeschlossen</string>
+    <string name="battery_power_unknown">Ladegerätverbindung unbekannt</string>
+    <string name="battery_paused_hint">Das Ladegerät ist angeschlossen, aber der Akku lädt nicht.</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Επιλογή σημείου εκκίνησης</string>
+    <string name="preset_description">Αυτές οι επιλογές καθορίζουν τα όρια φόρτισης της μπαταρίας. Πατήστε μία, ρυθμίστε τις τιμές παρακάτω και αποθηκεύστε το προφίλ. Την εφαρμογή του θα λάβει όταν εφαρμόσετε το προφίλ.</string>
+    <string name="preset_daily_name">Καθημερινή χρήση</string>
+    <string name="preset_plugged_name">Μακροχρόνια σύνδεση με ρεύμα</string>
+    <string name="preset_travel_name">Ταξίδι</string>
+    <string name="preset_option">%1$s\n%2$s\nΣταματά στο %3$d%% · Επαναφορά στο %4$d%%</string>
+    <string name="battery_state_charging">Φόρτιση</string>
+    <string name="battery_state_paused">Φόρτιση σε παύση</string>
+    <string name="battery_state_full">Μπαταρία πλήρης</string>
+    <string name="battery_state_discharging">Αποφόρτιση</string>
+    <string name="battery_state_not_charging">Δεν φορτίζει</string>
+    <string name="battery_state_unknown">Κατάσταση φόρτισης άγνωστη</string>
+    <string name="battery_power_disconnected">Φορτιστής αποσυνδεδεμένος</string>
+    <string name="battery_power_ac">Καλώδιο συνδεδεμένο · AC</string>
+    <string name="battery_power_usb">Καλώδιο συνδεδεμένο · USB</string>
+    <string name="battery_power_wireless">Φορτιστής ασύρματος συνδεδεμένος</string>
+    <string name="battery_power_dock">Σταθμός φόρτισης συνδεδεμένος</string>
+    <string name="battery_power_connected">Φορτιστής συνδεδεμένος</string>
+    <string name="battery_power_unknown">Απροσδιόριστη σύνδεση φορτιστή</string>
+    <string name="battery_paused_hint">Ο φορτιστής είναι συνδεδεμένος, αλλά η μπαταρία δεν φορτίζει.</string>
+</resources>

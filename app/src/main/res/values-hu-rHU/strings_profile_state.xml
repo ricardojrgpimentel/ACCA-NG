@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Aktív profil</string>
+    <string name="profile_none_active">Nincs aktív profil</string>
+    <string name="profile_custom_title">Egyedi konfiguráció</string>
+    <string name="profile_active_description">A manuális módosítások mentése egyedi konfigurációra vált. Az elmentett profil megőrzésre kerül.</string>
+    <string name="profile_custom_description">Jelenleg egyedi beállítások vannak használatban.</string>
+    <string name="profile_reading_config">Konfiguráció olvasása…</string>
+    <string name="profile_edit_action">Szerkesztés</string>
+    <string name="profile_edit_live_title">Jelenlegi beállítások szerkesztése</string>
+    <string name="profile_choose_action">Profil kiválasztása</string>
+    <string name="profile_change_action">Profil módosítása</string>
+    <string name="profile_edit_live_context">Jelenlegi konfiguráció</string>
+    <string name="profile_edit_from_profile">Jelenlegi konfiguráció · %1$s</string>
+    <string name="profile_edit_custom_help">A mentés ezeket a változtatásokat érvényesíti az ACC-n. Egy mentett profilt újra alkalmazhatsz a Profilok menüből.</string>
+    <string name="profile_edit_active_help">A változtatások mentése érvényesíti azokat az ACC-n és törli az aktív profilt. A mentett profilod változatlan marad.</string>
+    <string name="profile_edit_saved_context">Mentett profil szerkesztése</string>
+    <string name="profile_edit_saved_help">A mentés frissíti ezt a mentett profilt. Az új értékek ACC-n történő használatához alkalmazd újra a Profilok menüből.</string>
+</resources>

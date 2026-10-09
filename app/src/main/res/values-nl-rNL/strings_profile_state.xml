@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Actief profiel</string>
+    <string name="profile_none_active">Geen actief profiel</string>
+    <string name="profile_custom_title">Aangepaste configuratie</string>
+    <string name="profile_active_description">Het opslaan van handmatige wijzigingen schakelt over op een aangepaste configuratie. Je opgeslagen profiel blijft bewaard.</string>
+    <string name="profile_custom_description">Aangepaste instellingen zijn momenteel in gebruik.</string>
+    <string name="profile_reading_config">Configuratie wordt gelezen…</string>
+    <string name="profile_edit_action">Bewerken</string>
+    <string name="profile_edit_live_title">Huidige instellingen bewerken</string>
+    <string name="profile_choose_action">Kies een profiel</string>
+    <string name="profile_change_action">Profiel wijzigen</string>
+    <string name="profile_edit_live_context">Huidige configuratie</string>
+    <string name="profile_edit_from_profile">Huidige configuratie · %1$s</string>
+    <string name="profile_edit_custom_help">Opslaan past deze wijzigingen toe op ACC. Je kunt een opgeslagen profiel opnieuw toepassen vanuit Profielen.</string>
+    <string name="profile_edit_active_help">Wijzigingen opslaan past ze toe op ACC en wist het actieve profiel. Je opgeslagen profiel blijft ongewijzigd.</string>
+    <string name="profile_edit_saved_context">Een opgeslagen profiel bewerken</string>
+    <string name="profile_edit_saved_help">Opslaan werkt dit opgeslagen profiel bij. Om de nieuwe waarden in ACC te gebruiken, pas je het opnieuw toe vanuit Profielen.</string>
+</resources>

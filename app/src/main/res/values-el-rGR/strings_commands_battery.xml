@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">Εκτέλεση εντολών ACC. Παρακαλώ περιμένετε…</string>
+    <string name="command_completed">Η ενέργεια ολοκληρώθηκε</string>
+    <string name="command_failed_title">Η ενέργεια δεν μπόρεσε να ολοκληρωθεί</string>
+    <string name="command_failed_message">Η αλλαγή δεν μπόρεσε να επιβεβαιωθεί. Ελέγξτε την τρέχουσα κατάσταση ή δοκιμάστε ξανά.</string>
+    <string name="command_close">Κλείσιμο</string>
+    <string name="command_stop_acc">Διακοπή ACC…</string>
+    <string name="command_start_acc">Εκκίνηση ACC…</string>
+    <string name="command_restart_acc">Επανεκκίνηση ACC…</string>
+    <string name="command_read_status">Ανάγνωση κατάστασης ACC…</string>
+    <string name="command_apply_settings">Εφαρμογή ρυθμίσεων…</string>
+    <string name="command_apply_profile">Εφαρμογή προφίλ…</string>
+    <string name="command_reset_stats">Επαναφορά στατιστικών μπαταρίας…</string>
+    <string name="command_charge_once">Ορισμός ορίου φόρτισης…</string>
+    <string name="acc_status_unavailable">Κατάσταση ACC μη διαθέσιμη</string>
+    <string name="battery_summary_title">Περίληψη μπαταρίας</string>
+    <string name="battery_cycles_label">Αναφερόμενοι κύκλοι φόρτισης</string>
+    <string name="battery_full_capacity_label">Εκτιμώμενη πλήρης χωρητικότητα</string>
+    <string name="battery_design_capacity_label">Σχεδιασμένη χωρητικότητα</string>
+    <string name="battery_diagnostics_note">Τιμές που αναφέρονται από τη συσκευή. Οι μη διαθέσιμες μετρήσεις εμφανίζονται ρητά.</string>
+    <string name="battery_data_unavailable">Μη διαθέσιμο</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACC 명령 실행 중입니다. 잠시 기다려 주세요…</string>
+    <string name="command_completed">동작 완료</string>
+    <string name="command_failed_title">동작을 완료할 수 없습니다</string>
+    <string name="command_failed_message">변경을 확인할 수 없습니다. 현재 상태를 확인하거나 다시 시도하세요.</string>
+    <string name="command_close">닫기</string>
+    <string name="command_stop_acc">ACC 중지 중…</string>
+    <string name="command_start_acc">ACC 시작 중…</string>
+    <string name="command_restart_acc">ACC 재시작 중…</string>
+    <string name="command_read_status">ACC 상태 읽는 중…</string>
+    <string name="command_apply_settings">설정 적용 중…</string>
+    <string name="command_apply_profile">프로필 적용 중…</string>
+    <string name="command_reset_stats">배터리 통계 초기화 중…</string>
+    <string name="command_charge_once">충전 한도 설정 중…</string>
+    <string name="acc_status_unavailable">ACC 상태 사용 불가</string>
+    <string name="battery_summary_title">배터리 요약</string>
+    <string name="battery_cycles_label">보고된 충전 사이클</string>
+    <string name="battery_full_capacity_label">추정 최대 용량</string>
+    <string name="battery_design_capacity_label">설계 용량</string>
+    <string name="battery_diagnostics_note">기기에서 보고된 값. 사용 불가한 측정값은 명시적으로 표시됨.</string>
+    <string name="battery_data_unavailable">사용 불가</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

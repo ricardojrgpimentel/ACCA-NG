@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnóstico de carga</string>
+    <string name="troubleshoot_intro">Comprueba el servicio de carga, la calibración y los límites aplicados. El diagnóstico se actualiza automáticamente mientras esta pantalla permanece abierta.</string>
+    <string name="troubleshoot_no_issue">No se han detectado problemas en las lecturas actuales. Esto no confirma un ciclo completo de carga y reanudación.</string>
+    <string name="troubleshoot_unavailable">Diagnóstico no disponible. Comprueba el acceso root y la instalación de ACC y vuelve a intentarlo.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Este servicio ACC modificado utiliza límites fijos de 90%/80% e ignora los límites de los perfiles. Restaura el servicio incluido para recuperar el control mediante perfiles.</string>
+    <string name="troubleshoot_different_module">El servicio instalado difiere del incluido en la aplicación. Puede ser una versión legítima o una modificación; la diferencia por sí sola no demuestra un fallo.</string>
+    <string name="troubleshoot_calibration_pending">ACC está en ejecución, pero espera la calibración de corriente. Desconecta todos los cargadores y usa Calibrar corriente para completar este paso.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC espera la calibración</string>
+    <string name="troubleshoot_stopped">El servicio ACC está detenido. Inícialo desde el panel para aplicar los límites de carga.</string>
+    <string name="troubleshoot_above_limit">La batería lleva al menos 30 segundos cargándose en el límite configurado o por encima. Comprueba la calibración y el módulo; el mecanismo de corte seleccionado también podría no funcionar.</string>
+    <string name="troubleshoot_refresh">Volver a comprobar</string>
+    <string name="troubleshoot_calibrate">Calibrar corriente</string>
+    <string name="troubleshoot_calibrate_now">Iniciar calibración</string>
+    <string name="troubleshoot_calibration_instructions">Desconecta el USB, la carga inalámbrica y todos los demás cargadores. Espera unos segundos e inicia. La aplicación recoge cinco lecturas de descarga durante 10 segundos y guarda una copia de la configuración. Mantén los cargadores desconectados hasta que termine. Las lecturas inestables o no disponibles dejan la calibración sin cambios.</string>
+    <string name="troubleshoot_calibration_failed">No se ha podido confirmar la calibración. Mantén todos los cargadores desconectados, espera a que las lecturas se estabilicen y vuelve a intentarlo.</string>
+    <string name="troubleshoot_calibration_success">Calibración de corriente guardada y verificada. Vuelve a conectar el cargador y comprueba el diagnóstico.</string>
+    <string name="troubleshoot_restore">Restaurar el servicio incluido</string>
+    <string name="troubleshoot_restore_confirmation">Sustituye el servicio de carga ACC por el servicio original incluido de la misma versión. Se eliminarán las modificaciones del servicio. La aplicación primero guarda una copia del módulo y la configuración, conserva tus ajustes, reinicia el servicio y verifica la reparación. Si la verificación falla, intenta restaurar el servicio anterior.</string>
+    <string name="troubleshoot_restore_success">El servicio original se ha restaurado y verificado. Los límites de carga se han conservado. Si aún hay una calibración pendiente, complétala antes de probar el control de carga.</string>
+    <string name="troubleshoot_restore_failed">La recuperación del servicio ha fallado. Consulta los detalles del comando para ver la ubicación de la copia y el fallo. Comprueba el diagnóstico antes de volver a intentarlo.</string>
+    <string name="troubleshoot_incompatible_version">La recuperación requiere la misma versión de ACC que la incluida en la aplicación. Aquí no se sustituyen otras versiones ni se instalan versiones anteriores.</string>
+    <string name="troubleshoot_details">Código de versión de ACC: %1$s\nBatería: %2$s%%\nDetener: %3$s%% · Reanudar: %4$s%%\nEstado de la batería: %5$s\nCorriente: %6$s mA\nPolaridad de descarga: %7$s\nMecanismo de corte: %8$s</string>
+    <string name="troubleshoot_backup">Copia de seguridad: %1$s</string>
+    <string name="troubleshoot_copy">Copiar diagnóstico</string>
+    <string name="troubleshoot_copied">Diagnóstico copiado</string>
+</resources>

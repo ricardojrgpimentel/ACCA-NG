@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Genel Bakış</string>
+    <string name="ui_nav_schedules">Programlar</string>
+    <string name="ui_profiles_intro">Uygulamaya hazır şarj tercihlerinizi ayarlayın.</string>
+    <string name="ui_scripts_intro">Şarj denetleyiciniz için hızlı komutlar.</string>
+    <string name="ui_schedules_intro">Şarj rutininizin otomatik olarak çalışmasını sağlayın.</string>
+    <string name="ui_profiles_empty">Henüz profil yok\nİlk şarj kurulumunuzu kaydetmek için + tuşuna dokunun.</string>
+    <string name="ui_scripts_empty">Komutlarınız burada\nİlk scriptinizi oluşturmak için + tuşuna dokunun.</string>
+    <string name="ui_schedules_empty">Şarj rutininizi oluşturun\nBir şarj profilini zamanlamak için + tuşuna dokunun.</string>
+    <string name="ui_add_profile">Profil ekle</string>
+    <string name="ui_add_script">Script ekle</string>
+    <string name="ui_add_schedule">Program ekle</string>
+    <string name="ui_custom_config">Şarj ayarları</string>
+    <string name="ui_charge_once">Seçilen seviyeye bir kez şarj et</string>
+    <string name="ui_profile_options">Profil seçenekleri</string>
+    <string name="ui_script_options">Script seçenekleri</string>
+    <string name="ui_schedule_options">Program seçenekleri</string>
+    <string name="resume_temperature">Devam et</string>
+    <string name="template_temperature_profile_resume">Soğuma: %1$d°C · Duraklat: %2$d°C · Devam et: %3$d°C</string>
+    <string name="command_copy_details">Detayları kopyala</string>
+    <string name="command_details_copied">Komut detayları kopyalandı</string>
+</resources>

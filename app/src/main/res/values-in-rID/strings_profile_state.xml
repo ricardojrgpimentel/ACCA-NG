@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Profil aktif</string>
+    <string name="profile_none_active">Tidak ada profil aktif</string>
+    <string name="profile_custom_title">Konfigurasi kustom</string>
+    <string name="profile_active_description">Menyimpan perubahan manual beralih ke konfigurasi kustom. Profil yang disimpan tetap disimpan.</string>
+    <string name="profile_custom_description">Pengaturan kustom saat ini sedang digunakan.</string>
+    <string name="profile_reading_config">Membaca konfigurasi…</string>
+    <string name="profile_edit_action">Sunting</string>
+    <string name="profile_edit_live_title">Edit pengaturan saat ini</string>
+    <string name="profile_choose_action">Pilih profil</string>
+    <string name="profile_change_action">Ubah profil</string>
+    <string name="profile_edit_live_context">Konfigurasi saat ini</string>
+    <string name="profile_edit_from_profile">Konfigurasi saat ini · %1$s</string>
+    <string name="profile_edit_custom_help">Menyimpan akan menerapkan perubahan ini ke ACC. Anda dapat menerapkan profil yang disimpan lagi dari Profil.</string>
+    <string name="profile_edit_active_help">Menyimpan perubahan akan menerapkannya ke ACC dan menghapus profil aktif. Profil yang disimpan tetap tidak berubah.</string>
+    <string name="profile_edit_saved_context">Mengedit profil yang disimpan</string>
+    <string name="profile_edit_saved_help">Menyimpan akan memperbarui profil yang disimpan ini. Untuk menggunakan nilai baru di ACC, terapkan lagi dari Profil.</string>
+</resources>

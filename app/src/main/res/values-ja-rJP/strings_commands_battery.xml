@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACCコマンドを実行中です。お待ちください…</string>
+    <string name="command_completed">操作が完了しました</string>
+    <string name="command_failed_title">操作を完了できませんでした</string>
+    <string name="command_failed_message">変更を確認できませんでした。現在の状態を確認するか、再試行してください。</string>
+    <string name="command_close">閉じる</string>
+    <string name="command_stop_acc">ACCを停止中…</string>
+    <string name="command_start_acc">ACCを起動中…</string>
+    <string name="command_restart_acc">ACCを再起動中…</string>
+    <string name="command_read_status">ACCの状態を読み取り中…</string>
+    <string name="command_apply_settings">設定を適用中…</string>
+    <string name="command_apply_profile">プロファイルを適用中…</string>
+    <string name="command_reset_stats">バッテリー統計をリセット中…</string>
+    <string name="command_charge_once">充電上限を設定中…</string>
+    <string name="acc_status_unavailable">ACCステータス利用不可</string>
+    <string name="battery_summary_title">バッテリー概要</string>
+    <string name="battery_cycles_label">報告された充電サイクル</string>
+    <string name="battery_full_capacity_label">推定フル容量</string>
+    <string name="battery_design_capacity_label">設計容量</string>
+    <string name="battery_diagnostics_note">デバイスから報告された値。利用不可の読み取りは明示的に表示されます。</string>
+    <string name="battery_data_unavailable">利用不可</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

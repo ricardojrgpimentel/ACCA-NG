@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Tentang</string>
+    <string name="about_ng_intro">Kontrol pengisian lanjutan.\nSebuah fork independen dari AccA.</string>
+    <string name="about_ng_debug">Debug</string>
+    <string name="about_ng_release">Rilis</string>
+    <string name="about_ng_maintained_by">Dipelihara oleh</string>
+    <string name="about_ng_maintainer_role">Pengembangan dan pemeliharaan fork</string>
+    <string name="about_ng_profile">Profil GitHub</string>
+    <string name="about_ng_project">Proyek di GitHub</string>
+    <string name="about_ng_issues">Laporkan masalah</string>
+    <string name="about_ng_origin">Asal dan kredit</string>
+    <string name="about_ng_origin_blurb">AccA-NG dibangun di atas AccA, dengan peningkatan antarmuka, kompatibilitas, dan keandalan.</string>
+    <string name="about_ng_original_team">Tim AccA asli</string>
+    <string name="about_ng_acc_author">Penulis ACC dan DJS</string>
+    <string name="about_ng_original_project">Proyek AccA asli</string>
+    <string name="about_ng_community">Komunitas ACC</string>
+    <string name="about_ng_technical">Informasi teknis</string>
+    <string name="about_ng_app_version">Versi aplikasi</string>
+    <string name="about_ng_acc_version">ACC terpasang</string>
+    <string name="about_ng_api_version">Versi antarmuka ACC</string>
+    <string name="about_ng_loading">Membaca…</string>
+    <string name="about_ng_unavailable">Tidak tersedia</string>
+    <string name="about_ng_licenses">Lisensi dan atribusi</string>
+    <string name="about_ng_license_blurb">Perangkat lunak sumber terbuka di bawah GPL-3.0. Hak cipta AccA asli: © 2019–2021 MatteCarra, Squabbi dan VR25.</string>
+    <string name="about_ng_view_license">Baca lisensi GPL-3.0</string>
+    <string name="about_ng_attributions">Dibangun dengan AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs dan pustaka sumber terbuka lainnya.\n\nIkon Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Proyek sumber terbuka · Fork independen</string>
+    <string name="about_ng_expanded">Diperluas</string>
+    <string name="about_ng_collapsed">Diperpendek</string>
+</resources>

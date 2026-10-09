@@ -3,7 +3,7 @@
     <string name="about_ng_title">Sobre</string>
     <string name="about_ng_intro">Controlo avançado do carregamento.\nUm fork independente de AccA.</string>
     <string name="about_ng_debug">Debug</string>
-    <string name="about_ng_release">Versão final</string>
+    <string name="about_ng_release">Distribuição</string>
     <string name="about_ng_maintained_by">Mantido por</string>
     <string name="about_ng_maintainer_role">Desenvolvimento e manutenção do fork</string>
     <string name="about_ng_profile">Perfil no GitHub</string>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">اختر نقطة البداية</string>
+    <string name="preset_description">تحدد هذه الخيارات حدود شحن البطارية. اضغط على واحد، واضبط القيم أدناه واحفظ الملف التعريفي. يتم تفعيلها عند تطبيق الملف التعريفي.</string>
+    <string name="preset_daily_name">الاستخدام اليومي</string>
+    <string name="preset_plugged_name">فترات طويلة عند التوصيل</string>
+    <string name="preset_travel_name">السفر</string>
+    <string name="preset_option">%1$s\n%2$s\nيتوقف عند %3$d%% · يستأنف عند %4$d%%</string>
+    <string name="battery_state_charging">الشحن</string>
+    <string name="battery_state_paused">تم إيقاف الشحن مؤقتًا</string>
+    <string name="battery_state_full">البطارية ممتلئة</string>
+    <string name="battery_state_discharging">التفريغ</string>
+    <string name="battery_state_not_charging">غير مشحون</string>
+    <string name="battery_state_unknown">حالة الشحن غير معروفة</string>
+    <string name="battery_power_disconnected">تم فصل الشاحن</string>
+    <string name="battery_power_ac">الكابل متصل · التيار المتردد</string>
+    <string name="battery_power_usb">الكابل متصل · USB</string>
+    <string name="battery_power_wireless">الشاحن اللاسلكي متصل</string>
+    <string name="battery_power_dock">قاعدة الشحن متصلة</string>
+    <string name="battery_power_connected">الشاحن متصل</string>
+    <string name="battery_power_unknown">اتصال الشاحن غير معروف</string>
+    <string name="battery_paused_hint">الشاحن متصل، لكن البطارية لا تُشحن.</string>
+</resources>

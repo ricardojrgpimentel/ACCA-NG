@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Over</string>
+    <string name="about_ng_intro">Geavanceerde laadbeheersing.\nEen onafhankelijke fork van AccA.</string>
+    <string name="about_ng_debug">Debug</string>
+    <string name="about_ng_release">Release</string>
+    <string name="about_ng_maintained_by">Onderhouden door</string>
+    <string name="about_ng_maintainer_role">Ontwikkeling en onderhoud van de fork</string>
+    <string name="about_ng_profile">GitHub-profiel</string>
+    <string name="about_ng_project">Project op GitHub</string>
+    <string name="about_ng_issues">Meld een probleem</string>
+    <string name="about_ng_origin">Oorsprong en credits</string>
+    <string name="about_ng_origin_blurb">AccA-NG bouwt voort op AccA, met verbeteringen aan de interface, compatibiliteit en betrouwbaarheid.</string>
+    <string name="about_ng_original_team">Origineel AccA-team</string>
+    <string name="about_ng_acc_author">Auteur van ACC en DJS</string>
+    <string name="about_ng_original_project">Origineel AccA-project</string>
+    <string name="about_ng_community">ACC-gemeenschap</string>
+    <string name="about_ng_technical">Technische informatie</string>
+    <string name="about_ng_app_version">App-versie</string>
+    <string name="about_ng_acc_version">Geïnstalleerde ACC</string>
+    <string name="about_ng_api_version">ACC-interfaceversie</string>
+    <string name="about_ng_loading">Lezen…</string>
+    <string name="about_ng_unavailable">Niet beschikbaar</string>
+    <string name="about_ng_licenses">Licentie en vermeldingen</string>
+    <string name="about_ng_license_blurb">Open-source software onder GPL-3.0. Originele AccA-copyright: © 2019–2021 MatteCarra, Squabbi en VR25.</string>
+    <string name="about_ng_view_license">Lees de GPL-3.0-licentie</string>
+    <string name="about_ng_attributions">Gemaakt met AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs en andere open-source bibliotheken.\n\nTelegram-pictogram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Open-source project · Onafhankelijke fork</string>
+    <string name="about_ng_expanded">Uitgevouwen</string>
+    <string name="about_ng_collapsed">Samengevouwen</string>
+</resources>

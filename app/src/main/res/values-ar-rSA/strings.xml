@@ -39,4 +39,15 @@
     <!-- Import and Export -->
     <!-- Config Parse Error -->
     <!-- Widget Label and Activity -->
+    <string name="use_default_config">استخدام الإعدادات الافتراضية</string>
+
+    <string name="ng_engine_title">نسخة ACC-NG</string>
+    <string name="ng_engine_summary">تم الاحتفاظ بمحرك الشحن لـ AccA-NG. النسخة المدمجة تم اختبارها مع هذا التطبيق.</string>
+    <string name="ng_engine_picker_message">اختر نسخة ACC-NG.</string>
+    <string name="ng_engine_bundled">ACC-NG المدمجة (موصى بها)</string>
+    <string name="ng_engine_main">تطوير ACC-NG (main)</string>
+    <string name="ng_engine_main_warning">قد تحتوي النسخة التطويرية على تغييرات لم يتم اختبارها مع هذا التطبيق.</string>
+    <string name="ng_engine_notifications_title">إشعارات الشحن</string>
+    <string name="ng_engine_notifications_summary">إشعارات الاتصال، الإيقاف المؤقت، الاستئناف، درجة الحرارة وانخفاض البطارية من ACC-NG. يظل حماية الشحن نشطة عندما تكون هذه الإشعارات متوقفة.</string>
+    <string name="ng_engine_setting_failed">لم يتم تأكيد الإعداد في ACC-NG.</string>
 </resources>

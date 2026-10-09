@@ -128,7 +128,7 @@
             android:entryValues="@array/lang_pref_value"
             android:icon="@drawable/ic_outline_check_circle_24px"
             android:key="language"
-            android:summary="@string/lang_pref_summary"
+            android:persistent="false"
             android:title="@string/lang_pref_title" />
 
         <ListPreference

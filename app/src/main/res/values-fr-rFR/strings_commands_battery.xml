@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">Exécution des commandes ACC. Veuillez patienter…</string>
+    <string name="command_completed">Action terminée</string>
+    <string name="command_failed_title">Impossible de terminer l’action</string>
+    <string name="command_failed_message">La modification n’a pas pu être confirmée. Vérifiez l’état actuel ou réessayez.</string>
+    <string name="command_close">Fermer</string>
+    <string name="command_stop_acc">Arrêt d’ACC…</string>
+    <string name="command_start_acc">Démarrage d’ACC…</string>
+    <string name="command_restart_acc">Redémarrage d’ACC…</string>
+    <string name="command_read_status">Lecture de l’état d’ACC…</string>
+    <string name="command_apply_settings">Application des réglages…</string>
+    <string name="command_apply_profile">Application du profil…</string>
+    <string name="command_reset_stats">Réinitialisation des statistiques de la batterie…</string>
+    <string name="command_charge_once">Définition de la limite de charge…</string>
+    <string name="acc_status_unavailable">État d’ACC indisponible</string>
+    <string name="battery_summary_title">Résumé de la batterie</string>
+    <string name="battery_cycles_label">Cycles de charge signalés</string>
+    <string name="battery_full_capacity_label">Capacité totale estimée</string>
+    <string name="battery_design_capacity_label">Capacité nominale</string>
+    <string name="battery_diagnostics_note">Valeurs signalées par l’appareil. Les mesures indisponibles sont indiquées explicitement.</string>
+    <string name="battery_data_unavailable">Indisponible</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

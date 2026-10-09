@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnostica della ricarica</string>
+    <string name="troubleshoot_intro">Controlla il servizio di ricarica, la calibrazione e i limiti applicati. La diagnostica si aggiorna automaticamente mentre questa schermata è aperta.</string>
+    <string name="troubleshoot_no_issue">Nessun problema rilevato nelle letture attuali. Questo non conferma un ciclo completo di carica e ripresa.</string>
+    <string name="troubleshoot_unavailable">Diagnostica non disponibile. Controlla l’accesso root e l’installazione di ACC, poi riprova.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Questo servizio ACC modificato usa limiti fissi del 90%/80% e ignora quelli dei profili. Ripristina il servizio incluso per recuperare il controllo tramite profili.</string>
+    <string name="troubleshoot_different_module">Il servizio installato differisce da quello incluso nell’app. Può essere una versione legittima o una modifica; la sola differenza non dimostra un guasto.</string>
+    <string name="troubleshoot_calibration_pending">ACC è in esecuzione ma attende la calibrazione della corrente. Scollega tutti i caricatori e usa Calibra corrente per completare il passaggio.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC in attesa di calibrazione</string>
+    <string name="troubleshoot_stopped">Il servizio ACC è fermo. Avvialo dalla panoramica per applicare i limiti di carica.</string>
+    <string name="troubleshoot_above_limit">La batteria continua a caricarsi al limite configurato o al di sopra da almeno 30 secondi. Controlla calibrazione e modulo; anche l’interruttore di ricarica scelto potrebbe essere inefficace.</string>
+    <string name="troubleshoot_refresh">Controlla di nuovo</string>
+    <string name="troubleshoot_calibrate">Calibra corrente</string>
+    <string name="troubleshoot_calibrate_now">Avvia calibrazione</string>
+    <string name="troubleshoot_calibration_instructions">Scollega USB, ricarica wireless e tutti gli altri caricatori. Attendi qualche secondo, poi avvia. L’app raccoglie cinque letture di scarica in 10 secondi e salva una copia della configurazione. Mantieni i caricatori scollegati fino al termine. Letture instabili o non disponibili lasciano la calibrazione invariata.</string>
+    <string name="troubleshoot_calibration_failed">Impossibile confermare la calibrazione. Mantieni tutti i caricatori scollegati, attendi che le letture si stabilizzino e riprova.</string>
+    <string name="troubleshoot_calibration_success">Calibrazione della corrente salvata e verificata. Ricollega il caricatore e controlla la diagnostica.</string>
+    <string name="troubleshoot_restore">Ripristina il servizio incluso</string>
+    <string name="troubleshoot_restore_confirmation">Sostituisce il servizio di ricarica ACC con quello originale incluso della stessa versione. Le modifiche al servizio verranno rimosse. L’app prima salva una copia del modulo e della configurazione, mantiene le impostazioni, riavvia il servizio e verifica la riparazione. Se la verifica fallisce, tenta di ripristinare il servizio precedente.</string>
+    <string name="troubleshoot_restore_success">Il servizio originale è stato ripristinato e verificato. I limiti di carica sono stati mantenuti. Se la calibrazione è ancora in sospeso, completala prima di provare il controllo della ricarica.</string>
+    <string name="troubleshoot_restore_failed">Ripristino del servizio non riuscito. Consulta i dettagli dei comandi per la posizione della copia e l’errore. Controlla la diagnostica prima di riprovare.</string>
+    <string name="troubleshoot_incompatible_version">Il ripristino richiede la stessa versione di ACC inclusa nell’app. Le altre versioni non vengono sostituite né riportate a versioni precedenti.</string>
+    <string name="troubleshoot_details">Codice versione ACC: %1$s\nBatteria: %2$s%%\nArresto: %3$s%% · Ripresa: %4$s%%\nStato batteria: %5$s\nCorrente: %6$s mA\nPolarità di scarica: %7$s\nInterruttore di ricarica: %8$s</string>
+    <string name="troubleshoot_backup">Copia di sicurezza: %1$s</string>
+    <string name="troubleshoot_copy">Copia diagnostica</string>
+    <string name="troubleshoot_copied">Diagnostica copiata</string>
+</resources>

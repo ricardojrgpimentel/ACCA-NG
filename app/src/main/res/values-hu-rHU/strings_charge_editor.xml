@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Mindennapi használatra, mérsékelt töltési korláttal.</string>
+    <string name="preset_plugged_help">Olyan telefonhoz, amely sok órát tölt a töltőhöz csatlakozva. Alacsonyabban tartja az akkumulátor szintjét; nem garantálja az átjárást.</string>
+    <string name="preset_travel_help">Több akkumulátor rendelkezésre állása előtt a kilépés előtt. Magasabb töltési szintet engedélyez.</string>
+    <string name="charge_limits_title">Akkumulátor töltési korlátok (%)</string>
+    <string name="charge_limits_help">Minden érték az akkumulátor szintjének százalékos aránya. A folytatáshoz csatlakoztatott töltő és megfelelő hőmérséklet szükséges. Az ACC-nek működnie kell ezen korlátok érvényesítéséhez.</string>
+    <string name="charge_pause_label">Töltés leállítása</string>
+    <string name="charge_pause_help">A töltést akkor állítja le, amikor az akkumulátor eléri ezt a szintet.</string>
+    <string name="charge_resume_label">Töltés folytatása</string>
+    <string name="charge_resume_help">Egy szünet után akkor folytatja, amikor az akkumulátor szintje eléri vagy alá csökken ezt a szintet.</string>
+    <string name="charge_shutdown_label">Telefon kikapcsolása</string>
+    <string name="charge_shutdown_help">Kikapcsolja a telefont ezen a szinten vagy az alatt, ha az akkumulátor nem töltődik. Ez nem csupán a töltés szüneteltetését jelenti.</string>
+    <string name="charge_cycle_summary">A töltés %1$d%%-nál leáll, és %2$d%%-nál vagy az alatt folytatódik.</string>
+    <string name="charge_unlimited_summary">∞ a Leállításnál eltávolítja az akkumulátor százalékos korlátját. ∞ a Folytatásnál lehetővé teszi a töltés bármilyen akkumulátor szintnél történő folytatását.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">A töltési korlátok le vannak tiltva ennél a profillal.</string>
+    <string name="charge_unlimited_hint">Az ∞ egy letiltott százalékos küszöböt jelöl.</string>
+    <string name="charge_restore_limits">Eredeti töltési korlátok visszaállítása</string>
+    <string name="charge_switch_label">Töltésvezérlési mód</string>
+    <string name="charge_switch_help">Az ACC kompatibilis eszközvezérlést használ a töltés engedélyezéséhez vagy szüneteltetéséhez. Hagyd Automatikus üzemmódon, hacsak nem tudod, melyik módszerre van szüksége az eszközödnek.</string>
+    <string name="charge_switch_automatic">Kompatibilis módszer automatikus keresése</string>
+    <string name="charge_power_title">Áram- és feszültséghatárok</string>
+    <string name="charge_max_current">Maximális áram (mA):</string>
+</resources>

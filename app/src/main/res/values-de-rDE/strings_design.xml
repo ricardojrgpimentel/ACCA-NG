@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Übersicht</string>
+    <string name="ui_nav_schedules">Zeitpläne</string>
+    <string name="ui_profiles_intro">Deine Ladeeinstellungen, bereit zum Anwenden.</string>
+    <string name="ui_scripts_intro">Schnelle Befehle für deine Ladesteuerung.</string>
+    <string name="ui_schedules_intro">Lass deine Laderoutine automatisch ablaufen.</string>
+    <string name="ui_profiles_empty">Noch keine Profile\nTippe auf +, um deine erste Ladekonfiguration zu speichern.</string>
+    <string name="ui_scripts_empty">Hier findest du deine Befehle\nTippe auf +, um dein erstes Skript zu erstellen.</string>
+    <string name="ui_schedules_empty">Erstelle deine Laderoutine\nTippe auf +, um ein Ladeprofil zeitlich zu planen.</string>
+    <string name="ui_add_profile">Profil hinzufügen</string>
+    <string name="ui_add_script">Skript hinzufügen</string>
+    <string name="ui_add_schedule">Zeitplan hinzufügen</string>
+    <string name="ui_custom_config">Ladeeinstellungen</string>
+    <string name="ui_charge_once">Einmal bis zum gewählten Stand laden</string>
+    <string name="ui_profile_options">Profiloptionen</string>
+    <string name="ui_script_options">Skriptoptionen</string>
+    <string name="ui_schedule_options">Zeitplanoptionen</string>
+    <string name="resume_temperature">Fortsetzen unter</string>
+    <string name="template_temperature_profile_resume">Abkühlen: %1$d°C · Pause: %2$d°C · Fortsetzen: %3$d°C</string>
+    <string name="command_copy_details">Details kopieren</string>
+    <string name="command_details_copied">Befehlsdetails kopiert</string>
+</resources>

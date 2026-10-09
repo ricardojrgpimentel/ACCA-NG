@@ -1,0 +1,1 @@
+Translate 230 new strings across all 21 existing locales. Apply language changes immediately and remember the selection. Improve Portuguese translations and Greek/Indonesian language selection. Include modern ACC-NG profile temperature fixes and Copy details for command results.

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">概覽</string>
+    <string name="ui_nav_schedules">排程</string>
+    <string name="ui_profiles_intro">您的充電偏好，準備套用。</string>
+    <string name="ui_scripts_intro">充電控制器的快速指令。</string>
+    <string name="ui_schedules_intro">讓您的充電程序自動執行。</string>
+    <string name="ui_profiles_empty">尚無配置檔\n點擊 + 以儲存您的第一個充電設定。</string>
+    <string name="ui_scripts_empty">您的指令存放於此\n點擊 + 創建您的第一個腳本。</string>
+    <string name="ui_schedules_empty">建立您的充電程序\n點擊 + 排程充電配置檔。</string>
+    <string name="ui_add_profile">新增配置檔</string>
+    <string name="ui_add_script">新增腳本</string>
+    <string name="ui_add_schedule">新增排程</string>
+    <string name="ui_custom_config">充電設定</string>
+    <string name="ui_charge_once">充電至選定等級一次</string>
+    <string name="ui_profile_options">配置檔選項</string>
+    <string name="ui_script_options">腳本選項</string>
+    <string name="ui_schedule_options">排程選項</string>
+    <string name="resume_temperature">下方繼續</string>
+    <string name="template_temperature_profile_resume">冷卻：%1$d°C · 暫停：%2$d°C · 恢復：%3$d°C</string>
+    <string name="command_copy_details">複製詳細資料</string>
+    <string name="command_details_copied">命令詳細資料已複製</string>
+</resources>

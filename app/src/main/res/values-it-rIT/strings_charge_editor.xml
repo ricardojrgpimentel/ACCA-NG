@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Per l’uso quotidiano con un limite di carica moderato.</string>
+    <string name="preset_plugged_help">Per un telefono che resta molte ore collegato al caricatore. Mantiene la batteria a un livello inferiore; non garantisce il bypass.</string>
+    <string name="preset_travel_help">Per avere più batteria prima di uscire. Consente un livello di carica superiore.</string>
+    <string name="charge_limits_title">Limiti di carica della batteria (%)</string>
+    <string name="charge_limits_help">Tutti i valori sono percentuali del livello della batteria. La ripresa richiede un caricatore collegato e una temperatura adeguata. ACC deve essere in esecuzione per applicare questi limiti.</string>
+    <string name="charge_pause_label">Interrompi la ricarica al</string>
+    <string name="charge_pause_help">Sospende la ricarica quando la batteria raggiunge questo livello.</string>
+    <string name="charge_resume_label">Riprendi la ricarica al</string>
+    <string name="charge_resume_help">Dopo una pausa, riprende quando la batteria scende a questo livello o al di sotto.</string>
+    <string name="charge_shutdown_label">Spegni il telefono al</string>
+    <string name="charge_shutdown_help">Spegne il telefono a questo livello o al di sotto se la batteria non è in carica. Non si limita a sospendere la ricarica.</string>
+    <string name="charge_cycle_summary">La ricarica si interrompe al %1$d%% e riprende al %2$d%% o al di sotto.</string>
+    <string name="charge_unlimited_summary">∞ per Interrompi rimuove il limite di arresto basato sulla percentuale. ∞ per Riprendi consente la ripresa a qualsiasi livello della batteria.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">I limiti di carica sono disattivati per questo profilo.</string>
+    <string name="charge_unlimited_hint">∞ indica una soglia percentuale disattivata.</string>
+    <string name="charge_restore_limits">Ripristina i limiti di carica iniziali</string>
+    <string name="charge_switch_label">Metodo di controllo della ricarica</string>
+    <string name="charge_switch_help">ACC usa un controllo compatibile con il dispositivo per attivare o sospendere la ricarica. Lascia Automatico, salvo se conosci il metodo richiesto dal dispositivo.</string>
+    <string name="charge_switch_automatic">Trova automaticamente un metodo compatibile</string>
+    <string name="charge_power_title">Limiti di corrente e tensione</string>
+    <string name="charge_max_current">Corrente massima (mA):</string>
+</resources>

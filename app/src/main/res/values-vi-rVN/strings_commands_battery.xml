@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">Đang thực hiện lệnh ACC. Vui lòng chờ…</string>
+    <string name="command_completed">Hành động hoàn tất</string>
+    <string name="command_failed_title">Không thể hoàn tất hành động</string>
+    <string name="command_failed_message">Không thể xác nhận thay đổi. Kiểm tra trạng thái hiện tại hoặc thử lại.</string>
+    <string name="command_close">Đóng</string>
+    <string name="command_stop_acc">Đang dừng ACC…</string>
+    <string name="command_start_acc">Đang khởi động ACC…</string>
+    <string name="command_restart_acc">Đang khởi động lại ACC…</string>
+    <string name="command_read_status">Đang đọc trạng thái ACC…</string>
+    <string name="command_apply_settings">Áp dụng cài đặt…</string>
+    <string name="command_apply_profile">Áp dụng hồ sơ…</string>
+    <string name="command_reset_stats">Đặt lại thống kê pin…</string>
+    <string name="command_charge_once">Đặt giới hạn sạc…</string>
+    <string name="acc_status_unavailable">Trạng thái ACC không khả dụng</string>
+    <string name="battery_summary_title">Tổng hợp pin</string>
+    <string name="battery_cycles_label">Chu kỳ sạc đã báo cáo</string>
+    <string name="battery_full_capacity_label">Công suất tối đa ước tính</string>
+    <string name="battery_design_capacity_label">Công suất thiết kế</string>
+    <string name="battery_diagnostics_note">Giá trị được thiết bị báo cáo. Các giá trị không khả dụng được hiển thị rõ ràng.</string>
+    <string name="battery_data_unavailable">Không khả dụng</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

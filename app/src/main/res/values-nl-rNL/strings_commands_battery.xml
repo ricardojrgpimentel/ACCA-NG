@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">ACC-opdrachten uitvoeren. Even geduld…</string>
+    <string name="command_completed">Actie voltooid</string>
+    <string name="command_failed_title">Actie kon niet worden voltooid</string>
+    <string name="command_failed_message">De wijziging kon niet worden bevestigd. Controleer de huidige status of probeer het opnieuw.</string>
+    <string name="command_close">Sluiten</string>
+    <string name="command_stop_acc">ACC stoppen…</string>
+    <string name="command_start_acc">ACC starten…</string>
+    <string name="command_restart_acc">ACC opnieuw starten…</string>
+    <string name="command_read_status">ACC-status lezen…</string>
+    <string name="command_apply_settings">Instellingen toepassen…</string>
+    <string name="command_apply_profile">Profiel toepassen…</string>
+    <string name="command_reset_stats">Batterijstatistieken resetten…</string>
+    <string name="command_charge_once">Laadlimiet instellen…</string>
+    <string name="acc_status_unavailable">ACC-status niet beschikbaar</string>
+    <string name="battery_summary_title">Batterijoverzicht</string>
+    <string name="battery_cycles_label">Gerapporteerde laadcycli</string>
+    <string name="battery_full_capacity_label">Geschatte volledige capaciteit</string>
+    <string name="battery_design_capacity_label">Ontwerp capaciteit</string>
+    <string name="battery_diagnostics_note">Waarden gerapporteerd door het apparaat. Niet-beschikbare metingen worden expliciet weergegeven.</string>
+    <string name="battery_data_unavailable">Niet beschikbaar</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

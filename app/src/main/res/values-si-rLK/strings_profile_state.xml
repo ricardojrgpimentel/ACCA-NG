@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">සක්‍රීය පැතිකඩ</string>
+    <string name="profile_none_active">සක්‍රීය පැතිකඩක් නොමැත</string>
+    <string name="profile_custom_title">අභිරුචි සැකසුම්</string>
+    <string name="profile_active_description">අතින් කළ වෙනස්කම් සුරැකීමෙන් අභිරුචි වින්‍යාසයකට මාරු වේ. සුරැකි පැතිකඩ රඳවා තබයි.</string>
+    <string name="profile_custom_description">දැනට අභිරුචි සැකසුම් භාවිත වේ.</string>
+    <string name="profile_reading_config">සැකසුම කියවමින්…</string>
+    <string name="profile_edit_action">සංස්කරණය කරන්න</string>
+    <string name="profile_edit_live_title">වර්තමාන සැකසුම් සංස්කරණය කරන්න</string>
+    <string name="profile_choose_action">පැතිකඩක් තෝරන්න</string>
+    <string name="profile_change_action">පැතිකඩ වෙනස් කරන්න</string>
+    <string name="profile_edit_live_context">වත්මන් වින්‍යාසය</string>
+    <string name="profile_edit_from_profile">වත්මන් වින්‍යාසය · %1$s</string>
+    <string name="profile_edit_custom_help">සුරැකීමෙන් මෙම වෙනස්කම් ACC වෙත යෙදේ. පැතිකඩ තිරයෙන් සුරැකි පැතිකඩක් නැවත යෙදිය හැක.</string>
+    <string name="profile_edit_active_help">සුරැකීමෙන් වෙනස්කම් ACC වෙත යෙදෙන අතර සක්‍රිය පැතිකඩ තේරීම ඉවත් වේ. සුරැකි පැතිකඩ නොවෙනස්ව පවතී.</string>
+    <string name="profile_edit_saved_context">සුරැකි පැතිකඩක් සංස්කරණය කිරීම</string>
+    <string name="profile_edit_saved_help">සුරැකීමෙන් මෙම පැතිකඩ යාවත්කාලීන වේ. නව අගයන් ACC තුළ භාවිත කිරීමට පැතිකඩ තිරයෙන් එය නැවත යොදන්න.</string>
+</resources>

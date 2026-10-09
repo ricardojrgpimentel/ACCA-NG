@@ -85,4 +85,15 @@
     <string name="menu_title_load_clipboard">පසුරුපුවරුවෙන් පූරණයකරන්න</string>
     <!-- Config Parse Error -->
     <!-- Widget Label and Activity -->
+    <string name="use_default_config">පෙරනිමි සැකසුම් භාවිත කරන්න</string>
+
+    <string name="ng_engine_title">ACC-NG අනුවාදය</string>
+    <string name="ng_engine_summary">AccA-NG සඳහා නඩත්තු කරන ආරෝපණ පාලකය. ඇතුළත් අනුවාදය මෙම යෙදුම සමඟ පරීක්ෂා කර ඇත.</string>
+    <string name="ng_engine_picker_message">ACC-NG අනුවාදයක් තෝරන්න.</string>
+    <string name="ng_engine_bundled">ඇතුළත් ACC-NG (නිර්දේශිතයි)</string>
+    <string name="ng_engine_main">ACC-NG සංවර්ධන අනුවාදය (main)</string>
+    <string name="ng_engine_main_warning">සංවර්ධන අනුවාදයේ මෙම යෙදුම සමඟ තවම පරීක්ෂා නොකළ වෙනස්කම් තිබිය හැක.</string>
+    <string name="ng_engine_notifications_title">ආරෝපණ දැනුම්දීම්</string>
+    <string name="ng_engine_notifications_summary">සම්බන්ධ කිරීම, විරාමය, නැවත ආරම්භය, උෂ්ණත්වය සහ බැටරි මට්ටම අඩු වීම පිළිබඳ ACC-NG දැනුම්දීම්. මේවා අක්‍රිය කළත් ආරෝපණ ආරක්ෂාව සක්‍රියව පවතී.</string>
+    <string name="ng_engine_setting_failed">ACC-NG හි සැකසුම තහවුරු කළ නොහැකි විය.</string>
 </resources>

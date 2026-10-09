@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Choisir un point de départ</string>
+    <string name="preset_description">Ces options définissent les limites de charge. Choisissez-en une, ajustez les valeurs ci-dessous et enregistrez le profil. Il prend effet lorsque vous l’appliquez.</string>
+    <string name="preset_daily_name">Usage quotidien</string>
+    <string name="preset_plugged_name">Longues périodes branché</string>
+    <string name="preset_travel_name">Voyage</string>
+    <string name="preset_option">%1$s\n%2$s\nArrêt à %3$d%% · Reprise à %4$d%%</string>
+    <string name="battery_state_charging">En charge</string>
+    <string name="battery_state_paused">Charge en pause</string>
+    <string name="battery_state_full">Batterie pleine</string>
+    <string name="battery_state_discharging">En décharge</string>
+    <string name="battery_state_not_charging">Pas en charge</string>
+    <string name="battery_state_unknown">État de charge inconnu</string>
+    <string name="battery_power_disconnected">Chargeur débranché</string>
+    <string name="battery_power_ac">Câble branché · Secteur</string>
+    <string name="battery_power_usb">Câble branché · USB</string>
+    <string name="battery_power_wireless">Chargeur sans fil connecté</string>
+    <string name="battery_power_dock">Station de charge connectée</string>
+    <string name="battery_power_connected">Chargeur branché</string>
+    <string name="battery_power_unknown">Connexion du chargeur inconnue</string>
+    <string name="battery_paused_hint">Le chargeur est branché, mais la batterie ne charge pas.</string>
+</resources>

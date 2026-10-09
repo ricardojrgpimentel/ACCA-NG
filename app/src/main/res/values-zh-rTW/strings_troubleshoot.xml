@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">充電診斷</string>
+    <string name="troubleshoot_intro">檢查充電服務、校準與應用限制。當此畫面開啟時，診斷會自動刷新。</string>
+    <string name="troubleshoot_no_issue">當前讀數未檢測到問題。這並不表示完整充電與恢復循環已完成。</string>
+    <string name="troubleshoot_unavailable">診斷不可用。請檢查 root 權限和 ACC 安裝，然後重試。</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">此修改版 ACC 服務使用固定的 90%/80% 限值，並忽略配置檔限制。恢復捆綁服務以恢復配置檔控制。</string>
+    <string name="troubleshoot_different_module">安裝的服務與 app 捆綁的版本不同。這可以是合法版本或修改版；僅僅存在差異並不能證明有錯誤。</string>
+    <string name="troubleshoot_calibration_pending">ACC 正在運行，但正在等待電流校準。請斷開所有充電器並使用「校準電流」完成此步驟。</string>
+    <string name="troubleshoot_calibration_pending_short">ACC 正在等待校準</string>
+    <string name="troubleshoot_stopped">ACC 服務已停止。請從儀表板啟動以應用充電限制。</string>
+    <string name="troubleshoot_above_limit">電池已在設定的限值或以上持續充電至少 30 秒。請檢查校準和模組；所選的充電開關也可能無效。</string>
+    <string name="troubleshoot_refresh">再次檢查</string>
+    <string name="troubleshoot_calibrate">校準電流</string>
+    <string name="troubleshoot_calibrate_now">開始校準</string>
+    <string name="troubleshoot_calibration_instructions">斷開 USB、無線充電及所有其他充電器。等待幾秒鐘後開始。應用程式會在 10 秒內收集五次放電讀數並保存配置備份。在完成前保持充電器斷開。若讀數不穩定或不可用，校準結果將保持不變。</string>
+    <string name="troubleshoot_calibration_failed">無法確認校準。保持所有充電器斷開，等待讀數穩定後重試。</string>
+    <string name="troubleshoot_calibration_success">電流校準已保存並驗證。重新連接充電器並檢查診斷。</string>
+    <string name="troubleshoot_restore">恢復捆綁服務</string>
+    <string name="troubleshoot_restore_confirmation">這會將 ACC 充電服務替換為相同版本的原始捆綁服務。自訂服務更改將被移除。應用程式會先備份模組和配置，保留您的設置，重新啟動服務並驗證修復。如果驗證失敗，將嘗試恢復先前的服務。</string>
+    <string name="troubleshoot_restore_success">原始服務已恢復並驗證。充電限制已保留。如果校準仍待完成，請在測試充電控制前完成。</string>
+    <string name="troubleshoot_restore_failed">服務恢復失敗。檢查命令詳細資訊以了解備份位置和失敗原因。再次嘗試前請檢查診斷。</string>
+    <string name="troubleshoot_incompatible_version">服務恢復需要與應用程式捆綁相同版本的 ACC。本處不會更換或降級其他版本。</string>
+    <string name="troubleshoot_details">ACC 版本代碼：%1$s\n電池：%2$s%%\n停止：%3$s%% · 恢復：%4$s%%\n電池狀態：%5$s\n電流：%6$s mA\n放電極性：%7$s\n充電開關：%8$s</string>
+    <string name="troubleshoot_backup">備份：%1$s</string>
+    <string name="troubleshoot_copy">複製診斷資料</string>
+    <string name="troubleshoot_copied">診斷資料已複製</string>
+</resources>

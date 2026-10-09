@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">පිළිබඳ</string>
+    <string name="about_ng_intro">උසස් ආරෝපණ පාලනය.\nAccA මත පදනම් වූ ස්වාධීන ව්‍යාපෘතියකි.</string>
+    <string name="about_ng_debug">ඩිබග්</string>
+    <string name="about_ng_release">නිකුත් කිරීම</string>
+    <string name="about_ng_maintained_by">නඩත්තු කරන්නේ</string>
+    <string name="about_ng_maintainer_role">මෙම ස්වාධීන ව්‍යාපෘතිය සංවර්ධනය හා නඩත්තු කිරීම</string>
+    <string name="about_ng_profile">GitHub පැතිකඩ</string>
+    <string name="about_ng_project">GitHub හි ව්‍යාපෘතිය</string>
+    <string name="about_ng_issues">ගැටළුවක් වාර්තා කරන්න</string>
+    <string name="about_ng_origin">ආරම්භය සහ දායකයන්</string>
+    <string name="about_ng_origin_blurb">AccA-NG, AccA මත පදනම් වන අතර අතුරුමුහුණත, ගැළපුම සහ විශ්වාසනීයත්වය වැඩිදියුණු කරයි.</string>
+    <string name="about_ng_original_team">මුල් AccA කණ්ඩායම</string>
+    <string name="about_ng_acc_author">ACC සහ DJS නිර්මාතෘ</string>
+    <string name="about_ng_original_project">මුල් AccA ව්‍යාපෘතිය</string>
+    <string name="about_ng_community">ACC ප්‍රජාව</string>
+    <string name="about_ng_technical">තාක්ෂණික තොරතුරු</string>
+    <string name="about_ng_app_version">යෙදුම් අනුවාදය</string>
+    <string name="about_ng_acc_version">ස්ථාපිත ACC</string>
+    <string name="about_ng_api_version">ACC අතුරුමුහුණත් අනුවාදය</string>
+    <string name="about_ng_loading">කියවමින්...</string>
+    <string name="about_ng_unavailable">ලබාගත නොහැකිය</string>
+    <string name="about_ng_licenses">බලපත්‍රය සහ දායකත්වයන්</string>
+    <string name="about_ng_license_blurb">GPL-3.0 යටතේ විවෘත මූලාශ්‍ර මෘදුකාංගයකි. මුල් AccA ප්‍රකාශන හිමිකම: © 2019–2021 MatteCarra, Squabbi සහ VR25.</string>
+    <string name="about_ng_view_license">GPL-3.0 බලපත්‍රය කියවන්න</string>
+    <string name="about_ng_attributions">AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs සහ වෙනත් විවෘත මූලාශ්‍ර පුස්තකාල සමඟ නිර්මාණය කර ඇත.\n\nTelegram නිරූපකය: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">විවෘත මූලාශ්‍ර ව්‍යාපෘතිය · ස්වාධීන ව්‍යුත්පන්නයක්</string>
+    <string name="about_ng_expanded">විහිදුවා ඇත</string>
+    <string name="about_ng_collapsed">හකුළා ඇත</string>
+</resources>

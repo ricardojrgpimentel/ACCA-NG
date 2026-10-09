@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Aktywny profil</string>
+    <string name="profile_none_active">Brak aktywnego profilu</string>
+    <string name="profile_custom_title">Niestandardowa konfiguracja</string>
+    <string name="profile_active_description">Zapisywanie ręcznych zmian przełącza na niestandardową konfigurację. Twój zapisany profil jest zachowany.</string>
+    <string name="profile_custom_description">Niestandardowe ustawienia są obecnie używane.</string>
+    <string name="profile_reading_config">Odczytywanie konfiguracji…</string>
+    <string name="profile_edit_action">Edytuj</string>
+    <string name="profile_edit_live_title">Edytuj bieżące ustawienia</string>
+    <string name="profile_choose_action">Wybierz profil</string>
+    <string name="profile_change_action">Zmień profil</string>
+    <string name="profile_edit_live_context">Bieżąca konfiguracja</string>
+    <string name="profile_edit_from_profile">Bieżąca konfiguracja · %1$s</string>
+    <string name="profile_edit_custom_help">Zapisanie stosuje te zmiany w ACC. Możesz ponownie zastosować zapisany profil z Profilów.</string>
+    <string name="profile_edit_active_help">Zapisanie zmian stosuje je w ACC i usuwa aktywny profil. Twój zapisany profil pozostaje bez zmian.</string>
+    <string name="profile_edit_saved_context">Edytowanie zapisanego profilu</string>
+    <string name="profile_edit_saved_help">Zapisanie aktualizuje ten zapisany profil. Aby użyć nowych wartości w ACC, zastosuj go ponownie z Profilów.</string>
+</resources>

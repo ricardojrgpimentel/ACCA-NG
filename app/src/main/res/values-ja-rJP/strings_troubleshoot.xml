@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">充電診断</string>
+    <string name="troubleshoot_intro">充電サービス、校正、および適用されている制限を確認してください。この画面が開いている間、診断は自動的に更新されます。</string>
+    <string name="troubleshoot_no_issue">現在の読み取り値には問題は検出されませんでした。これは完全充電および再開サイクルを確認するものではありません。</string>
+    <string name="troubleshoot_unavailable">診断は利用できません。ルートアクセスおよびACCのインストールを確認してから再試行してください。</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">この改変されたACCサービスは固定の90%/80%制限を使用し、プロファイルの制限を無視します。プロファイル制御を復元するには、同梱サービスを元に戻してください。</string>
+    <string name="troubleshoot_different_module">インストールされているサービスは、アプリに同梱されているものとは異なります。これは正規のバージョンであったり改変された可能性があります。違いだけでは故障を証明するものではありません。</string>
+    <string name="troubleshoot_calibration_pending">ACCは動作中ですが、電流校正を待っています。すべての充電器を取り外し、『電流を校正』を使用してこのステップを完了してください。</string>
+    <string name="troubleshoot_calibration_pending_short">ACCは校正待ちです。</string>
+    <string name="troubleshoot_stopped">ACCサービスは停止しています。充電制限を適用するには、ダッシュボードから起動してください。</string>
+    <string name="troubleshoot_above_limit">バッテリーは設定された制限以上で最低30秒間充電を続けました。校正とモジュールを確認してください。選択された充電スイッチも機能していない可能性があります。</string>
+    <string name="troubleshoot_refresh">再確認してください。</string>
+    <string name="troubleshoot_calibrate">電流を校正</string>
+    <string name="troubleshoot_calibrate_now">校正を開始</string>
+    <string name="troubleshoot_calibration_instructions">USB、ワイヤレス充電、およびその他の充電器をすべて取り外してください。数秒待ってから開始します。アプリは10秒間に5回の放電測定を収集し、設定のバックアップを保存します。完了するまで充電器を接続しないでください。不安定または取得できない測定値の場合、校正は変更されません。</string>
+    <string name="troubleshoot_calibration_failed">校正を確認できませんでした。すべての充電器を取り外したまま測定値が安定するのを待ち、再試行してください。</string>
+    <string name="troubleshoot_calibration_success">電流の校正は保存され、確認されました。充電器を再接続して診断を確認してください。</string>
+    <string name="troubleshoot_restore">バンドルサービスを復元</string>
+    <string name="troubleshoot_restore_confirmation">これは、ACC充電サービスを同じバージョンの元のバンドルサービスに置き換えます。カスタムサービスの変更は削除されます。アプリはまずモジュールと構成をバックアップし、設定を保持し、サービスを再起動して修復を確認します。確認に失敗した場合、以前のサービスの復元を試みます。</string>
+    <string name="troubleshoot_restore_success">元のサービスは復元され、確認されました。充電制限は保持されました。校正がまだ保留中の場合は、充電制御のテスト前に完了してください。</string>
+    <string name="troubleshoot_restore_failed">サービスの復元に失敗しました。バックアップの場所と失敗の詳細についてコマンドを確認してください。再試行する前に診断を確認してください。</string>
+    <string name="troubleshoot_incompatible_version">サービスの復元には、アプリバンドルと同じACCバージョンが必要です。他のバージョンはここでは置き換えられず、ダウングレードもされません。</string>
+    <string name="troubleshoot_details">ACCバージョンコード: %1$s\nバッテリー: %2$s%%\n停止: %3$s%% · 再開: %4$s%%\nバッテリー状態: %5$s\n電流: %6$s mA\n放電極性: %7$s\n充電スイッチ: %8$s</string>
+    <string name="troubleshoot_backup">バックアップ: %1$s</string>
+    <string name="troubleshoot_copy">診断をコピー</string>
+    <string name="troubleshoot_copied">診断がコピーされました</string>
+</resources>

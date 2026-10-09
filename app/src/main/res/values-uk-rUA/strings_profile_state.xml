@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Активний профіль</string>
+    <string name="profile_none_active">Активний профіль відсутній</string>
+    <string name="profile_custom_title">Користувацька конфігурація</string>
+    <string name="profile_active_description">Збереження ручних змін перемикає на користувацьку конфігурацію. Ваш збережений профіль зберігається.</string>
+    <string name="profile_custom_description">Наразі використовуються користувацькі налаштування.</string>
+    <string name="profile_reading_config">Читання конфігурації…</string>
+    <string name="profile_edit_action">Редагувати</string>
+    <string name="profile_edit_live_title">Редагувати поточні налаштування</string>
+    <string name="profile_choose_action">Вибрати профіль</string>
+    <string name="profile_change_action">Змінити профіль</string>
+    <string name="profile_edit_live_context">Поточна конфігурація</string>
+    <string name="profile_edit_from_profile">Поточна конфігурація · %1$s</string>
+    <string name="profile_edit_custom_help">Збереження застосовує ці зміни до ACC. Ви можете знову застосувати збережений профіль із розділу Профілі.</string>
+    <string name="profile_edit_active_help">Збереження змін застосовує їх до ACC і очищає активний профіль. Ваш збережений профіль залишається незмінним.</string>
+    <string name="profile_edit_saved_context">Редагування збереженого профілю</string>
+    <string name="profile_edit_saved_help">Збереження оновлює цей збережений профіль. Щоб використовувати нові значення в ACC, застосуйте його знову з Профілів.</string>
+</resources>

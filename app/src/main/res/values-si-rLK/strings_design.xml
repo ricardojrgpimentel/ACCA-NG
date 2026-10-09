@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">සාරාංශය</string>
+    <string name="ui_nav_schedules">කාලසටහන්</string>
+    <string name="ui_profiles_intro">ඔබේ ආරෝපණ සැකසුම් යෙදීමට සූදානම්.</string>
+    <string name="ui_scripts_intro">ඔබේ ආරෝපණ පාලකය සඳහා ඉක්මන් විධාන.</string>
+    <string name="ui_schedules_intro">ඔබේ ආරෝපණ කාලසටහන ස්වයංක්‍රීයව ක්‍රියාත්මක කරන්න.</string>
+    <string name="ui_profiles_empty">තවම පැතිකඩ නැත\nපළමු ආරෝපණ සැකසුම සුරැකීමට + තට්ටු කරන්න.</string>
+    <string name="ui_scripts_empty">ඔබේ විධාන මෙහි ඇත\nපළමු ස්ක්‍රිප්ට් එක නිර්මාණය කිරීමට + තට්ටු කරන්න.</string>
+    <string name="ui_schedules_empty">ඔබේ ආරෝපණ කාලසටහන සාදන්න\nආරෝපණ පැතිකඩක් කාලසටහන්ගත කිරීමට + තට්ටු කරන්න.</string>
+    <string name="ui_add_profile">පැතිකඩ එකතු කරන්න</string>
+    <string name="ui_add_script">ස්ක්‍රිප්ට් එකතු කරන්න</string>
+    <string name="ui_add_schedule">කාලසටහන එකතු කරන්න</string>
+    <string name="ui_custom_config">ආරෝපණ සැකසුම්</string>
+    <string name="ui_charge_once">තෝරාගත් මට්ටම දක්වා එක් වරක් ආරෝපණය කරන්න</string>
+    <string name="ui_profile_options">පැතිකඩ විකල්ප</string>
+    <string name="ui_script_options">ස්ක්‍රිප්ට් විකල්ප</string>
+    <string name="ui_schedule_options">කාලසටහන විකල්ප</string>
+    <string name="resume_temperature">මෙයට පහළදී නැවත අරඹන්න</string>
+    <string name="template_temperature_profile_resume">සිසිලනය: %1$d°C · විරාමය: %2$d°C · නැවත ඇරඹීම: %3$d°C</string>
+    <string name="command_copy_details">විස්තර පිටපත් කරන්න</string>
+    <string name="command_details_copied">විධාන විස්තර පිටපත් කරන ලදී</string>
+</resources>

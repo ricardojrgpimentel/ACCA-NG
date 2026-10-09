@@ -4,6 +4,7 @@ import android.content.Context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.utils.RootShell
+import mattecarra.accapp.utils.AppLanguages
 
 /** Identity and global preferences of the engine maintained for AccA-NG. */
 object AccNg {
@@ -27,7 +28,7 @@ object AccNg {
     }
 
     private fun language(context: Context): String =
-        if (context.resources.configuration.locales[0].language.startsWith("pt")) "pt" else "en"
+        if (AppLanguages.localizedContext(context).resources.configuration.locales[0].language.startsWith("pt")) "pt" else "en"
 
     suspend fun setNotificationLanguage(context: Context): Boolean = withContext(Dispatchers.IO) {
         if (!isInstalled()) return@withContext false

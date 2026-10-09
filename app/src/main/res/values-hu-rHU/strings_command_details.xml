@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Parancsok megjelenítése ▾</string>
+    <string name="command_hide_details">Parancsok elrejtése ▴</string>
+    <string name="command_review_details">Parancsok megtekintése</string>
+    <string name="command_trace_note">Parancsok ehhez a művelethez. Néhány kilépési kód az ACC várt állapotát jelzi.</string>
+    <string name="command_trace_waiting">Várakozás az első parancsra…</string>
+    <string name="command_trace_running">lépés %1$d · Futtatás…</string>
+    <string name="command_trace_finished">lépés %1$d · Befejezve (kilépési kód %2$d)</string>
+    <string name="command_trace_interrupted">lépés %1$d · Végrehajtás megszakítva</string>
+    <string name="command_trace_output">Kimenet: %1$s</string>
+    <string name="command_result_ready">A művelet befejeződött. Megtekintheted a részleteket vagy bezárhatod.</string>
+    <string name="command_trace_empty">Ez a művelet nem hajtott végre rendszergazdai parancsokat.</string>
+</resources>

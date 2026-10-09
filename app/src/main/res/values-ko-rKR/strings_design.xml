@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">개요</string>
+    <string name="ui_nav_schedules">일정</string>
+    <string name="ui_profiles_intro">충전 선호 설정, 적용 준비 완료.</string>
+    <string name="ui_scripts_intro">충전 컨트롤러의 빠른 명령어.</string>
+    <string name="ui_schedules_intro">충전 루틴을 자동으로 실행하십시오.</string>
+    <string name="ui_profiles_empty">아직 프로필이 없습니다\n+를 눌러 첫 번째 충전 설정을 저장하세요.</string>
+    <string name="ui_scripts_empty">명령어가 여기에 표시됩니다\n+를 눌러 첫 번째 스크립트를 만드세요.</string>
+    <string name="ui_schedules_empty">충전 루틴 작성\n+를 눌러 충전 프로필을 예약하세요.</string>
+    <string name="ui_add_profile">프로필 추가</string>
+    <string name="ui_add_script">스크립트 추가</string>
+    <string name="ui_add_schedule">일정 추가</string>
+    <string name="ui_custom_config">충전 설정</string>
+    <string name="ui_charge_once">선택한 수준까지 한 번 충전</string>
+    <string name="ui_profile_options">프로필 옵션</string>
+    <string name="ui_script_options">스크립트 옵션</string>
+    <string name="ui_schedule_options">일정 옵션</string>
+    <string name="resume_temperature">아래에서 다시 시작</string>
+    <string name="template_temperature_profile_resume">냉각: %1$d°C · 일시정지: %2$d°C · 재개: %3$d°C</string>
+    <string name="command_copy_details">세부 정보 복사</string>
+    <string name="command_details_copied">명령 세부 정보가 복사됨</string>
+</resources>

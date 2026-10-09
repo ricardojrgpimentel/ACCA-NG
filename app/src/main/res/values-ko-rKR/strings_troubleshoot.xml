@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">충전 진단</string>
+    <string name="troubleshoot_intro">충전 서비스, 보정 및 적용된 한계를 확인하세요. 이 화면이 열려 있는 동안 진단은 자동으로 새로 고침됩니다.</string>
+    <string name="troubleshoot_no_issue">현재 측정값에서는 문제가 감지되지 않았습니다. 이는 완전 충전 및 재시작 주기를 확인하는 것이 아닙니다.</string>
+    <string name="troubleshoot_unavailable">진단을 사용할 수 없습니다. 루트 접근 권한과 ACC 설치를 확인한 후 다시 시도하세요.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">이 수정된 ACC 서비스는 고정된 90%/80% 한계를 사용하며 프로필 한계를 무시합니다. 프로필 제어를 복구하려면 번들된 서비스를 복원하세요.</string>
+    <string name="troubleshoot_different_module">설치된 서비스가 앱에 번들된 서비스와 다릅니다. 이는 적법한 버전이거나 수정된 버전일 수 있으며, 차이만으로는 결함을 증명할 수 없습니다.</string>
+    <string name="troubleshoot_calibration_pending">ACC가 작동 중이지만 전류 보정을 기다리고 있습니다. 모든 충전기를 분리하고 \'전류 보정\'을 사용하여 이 단계를 완료하십시오.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC가 보정을 기다리고 있습니다</string>
+    <string name="troubleshoot_stopped">ACC 서비스가 중지되었습니다. 충전 제한을 적용하려면 대시보드에서 시작하십시오.</string>
+    <string name="troubleshoot_above_limit">배터리가 설정된 한도 이상에서 최소 30초 동안 계속 충전되었습니다. 보정 및 모듈을 확인하십시오; 선택된 충전 스위치도 작동하지 않을 수 있습니다.</string>
+    <string name="troubleshoot_refresh">다시 확인</string>
+    <string name="troubleshoot_calibrate">전류 보정</string>
+    <string name="troubleshoot_calibrate_now">보정 시작</string>
+    <string name="troubleshoot_calibration_instructions">USB, 무선 충전기 및 모든 다른 충전기를 분리하십시오. 몇 초 기다린 후 시작하십시오. 앱은 10초 동안 다섯 번 방전 측정을 수집하고 구성 백업을 저장합니다. 완료될 때까지 충전기를 연결하지 마십시오. 불안정하거나 사용할 수 없는 측정값은 보정을 변경하지 않습니다.</string>
+    <string name="troubleshoot_calibration_failed">보정을 확인할 수 없습니다. 모든 충전기를 분리한 상태로 측정값이 안정될 때까지 기다린 후 다시 시도하십시오.</string>
+    <string name="troubleshoot_calibration_success">전류 보정이 저장되고 확인되었습니다. 충전기를 다시 연결하고 진단을 확인하십시오.</string>
+    <string name="troubleshoot_restore">번들 서비스 복원</string>
+    <string name="troubleshoot_restore_confirmation">이것은 ACC 충전 서비스를 동일한 버전의 원래 번들 서비스로 교체합니다. 사용자 지정 서비스 변경 사항은 제거됩니다. 앱은 먼저 모듈과 구성을 백업하고 설정을 보존한 후 서비스를 재시작하고 수리를 확인합니다. 확인이 실패하면 이전 서비스를 복원하려고 시도합니다.</string>
+    <string name="troubleshoot_restore_success">원래 서비스가 복원되고 확인되었습니다. 충전 제한은 보존되었습니다. 보정이 아직 완료되지 않은 경우 충전 제어 테스트 전에 완료하십시오.</string>
+    <string name="troubleshoot_restore_failed">서비스 복구에 실패했습니다. 백업 위치 및 실패에 대한 명령 세부 정보를 검토하십시오. 다시 시도하기 전에 진단을 확인하십시오.</string>
+    <string name="troubleshoot_incompatible_version">서비스 복구에는 앱 번들과 동일한 ACC 버전이 필요합니다. 다른 버전은 여기서 교체되거나 다운그레이드되지 않습니다.</string>
+    <string name="troubleshoot_details">ACC 버전 코드: %1$s\n배터리: %2$s%%\n정지: %3$s%% · 재개: %4$s%%\n배터리 상태: %5$s\n전류: %6$s mA\n방전 극성: %7$s\n충전 스위치: %8$s</string>
+    <string name="troubleshoot_backup">백업: %1$s</string>
+    <string name="troubleshoot_copy">진단 복사</string>
+    <string name="troubleshoot_copied">진단 복사 완료</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">選擇一個起點</string>
+    <string name="preset_description">這些選項設定電池充電限制。點擊一個，調整以下數值並儲存設定檔。套用設定檔後即生效。</string>
+    <string name="preset_daily_name">日常使用</string>
+    <string name="preset_plugged_name">長時間插電</string>
+    <string name="preset_travel_name">旅行</string>
+    <string name="preset_option">%1$s\n%2$s\n在 %3$d%% 停止 · 在 %4$d%% 繼續</string>
+    <string name="battery_state_charging">充電中</string>
+    <string name="battery_state_paused">充電暫停</string>
+    <string name="battery_state_full">電池已滿</string>
+    <string name="battery_state_discharging">放電中</string>
+    <string name="battery_state_not_charging">未充電</string>
+    <string name="battery_state_unknown">充電狀態未知</string>
+    <string name="battery_power_disconnected">充電器已斷開</string>
+    <string name="battery_power_ac">線纜已連接 · 交流電</string>
+    <string name="battery_power_usb">線纜已連接 · USB</string>
+    <string name="battery_power_wireless">無線充電器已連接</string>
+    <string name="battery_power_dock">充電座已連接</string>
+    <string name="battery_power_connected">充電器已連接</string>
+    <string name="battery_power_unknown">充電器連接狀態未知</string>
+    <string name="battery_paused_hint">充電器已連接，但電池未充電。</string>
+</resources>

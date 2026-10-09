@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Oplaaddiagnostiek</string>
+    <string name="troubleshoot_intro">Controleer de oplaaddienst, kalibratie en toegepaste limieten. Diagnostiek wordt automatisch vernieuwd terwijl dit scherm geopend is.</string>
+    <string name="troubleshoot_no_issue">Geen probleem gedetecteerd in de huidige metingen. Dit bevestigt geen volledige lading en hervattingscyclus.</string>
+    <string name="troubleshoot_unavailable">Diagnostiek niet beschikbaar. Controleer root-toegang en de ACC-installatie, en probeer het opnieuw.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Deze aangepaste ACC-dienst gebruikt vaste 90%/80% limieten en negeert profiel limieten. Herstel de meegeleverde dienst om profielbeheer te herstellen.</string>
+    <string name="troubleshoot_different_module">De geïnstalleerde dienst verschilt van de meegeleverde versie van de app. Dit kan een legitieme versie of een wijziging zijn; een verschil bewijst op zich geen fout.</string>
+    <string name="troubleshoot_calibration_pending">ACC draait maar wacht op de huidige calibratie. Koppel alle opladers los en gebruik Stroom calibreren om deze stap te voltooien.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC wacht op calibratie</string>
+    <string name="troubleshoot_stopped">De ACC-service is gestopt. Start deze vanuit het dashboard om laadbeperkingen toe te passen.</string>
+    <string name="troubleshoot_above_limit">De batterij is minstens 30 seconden blijven opladen op of boven de ingestelde limiet. Controleer calibratie en de module; de geselecteerde laadschakelaar kan ook ineffectief zijn.</string>
+    <string name="troubleshoot_refresh">Opnieuw controleren</string>
+    <string name="troubleshoot_calibrate">Stroom calibreren</string>
+    <string name="troubleshoot_calibrate_now">Start calibratie</string>
+    <string name="troubleshoot_calibration_instructions">Koppel USB, draadloos opladen en alle andere opladers los. Wacht een paar seconden en start dan. De app verzamelt vijf ontlaadmetingen over 10 seconden en slaat een configuratieback-up op. Houd de opladers losgekoppeld totdat het klaar is. Instabiele of niet-beschikbare metingen laten de calibratie onveranderd.</string>
+    <string name="troubleshoot_calibration_failed">Calibratie kon niet worden bevestigd. Houd alle opladers losgekoppeld, wacht tot de metingen zich stabiliseren en probeer het opnieuw.</string>
+    <string name="troubleshoot_calibration_success">Kalibratie van de elektrische stroom opgeslagen en gecontroleerd. Sluit de lader weer aan en controleer de diagnose.</string>
+    <string name="troubleshoot_restore">Herstel meegeleverde service</string>
+    <string name="troubleshoot_restore_confirmation">Dit vervangt de ACC-laadservice door de originele meegeleverde service van dezelfde versie. Aangepaste servicewijzigingen worden verwijderd. De app maakt eerst een back-up van de module en configuratie, behoudt je instellingen, start de service opnieuw op en verifieert de reparatie. Als verificatie mislukt, probeert het de vorige service te herstellen.</string>
+    <string name="troubleshoot_restore_success">De originele service is hersteld en geverifieerd. Laadlimieten zijn behouden. Als kalibratie nog in behandeling is, voltooi deze dan voordat je de laadregeling test.</string>
+    <string name="troubleshoot_restore_failed">Herstel van de service mislukt. Controleer de opdrachtgegevens voor de back-uplocatie en de fout. Controleer de diagnostiek voordat je het opnieuw probeert.</string>
+    <string name="troubleshoot_incompatible_version">Herstel van de service vereist dezelfde ACC-versie als het app-bundelpakket. Andere versies worden hier niet vervangen of gedowngraded.</string>
+    <string name="troubleshoot_details">ACC-versiecode: %1$s\nBatterij: %2$s%%\nStop: %3$s%% · Hervatten: %4$s%%\nBatterijstatus: %5$s\nStroom: %6$s mA\nOntlaadpolarity: %7$s\nLaadschakelaar: %8$s</string>
+    <string name="troubleshoot_backup">Back-up: %1$s</string>
+    <string name="troubleshoot_copy">Kopieer diagnostiek</string>
+    <string name="troubleshoot_copied">Diagnostiek gekopieerd</string>
+</resources>

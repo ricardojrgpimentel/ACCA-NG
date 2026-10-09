@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">Ρύθμιση ACC-NG</string>
+    <string name="ng_setup_message">Το AccA-NG χρειάζεται τον κινητήρα φόρτισης ACC-NG. Η εφαρμογή τον εγκαθιστά με πρόσβαση root. Στο Magisk εμφανίζεται ως Advanced Charging Controller NG (ACC-NG).\n\nΔεν χρειάζεται να κατεβάσετε ή να εγκαταστήσετε ένα ZIP χειροκίνητα. Αν υπάρχει εγκατεστημένος άλλος ACC, θα αντικατασταθεί διατηρώντας τις ρυθμίσεις του.\n\nΑν χρειάζεται βαθμονόμηση, αποσυνδέστε όλους τους φορτιστές και ακολουθήστε τη διάγνωση φόρτισης. Στη συνέχεια, επιλέξτε τα όρια φόρτισης ή εφαρμόστε ένα προφίλ στην εφαρμογή.</string>
+    <string name="ng_setup_install">Ρύθμιση</string>
+    <string name="ng_setup_installing">Ρύθμιση ACC-NG</string>
+    <string name="ng_setup_root_required">Το AccA-NG χρειάζεται πρόσβαση root για να εγκαταστήσει το ACC-NG και να ελέγξει τη φόρτιση. Επιτρέψτε το AccA-NG στην ενότητα Superuser του διαχειριστή root σας και στη συνέχεια ξανανοίξτε την εφαρμογή.</string>
+</resources>

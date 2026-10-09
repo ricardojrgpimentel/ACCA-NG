@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_executing">正在執行 ACC 指令。請稍候…</string>
+    <string name="command_completed">操作完成</string>
+    <string name="command_failed_title">操作無法完成</string>
+    <string name="command_failed_message">無法確認更改。請檢查當前狀態或重試。</string>
+    <string name="command_close">關閉</string>
+    <string name="command_stop_acc">停止 ACC…</string>
+    <string name="command_start_acc">啟動 ACC…</string>
+    <string name="command_restart_acc">重新啟動 ACC…</string>
+    <string name="command_read_status">讀取 ACC 狀態…</string>
+    <string name="command_apply_settings">套用設定中…</string>
+    <string name="command_apply_profile">套用配置檔中…</string>
+    <string name="command_reset_stats">重置電池統計資料中…</string>
+    <string name="command_charge_once">設定充電上限中…</string>
+    <string name="acc_status_unavailable">ACC 狀態不可用</string>
+    <string name="battery_summary_title">電池摘要</string>
+    <string name="battery_cycles_label">報告的充電循環次數</string>
+    <string name="battery_full_capacity_label">預估最大容量</string>
+    <string name="battery_design_capacity_label">設計容量</string>
+    <string name="battery_diagnostics_note">裝置報告的數值。無法讀取的數值將明確顯示。</string>
+    <string name="battery_data_unavailable">無法取得</string>
+    <string name="battery_capacity_mah">%1$d mAh</string>
+</resources>

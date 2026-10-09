@@ -49,4 +49,15 @@
     <!-- Import and Export -->
     <!-- Config Parse Error -->
     <!-- Widget Label and Activity -->
+    <string name="use_default_config">기본값 사용</string>
+
+    <string name="ng_engine_title">ACC-NG 버전</string>
+    <string name="ng_engine_summary">AccA-NG용으로 충전 엔진이 유지됩니다. 번들 버전은 이 앱과 함께 테스트되었습니다.</string>
+    <string name="ng_engine_picker_message">ACC-NG 버전을 선택하세요.</string>
+    <string name="ng_engine_bundled">ACC-NG 번들 (권장)</string>
+    <string name="ng_engine_main">ACC-NG 개발 (main)</string>
+    <string name="ng_engine_main_warning">개발 버전은 이 앱과 테스트되지 않은 변경 사항을 포함할 수 있습니다.</string>
+    <string name="ng_engine_notifications_title">충전 알림</string>
+    <string name="ng_engine_notifications_summary">ACC-NG의 연결, 일시정지, 재개, 온도 및 저전압 알림. 이러한 알림이 꺼져 있어도 충전 보호는 계속 활성화됩니다.</string>
+    <string name="ng_engine_setting_failed">ACC-NG에서 설정을 확인할 수 없습니다.</string>
 </resources>

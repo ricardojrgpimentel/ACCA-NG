@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Vista general</string>
+    <string name="ui_nav_schedules">Programaciones</string>
+    <string name="ui_profiles_intro">Tus preferencias de carga, listas para aplicar.</string>
+    <string name="ui_scripts_intro">Comandos rápidos para el controlador de carga.</string>
+    <string name="ui_schedules_intro">Automatiza tu rutina de carga.</string>
+    <string name="ui_profiles_empty">Aún no hay perfiles\nPulsa + para guardar tu primera configuración de carga.</string>
+    <string name="ui_scripts_empty">Tus comandos están aquí\nPulsa + para crear tu primer script.</string>
+    <string name="ui_schedules_empty">Crea tu rutina de carga\nPulsa + para programar un perfil de carga.</string>
+    <string name="ui_add_profile">Añadir perfil</string>
+    <string name="ui_add_script">Añadir script</string>
+    <string name="ui_add_schedule">Añadir programación</string>
+    <string name="ui_custom_config">Ajustes de carga</string>
+    <string name="ui_charge_once">Cargar una vez hasta el nivel elegido</string>
+    <string name="ui_profile_options">Opciones del perfil</string>
+    <string name="ui_script_options">Opciones del script</string>
+    <string name="ui_schedule_options">Opciones de programación</string>
+    <string name="resume_temperature">Reanudar por debajo de</string>
+    <string name="template_temperature_profile_resume">Enfriamiento: %1$d°C · Pausa: %2$d°C · Reanudación: %3$d°C</string>
+    <string name="command_copy_details">Copiar detalles</string>
+    <string name="command_details_copied">Detalles de los comandos copiados</string>
+</resources>

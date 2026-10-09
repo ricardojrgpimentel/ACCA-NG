@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Vue d’ensemble</string>
+    <string name="ui_nav_schedules">Planifications</string>
+    <string name="ui_profiles_intro">Vos préférences de charge, prêtes à appliquer.</string>
+    <string name="ui_scripts_intro">Commandes rapides pour votre contrôleur de charge.</string>
+    <string name="ui_schedules_intro">Automatisez votre routine de charge.</string>
+    <string name="ui_profiles_empty">Aucun profil pour le moment\nAppuyez sur + pour enregistrer votre première configuration.</string>
+    <string name="ui_scripts_empty">Vos commandes sont ici\nAppuyez sur + pour créer votre premier script.</string>
+    <string name="ui_schedules_empty">Créez votre routine de charge\nAppuyez sur + pour planifier un profil de charge.</string>
+    <string name="ui_add_profile">Ajouter un profil</string>
+    <string name="ui_add_script">Ajouter un script</string>
+    <string name="ui_add_schedule">Ajouter une planification</string>
+    <string name="ui_custom_config">Réglages de charge</string>
+    <string name="ui_charge_once">Charger une fois jusqu’au niveau choisi</string>
+    <string name="ui_profile_options">Options du profil</string>
+    <string name="ui_script_options">Options du script</string>
+    <string name="ui_schedule_options">Options de planification</string>
+    <string name="resume_temperature">Reprendre en dessous de</string>
+    <string name="template_temperature_profile_resume">Refroidissement : %1$d°C · Pause : %2$d°C · Reprise : %3$d°C</string>
+    <string name="command_copy_details">Copier les détails</string>
+    <string name="command_details_copied">Détails des commandes copiés</string>
+</resources>

@@ -65,4 +65,15 @@
     <!-- Import and Export -->
     <!-- Config Parse Error -->
     <!-- Widget Label and Activity -->
+
+    <string name="ng_engine_title">Verze ACC-NG</string>
+    <string name="ng_engine_summary">Nabíjecí engine udržován pro AccA-NG. Součástí dodávaná verze je otestována s touto aplikací.</string>
+    <string name="ng_engine_picker_message">Vyberte verzi ACC-NG.</string>
+    <string name="ng_engine_bundled">ACC-NG součástí balíčku (doporučeno)</string>
+    <string name="ng_engine_main">Vývoj ACC-NG (main)</string>
+    <string name="ng_engine_main_warning">Vývojová verze může obsahovat změny, které nebyly otestovány s touto aplikací.</string>
+    <string name="ng_engine_notifications_title">Upozornění při nabíjení</string>
+    <string name="ng_engine_notifications_summary">Upozornění na připojení, pauzu, pokračování, teplotu a nízkou baterii z ACC-NG. Ochrana při nabíjení zůstává aktivní, i když jsou tato upozornění vypnutá.</string>
+    <string name="ng_engine_setting_failed">Nelze potvrdit nastavení v ACC-NG.</string>
+    <string name="use_default_config">Použít výchozí nastavení</string>
 </resources>

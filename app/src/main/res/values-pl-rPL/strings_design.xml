@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Przegląd</string>
+    <string name="ui_nav_schedules">Harmonogramy</string>
+    <string name="ui_profiles_intro">Twoje preferencje ładowania, gotowe do zastosowania.</string>
+    <string name="ui_scripts_intro">Szybkie polecenia dla sterownika ładowania.</string>
+    <string name="ui_schedules_intro">Pozwól, aby Twoja rutyna ładowania działała automatycznie.</string>
+    <string name="ui_profiles_empty">Brak profili\ndotyknij +, aby zapisać pierwszą konfigurację ładowania.</string>
+    <string name="ui_scripts_empty">Twoje polecenia są tutaj\ndotyknij +, aby stworzyć pierwszy skrypt.</string>
+    <string name="ui_schedules_empty">Twórz swoją rutynę ładowania\ndotyknij +, aby zaplanować profil ładowania.</string>
+    <string name="ui_add_profile">Dodaj profil</string>
+    <string name="ui_add_script">Dodaj skrypt</string>
+    <string name="ui_add_schedule">Dodaj harmonogram</string>
+    <string name="ui_custom_config">Ustawienia ładowania</string>
+    <string name="ui_charge_once">Naładuj raz do wybranego poziomu</string>
+    <string name="ui_profile_options">Opcje profilu</string>
+    <string name="ui_script_options">Opcje skryptu</string>
+    <string name="ui_schedule_options">Opcje harmonogramu</string>
+    <string name="resume_temperature">Wznów poniżej</string>
+    <string name="template_temperature_profile_resume">Chłodzenie: %1$d°C · Pauza: %2$d°C · Wznów: %3$d°C</string>
+    <string name="command_copy_details">Skopiuj szczegóły</string>
+    <string name="command_details_copied">Szczegóły polecenia skopiowane</string>
+</resources>

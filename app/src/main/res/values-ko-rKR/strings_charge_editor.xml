@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">적당한 충전 한도로 일상 사용에 적합.</string>
+    <string name="preset_plugged_help">충전기에 여러 시간 연결되는 휴대폰용. 배터리 수준을 낮게 유지; 우회 방법 보장하지 않음.</string>
+    <string name="preset_travel_help">외출 전에 더 많은 배터리를 확보. 더 높은 충전 수준 허용.</string>
+    <string name="charge_limits_title">배터리 충전 한도 (%)</string>
+    <string name="charge_limits_help">모든 값은 배터리 잔량의 백분율입니다. 재개하려면 충전기가 연결되어 있고 적절한 온도여야 합니다. 이러한 제한을 적용하려면 ACC가 작동 중이어야 합니다.</string>
+    <string name="charge_pause_label">충전을 중지할 때</string>
+    <string name="charge_pause_help">배터리가 이 수준에 도달하면 충전을 일시 중지합니다.</string>
+    <string name="charge_resume_label">충전을 재개할 때</string>
+    <string name="charge_resume_help">일시 중지 후, 배터리가 이 수준 이하로 떨어지면 충전을 재개합니다.</string>
+    <string name="charge_shutdown_label">휴대폰을 끌 때</string>
+    <string name="charge_shutdown_help">배터리가 충전되지 않은 상태에서 이 수준 이하가 되면 휴대폰을 종료합니다. 이는 단순히 충전 일시 중지가 아닙니다.</string>
+    <string name="charge_cycle_summary">충전은 %1$d%%에서 중지되고 %2$d%% 이하에서 다시 시작됩니다.</string>
+    <string name="charge_unlimited_summary">중지를 ∞로 설정하면 배터리 백분율 기준 중지 제한이 제거됩니다. 재개를 ∞로 설정하면 배터리 잔량에 관계없이 충전을 재개할 수 있습니다.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d 초</string>
+    <string name="charge_limit_disabled">이 프로필에 대한 충전 제한이 비활성화되었습니다.</string>
+    <string name="charge_unlimited_hint">∞는 비활성화된 백분율 임계값을 나타냅니다.</string>
+    <string name="charge_restore_limits">초기 충전 제한 복원</string>
+    <string name="charge_switch_label">충전 제어 방법</string>
+    <string name="charge_switch_help">ACC는 호환되는 장치 제어를 사용하여 충전을 활성화하거나 일시 중지합니다. 장치에 필요한 방법을 모른다면 자동으로 설정해 두세요.</string>
+    <string name="charge_switch_automatic">호환 가능한 방법 자동 검색</string>
+    <string name="charge_power_title">전류 및 전압 제한</string>
+    <string name="charge_max_current">최대 전류(mA):</string>
+</resources>

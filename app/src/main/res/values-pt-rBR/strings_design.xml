@@ -1,26 +1,22 @@
 <resources>
     <string name="ui_nav_dashboard">Painel</string>
     <string name="ui_nav_schedules">Agenda</string>
-    <string name="ui_profiles_intro">As suas preferências de carregamento, prontas a aplicar.</string>
+    <string name="ui_profiles_intro">Suas preferências de carregamento, prontas para aplicar.</string>
     <string name="ui_scripts_intro">Comandos rápidos para controlar o carregamento.</string>
     <string name="ui_schedules_intro">Automatize a sua rotina de carregamento.</string>
-    <string name="ui_profiles_empty">Ainda não tem perfis\nToque em + para guardar a primeira configuração.</string>
-    <string name="ui_scripts_empty">Os seus comandos ficam aqui\nToque em + para criar o primeiro script.</string>
+    <string name="ui_profiles_empty">Você ainda não tem perfis\nToque em + para salvar a primeira configuração.</string>
+    <string name="ui_scripts_empty">Seus comandos ficam aqui\nToque em + para criar o primeiro script.</string>
     <string name="ui_schedules_empty">Crie a sua rotina de carregamento\nToque em + para agendar um perfil.</string>
     <string name="ui_add_profile">Adicionar perfil</string>
     <string name="ui_add_script">Adicionar script</string>
     <string name="ui_add_schedule">Adicionar agendamento</string>
     <string name="ui_custom_config">Configuração de carregamento</string>
-    <string name="ui_charge_once">Carregar uma vez até ao nível escolhido</string>
+    <string name="ui_charge_once">Carregar uma vez até o nível escolhido</string>
     <string name="ui_profile_options">Opções do perfil</string>
     <string name="ui_script_options">Opções do script</string>
     <string name="ui_schedule_options">Opções do agendamento</string>
-    <string name="new_script">Novo script</string>
-    <string name="script_label">Nome do script</string>
-    <string name="script_description">Descrição</string>
-    <string name="script_body_text">Comandos shell</string>
     <string name="resume_temperature">Retomar abaixo de</string>
-    <string name="template_temperature_profile_resume">Arrefecimento: %1$d°C · Pausa: %2$d°C · Retoma: %3$d°C</string>
+    <string name="template_temperature_profile_resume">Resfriamento: %1$d°C · Pausa: %2$d°C · Retomada: %3$d°C</string>
     <string name="command_copy_details">Copiar detalhes</string>
     <string name="command_details_copied">Detalhes dos comandos copiados</string>
 </resources>

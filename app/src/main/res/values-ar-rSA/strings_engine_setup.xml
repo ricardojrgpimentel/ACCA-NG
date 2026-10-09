@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">إعداد ACC-NG</string>
+    <string name="ng_setup_message">يحتاج AccA-NG إلى محرك شحن ACC-NG. يقوم التطبيق بتثبيته باستخدام صلاحيات الروت. في Magisk، يظهر باسم Advanced Charging Controller NG (ACC-NG).\n\nلا تحتاج إلى تنزيل أو تثبيت ملف ZIP يدويًا. إذا تم تثبيت ACC آخر، فسيتم استبداله مع الاحتفاظ بإعداداته.\n\nإذا كانت المعايرة مطلوبة، افصل جميع أجهزة الشحن واتبع تشخيصات الشحن. ثم اختر حدود الشحن الخاصة بك أو طبق ملف تعريف في التطبيق.</string>
+    <string name="ng_setup_install">إعداد</string>
+    <string name="ng_setup_installing">جاري إعداد ACC-NG</string>
+    <string name="ng_setup_root_required">يحتاج AccA-NG إلى صلاحيات الروت لتثبيت ACC-NG والتحكم في الشحن. سمح لـ AccA-NG في قسم Superuser من مدير الروت الخاص بك، ثم أعد فتح التطبيق.</string>
+</resources>

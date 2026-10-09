@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="command_show_details">Komutları göster ▾</string>
+    <string name="command_hide_details">Komutları gizle ▴</string>
+    <string name="command_review_details">Komutları görüntüle</string>
+    <string name="command_trace_note">Bu işlem için komutlar. Bazı çıkış kodları beklenen ACC durumunu temsil eder.</string>
+    <string name="command_trace_waiting">İlk komut bekleniyor…</string>
+    <string name="command_trace_running">Adım %1$d · Çalışıyor…</string>
+    <string name="command_trace_finished">Adım %1$d · Tamamlandı (çıkış kodu %2$d)</string>
+    <string name="command_trace_interrupted">Adım %1$d · Yürütme kesildi</string>
+    <string name="command_trace_output">Çıktı: %1$s</string>
+    <string name="command_result_ready">İşlem tamamlandı. Detayları inceleyebilir veya kapatabilirsiniz.</string>
+    <string name="command_trace_empty">Bu işlem kök komutlarını çalıştırmadı.</string>
+</resources>

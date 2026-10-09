@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_active_label">Profil actif</string>
+    <string name="profile_none_active">Aucun profil actif</string>
+    <string name="profile_custom_title">Configuration personnalisée</string>
+    <string name="profile_active_description">Enregistrer des modifications manuelles active une configuration personnalisée. Votre profil enregistré est conservé.</string>
+    <string name="profile_custom_description">Les réglages personnalisés sont actuellement utilisés.</string>
+    <string name="profile_reading_config">Lecture de la configuration…</string>
+    <string name="profile_edit_action">Modifier</string>
+    <string name="profile_edit_live_title">Modifier les réglages actuels</string>
+    <string name="profile_choose_action">Choisir un profil</string>
+    <string name="profile_change_action">Changer de profil</string>
+    <string name="profile_edit_live_context">Configuration actuelle</string>
+    <string name="profile_edit_from_profile">Configuration actuelle · %1$s</string>
+    <string name="profile_edit_custom_help">Enregistrer applique ces modifications à ACC. Vous pouvez réappliquer un profil enregistré depuis Profils.</string>
+    <string name="profile_edit_active_help">Enregistrer applique les modifications à ACC et désactive le profil actif. Votre profil enregistré reste inchangé.</string>
+    <string name="profile_edit_saved_context">Modification d’un profil enregistré</string>
+    <string name="profile_edit_saved_help">Enregistrer met à jour ce profil. Pour utiliser les nouvelles valeurs dans ACC, appliquez-le à nouveau depuis Profils.</string>
+</resources>

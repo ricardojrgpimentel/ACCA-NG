@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Про програму</string>
+    <string name="about_ng_intro">Розширене керування зарядкою.\nНезалежний форк AccA.</string>
+    <string name="about_ng_debug">Налагодження</string>
+    <string name="about_ng_release">Випуск</string>
+    <string name="about_ng_maintained_by">Підтримується</string>
+    <string name="about_ng_maintainer_role">Розробка та підтримка форку</string>
+    <string name="about_ng_profile">Профіль на GitHub</string>
+    <string name="about_ng_project">Проєкт на GitHub</string>
+    <string name="about_ng_issues">Повідомити про проблему</string>
+    <string name="about_ng_origin">Походження та подяки</string>
+    <string name="about_ng_origin_blurb">AccA-NG базується на AccA з покращенням інтерфейсу, сумісності та надійності.</string>
+    <string name="about_ng_original_team">Оригінальна команда AccA</string>
+    <string name="about_ng_acc_author">Автор ACC та DJS</string>
+    <string name="about_ng_original_project">Оригінальний проєкт AccA</string>
+    <string name="about_ng_community">Спільнота ACC</string>
+    <string name="about_ng_technical">Технічна інформація</string>
+    <string name="about_ng_app_version">Версія додатка</string>
+    <string name="about_ng_acc_version">Встановлений ACC</string>
+    <string name="about_ng_api_version">Версія інтерфейсу ACC</string>
+    <string name="about_ng_loading">Читання…</string>
+    <string name="about_ng_unavailable">Немає доступу</string>
+    <string name="about_ng_licenses">Ліцензія та відомості про авторство</string>
+    <string name="about_ng_license_blurb">Програмне забезпечення з відкритим кодом під GPL-3.0. Оригінальне авторське право AccA: © 2019–2021 MatteCarra, Squabbi та VR25.</string>
+    <string name="about_ng_view_license">Прочитати ліцензію GPL-3.0</string>
+    <string name="about_ng_attributions">Створено з AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs та іншими бібліотеками з відкритим кодом.\n\nІконка Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Проєкт з відкритим кодом · Незалежний форк</string>
+    <string name="about_ng_expanded">Розгорнуто</string>
+    <string name="about_ng_collapsed">Згорнуто</string>
+</resources>

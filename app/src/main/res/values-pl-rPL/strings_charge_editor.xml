@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Do codziennego użytku przy umiarkowanym limicie ładowania.</string>
+    <string name="preset_plugged_help">Dla telefonu, który spędza wiele godzin podłączony do ładowarki. Utrzymuje niższy poziom baterii; nie gwarantuje obejścia.</string>
+    <string name="preset_travel_help">Aby mieć więcej energii w baterii przed wyjściem. Pozwala na wyższy poziom naładowania.</string>
+    <string name="charge_limits_title">Limity ładowania baterii (%)</string>
+    <string name="charge_limits_help">Wszystkie wartości są procentami poziomu baterii. Wznowienie wymaga podłączonej ładowarki i odpowiedniej temperatury. ACC musi być włączone, aby egzekwować te ograniczenia.</string>
+    <string name="charge_pause_label">Zatrzymaj ładowanie przy</string>
+    <string name="charge_pause_help">Wstrzymuje ładowanie, gdy bateria osiągnie ten poziom.</string>
+    <string name="charge_resume_label">Wznów ładowanie przy</string>
+    <string name="charge_resume_help">Po wstrzymaniu, wznawia, gdy poziom baterii spadnie do tego poziomu lub niżej.</string>
+    <string name="charge_shutdown_label">Wyłącz telefon przy</string>
+    <string name="charge_shutdown_help">Wyłącza telefon przy tym poziomie lub niżej, jeśli bateria nie jest ładowana. Nie wstrzymuje tylko ładowania.</string>
+    <string name="charge_cycle_summary">Ładowanie zatrzymuje się przy %1$d%% i wznawia przy %2$d%% lub niżej.</string>
+    <string name="charge_unlimited_summary">∞ dla Zatrzymania usuwa limit zatrzymania oparty na procencie baterii. ∞ dla Wznowienia pozwala wznowić ładowanie na dowolnym poziomie baterii.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Limity ładowania są wyłączone dla tego profilu.</string>
+    <string name="charge_unlimited_hint">∞ oznacza wyłączony próg procentowy.</string>
+    <string name="charge_restore_limits">Przywróć początkowe limity ładowania</string>
+    <string name="charge_switch_label">Metoda kontroli ładowania</string>
+    <string name="charge_switch_help">ACC używa kompatybilnej kontroli urządzenia, aby włączyć lub wstrzymać ładowanie. Pozostaw to ustawienie na Automatyczne, chyba że wiesz, która metoda jest potrzebna Twojemu urządzeniu.</string>
+    <string name="charge_switch_automatic">Automatycznie znajdź kompatybilną metodę</string>
+    <string name="charge_power_title">Limity prądu i napięcia</string>
+    <string name="charge_max_current">Maksymalny prąd (mA):</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Orta seviye şarj limiti ile günlük kullanım için.</string>
+    <string name="preset_plugged_help">Şarja uzun saatler bağlı kalan bir telefon için. Batarya seviyesini düşük tutar; atlamayı garanti etmez.</string>
+    <string name="preset_travel_help">Dışarı çıkmadan önce daha fazla batarya kullanılabilirliği için. Daha yüksek şarj seviyesine izin verir.</string>
+    <string name="charge_limits_title">Batarya şarj limitleri (%)</string>
+    <string name="charge_limits_help">Tüm değerler pil seviyesinin yüzdesidir. Devam etmek için bağlı bir şarj cihazı ve uygun sıcaklık gerekir. Bu sınırları uygulamak için ACC çalışıyor olmalıdır.</string>
+    <string name="charge_pause_label">Şarjı durdur</string>
+    <string name="charge_pause_help">Pil bu seviyeye ulaştığında şarjı duraklatır.</string>
+    <string name="charge_resume_label">Şarja devam et</string>
+    <string name="charge_resume_help">Bir duraklamadan sonra, pil bu seviyeye veya altına düştüğünde tekrar başlar.</string>
+    <string name="charge_shutdown_label">Telefonu kapat</string>
+    <string name="charge_shutdown_help">Pil bu seviyeye veya altına düştüğünde ve şarj etmiyorsa telefonu kapatır. Bu sadece şarjı duraklatmaz.</string>
+    <string name="charge_cycle_summary">Şarj %1$d%% seviyesinde durur ve %2$d%% veya altına düşerse devam eder.</string>
+    <string name="charge_unlimited_summary">Durdur için ∞, pil yüzdesine dayalı durdurma sınırını kaldırır. Devam için ∞, şarjın herhangi bir pil seviyesinde yeniden başlamasına izin verir.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Şarj limitleri bu profil için devre dışı bırakılmıştır.</string>
+    <string name="charge_unlimited_hint">∞ devre dışı bırakılmış bir yüzde sınırını gösterir.</string>
+    <string name="charge_restore_limits">İlk şarj limitlerini geri yükle</string>
+    <string name="charge_switch_label">Şarj kontrol yöntemi</string>
+    <string name="charge_switch_help">ACC, şarj etmeyi etkinleştirmek veya duraklatmak için uyumlu bir cihaz kontrolü kullanır. Cihazınızın hangi yönteme ihtiyaç duyduğunu bilmiyorsanız bunu Otomatik olarak bırakın.</string>
+    <string name="charge_switch_automatic">Uyumluluk yöntemini otomatik olarak bul</string>
+    <string name="charge_power_title">Akım ve voltaj limitleri</string>
+    <string name="charge_max_current">Maksimum akım (mA):</string>
+</resources>

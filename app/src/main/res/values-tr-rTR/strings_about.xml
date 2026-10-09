@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Hakkında</string>
+    <string name="about_ng_intro">Gelişmiş şarj kontrolü.\nAccA’nın bağımsız bir çatallaması.</string>
+    <string name="about_ng_debug">Hata ayıklama</string>
+    <string name="about_ng_release">Sürüm</string>
+    <string name="about_ng_maintained_by">Bakımı yapan</string>
+    <string name="about_ng_maintainer_role">Çatallanmanın geliştirilmesi ve bakımı</string>
+    <string name="about_ng_profile">GitHub profili</string>
+    <string name="about_ng_project">GitHub’daki proje</string>
+    <string name="about_ng_issues">Bir sorun rapor et</string>
+    <string name="about_ng_origin">Köken ve katkılar</string>
+    <string name="about_ng_origin_blurb">AccA-NG, AccA üzerine inşa edilmiştir ve arayüz, uyumluluk ve güvenilirlikte iyileştirmeler sunar.</string>
+    <string name="about_ng_original_team">Orijinal AccA ekibi</string>
+    <string name="about_ng_acc_author">ACC ve DJS’nin yazarı</string>
+    <string name="about_ng_original_project">Orijinal AccA projesi</string>
+    <string name="about_ng_community">ACC topluluğu</string>
+    <string name="about_ng_technical">Teknik bilgiler</string>
+    <string name="about_ng_app_version">Uygulama sürümü</string>
+    <string name="about_ng_acc_version">Yüklü ACC</string>
+    <string name="about_ng_api_version">ACC arayüz sürümü</string>
+    <string name="about_ng_loading">Okunuyor…</string>
+    <string name="about_ng_unavailable">Kullanılamıyor</string>
+    <string name="about_ng_licenses">Lisans ve atıflar</string>
+    <string name="about_ng_license_blurb">GPL-3.0 lisansı altında açık kaynak yazılım. Orijinal AccA telif hakkı: © 2019–2021 MatteCarra, Squabbi ve VR25.</string>
+    <string name="about_ng_view_license">GPL-3.0 lisansını oku</string>
+    <string name="about_ng_attributions">AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs ve diğer açık kaynak kütüphanelerle inşa edilmiştir.\n\nTelegram simgesi: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Açık kaynak proje · Bağımsız çatal</string>
+    <string name="about_ng_expanded">Genişletilmiş</string>
+    <string name="about_ng_collapsed">Daraltılmış</string>
+</resources>

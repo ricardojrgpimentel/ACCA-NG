@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_nav_dashboard">Panoramica</string>
+    <string name="ui_nav_schedules">Pianificazioni</string>
+    <string name="ui_profiles_intro">Le tue preferenze di ricarica, pronte da applicare.</string>
+    <string name="ui_scripts_intro">Comandi rapidi per il controller di ricarica.</string>
+    <string name="ui_schedules_intro">Automatizza la tua routine di ricarica.</string>
+    <string name="ui_profiles_empty">Nessun profilo\nTocca + per salvare la prima configurazione di ricarica.</string>
+    <string name="ui_scripts_empty">Qui trovi i tuoi comandi\nTocca + per creare il primo script.</string>
+    <string name="ui_schedules_empty">Crea la tua routine di ricarica\nTocca + per pianificare un profilo di ricarica.</string>
+    <string name="ui_add_profile">Aggiungi profilo</string>
+    <string name="ui_add_script">Aggiungi script</string>
+    <string name="ui_add_schedule">Aggiungi pianificazione</string>
+    <string name="ui_custom_config">Impostazioni di ricarica</string>
+    <string name="ui_charge_once">Carica una volta fino al livello scelto</string>
+    <string name="ui_profile_options">Opzioni del profilo</string>
+    <string name="ui_script_options">Opzioni dello script</string>
+    <string name="ui_schedule_options">Opzioni della pianificazione</string>
+    <string name="resume_temperature">Riprendi al di sotto di</string>
+    <string name="template_temperature_profile_resume">Raffreddamento: %1$d°C · Pausa: %2$d°C · Ripresa: %3$d°C</string>
+    <string name="command_copy_details">Copia dettagli</string>
+    <string name="command_details_copied">Dettagli dei comandi copiati</string>
+</resources>

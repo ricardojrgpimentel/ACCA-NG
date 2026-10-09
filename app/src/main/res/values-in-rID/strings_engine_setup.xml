@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">Siapkan ACC-NG</string>
+    <string name="ng_setup_message">AccA-NG memerlukan mesin pengisian ACC-NG. Aplikasi ini menginstalnya dengan akses root. Di Magisk, tampil sebagai Advanced Charging Controller NG (ACC-NG).\n\nAnda tidak perlu mengunduh atau menginstal ZIP secara manual. Jika ACC lain terpasang, itu akan diganti sambil tetap mempertahankan pengaturannya.\n\nJika kalibrasi diperlukan, putuskan semua pengisi daya dan ikuti Diagnostik pengisian. Kemudian pilih batas pengisian Anda atau terapkan profil di aplikasi.</string>
+    <string name="ng_setup_install">Siapkan</string>
+    <string name="ng_setup_installing">Menyiapkan ACC-NG</string>
+    <string name="ng_setup_root_required">AccA-NG memerlukan akses root untuk menginstal ACC-NG dan mengontrol pengisian. Izinkan AccA-NG di bagian Superuser pengelola root Anda, lalu buka kembali aplikasi.</string>
+</resources>

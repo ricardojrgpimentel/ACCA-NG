@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_daily_help">Für den Alltag mit einer moderaten Ladegrenze.</string>
+    <string name="preset_plugged_help">Für ein Telefon, das viele Stunden am Ladegerät bleibt. Hält den Akkustand niedriger; garantiert keinen Bypass.</string>
+    <string name="preset_travel_help">Für mehr Akkuladung vor dem Aufbruch. Erlaubt einen höheren Ladestand.</string>
+    <string name="charge_limits_title">Akkuladegrenzen (%)</string>
+    <string name="charge_limits_help">Alle Werte sind Prozentwerte des Akkustands. Zum Fortsetzen sind ein angeschlossenes Ladegerät und eine geeignete Temperatur nötig. ACC muss laufen, um diese Grenzen durchzusetzen.</string>
+    <string name="charge_pause_label">Laden stoppen bei</string>
+    <string name="charge_pause_help">Pausiert das Laden, wenn der Akku diesen Stand erreicht.</string>
+    <string name="charge_resume_label">Laden fortsetzen bei</string>
+    <string name="charge_resume_help">Setzt nach einer Pause fort, wenn der Akkustand auf diesen Wert oder darunter fällt.</string>
+    <string name="charge_shutdown_label">Telefon ausschalten bei</string>
+    <string name="charge_shutdown_help">Schaltet das Telefon bei diesem Stand oder darunter aus, wenn der Akku nicht lädt. Das Laden wird nicht nur pausiert.</string>
+    <string name="charge_cycle_summary">Das Laden stoppt bei %1$d%% und wird bei %2$d%% oder darunter fortgesetzt.</string>
+    <string name="charge_unlimited_summary">∞ bei Stoppen hebt die prozentuale Stoppgrenze auf. ∞ bei Fortsetzen erlaubt das Fortsetzen bei jedem Akkustand.</string>
+    <string name="charge_percentage_value">%1$d%%</string>
+    <string name="charge_temperature_value">%1$d °C</string>
+    <string name="charge_seconds_value">%1$d s</string>
+    <string name="charge_limit_disabled">Ladegrenzen sind für dieses Profil deaktiviert.</string>
+    <string name="charge_unlimited_hint">∞ kennzeichnet eine deaktivierte Prozentgrenze.</string>
+    <string name="charge_restore_limits">Ursprüngliche Ladegrenzen wiederherstellen</string>
+    <string name="charge_switch_label">Methode zur Ladesteuerung</string>
+    <string name="charge_switch_help">ACC verwendet eine kompatible Gerätesteuerung, um das Laden zu aktivieren oder zu pausieren. Belasse Automatisch, sofern du die benötigte Methode nicht kennst.</string>
+    <string name="charge_switch_automatic">Kompatible Methode automatisch finden</string>
+    <string name="charge_power_title">Strom- und Spannungsgrenzen</string>
+    <string name="charge_max_current">Maximaler Strom (mA):</string>
+</resources>

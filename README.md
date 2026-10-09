@@ -20,7 +20,8 @@ for controlling charging on rooted Android devices. Maintained by
 - Inspect battery readings, charging state and charging-control diagnostics.
 - Calibrate current readings with the charger disconnected.
 - Schedule charging settings through the bundled Daily Job Scheduler (DJS).
-- Use light/dark themes, English/Portuguese setup guidance and inherited translations.
+- Use light/dark themes and translated setup, charging and diagnostic screens in
+  21 locales, with English fallback for older untranslated text.
 
 The app bundles [ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG)
 **v1.0.3-ng**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
@@ -100,3 +101,11 @@ by Ricardo Pimentel. See [LICENSE](LICENSE) and [third-party notices](THIRD_PART
 Pull requests and translations are welcome. Include app/engine versions, Android
 version, device/kernel and reproduction steps in bug reports. Review logs before
 posting them because they can contain device details, commands and profile names.
+
+Translation sources are in `app/src/main/res/values/strings*.xml`; localized
+resources use the corresponding `values-<language>-r<region>` directories.
+`crowdin.yml` includes all these source files. Run
+`python3 tools/check-translations.py` to check coverage of the new AccA-NG text,
+duplicate keys, format arguments and line breaks. It reports inherited gaps
+separately; empty legacy locale directories continue to use English. The expanded
+translations include AI-assisted drafts and should receive native-speaker review.

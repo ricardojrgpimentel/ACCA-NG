@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Diagnostika nabíjení</string>
+    <string name="troubleshoot_intro">Zkontrolujte službu nabíjení, kalibraci a použitá omezení. Diagnostika se automaticky obnovuje, dokud je tato obrazovka otevřená.</string>
+    <string name="troubleshoot_no_issue">V aktuálních hodnotách nebyl zjištěn žádný problém. To neznamená potvrzení úplného nabití a obnovení cyklu.</string>
+    <string name="troubleshoot_unavailable">Diagnostika není k dispozici. Zkontrolujte přístup root a instalaci ACC, poté zkuste znovu.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Tato upravená služba ACC používá pevně nastavená omezení 90 %/80 % a ignoruje profilová omezení. Obnovte standardní službu pro obnovení kontroly profilu.</string>
+    <string name="troubleshoot_different_module">Nainstalovaná služba se liší od té, která byla součástí aplikace. Může se jednat o legitimní verzi nebo úpravu; samotný rozdíl neprokazuje závadu.</string>
+    <string name="troubleshoot_calibration_pending">ACC běží, ale čeká na kalibraci proudu. Odpojte všechny nabíječky a použijte Kalibrovat proud k dokončení tohoto kroku.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC čeká na kalibraci</string>
+    <string name="troubleshoot_stopped">Služba ACC je zastavena. Spusťte ji z palubní desky, aby se použila omezení nabíjení.</string>
+    <string name="troubleshoot_above_limit">Baterie pokračovala v nabíjení na nebo nad nastavený limit po dobu alespoň 30 sekund. Zkontrolujte kalibraci a modul; vybraný spínač nabíjení také nemusí fungovat.</string>
+    <string name="troubleshoot_refresh">Zkontrolujte znovu</string>
+    <string name="troubleshoot_calibrate">Kalibrovat proud</string>
+    <string name="troubleshoot_calibrate_now">Spustit kalibraci</string>
+    <string name="troubleshoot_calibration_instructions">Odpojte USB, bezdrátové nabíjení a všechny ostatní nabíječky. Počkejte několik sekund a pak spusťte. Aplikace sbírá pět odčítání vybíjení během 10 sekund a uloží zálohu konfigurace. Držte nabíječky odpojené, dokud proces nedokončí. Nestabilní nebo nedostupná odčítání nechají kalibraci nezměněnou.</string>
+    <string name="troubleshoot_calibration_failed">Kalibrace nemohla být potvrzena. Držte všechny nabíječky odpojené, počkejte, až se odčítání ustálí, a zkuste to znovu.</string>
+    <string name="troubleshoot_calibration_success">Kalibrace elektrického proudu byla uložena a ověřena. Znovu připojte svůj nabíječ a zkontrolujte diagnostiku.</string>
+    <string name="troubleshoot_restore">Obnovit součást služby</string>
+    <string name="troubleshoot_restore_confirmation">Tím se nahrazuje ACC nabíjecí služba původní zabalenou službou stejné verze. Vlastní změny služby budou odstraněny. Aplikace nejprve zálohuje modul a konfiguraci, zachová vaše nastavení, restartuje službu a ověří opravu. Pokud ověření selže, pokusí se obnovit předchozí službu.</string>
+    <string name="troubleshoot_restore_success">Původní služba byla obnovena a ověřena. Limity nabíjení byly zachovány. Pokud je kalibrace stále čekající, dokončete ji před testováním řízení nabíjení.</string>
+    <string name="troubleshoot_restore_failed">Obnova služby selhala. Zkontrolujte podrobnosti příkazu pro umístění zálohy a chybu. Před dalším pokusem zkontrolujte diagnostiku.</string>
+    <string name="troubleshoot_incompatible_version">Obnova služby vyžaduje stejnou verzi ACC jako je balíček aplikace. Jiné verze zde nejsou nahrazovány ani downgradovány.</string>
+    <string name="troubleshoot_details">Kód verze ACC: %1$s\nBaterie: %2$s%%\nZastavit: %3$s%% · Pokračovat: %4$s%%\nStav baterie: %5$s\nProud: %6$s mA\nPolarita vybíjení: %7$s\nPřepínač nabíjení: %8$s</string>
+    <string name="troubleshoot_backup">Záloha: %1$s</string>
+    <string name="troubleshoot_copy">Kopírovat diagnostiku</string>
+    <string name="troubleshoot_copied">Diagnostika zkopírována</string>
+</resources>

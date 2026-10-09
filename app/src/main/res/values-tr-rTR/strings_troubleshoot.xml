@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="troubleshoot_title">Şarj teşhisleri</string>
+    <string name="troubleshoot_intro">Şarj servisini, kalibrasyonu ve uygulanan limitleri kontrol edin. Bu ekran açıkken teşhisler otomatik olarak yenilenir.</string>
+    <string name="troubleshoot_no_issue">Mevcut okumalarda bir sorun tespit edilmedi. Bu, tam şarj ve tekrar başlatma döngüsünü doğrulamaz.</string>
+    <string name="troubleshoot_unavailable">Teşhis kullanılamıyor. Root erişimini ve ACC kurulumunu kontrol edin, sonra tekrar deneyin.</string>
+    <string name="troubleshoot_fixed_limits" formatted="false">Bu değiştirilmiş ACC servisi sabit %90/%80 limitlerini kullanır ve profil limitlerini göz ardı eder. Profil kontrolünü geri almak için paketlenmiş servisi geri yükleyin.</string>
+    <string name="troubleshoot_different_module">Yüklü servis, uygulama ile paketlenen servisten farklı. Bu meşru bir versiyon veya bir modifikasyon olabilir; yalnızca fark, bir hatayı kanıtlamaz.</string>
+    <string name="troubleshoot_calibration_pending">ACC çalışıyor ancak elektrik akımı kalibrasyonu bekliyor. Tüm şarj cihazlarını çıkarın ve bu adımı tamamlamak için Elektrik akımını kalibre et seçeneğini kullanın.</string>
+    <string name="troubleshoot_calibration_pending_short">ACC kalibrasyon bekliyor</string>
+    <string name="troubleshoot_stopped">ACC servisi durduruldu. Şarj sınırlarını uygulamak için kontrol panelinden başlatın.</string>
+    <string name="troubleshoot_above_limit">Batarya en az 30 saniye boyunca yapılandırılmış limitte veya üzerinde şarj olmaya devam etti. Kalibrasyonu ve modülü kontrol edin; seçilen şarj anahtarı da etkisiz olabilir.</string>
+    <string name="troubleshoot_refresh">Tekrar kontrol et</string>
+    <string name="troubleshoot_calibrate">Elektrik akımını kalibre et</string>
+    <string name="troubleshoot_calibrate_now">Kalibrasyonu başlat</string>
+    <string name="troubleshoot_calibration_instructions">USB, kablosuz şarj ve diğer tüm şarj cihazlarını çıkarın. Birkaç saniye bekleyin ve ardından başlatın. Uygulama 10 saniye boyunca beş boşalma ölçümü alır ve bir yapılandırma yedeği kaydeder. Bitene kadar şarj cihazlarını bağlı bırakmayın. Dengesiz veya mevcut olmayan ölçümler kalibrasyonu değiştirmez.</string>
+    <string name="troubleshoot_calibration_failed">Kalibrasyon doğrulanamadı. Tüm şarj cihazlarını çıkarılmış durumda tutun, ölçümlerin stabil hale gelmesini bekleyin ve tekrar deneyin.</string>
+    <string name="troubleshoot_calibration_success">Elektrik akımı kalibrasyonu kaydedildi ve doğrulandı. Şarj cihazınızı tekrar bağlayın ve tanı kontrollerini yapın.</string>
+    <string name="troubleshoot_restore">Paketlenmiş hizmeti geri yükle</string>
+    <string name="troubleshoot_restore_confirmation">Bu, ACC şarj hizmetini aynı sürümün orijinal paketlenmiş hizmetiyle değiştirir. Özel hizmet değişiklikleri kaldırılacaktır. Uygulama önce modülü ve yapılandırmayı yedekler, ayarlarınızı korur, hizmeti yeniden başlatır ve onarımı doğrular. Doğrulama başarısız olursa, önceki hizmeti geri yüklemeyi dener.</string>
+    <string name="troubleshoot_restore_success">Orijinal hizmet geri yüklendi ve doğrulandı. Şarj sınırları korundu. Kalibrasyon hâlâ bekliyorsa, şarj kontrolünü test etmeden önce tamamlayın.</string>
+    <string name="troubleshoot_restore_failed">Hizmet kurtarma başarısız oldu. Yedekleme konumu ve hatayla ilgili komut detaylarını inceleyin. Tekrar denemeden önce tanı kontrollerini yapın.</string>
+    <string name="troubleshoot_incompatible_version">Hizmet kurtarma, uygulama paketinin ACC sürümüyle aynı sürümü gerektirir. Burada diğer sürümler değiştirilmez veya düşürülmez.</string>
+    <string name="troubleshoot_details">ACC sürüm kodu: %1$s\nPil: %2$s%%\nDurdur: %3$s%% · Devam: %4$s%%\nPil durumu: %5$s\nAkım: %6$s mA\nDeşarj polaritesi: %7$s\nŞarj anahtarı: %8$s</string>
+    <string name="troubleshoot_backup">Yedek: %1$s</string>
+    <string name="troubleshoot_copy">Tanılama kopyala</string>
+    <string name="troubleshoot_copied">Tanılama kopyalandı</string>
+</resources>

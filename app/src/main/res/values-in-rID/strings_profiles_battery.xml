@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preset_title">Pilih titik awal</string>
+    <string name="preset_description">Opsi ini mengatur batas pengisian baterai. Ketuk salah satu, sesuaikan nilai di bawah dan simpan profil. Ini akan berlaku saat Anda menerapkan profil.</string>
+    <string name="preset_daily_name">Penggunaan harian</string>
+    <string name="preset_plugged_name">Terhubung dalam waktu lama</string>
+    <string name="preset_travel_name">Perjalanan</string>
+    <string name="preset_option">%1$s\n%2$s\nBerhenti di %3$d%% · Melanjutkan di %4$d%%</string>
+    <string name="battery_state_charging">Mengisi daya</string>
+    <string name="battery_state_paused">Pengisian daya dijeda</string>
+    <string name="battery_state_full">Baterai penuh</string>
+    <string name="battery_state_discharging">Mengosongkan daya</string>
+    <string name="battery_state_not_charging">Tidak mengisi daya</string>
+    <string name="battery_state_unknown">Status pengisian daya tidak diketahui</string>
+    <string name="battery_power_disconnected">Pengisi daya terputus</string>
+    <string name="battery_power_ac">Kabel terhubung · AC</string>
+    <string name="battery_power_usb">Kabel tersambung · USB</string>
+    <string name="battery_power_wireless">Pengisi daya nirkabel tersambung</string>
+    <string name="battery_power_dock">Dok pengisian tersambung</string>
+    <string name="battery_power_connected">Pengisi daya tersambung</string>
+    <string name="battery_power_unknown">Sambungan pengisi daya tidak diketahui</string>
+    <string name="battery_paused_hint">Pengisi daya tersambung, tetapi baterai tidak mengisi.</string>
+</resources>

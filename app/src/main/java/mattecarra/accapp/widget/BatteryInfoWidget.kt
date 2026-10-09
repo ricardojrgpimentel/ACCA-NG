@@ -26,6 +26,7 @@ import mattecarra.accapp.activities.BatteryDialogActivity
 import mattecarra.accapp.database.AccaRoomDatabase
 import mattecarra.accapp.models.DashboardValues
 import mattecarra.accapp.services.WidgetService
+import mattecarra.accapp.utils.AppLanguages
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ProfileUtils
 import java.util.*
@@ -66,23 +67,6 @@ class BatteryInfoWidget : AppWidgetProvider()
     {
         super.onReceive(context, intent)
         if (context == null) return
-
-        //--------------------------------------------------
-        // select locale and theme day\night
-
-        val spl = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context).getString("language", "def")
-
-        val config = context.resources.configuration
-        val locale = if (spl.equals("def")) Locale.getDefault() else Locale(spl)
-
-        Locale.setDefault(locale)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) config.setLocale(locale) else config.locale = locale
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) context.createConfigurationContext(config)
-
-        context.resources.updateConfiguration(config, context.resources.displayMetrics)
-
-        //--------------------------------------------------
 
         //AppWidgetAlarm(context).startLongUpdateAlarm()  // start long alarm with pendingIntent, RTC
 
@@ -154,8 +138,9 @@ class BatteryInfoWidget : AppWidgetProvider()
         if (widgetIds != null) for (one in widgetIds) updateOneWidget(context, one)
     }
 
-    fun updateOneWidget(context: Context, widgetId: Int)
+    fun updateOneWidget(baseContext: Context, widgetId: Int)
     {
+        val context = AppLanguages.localizedContext(baseContext)
         val sp = context.getSharedPreferences(WIDGET_PREF_NAME, MODE_PRIVATE)
         val manualStop = sp.getBoolean(WIDGET_ALL_STOP, false)
         val widgetView = RemoteViews(context.packageName, R.layout.widget_battery_info)
