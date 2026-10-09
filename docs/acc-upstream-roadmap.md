@@ -2,7 +2,30 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado:** revisão e inventário concluídos; implementação pendente. O motor continua em `3d2dbe2`, a app em `3d6a223` e o bundle em v1.0.3-ng. Os testes atuais passaram, mas nenhum patch upstream novo foi validado em aparelho nesta revisão.
+**Estado:** primeiro incremento I1 implementado no motor e no bundle candidato **v1.0.4-ng (202610094)**. Preserva API NG 1 e schema 202310160. Fonte do motor publicada em [`7375bbb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/7375bbb4be64b76643850bb15e56fcbc4e3ae6c8); release e validação física pendentes. O aparelho mantém a versão instalada anterior. Ver o [registo de implementação e validação](acc-upstream-implementation.md).
+
+## Estado das tarefas
+
+Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a definir os critérios completos. “Implementado” indica código e fixtures, não aprovação para release. Cada incremento deve atualizar esta tabela, o catálogo e o registo de validação.
+
+| Tarefa | Estado atual | Implementado / restante |
+| --- | --- | --- |
+| R0.1 | Pendente | Contrato atual preservado; faltam fixtures completas de output e parsing entre app/motor. |
+| R0.2 | Pendente | API/schema mantidos; descoberta explícita de capacidades não implementada. |
+| R0.3 | Pendente | Suite existente preserva preferências; falta a matriz completa de perfis/upgrade. |
+| R0.4 | Parcial I1 | Harness de controlos, falhas, readback, permissões e concorrência; faltam sensores e unidades de corrente/tensão. |
+| R1.1 | Implementado I1; validação física pendente | Resets só de controlos alterados pelo NG, com snapshot e retry em falha. |
+| R1.2 | Parcial I1 | Setters isolados e snapshot original mantido; falta revisão completa de descoberta/cache e exposição de suporte à app. |
+| R1.3 | Implementado I1; validação física pendente | Escrita direta, sem chown; fallback u+w temporário com restauração e erro propagado. Falta ensaio de sysfs/política OEM. |
+| R1.4 | Pendente | A app ainda confirma configuração; distinguir aplicação física continua por fazer. |
+| R2.1 | Parcial I1 | store_mode excluído da lista automática; restante blacklist/validação de candidatos pendente. |
+| R2.2–R2.4 | Pendente | Novos switches, sensores e unificação de alimentação ainda por integrar. |
+| R3.1–R3.6 | Pendente | Testes de switches, estados, recuperação e proteções mantêm a implementação atual. |
+| R4.1–R4.4 | Pendente | Import, escrita/migração e agendamento por integrar. |
+| R5.1–R5.5 | Pendente | Arranque, root, instalação, downloader e diagnósticos por integrar. |
+| R6.1–R6.5 | Opcional pendente | Não incluído em I1. |
+| R7 | Parcial I1 | Bundle determinístico, testes e build da app; upgrade, sysfs real, reboot e release pendentes. |
+
 
 ## Estratégia de integração
 
@@ -21,7 +44,7 @@ O contrato inicial continua `ngApiVersion=1`: `acca -i` conserva campos e unidad
 | R6 Funcionalidades opcionais | P2 | Núcleo R1 a R5 validado | Idle por app, Encore e opções avançadas opt-in |
 | R7 Validação e release | P1 | R0 a R5; R6 só se incluída | Candidato conjunto do motor e app com evidência |
 
-R1 e as exclusões simples de R2 formam o primeiro incremento. R4 pode avançar após R0 para import/quoting sem antecipar alterações térmicas de R3. R6 não bloqueia a release das correções principais.
+I1 cobre resets/permissões de R1 e a exclusão store_mode de R2; o restante destes grupos continua pendente. R4 pode avançar após R0 para import/quoting sem antecipar alterações térmicas de R3. R6 não bloqueia a release das correções principais.
 
 ## R0 Contrato e fixtures
 
@@ -150,9 +173,9 @@ Um incremento só fica concluído quando os seus critérios passam. Novos candid
 
 ## Primeira sequência de implementação
 
-1. R0.1 a R0.4: fixtures e contrato NG que protegem a integração.
-2. R1.1 a R1.3: corrigir resets e permissões, conservando o output da app.
-3. R2.1: excluir `store_mode` e candidatos inválidos; R2.4: alinhar os três leitores de alimentação externa.
+1. Completar R0.1 a R0.4: fixtures de output/perfis/sensores e capacidades, apoiadas no harness I1.
+2. Validar fisicamente R1.1/R1.3 de I1 e completar cache/descoberta de R1.2, conservando o output da app.
+3. Completar R2.1 após a exclusão de `store_mode`; R2.4: alinhar os três leitores de alimentação externa.
 4. R1.4: alinhar aplicação/readback e validar o primeiro incremento no Samsung.
 5. Avançar os restantes grupos pelo quadro de dependências, com release candidata em R7 antes de distribuição.
 

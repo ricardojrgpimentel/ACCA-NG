@@ -1,6 +1,6 @@
 AccA-NG is an independent, modernised fork of AccA for rooted Android devices.
 
-Set charging pause/resume limits, save profiles, inspect battery readings and calibrate current readings. The app bundles ACC-NG v1.0.3-ng and the DJS scheduler. Setup explains the root module installation before you accept it.
+Set charging pause/resume limits, save profiles, inspect battery readings and calibrate current readings. The app bundles ACC-NG v1.0.4-ng and the DJS scheduler. Setup explains the root module installation before you accept it.
 
 Requires Android 8.0 or newer and root access. Charging control depends on your device kernel. This is a beta with limited device testing; verify charging behaviour on your device. Existing ACC modules are replaced by ACC-NG during setup, with configuration backups.
 

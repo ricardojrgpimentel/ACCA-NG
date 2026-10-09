@@ -29,8 +29,12 @@ channel. Do not display an F-Droid download badge until this package is listed.
 5. Only after those checks, submit a recipe to fdroiddata or an inclusion request
    through F-Droid's documented process. No signing credentials are needed.
 
-ACC-NG source: https://github.com/ricardojrgpimentel/ACC-NG/tree/v1.0.3-ng
-Its app tarball is built by `python3 tools/build_ng.py` in that repository.
+Current ACC-NG bundle: **v1.0.4-ng candidate**, built from the local engine
+checkout (`../acc-ng`) using `python3 tools/build_ng.py`. Matching source:
+[`7375bbb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/7375bbb4be64b76643850bb15e56fcbc4e3ae6c8). The candidate has not been released or physically
+validated. See [the candidate integration record](acc-upstream-implementation.md).
+The previous published source is [v1.0.3-ng](https://github.com/ricardojrgpimentel/ACC-NG/tree/v1.0.3-ng);
+it does not reproduce the new candidate.
 DJS source: https://github.com/VR-25/djs/tree/v2021.12.14
 (commit `fec70823e379197a612fd18af644b2616d1168e0`).
 The DJS module metadata reports v2021.11.3 despite the archive tag v2021.12.14.

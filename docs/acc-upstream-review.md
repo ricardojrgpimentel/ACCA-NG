@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. A integração recomendada é seletiva, por comportamento final, preservando a interface do ACC-NG com a app. Há melhorias relevantes em gestão de corrente e tensão, descoberta de controlos, testes de switches, configuração e recuperação. Um merge integral também introduziria incompatibilidades e comportamentos que precisam de correção.
 
-O [roadmap](acc-upstream-roadmap.md) define a implementação nos dois repositórios. O [catálogo dos commits](acc-upstream-commits.md) atribui uma decisão aos 202 commits. As decisões são propostas de integração; não significam que o código já foi integrado ou validado em hardware.
+O [roadmap](acc-upstream-roadmap.md) define a implementação nos dois repositórios. O [catálogo dos commits](acc-upstream-commits.md) atribui uma decisão aos 202 commits. As decisões registam a revisão inicial. O [registo de implementação](acc-upstream-implementation.md) e a coluna Estado do catálogo identificam o que já entrou no candidato e o que falta validar.
 
 ## Referências e alcance
 
@@ -113,7 +113,7 @@ Há também alinhamento interno a fazer: `ng_online()` exclui nomes battery/BMS/
 
 Os **14 testes atuais do motor passaram** com `PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v`. As reproduções de output, retorno do teste silencioso e alimentação externa foram isoladas, em Bash/ficheiros temporários. Confirmam os casos descritos; não substituem `/system/bin/sh`/BusyBox ou ensaios físicos.
 
-O [registo existente](acc-ng-validation.md) documenta a validação anterior no Samsung SM-G975F. Não valida os novos patches upstream. Nesta revisão não foram alterados o motor, o bundle, a app nem o aparelho; a implementação e os seus critérios de saída estão no roadmap.
+O [registo existente](acc-ng-validation.md) documenta a validação anterior no Samsung SM-G975F. Não valida os novos patches upstream. Na revisão inicial não foram alterados o motor, o bundle, a app nem o aparelho. Depois da revisão foi implementado I1 no código e no bundle candidato; os testes Android usam ficheiros temporários, sem atualizar o módulo instalado ou escrever em sysfs real. O estado atual e os critérios restantes estão no roadmap e no registo de implementação.
 
 Para reproduzir o inventário no repositório do motor:
 

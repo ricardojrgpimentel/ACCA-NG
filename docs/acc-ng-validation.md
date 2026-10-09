@@ -137,3 +137,20 @@ Reattachment to an already installed Magisk module was also tested by removing
 only the app's module symlink and accepting “Configurar”. It reused ACC-NG without
 wiping settings, retained the active profile and displayed the measured voltage
 correctly as 4.200 V. The installed final APK was verified against the local build.
+
+
+## ACC dev integration candidate I1 — v1.0.4-ng
+
+The first selective integration is now in the source and candidate app bundle;
+see [the implementation record](acc-upstream-implementation.md) for applied
+upstream origins, pending work and the candidate checksum. This section does
+not replace the historical v1.0.3-ng physical validation above.
+
+The candidate retains NG API 1, the old config schema and CLI output. Host
+engine tests passed (33 executed, 2 Android-only skipped). All 20 limit fixtures
+passed with root, mksh and BusyBox on Samsung, using temporary files only.
+All 28 runtime shell scripts passed Android syntax checks. The app's 77 unit
+tests, debug build and lint passed. Candidate packaging is deterministic.
+No installed APK/module/configuration/profile or live sysfs control was changed.
+Upgrade, rollback, actual current/voltage/thermal controls and reboot validation
+remain pending before publication.
