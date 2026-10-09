@@ -114,3 +114,16 @@ current close to zero (0–4 mA). All 27 module scripts matched source and the i
 local build. The one remaining daemon explicitly used the profile configuration.
 Magisk's final Modules page displayed v1.0.3-ng alongside the unchanged DJS and
 LSPosed modules.
+
+### Input units after reinstall
+
+Final dashboard inspection found the installer resetting modern input units to
+legacy A/V even after the one-time dashboard migration. The modern handler
+normalises readings to micro units, so this displayed approximately 4200 V.
+Install/reinstall now sets microamp/microvolt inputs for modern handlers and marks
+the migration complete; display/output unit choices remain unchanged.
+
+Reattachment to an already installed Magisk module was also tested by removing
+only the app's module symlink and accepting “Configurar”. It reused ACC-NG without
+wiping settings, retained the active profile and displayed the measured voltage
+correctly as 4.200 V. The installed final APK was verified against the local build.

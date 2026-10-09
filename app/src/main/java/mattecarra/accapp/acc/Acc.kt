@@ -161,7 +161,15 @@ object Acc {
             AccNg.setNotificationLanguage(context)
             if (!ModernAccDaemon.start()) throw java.io.IOException("ACC-NG daemon did not start")
 
-            if(version >= 202002292) {
+            if (version >= 202107280) {
+                // The modern handler normalises A/V readings to micro units.
+                // Every reinstall must preserve that scale even after the
+                // dashboard's one-time unit migration has already run.
+                val preferences = Preferences(context)
+                preferences.currentInputUnitOfMeasure = CurrentUnit.uA
+                preferences.voltageInputUnitOfMeasure = VoltageUnit.uV
+                preferences.unitsMicroMigrationDone = true
+            } else if(version >= 202002292) {
                 val preferences = Preferences(context)
                 preferences.currentInputUnitOfMeasure = CurrentUnit.A
                 preferences.voltageInputUnitOfMeasure = VoltageUnit.V
