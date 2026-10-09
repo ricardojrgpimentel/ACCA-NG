@@ -170,7 +170,48 @@ scripts passed Android syntax checks. The app's 106 tests passed in both debug
 and release; both variants passed build and lint. The local release check is
 unsigned, matching CI, and is not published. Fixture source hashes match the bundle and packaging is deterministic.
 
-No installed APK/module, configuration, profile or live sysfs control was
+During the isolated fixture run, no installed APK/module, configuration, profile or live sysfs control was
 changed. Physical upgrade/rollback, hardware limit application, OEM thermal
 behaviour and reboot remain pending. v1.0.3-ng remains the published engine;
 v1.0.4-ng and v1.0.5-ng are source/bundle candidates only.
+
+
+## I2 physical debug check — Samsung SM-G975F, 2026-10-09
+
+After root was granted, debug beta.4-debug (44) upgraded the installed engine
+from v1.0.3-ng to candidate v1.0.5-ng (202610095). The official app remains
+installed; both apps use the same global engine.
+
+- The debug signing certificates differed. Persistent debug data was backed up
+  privately on the phone and restored after reinstall; all eight backed-up
+  regular files and symlinks were verified before launch. No full private-data
+  export was made.
+- Immediately after upgrade, configuration matched the pre-upgrade backup
+  byte-for-byte. All 28 installed runtime shell scripts match source.
+- Three saved debug profiles remain visible: Default Custom, Charge to 90%,
+  and Cool down after 60%. This debug instance shows custom configuration and
+  no active profile, distinct from the earlier official-app check.
+- Restart through the dashboard succeeded and left one verified daemon.
+- With the known battery/charging_enabled 1 0 -- switch temporarily selected,
+  cooldown capacity temporarily 99%, and the battery at 77%, resume 82% / pause
+  85% produced +366 mA and charging_enabled=1. Resume 70% / pause 75% produced
+  +4 mA and charging_enabled=0. Retrying 82% / 85% produced +153 mA and
+  charging_enabled=1. Temperature stayed around 27.8–27.9 °C. Thermal limits
+  were unchanged and no temperature sensor was spoofed.
+- Cleanup stopped the daemon before restoring the original configuration
+  byte-for-byte, then started it again. Final app readback shows shutdown 5%,
+  resume 70%, pause 80%, cooldown 60% with 50s/10s, and temperatures 40/45/40 °C.
+  Automatic discovery subsequently selected battery/batt_slate_mode 0 1;
+  the only configuration difference at final comparison was this switch.
+
+The first short cycle with automatic discovery was inconclusive: the worker
+outlasted the sample windows, state output lagged physical readings, and
+wrote an older configuration after restoration while the daemon was active.
+Stopping the daemon before restoration and repeating with the known switch
+resolved test cleanup. Discovery/cache and state readback remain R1.2/R1.4
+work; this does not validate every automatic switch. Raw traces are retained
+in ignored build output; configuration backups remain private on the phone.
+
+Cable disconnect/reconnect for this candidate, locked boot, current/voltage
+reset/reapplication, rollback and OEM thermal policy remain pending. The CI
+run completed successfully; the candidate has not been published.

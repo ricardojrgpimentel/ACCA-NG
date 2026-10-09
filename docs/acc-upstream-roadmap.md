@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado:** I1 (resets/permissões) e I2 (R0: contrato/fixtures) implementados no código e no bundle candidato **v1.0.5-ng (202610095)**. Preserva API NG 1 e schema 202310160, agora declarados separadamente da versão da release. Fonte do motor em [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f); release e validação física pendentes. O aparelho mantém a versão instalada anterior. Ver o [registo de implementação e validação](acc-upstream-implementation.md).
+**Estado:** I1 (resets/permissões) e I2 (R0: contrato/fixtures) implementados no código e no bundle candidato **v1.0.5-ng (202610095)**. Preserva API NG 1 e schema 202310160, agora declarados separadamente da versão da release. Fonte do motor em [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f); release pendente. O candidato está instalado no Samsung: upgrade com configuração preservada, reinício e pausa/retoma com switch conhecido passaram. Cabo, reboot, resets de potência, rollback e política OEM continuam pendentes. Ver a [validação física](acc-ng-validation.md#i2-physical-debug-check--samsung-sm-g975f-2026-10-09). Ver o [registo de implementação e validação](acc-upstream-implementation.md).
 
 ## Estado das tarefas
 
@@ -24,7 +24,7 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R4.1–R4.4 | Pendente | Import, escrita/migração e agendamento por integrar. |
 | R5.1–R5.5 | Pendente | Arranque, root, instalação, downloader e diagnósticos por integrar. |
 | R6.1–R6.5 | Opcional pendente | Não incluído em I1. |
-| R7 | Parcial I1/I2 | Bundle determinístico, fixtures host/Android, testes e build/lint da app; upgrade, sysfs real, reboot e release pendentes. |
+| R7 | Parcial I1/I2 | Bundle determinístico, fixtures host/Android, testes e build/lint da app; upgrade, reinício e pausa/retoma com switch conhecido passaram; restantes controlos sysfs, reboot, rollback e release pendentes. |
 
 
 ## Estratégia de integração

@@ -69,7 +69,7 @@ Para cada incremento seguinte, acrescentar uma entrada com origem, escopo aplica
 
 ## I2 — R0: contrato e fixtures entre app/motor
 
-9 de outubro de 2026. **Implementado no código e no bundle candidato v1.0.5-ng (202610095); sem release ou instalação no aparelho.** Fonte do motor: [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f). O incremento parte de I1 `7375bbb`; o upstream revisto continua `908a5a4`. O R0 valida a interface que temos de preservar para os próximos ports, sem declarar novos commits upstream como integralmente integrados.
+9 de outubro de 2026. **Implementado no código e no bundle candidato v1.0.5-ng (202610095); sem release; instalado e parcialmente validado no Samsung, ver [validação física](acc-ng-validation.md#i2-physical-debug-check--samsung-sm-g975f-2026-10-09).** Fonte do motor: [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f). O incremento parte de I1 `7375bbb`; o upstream revisto continua `908a5a4`. O R0 valida a interface que temos de preservar para os próximos ports, sem declarar novos commits upstream como integralmente integrados.
 
 | Tarefa | Implementação e evidência |
 | --- | --- |
@@ -97,7 +97,7 @@ Para cada incremento seguinte, acrescentar uma entrada com origem, escopo aplica
 | App | 106 testes unitários passaram em debug e release; build e lint de ambas as variantes passaram. Release local sem assinatura, como no CI; não publicada. |
 | Sincronização | Fixtures exportadas nos dois projetos; CI verifica metadata e SHA-256 dos scripts de origem contra o bundle da app |
 | Build determinístico | Tarball reproduzido com o mesmo SHA-256: `b6b7dca9b4fd7816031b7852ed66ef339626d5c76d4f22c71dc5d130ebecca4a` |
-| Dispositivo instalado | App, módulo, configurações, perfis e controlos físicos não foram atualizados |
+| Dispositivo instalado | Candidato posteriormente instalado; upgrade, reinício e pausa/retoma com switch conhecido passaram. Ver registo de validação física |
 
 As fixtures executam funções/dispatch relevantes com hardware/serviço substituídos por ficheiros e stubs. Não são uma instalação completa nem uma prova de sysfs OEM. Mantêm a precisão atual do output (duas casas A/V/W); descoberta de unidades e precisão adicional ficam em R2. A migração atómica, import de scripts arbitrários e lifecycle real permanecem R4/R7.
 
@@ -113,4 +113,4 @@ Na app: `python3 tools/check-engine-contract.py` seguido de `./gradlew :app:test
 
 ### Próximo incremento
 
-R1.2: descoberta/cache dos controlos e exposição de suporte. R1.4: distinguir configuração gravada de aplicação física. R2.1/R2.4: blacklist e semântica comum de alimentação entre controlador, eventos e app. Validação física de I1/I2 (upgrade, resets/reaplicação, OEM, rollback e reboot) permanece pendente.
+R1.2: descoberta/cache dos controlos e exposição de suporte. R1.4: distinguir configuração gravada de aplicação física. R2.1/R2.4: blacklist e semântica comum de alimentação entre controlador, eventos e app. Validação física parcial de I1/I2 registada: upgrade, reinício e pausa/retoma com switch conhecido passaram. Cabo, resets/reaplicação de potência, OEM, rollback e reboot permanecem pendentes.
