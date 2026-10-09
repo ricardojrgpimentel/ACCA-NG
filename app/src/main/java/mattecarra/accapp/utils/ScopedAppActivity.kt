@@ -1,6 +1,9 @@
 package mattecarra.accapp.utils
 
 import android.os.Bundle
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.widget.Toast
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.annotation.StringRes
@@ -10,6 +13,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.customview.customView
 import com.google.android.material.snackbar.Snackbar
 import mattecarra.accapp.R
+import mattecarra.accapp.BuildConfig
 import mattecarra.accapp.databinding.AccCommandDialogBinding
 import mattecarra.accapp.viewmodel.AccCommandState
 import mattecarra.accapp.viewmodel.AccCommandViewModel
@@ -57,6 +61,19 @@ abstract class ScopedAppActivity: AppCompatActivity(), CoroutineScope {
             val dialogBinding = AccCommandDialogBinding.inflate(layoutInflater)
             commandDialogBinding = dialogBinding
             dialogBinding.commandDetailsToggle.setOnClickListener { accCommands.toggleDetails() }
+            dialogBinding.commandCopy.setOnClickListener {
+                val current = accCommands.state.value ?: return@setOnClickListener
+                val report = buildString {
+                    append("AccA-NG ").append(BuildConfig.VERSION_NAME)
+                    append(" (Android API ").append(android.os.Build.VERSION.SDK_INT).append(")\n")
+                    if (current.label != 0) append(getString(current.label)).append('\n')
+                    append(dialogBinding.commandMessage.text).append("\n\n")
+                    append(dialogBinding.commandDetailsText.text)
+                }
+                getSystemService(ClipboardManager::class.java).setPrimaryClip(
+                    ClipData.newPlainText(getString(R.string.command_copy_details), report))
+                Toast.makeText(this, R.string.command_details_copied, Toast.LENGTH_SHORT).show()
+            }
             dialogBinding.commandClose.setOnClickListener { accCommands.consumeResult() }
             dialogBinding.commandRetry.setOnClickListener { accCommands.retry() }
             commandDialog = MaterialDialog(this).show {
@@ -76,6 +93,7 @@ abstract class ScopedAppActivity: AppCompatActivity(), CoroutineScope {
             0, 0, 0)
         ui.commandDetailsToggle.setText(if (state.detailsExpanded) R.string.command_hide_details else R.string.command_show_details)
         ui.commandDetailsContainer.isVisible = state.detailsExpanded
+        ui.commandCopy.isEnabled = state.steps.isNotEmpty()
         ui.commandResultActions.isVisible = !state.running
         ui.commandRetry.isVisible = state.successful == false
 

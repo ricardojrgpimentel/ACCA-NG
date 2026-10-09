@@ -56,7 +56,7 @@ data class ConfigUpdater(val accConfig: AccConfig, val cue: ConfigUpdaterEnable)
         val capacityUpdate = cue.sendCapacity && acc.updateAccCapacity(accConfig.configCapacity.shutdown, accConfig.configCoolDown?.atPercent ?: 101, accConfig.configCapacity.resume, accConfig.configCapacity.pause)
         val voltControl = cue.sendVoltage && acc.updateAccVoltControl(accConfig.configVoltage.controlFile, accConfig.configVoltage.max)
         val currentMax = cue.sendCurrMax && acc.updateAccCurrentMaxCommand(accConfig.configCurrMax)
-        val temper = cue.sendTemperature && acc.updateAccTemperature(accConfig.configTemperature.coolDownTemperature, accConfig.configTemperature.maxTemperature, accConfig.configTemperature.pause)
+        val temper = cue.sendTemperature && acc.updateAccTemperature(accConfig.configTemperature)
         val coolDown = cue.sendCoolDown && acc.updateAccCoolDown(accConfig.configCoolDown?.charge, accConfig.configCoolDown?.pause )
         val resetUnplugged = cue.sendResetUnplugged && acc.updateResetUnplugged(accConfig.configResetUnplugged)
         val resetBSOnPause = cue.sendResetBsOnPause && acc.updateResetOnPause(accConfig.configResetBsOnPause)
@@ -108,10 +108,7 @@ data class ConfigUpdater(val accConfig: AccConfig, val cue: ConfigUpdaterEnable)
                 accConfig.configVoltage.controlFile,
                 accConfig.configVoltage.max ),
             acc.getUpdateAccCurrentMaxCommand(accConfig.configCurrMax),
-            acc.getUpdateAccTemperatureCommand(
-                accConfig.configTemperature.coolDownTemperature,
-                accConfig.configTemperature.maxTemperature,
-                accConfig.configTemperature.pause ),
+            acc.getUpdateAccTemperatureCommand(accConfig.configTemperature),
             acc.getUpdateAccCoolDownCommand(
                 accConfig.configCoolDown?.charge,
                 accConfig.configCoolDown?.pause ),

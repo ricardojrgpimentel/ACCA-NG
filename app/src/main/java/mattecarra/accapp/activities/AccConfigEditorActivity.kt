@@ -308,8 +308,16 @@ class AccConfigEditorActivity : ScopedAppActivity(),
                 R.string.charge_temperature_value)
             configureUnitPicker(content.temperatureMaxPicker, 20, 95, it.maxTemperature,
                 R.string.charge_temperature_value)
-            configureUnitPicker(content.temperatureMaxPauseSecondsPicker, 10, 120, it.pause,
-                R.string.charge_seconds_value)
+            val modern = mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version)
+            content.pauseLabel.setText(if (modern) R.string.resume_temperature else R.string.pause_seconds)
+            if (modern) {
+                val resume = mattecarra.accapp.acc.TemperatureConfig.modern(it).resumeTemperature!!
+                configureUnitPicker(content.temperatureMaxPauseSecondsPicker, 0, it.maxTemperature - 1,
+                    resume.coerceIn(0, it.maxTemperature - 1), R.string.charge_temperature_value)
+            } else {
+                configureUnitPicker(content.temperatureMaxPauseSecondsPicker, 10, 120, it.pause,
+                    R.string.charge_seconds_value)
+            }
         })
 
         viewModel.observeCoolDown(this, Observer
@@ -632,8 +640,16 @@ class AccConfigEditorActivity : ScopedAppActivity(),
             content.resumeCapacityPicker -> viewModel.capacity = viewModel.capacity.copy(resume = newVal)
             content.pauseCapacityPicker -> viewModel.capacity = viewModel.capacity.copy(pause = newVal)
             content.temperatureCooldownPicker -> viewModel.temperature = viewModel.temperature.copy(coolDownTemperature = newVal)
-            content.temperatureMaxPicker -> viewModel.temperature = viewModel.temperature.copy(maxTemperature = newVal)
-            content.temperatureMaxPauseSecondsPicker -> viewModel.temperature = viewModel.temperature.copy(pause = newVal)
+            content.temperatureMaxPicker -> {
+                val temperature = viewModel.temperature.copy(maxTemperature = newVal)
+                viewModel.temperature = if (mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version))
+                    temperature.copy(resumeTemperature = mattecarra.accapp.acc.TemperatureConfig.modern(temperature)
+                        .resumeTemperature!!.coerceIn(0, newVal - 1)) else temperature
+            }
+            content.temperatureMaxPauseSecondsPicker -> viewModel.temperature =
+                if (mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version))
+                    viewModel.temperature.copy(resumeTemperature = newVal)
+                else viewModel.temperature.copy(pause = newVal)
 
             //coolDown
             content.cooldownPercentagePicker, content.cooldownChargeRatioPicker,

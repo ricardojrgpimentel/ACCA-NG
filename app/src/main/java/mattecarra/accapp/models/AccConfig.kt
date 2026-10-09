@@ -80,15 +80,22 @@ import java.io.Serializable
      * Default set as 40/60/90.
      * @param coolDownTemperature percentage when the cool down phase should start.
      * @param maxTemperature maximum temperature of the battery while charging. When met, charging will pause for <pause> seconds.
-     * @param pause time in seconds to wait for the temperature to drop below <max>, to resume charging.
+     * @param pause legacy engines only: thermal pause in seconds.
+     * @param resumeTemperature modern engines: temperature in Celsius below which charging may resume.
+     * @param resumeTemperatureOverridesCapacity preserve ACC's optional resume_temp r suffix.
      */
-    data class ConfigTemperature(var coolDownTemperature: Int = 40, var maxTemperature: Int = 60, var pause: Int = 90) : Serializable
+    data class ConfigTemperature(var coolDownTemperature: Int = 40, var maxTemperature: Int = 60,
+                                 var pause: Int = 90, var resumeTemperature: Int? = null,
+                                 var resumeTemperatureOverridesCapacity: Boolean = false) : Serializable
     {
         fun toString(context: Context): String
         {
             return context.getString(
-                    R.string.template_temperature_profile,
-                    coolDownTemperature, maxTemperature, pause
+                    if (mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version))
+                        R.string.template_temperature_profile_resume else R.string.template_temperature_profile,
+                    coolDownTemperature, maxTemperature,
+                    if (mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version))
+                        mattecarra.accapp.acc.TemperatureConfig.modern(this).resumeTemperature else pause
                 )
         }
     }

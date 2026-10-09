@@ -1,0 +1,1 @@
+Fix profile application with modern ACC-NG temperature settings. Show resume temperature in °C, preserve legacy profiles, and add Copy details to command results.

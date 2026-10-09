@@ -4,7 +4,10 @@ package mattecarra.accapp.models
 object ProfileActivation {
     fun matches(current: AccConfig, saved: AccConfig, applyVoltage: Boolean = true,
                 applyCurrent: Boolean = true): Boolean {
+        val modernTemperature = current.configTemperature.resumeTemperature != null
         fun normalized(config: AccConfig) = config.copy(
+            configTemperature = if (modernTemperature)
+                mattecarra.accapp.acc.TemperatureConfig.modern(config.configTemperature) else config.configTemperature,
             configVoltage = if (applyVoltage) config.configVoltage else AccConfig.ConfigVoltage(),
             configCurrMax = if (applyCurrent) config.configCurrMax else null,
             configOnBoot = config.configOnBoot?.takeIf { it.isNotBlank() },

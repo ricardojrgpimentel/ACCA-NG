@@ -97,6 +97,13 @@ interface AccInterface {
      * @param wait seconds to wait until charging is resumed.
      * @return the boolean result of the command's execution.
      */
+    fun getUpdateAccTemperatureCommand(temperature: AccConfig.ConfigTemperature): String =
+        getUpdateAccTemperatureCommand(temperature.coolDownTemperature, temperature.maxTemperature, temperature.pause)
+
+    suspend fun updateAccTemperature(temperature: AccConfig.ConfigTemperature): Boolean = withContext(Dispatchers.IO) {
+        RootShell.exec(getUpdateAccTemperatureCommand(temperature)).isSuccess
+    }
+
     fun getUpdateAccTemperatureCommand(coolDownTemperature: Int, temperatureMax: Int, wait: Int): String
     suspend fun updateAccTemperature(coolDownTemperature: Int, temperatureMax: Int, wait: Int) : Boolean = withContext(
         Dispatchers.IO) {

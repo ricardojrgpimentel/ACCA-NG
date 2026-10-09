@@ -4,6 +4,7 @@ import androidx.annotation.WorkerThread
 import mattecarra.accapp.utils.RootShell
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import mattecarra.accapp.acc.TemperatureConfig
 import mattecarra.accapp.acc.ConfigUpdateResult
 import mattecarra.accapp.acc.ConfigUpdater
 import mattecarra.accapp.acc.ConfigUpdaterEnable
@@ -30,6 +31,7 @@ open class AccHandler(override val version: Int) : AccInterface {
     // Cool Down
     val COOLDOWN_TEMP_REGEXP = """^\s*cooldown_temp=(\d*)""".toRegex(RegexOption.MULTILINE)
     val MAX_TEMP_REGEXP = """^\s*max_temp=(\d*)""".toRegex(RegexOption.MULTILINE)
+    val RESUME_TEMP_REGEXP = """^\s*resume_temp=(\d+)(r?)\s*$""".toRegex(RegexOption.MULTILINE)
     val MAX_TEMP_PAUSE_REGEXP = """^\s*max_temp_pause=(\d*)""".toRegex(RegexOption.MULTILINE)
 
     val COOLDOWN_CHARGE_REGEXP = """^\s*cooldown_charge=(\d*)""".toRegex(RegexOption.MULTILINE)
@@ -61,6 +63,7 @@ open class AccHandler(override val version: Int) : AccInterface {
 
         val temperatureCooldown = COOLDOWN_TEMP_REGEXP.find(config)?.destructured?.component1()
         val temperatureMax      = MAX_TEMP_REGEXP.find(config)?.destructured?.component1()
+        val resumeTemperature = RESUME_TEMP_REGEXP.find(config)
         val waitSeconds         = MAX_TEMP_PAUSE_REGEXP.find(config)?.destructured?.component1()
 
         val coolDownChargeSeconds = COOLDOWN_CHARGE_REGEXP.find(config)?.destructured?.component1()?.toIntOrNull()
@@ -80,7 +83,10 @@ open class AccHandler(override val version: Int) : AccInterface {
             maxChargingCurrent?.toIntOrNull(),
             AccConfig.ConfigTemperature(temperatureCooldown?.toIntOrNull() ?: 90,
                 temperatureMax?.toIntOrNull() ?: 95,
-                waitSeconds?.toIntOrNull() ?: 90),
+                if (TemperatureConfig.usesResumeTemperature(version)) 90 else waitSeconds?.toIntOrNull() ?: 90,
+                if (TemperatureConfig.usesResumeTemperature(version))
+                    resumeTemperature?.groupValues?.get(1)?.toIntOrNull() ?: 45 else null,
+                TemperatureConfig.usesResumeTemperature(version) && resumeTemperature?.groupValues?.get(2) == "r"),
             getOnBoot(config),
             getOnPlugged(config),
             if(coolDownChargeSeconds != null && coolDownPauseSeconds != null && capacityCoolDown?.toIntOrNull() != null)
@@ -356,38 +362,42 @@ open class AccHandler(override val version: Int) : AccInterface {
             .execute(this)
     }
 
-    override fun getUpdateResetUnpluggedCommand(resetUnplugged: Boolean) = "/dev/.vr25/acc/acca -s reset_batt_stats_on_unplug=$resetUnplugged"
+    override fun getUpdateResetUnpluggedCommand(resetUnplugged: Boolean) = "env async=true /dev/.vr25/acc/acca -s reset_batt_stats_on_unplug=$resetUnplugged"
 
-    override fun getUpdateResetOnPauseCommand(resetOnPause: Boolean) = "/dev/.vr25/acc/acca -s reset_batt_stats_on_pause=$resetOnPause"
+    override fun getUpdateResetOnPauseCommand(resetOnPause: Boolean) = "env async=true /dev/.vr25/acc/acca -s reset_batt_stats_on_pause=$resetOnPause"
 
-    override fun getUpdateAccCoolDownCommand(charge: Int?, pause: Int?): String = "/dev/.vr25/acc/acca -s cooldown_charge=${charge?.toString().orEmpty()} cooldown_pause=${pause?.toString().orEmpty()}"
+    override fun getUpdateAccCoolDownCommand(charge: Int?, pause: Int?): String = "env async=true /dev/.vr25/acc/acca -s cooldown_charge=${charge?.toString().orEmpty()} cooldown_pause=${pause?.toString().orEmpty()}"
 
-    override fun getUpdateAccCapacityCommand(shutdown: Int, coolDown: Int, resume: Int, pause: Int): String = "/dev/.vr25/acc/acca -s shutdown_capacity=$shutdown cooldown_capacity=$coolDown resume_capacity=$resume pause_capacity=$pause"
+    override fun getUpdateAccCapacityCommand(shutdown: Int, coolDown: Int, resume: Int, pause: Int): String = "env async=true /dev/.vr25/acc/acca -s shutdown_capacity=$shutdown cooldown_capacity=$coolDown resume_capacity=$resume pause_capacity=$pause"
 
-    override fun getUpdateAccTemperatureCommand(coolDownTemperature: Int, temperatureMax: Int, wait: Int): String = "/dev/.vr25/acc/acca -s cooldown_temp=${coolDownTemperature} max_temp=${temperatureMax} max_temp_pause=$wait"
+    override fun getUpdateAccTemperatureCommand(temperature: AccConfig.ConfigTemperature): String =
+        if (TemperatureConfig.usesResumeTemperature(version)) TemperatureConfig.command(temperature)
+        else getUpdateAccTemperatureCommand(temperature.coolDownTemperature, temperature.maxTemperature, temperature.pause)
 
-    override fun getUpdateAccVoltControlCommand(voltFile: String?, voltMax: Int?): String = "/dev/.vr25/acc/acca --set --voltage ${voltMax?.toString() ?: "-"}"
+    override fun getUpdateAccTemperatureCommand(coolDownTemperature: Int, temperatureMax: Int, wait: Int): String = "env async=true /dev/.vr25/acc/acca -s cooldown_temp=${coolDownTemperature} max_temp=${temperatureMax} max_temp_pause=$wait"
 
-    override fun getUpdateAccCurrentMaxCommand(currMax: Int?): String = "/dev/.vr25/acc/acca --set --current ${currMax?.toString() ?: "-"}"
+    override fun getUpdateAccVoltControlCommand(voltFile: String?, voltMax: Int?): String = "env async=true /dev/.vr25/acc/acca --set --voltage ${voltMax?.toString() ?: "-"}"
+
+    override fun getUpdateAccCurrentMaxCommand(currMax: Int?): String = "env async=true /dev/.vr25/acc/acca --set --current ${currMax?.toString() ?: "-"}"
 
     override fun getUpdateAccOnBootExitCommand(enabled: Boolean): String = "" //Not supported
 
-    override fun getUpdateAccOnBootCommand(command: String?): String = "/dev/.vr25/acc/acca -s \"apply_on_boot=${command.orEmpty()}\""
+    override fun getUpdateAccOnBootCommand(command: String?): String = "env async=true /dev/.vr25/acc/acca -s \"apply_on_boot=${command.orEmpty()}\""
 
 
-    override fun getUpdateAccOnPluggedCommand(command: String?) : String = "/dev/.vr25/acc/acca -s \"apply_on_plug=${command.orEmpty()}\""
+    override fun getUpdateAccOnPluggedCommand(command: String?) : String = "env async=true /dev/.vr25/acc/acca -s \"apply_on_plug=${command.orEmpty()}\""
 
     override fun getUpdateAccChargingSwitchCommand(switch: String?, automaticSwitchingEnabled: Boolean) : String {
         return if(switch != null) {
-            "/dev/.vr25/acc/acca -s \"charging_switch=${switch}${if (automaticSwitchingEnabled) "" else " --"}\""
+            "env async=true /dev/.vr25/acc/acca -s \"charging_switch=${switch}${if (automaticSwitchingEnabled) "" else " --"}\""
         } else {
-            "/dev/.vr25/acc/acca -s \"charging_switch=\""
+            "env async=true /dev/.vr25/acc/acca -s \"charging_switch=\""
         }
     }
 
     override fun getUpgradeCommand(version: String) = "/dev/.vr25/acc/acca --upgrade $version"
 
-    override fun getUpdatePrioritizeBatteryIdleModeCommand(enabled: Boolean): String = "/dev/.vr25/acc/acca --set prioritize_batt_idle_mode=$enabled"
+    override fun getUpdatePrioritizeBatteryIdleModeCommand(enabled: Boolean): String = "env async=true /dev/.vr25/acc/acca --set prioritize_batt_idle_mode=$enabled"
 
     override fun getAddChargingSwitchCommand(switch: String): String = getUpdateAccChargingSwitchCommand(switch, false)
 }

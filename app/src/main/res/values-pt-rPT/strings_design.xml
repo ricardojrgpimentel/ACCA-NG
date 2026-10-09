@@ -19,4 +19,8 @@
     <string name="script_label">Nome do script</string>
     <string name="script_description">Descrição</string>
     <string name="script_body_text">Comandos shell</string>
+    <string name="resume_temperature">Retomar abaixo de</string>
+    <string name="template_temperature_profile_resume">Arrefecimento: %1$d°C · Pausa: %2$d°C · Retoma: %3$d°C</string>
+    <string name="command_copy_details">Copiar detalhes</string>
+    <string name="command_details_copied">Detalhes dos comandos copiados</string>
 </resources>

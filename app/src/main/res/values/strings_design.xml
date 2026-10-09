@@ -16,4 +16,8 @@
     <string name="ui_profile_options">Profile options</string>
     <string name="ui_script_options">Script options</string>
     <string name="ui_schedule_options">Schedule options</string>
+    <string name="resume_temperature">Resume below</string>
+    <string name="template_temperature_profile_resume">Cooldown: %1$d°C · Pause: %2$d°C · Resume: %3$d°C</string>
+    <string name="command_copy_details">Copy details</string>
+    <string name="command_details_copied">Command details copied</string>
 </resources>

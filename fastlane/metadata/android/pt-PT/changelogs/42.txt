@@ -1,0 +1,1 @@
+Corrige a aplicação de perfis com a temperatura do ACC-NG atual. Mostra a retoma em °C, preserva os perfis antigos e adiciona Copiar detalhes aos resultados dos comandos.
