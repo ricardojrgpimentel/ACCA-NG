@@ -20,10 +20,16 @@ import mattecarra.accapp.models.AccHealthIssue
 import mattecarra.accapp.utils.AccHealthText
 import mattecarra.accapp.utils.ScopedAppActivity
 import mattecarra.accapp.viewmodel.AccTroubleshootViewModel
+import mattecarra.accapp.viewmodel.AccCommandState
 
 class AccTroubleshootActivity : ScopedAppActivity() {
     private val model: AccTroubleshootViewModel by viewModels()
     private lateinit var binding: ActivityAccTroubleshootBinding
+
+    override fun commandResultMessage(state: AccCommandState): CharSequence? =
+        if (state.label == R.string.troubleshoot_calibrate || state.label == R.string.troubleshoot_restore)
+            model.resultMessage.value?.let { getString(it) }
+        else null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

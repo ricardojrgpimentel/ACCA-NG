@@ -40,13 +40,7 @@ object AccTroubleshooter {
                 printf 'sensor=true\n'
                 sed -n 's/^ampFactor_=/factor=/p' /dev/.vr25/acc/.batt-interface.sh 2>/dev/null
             fi
-            seen=false; connected=false
-            for path in /sys/class/power_supply/*/online; do
-                case "${'$'}path" in */bms/*) continue;; esac
-                value=${'$'}(cat "${'$'}path" 2>/dev/null) || continue
-                case "${'$'}value" in 0) seen=true;; 1) seen=true; connected=true;; esac
-            done
-            ${'$'}seen && printf 'online=%s\n' "${'$'}connected"
+            ${ExternalPowerSupply.script()}
             $MANAGER -D >/dev/null 2>&1
             printf 'daemon=%s\n' "${'$'}?"
         """.trimIndent(), 8)

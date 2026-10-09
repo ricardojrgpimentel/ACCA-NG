@@ -69,8 +69,9 @@ abstract class ScopedAppActivity: AppCompatActivity(), CoroutineScope {
         commandDialog?.title(if (state.running) state.label else if (state.successful == true)
             R.string.command_completed else R.string.command_failed_title)
         ui.commandProgress.isVisible = state.running
-        ui.commandMessage.setText(if (state.running) R.string.command_executing else if (state.successful == true)
-            R.string.command_result_ready else R.string.command_failed_message)
+        ui.commandMessage.text = if (!state.running) commandResultMessage(state) ?: getString(
+            if (state.successful == true) R.string.command_result_ready else R.string.command_failed_message)
+            else getString(R.string.command_executing)
         ui.commandMessage.setPaddingRelative(if (state.running) (16 * resources.displayMetrics.density).toInt() else 0,
             0, 0, 0)
         ui.commandDetailsToggle.setText(if (state.detailsExpanded) R.string.command_hide_details else R.string.command_show_details)
@@ -100,6 +101,8 @@ abstract class ScopedAppActivity: AppCompatActivity(), CoroutineScope {
             }
         }
     }
+
+    protected open fun commandResultMessage(state: AccCommandState): CharSequence? = null
 
     private fun dismissCommandDialog() {
         commandDialog?.dismiss()
