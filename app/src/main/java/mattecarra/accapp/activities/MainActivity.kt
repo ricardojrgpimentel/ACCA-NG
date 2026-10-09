@@ -34,6 +34,7 @@ import mattecarra.accapp.utils.CommandTraceContext
 import mattecarra.accapp.Preferences
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
+import mattecarra.accapp.acc.AccNg
 import mattecarra.accapp.databinding.ActivityMainBinding
 import mattecarra.accapp.dialogs.*
 import mattecarra.accapp.djs.Djs
@@ -312,13 +313,34 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
         }
     }
 
-    private fun checkAccInstalled(): Boolean {
+    private fun checkAccInstalled(installationAccepted: Boolean = false): Boolean {
         val version = _preferences.accVersion
+        val installed = Acc.isAccInstalled(filesDir)
 
-        if (!Acc.isAccInstalled(filesDir) || (version == "bundled" && Acc.isInstalledAccOutdated()))
+        // Explain the root module before first setup or migration from another ACC.
+        // Updating an existing ACC-NG keeps using the normal update flow.
+        if ((!installed || !AccNg.isInstalled()) && !installationAccepted) {
+            MaterialDialog(this).show {
+                title(R.string.ng_setup_title)
+                message(R.string.ng_setup_message)
+                positiveButton(R.string.ng_setup_install) {
+                    if (checkAccInstalled(installationAccepted = true)) initUi()
+                }
+                negativeButton(android.R.string.cancel) { finish() }
+                cancelOnTouchOutside(false)
+                onKeyCodeBackPressed {
+                    dismiss()
+                    finish()
+                    false
+                }
+            }
+            return false
+        }
+
+        if (!installed || !AccNg.isInstalled() || (version == "bundled" && Acc.isInstalledAccOutdated()))
         {
             val dialog = MaterialDialog(this).show {
-                title(R.string.installing_acc)
+                title(R.string.ng_setup_installing)
                 progress(R.string.wait)
                 cancelOnTouchOutside(false)
                 onKeyCodeBackPressed { false }
@@ -343,7 +365,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
                                     message(R.string.installation_failed_non_bundled)
                                     positiveButton(R.string.install_bundled_version) {
                                         _preferences.accVersion = "bundled"
-                                        if (checkAccInstalled()) {
+                                        if (checkAccInstalled(installationAccepted = true)) {
                                             initUi()
                                         }
                                     }
@@ -357,7 +379,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
                                                     accVersionSingleChoice(_preferences.accVersion) { version ->
                                                         _preferences.accVersion = version
 
-                                                        if (checkAccInstalled()) {
+                                                        if (checkAccInstalled(installationAccepted = true)) {
                                                             initUi()
                                                         }
                                                     }
@@ -385,7 +407,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
                                     title(R.string.installation_failed_busybox_title)
                                     message(R.string.installation_failed_busybox)
                                     positiveButton(R.string.retry) {
-                                        if (checkAccInstalled()) {
+                                        if (checkAccInstalled(installationAccepted = true)) {
                                             initUi()
                                         }
                                     }
@@ -401,7 +423,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
                                     title(R.string.acc_installation_failed_title)
                                     message(R.string.acc_installation_failed)
                                     positiveButton(R.string.retry) {
-                                        if (checkAccInstalled())
+                                        if (checkAccInstalled(installationAccepted = true))
                                             initUi()
                                     }
                                     negativeButton {
@@ -550,7 +572,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
         {
             MaterialDialog(this).show {
                 title(R.string.tile_acc_no_root)
-                message(R.string.no_root_message)
+                message(R.string.ng_setup_root_required)
                 positiveButton(android.R.string.ok) { finish() }
                 cancelOnTouchOutside(false)
                 onKeyCodeBackPressed {

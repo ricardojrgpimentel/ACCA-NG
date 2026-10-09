@@ -153,9 +153,8 @@ object Acc {
             // Module installs can take a while on slow storage: generous bound.
             val res = RootShell.exec("sh ${installShFile.absolutePath} acc", RootShell.LONG_TIMEOUT_SECS)
 
-            val version = getAccVersion() ?: throw java.lang.Exception("ACC installation failed")
-
             if (!res.isSuccess) return@withContext res
+            val version = getAccVersion() ?: throw java.lang.Exception("ACC installation failed")
             check(AccNg.isInstalled()) { "Installed engine is not ACC-NG" }
             createAccInstance()
             // Notices use the app language; configuration/profile writes keep it.

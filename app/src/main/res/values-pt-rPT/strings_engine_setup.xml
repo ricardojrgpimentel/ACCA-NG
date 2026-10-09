@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ng_setup_title">Configurar o ACC-NG</string>
+    <string name="ng_setup_message">A AccA-NG precisa do motor de carregamento ACC-NG. A app instala-o com acesso root. No Magisk, aparece como Advanced Charging Controller NG (ACC-NG).\n\nNão precisas de descarregar nem instalar um ZIP manualmente. Se já existir outro ACC, será substituído, mantendo as definições.\n\nSe for pedida calibração, desliga todos os carregadores e segue o Diagnóstico do carregamento. Depois, escolhe os limites ou aplica um perfil na app.</string>
+    <string name="ng_setup_install">Configurar</string>
+    <string name="ng_setup_installing">A configurar o ACC-NG</string>
+    <string name="ng_setup_root_required">A AccA-NG precisa de acesso root para instalar o ACC-NG e controlar o carregamento. Autoriza a AccA-NG na secção Superutilizador do teu gestor de root e volta a abrir a app.</string>
+</resources>

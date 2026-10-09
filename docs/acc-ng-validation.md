@@ -41,3 +41,28 @@ This is a prerelease verified on this Samsung/kernel combination. Boot persisten
 a physical unplug/replug notification cycle and other devices have not been tested.
 Thermal thresholds were tested with isolated fixtures; the physical battery was
 not heated or its sensor spoofed. Critical original ACC control paths remain intact.
+
+## Clean module setup flow
+
+On Samsung SM-G975F, the ACC module, its runtime configuration and volatile
+runtime directory were removed after a validated module/configuration backup.
+DJS, LSPosed and the app's saved profiles were retained. This checks a clean
+engine installation; it is not a wipe of the app's private data.
+
+- With no module present, the app displays “Configurar o ACC-NG” and explains
+  root access, installation in Magisk and replacement of another ACC.
+- The module remains absent until “Configurar” is accepted.
+- Accepting installs the bundled v1.0.2-ng without downloading a ZIP or
+  rebooting. The app opens the dashboard with a new configuration (75% pause,
+  70% resume) and correctly shows no active profile.
+- Magisk was reopened and its Modules page displayed ACC-NG v1.0.2-ng with
+  the enable switch on. DJS and LSPosed remained enabled.
+- On this kernel, a fresh configuration needs discharge-current calibration.
+  The dashboard and diagnostics explicitly explain disconnecting chargers.
+  Installing the module alone does not complete that calibration.
+- Root permission was already granted on this device. The no-root message now
+  explains where to allow AccA-NG and how to reopen it; a newly denied root
+  grant has not been physically tested.
+
+Screenshots and the module/configuration backup are retained in ignored
+`app/build/device-backups/acc-ng-clean-20261009-112854/`.
