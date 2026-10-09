@@ -215,3 +215,30 @@ in ignored build output; configuration backups remain private on the phone.
 Cable disconnect/reconnect for this candidate, locked boot, current/voltage
 reset/reapplication, rollback and OEM thermal policy remain pending. The CI
 run completed successfully; the candidate has not been published.
+
+
+### Candidate physical USB disconnect/reconnect
+
+The user disconnected and reconnected USB with the candidate installed. A
+bounded five-minute logger captured external online nodes, battery current,
+status, controls and NG state without requiring a live ADB connection.
+
+- With batt_slate_mode=0, USB online changed from 1 to 0 and current became
+  negative. NG state changed to connected=false / Discharging within the
+  sampled seven-second window. Engine event history records disconnected at
+  21:27:09 UTC.
+- USB online returned to 1; NG connection state updated within the sampled
+  two-second window. Event history records connected at 21:27:46 UTC, followed
+  by idle and resumed. User-visible notification delivery was not confirmed.
+- Earlier periodic USB online=0 samples coincided with the configured slate
+  cooldown control; they did not produce disconnected events. These samples
+  are distinct from the physical unplug with slate control off.
+- Final readback retained resume 70% / pause 80%, negative discharge polarity,
+  notification preferences and one daemon. Physical battery temperature was
+  below 29 °C. No limits were changed for this cable test.
+
+Cable connection detection passes on this device/candidate. State refresh
+latency and automatic discovery remain separate open work; locked boot and
+other pending physical checks above are still unverified. Pre-reboot engine
+configuration and boot identity are saved privately on the phone for the next
+check.

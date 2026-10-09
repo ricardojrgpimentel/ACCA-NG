@@ -113,4 +113,4 @@ Na app: `python3 tools/check-engine-contract.py` seguido de `./gradlew :app:test
 
 ### Próximo incremento
 
-R1.2: descoberta/cache dos controlos e exposição de suporte. R1.4: distinguir configuração gravada de aplicação física. R2.1/R2.4: blacklist e semântica comum de alimentação entre controlador, eventos e app. Validação física parcial de I1/I2 registada: upgrade, reinício e pausa/retoma com switch conhecido passaram. Cabo, resets/reaplicação de potência, OEM, rollback e reboot permanecem pendentes.
+R1.2: descoberta/cache dos controlos e exposição de suporte. R1.4: distinguir configuração gravada de aplicação física. R2.1/R2.4: blacklist e semântica comum de alimentação entre controlador, eventos e app. Validação física parcial de I1/I2 registada: upgrade, reinício e pausa/retoma com switch conhecido passaram. Deteção física de desligar/religar USB também passou. Resets/reaplicação de potência, OEM, rollback e reboot permanecem pendentes.
