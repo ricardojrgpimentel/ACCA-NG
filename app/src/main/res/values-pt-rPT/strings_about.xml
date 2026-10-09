@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_title">Sobre</string>
+    <string name="about_ng_intro">Controlo avançado do carregamento.\nUm fork independente de AccA.</string>
+    <string name="about_ng_debug">Debug</string>
+    <string name="about_ng_release">Versão final</string>
+    <string name="about_ng_maintained_by">Mantido por</string>
+    <string name="about_ng_maintainer_role">Desenvolvimento e manutenção do fork</string>
+    <string name="about_ng_profile">Perfil no GitHub</string>
+    <string name="about_ng_project">Projeto no GitHub</string>
+    <string name="about_ng_issues">Reportar problema</string>
+    <string name="about_ng_origin">Origem e créditos</string>
+    <string name="about_ng_origin_blurb">ACCA-NG continua o trabalho de AccA, com melhorias de interface, compatibilidade e fiabilidade.</string>
+    <string name="about_ng_original_team">Equipa do projeto original AccA</string>
+    <string name="about_ng_acc_author">Autor de ACC e DJS</string>
+    <string name="about_ng_original_project">Projeto original AccA</string>
+    <string name="about_ng_community">Comunidade ACC</string>
+    <string name="about_ng_technical">Informação técnica</string>
+    <string name="about_ng_app_version">Versão da app</string>
+    <string name="about_ng_acc_version">ACC instalado</string>
+    <string name="about_ng_api_version">Versão da interface ACC</string>
+    <string name="about_ng_loading">A consultar…</string>
+    <string name="about_ng_unavailable">Indisponível</string>
+    <string name="about_ng_licenses">Licença e atribuições</string>
+    <string name="about_ng_license_blurb">Software open source sob GPL-3.0. Direitos de autor originais de AccA: © 2019–2021 MatteCarra, Squabbi e VR25.</string>
+    <string name="about_ng_view_license">Ler a licença GPL-3.0</string>
+    <string name="about_ng_attributions">Desenvolvido com AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs e outras bibliotecas open source.\n\nÍcone do Telegram: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Projeto open source · Fork independente</string>
+    <string name="about_ng_expanded">Expandido</string>
+    <string name="about_ng_collapsed">Recolhido</string>
+</resources>

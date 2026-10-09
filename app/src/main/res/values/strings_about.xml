@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_ng_brand" translatable="false">ACCA-NG</string>
+    <string name="about_ng_maintainer" translatable="false">Ricardo Pimentel</string>
+    <string name="about_ng_maintainer_initials" translatable="false">RP</string>
+    <string name="about_ng_matte" translatable="false">Matteo Carrara</string>
+    <string name="about_ng_squabbi" translatable="false">Squabbi</string>
+    <string name="about_ng_vr25" translatable="false">VR-25</string>
+    <string name="about_ng_build_summary" translatable="false">%1$s · %2$s</string>
+    <string name="about_ng_version_detail" translatable="false">%1$s (%2$d)</string>
+    <string name="about_ng_title">About</string>
+    <string name="about_ng_intro">Advanced charging control.\nAn independent fork of AccA.</string>
+    <string name="about_ng_debug">Debug</string>
+    <string name="about_ng_release">Release</string>
+    <string name="about_ng_maintained_by">Maintained by</string>
+    <string name="about_ng_maintainer_role">Development and maintenance of the fork</string>
+    <string name="about_ng_profile">GitHub profile</string>
+    <string name="about_ng_project">Project on GitHub</string>
+    <string name="about_ng_issues">Report an issue</string>
+    <string name="about_ng_origin">Origin and credits</string>
+    <string name="about_ng_origin_blurb">ACCA-NG builds on AccA, with improvements to the interface, compatibility and reliability.</string>
+    <string name="about_ng_original_team">Original AccA team</string>
+    <string name="about_ng_acc_author">Author of ACC and DJS</string>
+    <string name="about_ng_original_project">Original AccA project</string>
+    <string name="about_ng_community">ACC community</string>
+    <string name="about_ng_technical">Technical information</string>
+    <string name="about_ng_app_version">App version</string>
+    <string name="about_ng_acc_version">Installed ACC</string>
+    <string name="about_ng_api_version">ACC interface version</string>
+    <string name="about_ng_loading">Reading…</string>
+    <string name="about_ng_unavailable">Unavailable</string>
+    <string name="about_ng_licenses">License and attributions</string>
+    <string name="about_ng_license_blurb">Open-source software under GPL-3.0. Original AccA copyright: © 2019–2021 MatteCarra, Squabbi and VR25.</string>
+    <string name="about_ng_view_license">Read the GPL-3.0 license</string>
+    <string name="about_ng_attributions">Built with AndroidX, Material Components, libsu, Room, Moshi, Material Dialogs and other open-source libraries.\n\nTelegram icon: Pixel perfect / Flaticon.</string>
+    <string name="about_ng_footer">Open-source project · Independent fork</string>
+    <string name="about_ng_expanded">Expanded</string>
+    <string name="about_ng_collapsed">Collapsed</string>
+</resources>
