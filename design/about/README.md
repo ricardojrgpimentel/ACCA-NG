@@ -30,7 +30,24 @@ changes and includes accessibility state descriptions and section headings.
   that missing ACC/root returns `Indisponível` without blocking the screen.
 - A temporary debug-only entry point was used for emulator preview and removed.
   The final APK retains the original non-exported About activity.
-- The connected Samsung app was not updated or reinstalled.
+- The emulator preview did not update or reinstall the connected Samsung app.
 
 Screenshots: `about-light.png`, `about-dark.png`, `about-credits-dark.png`.
 These are captures of the native screen, not design mockups.
+
+## Samsung installation
+
+On 9 October 2026, the user requested reinstalling the new debug APK on the
+connected SM-G975F. The installed APK and private app data were backed up before
+uninstalling. The new APK uses a different debug signing certificate, so a full
+reinstall was needed. Preferences and databases were restored, ownership was
+mapped to the new app UID, SELinux contexts were restored, and the four database
+and preference file checksums matched the backup before launching the app.
+Symlinks to the existing ACC/DJS modules and notification permission were kept.
+Private backups are stored under the ignored `app/build/device-backups/` folder.
+
+The installed APK SHA-256 matches the local build. The dashboard shows ACC
+running and the previously selected charging profile. On-device About validation
+confirmed the new maintainer/credits layout, technical and license expansion,
+ACC `v2023.10.16 (202310160)`, and interface version `202310160`.
+`about-samsung-technical.png` captures the expanded sections on the Samsung.
