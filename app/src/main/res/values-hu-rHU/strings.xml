@@ -13,7 +13,6 @@
     <string name="title_schedules">Ütemező</string>
     <string name="title_settings">Beállítások</string>
     <!-- ACC Daemon Status -->
-    <string name="title_acc">ACC</string>
     <string name="title_acc_daemon">ETK szolgáltatás</string>
     <string name="acc_daemon_status_running">Az ETK szolgáltatás fut</string>
     <string name="acc_daemon_status_not_running">Az ETK szolgáltatás nem fut</string>

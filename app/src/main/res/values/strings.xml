@@ -17,7 +17,7 @@
     <string name="title_settings">Settings</string>
 
     <!-- ACC Daemon Status -->
-    <string name="title_acc">ACC</string>
+    <string name="title_acc" translatable="false">ACC-NG</string>
     <string name="title_acc_daemon">ACC Daemon</string>
     <string name="acc_daemon_status_running">ACC Daemon is Running</string>
     <string name="acc_daemon_status_not_running">ACC Daemon is Not Running</string>
@@ -483,4 +483,15 @@
     <string name="swd_show_volt">Show Voltage</string>
     <string name="swd_show_profile">Show profile</string>
 
+
+    <!-- Engine maintained for AccA-NG -->
+    <string name="ng_engine_title">ACC-NG version</string>
+    <string name="ng_engine_summary">Charging engine maintained for AccA-NG. The bundled version is tested with this app.</string>
+    <string name="ng_engine_picker_message">Select an ACC-NG version.</string>
+    <string name="ng_engine_bundled">ACC-NG bundled (recommended)</string>
+    <string name="ng_engine_main">ACC-NG development (main)</string>
+    <string name="ng_engine_main_warning">The development version may contain changes that have not been tested with this app.</string>
+    <string name="ng_engine_notifications_title">Charging notices</string>
+    <string name="ng_engine_notifications_summary">Connection, pause, resume, temperature and low-battery notices from ACC-NG. Charging protection remains active when these notices are off.</string>
+    <string name="ng_engine_setting_failed">Could not confirm the setting in ACC-NG.</string>
 </resources>

@@ -350,8 +350,8 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
                                     negativeButton(R.string.select_different_version) {
                                         MaterialDialog(this@MainActivity) //select a different acc version dailog
                                             .show {
-                                                title(R.string.acc_version_picker_title)
-                                                message(R.string.acc_version_picker_message)
+                                                title(R.string.ng_engine_title)
+                                                message(R.string.ng_engine_picker_message)
                                                 cancelOnTouchOutside(false)
                                                 this@MainActivity.launch {
                                                     accVersionSingleChoice(_preferences.accVersion) { version ->
@@ -434,7 +434,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
         }
 
         val time = System.currentTimeMillis() / 1000
-        if ((version == "master" || version == "dev") && time - _preferences.lastUpdateCheck > 86400) {
+        if ((version == "main") && time - _preferences.lastUpdateCheck > 86400) {
             _preferences.lastUpdateCheck = time
             checkUpdates(version)
         }
@@ -450,7 +450,7 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
         launch {
             val lastCommit = GithubUtils.getLatestAccCommit(version)
 
-            if (lastCommit != _preferences.lastCommit) {
+            if (lastCommit != null && lastCommit != _preferences.lastCommit) {
                 _preferences.lastCommit = lastCommit
 
                 MaterialDialog(this@MainActivity).show {

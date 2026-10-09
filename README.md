@@ -7,7 +7,7 @@
 >
 > Key changes vs upstream `develop`:
 > - Build: Gradle 8.12, AGP 8.7.3, Kotlin 2.0, Java 17, `compileSdk`/`targetSdk` 36, `minSdk` 26, KSP (Room/Moshi), Maven Central + JitPack (jcenter removed).
-> - Bundled daemons: ACC v2023.10.16, DJS v2021.12.14.
+> - Bundled engines: ACC-NG v1.0.2-ng (based on ACC v2023.10.16), DJS v2021.12.14.
 > - Android 12–16 runtime fixes: `PendingIntent` mutability, `registerReceiver` exported flags, `AccBootReceiver` registered in the manifest, widget updater as a foreground service, scoped-storage logging, `fitsSystemWindows` edge-to-edge layouts, new-API nullability signatures.
 > - Bug fixes from upstream issues: async ACC config load in the editor (no more `runBlocking` on the UI thread), crash-proof config parser, locale-safe voltage/current/temperature formatting, V/A/W unit normalisation for new ACC `acca -i` output, daemon stop via `acca -D stop` (the old `accd.` shortcut spawned stray processes).
 > - Vendored `CircleProgressBar` view (artifact never reached Maven Central).
@@ -25,6 +25,19 @@
 > - Dashboard config card shows an error-with-retry state instead of spinning
 >   forever; tapping the card retries.
 > - Idle-mode probe is skipped when not charging (it hangs otherwise).
+
+### ACC-NG engine
+
+[ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG) is the charging engine
+maintained for AccA-NG. It keeps the tested ACC v2023.10.16 control loop and
+adds observed-state notifications, English/Portuguese messages and an independent
+update channel. Charging limits belong to the app profiles, never to fixed module
+percentages. Settings includes an engine-notification switch; it does not disable
+charging protection. Saved profiles preserve this global engine setting.
+
+The Magisk ID remains `acc`, replacing the previous engine while keeping runtime
+and DJS scheduling paths compatible. Installation preserves configuration and
+keeps dated root backups. Only NG versions are offered by the version selector.
 
 ### Charging diagnostics
 

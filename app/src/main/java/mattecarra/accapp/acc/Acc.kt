@@ -19,9 +19,8 @@ import java.net.URL
 import kotlin.math.abs
 
 object Acc {
-    // Bundled daemon updated to v2023.10.16 (was 2021.8.31). Devices running
-    // an older ACC are offered the bundled one on startup.
-    const val bundledVersion = 202310160
+    // ACC-NG release code is independent of its tested upstream config schema.
+    const val bundledVersion = 202610092
 
     /**
      * App files dir. Must be initialised from MainApplication.onCreate via
@@ -83,7 +82,7 @@ object Acc {
     }
 
     fun isInstalledAccOutdated(): Boolean = runBlocking {
-        instance.getAccVersion()?.let { it < bundledVersion } ?: true
+        !AccNg.isInstalled() || (instance.getAccVersion()?.let { it < bundledVersion } ?: true)
     }
 
     fun initAcc(installationDir: File): Boolean {
@@ -114,7 +113,10 @@ object Acc {
         try {
             val bundleFile = File(context.filesDir, "acc_bundle.tar.gz")
 
-            BufferedInputStream(URL("https://github.com/VR-25/acc/archive/$version.tar.gz").openStream())
+            BufferedInputStream(URL(AccNg.archiveUrl(version)).openConnection().apply {
+                connectTimeout = 10000
+                readTimeout = 15000
+            }.getInputStream())
                 .use { inStream ->
                     FileOutputStream(bundleFile)
                         .use {
@@ -153,7 +155,12 @@ object Acc {
 
             val version = getAccVersion() ?: throw java.lang.Exception("ACC installation failed")
 
+            if (!res.isSuccess) return@withContext res
+            check(AccNg.isInstalled()) { "Installed engine is not ACC-NG" }
             createAccInstance()
+            // Notices use the app language; configuration/profile writes keep it.
+            AccNg.setNotificationLanguage(context)
+            if (!ModernAccDaemon.start()) throw java.io.IOException("ACC-NG daemon did not start")
 
             if(version >= 202002292) {
                 val preferences = Preferences(context)

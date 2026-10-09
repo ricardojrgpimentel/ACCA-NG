@@ -3,13 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:title="Acc"
+        android:title="ACC-NG"
         app:iconSpaceReserved="false">
         <Preference
             app:layout="@layout/preference_acca"             android:key="acc_version"
-            android:summary="@string/acc_version_preference_description"
-            android:title="@string/acc_version_preference_title"
+            android:summary="@string/ng_engine_summary"
+            android:title="@string/ng_engine_title"
             app:iconSpaceReserved="false"></Preference>
+        <CheckBoxPreference
+            app:layout="@layout/preference_acca"
+            android:key="ng_engine_notifications"
+            android:persistent="false"
+            android:title="@string/ng_engine_notifications_title"
+            android:summary="@string/ng_engine_notifications_summary"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

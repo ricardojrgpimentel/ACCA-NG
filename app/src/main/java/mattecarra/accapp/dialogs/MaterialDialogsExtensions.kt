@@ -53,8 +53,8 @@ import java.io.File
     suspend fun MaterialDialog.accVersionSingleChoice(
         accVersion: String, callback: VersionChoiceListener): MaterialDialog
     {
-        val options = context.resources.getStringArray(R.array.acc_version_options).toMutableList()
-        val optionValues = context.resources.getStringArray(R.array.acc_version_option_values).toMutableList()
+        val options = mutableListOf(context.getString(R.string.ng_engine_bundled), context.getString(R.string.ng_engine_main))
+        val optionValues = mutableListOf("bundled", "main")
         options.addAll(GithubUtils.listAccVersions())
 
         return listItemsSingleChoice(

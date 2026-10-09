@@ -13,7 +13,6 @@
     <string name="title_schedules">Заплановано</string>
     <string name="title_settings">Налаштування</string>
     <!-- ACC Daemon Status -->
-    <string name="title_acc">ACC</string>
     <string name="title_acc_daemon">ACC Фонова служба</string>
     <string name="acc_daemon_status_running">Фонова служба ACC працює</string>
     <string name="acc_daemon_status_not_running">Фонова служба ACC недоступна</string>

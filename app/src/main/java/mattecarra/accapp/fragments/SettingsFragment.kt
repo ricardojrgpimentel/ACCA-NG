@@ -15,6 +15,7 @@ import kotlinx.coroutines.*
 import mattecarra.accapp.Preferences
 import mattecarra.accapp.R
 import mattecarra.accapp.acc.Acc
+import mattecarra.accapp.acc.AccNg
 import mattecarra.accapp.dialogs.*
 import mattecarra.accapp.utils.Constants.ACC_VERSION
 import mattecarra.accapp.djs.Djs
@@ -34,8 +35,9 @@ class SettingsFragment : PreferenceFragmentCompat(), CoroutineScope {
         get() = job + Dispatchers.Main
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        // PreferenceFragmentCompat invokes onCreatePreferences from super.
         job = Job()
+        super.onCreate(savedInstanceState)
     }
 
     override fun onDestroy() {
@@ -76,6 +78,27 @@ class SettingsFragment : PreferenceFragmentCompat(), CoroutineScope {
             true
         }
 
+        val engineNotices = findPreference<CheckBoxPreference>("ng_engine_notifications")
+        engineNotices?.isEnabled = false
+        launch {
+            val enabled = AccNg.notificationsEnabled()
+            engineNotices?.isChecked = enabled ?: false
+            engineNotices?.isEnabled = enabled != null
+            if (enabled != null) AccNg.setNotificationLanguage(requireContext())
+        }
+        engineNotices?.setOnPreferenceChangeListener { _, newValue ->
+            context?.let { context ->
+                engineNotices.isEnabled = false
+                launch {
+                    val enabled = newValue as Boolean
+                    if (AccNg.setNotifications(context, enabled)) engineNotices.isChecked = enabled
+                    else android.widget.Toast.makeText(context, R.string.ng_engine_setting_failed, android.widget.Toast.LENGTH_LONG).show()
+                    engineNotices.isEnabled = true
+                }
+            }
+            false // Reflect only the value confirmed by the engine.
+        }
+
         val accVersion = findPreference<Preference>(ACC_VERSION)
         accVersion?.onPreferenceClickListener = Preference.OnPreferenceClickListener {
             context?.let { context ->
@@ -83,8 +106,8 @@ class SettingsFragment : PreferenceFragmentCompat(), CoroutineScope {
 
                 MaterialDialog(context)
                     .show {
-                        title(R.string.acc_version_picker_title)
-                        message(R.string.acc_version_picker_message)
+                        title(R.string.ng_engine_title)
+                        message(R.string.ng_engine_picker_message)
                         cancelOnTouchOutside(false)
                         launch {
                             accVersionSingleChoice(preferences.accVersion) { version ->
@@ -107,7 +130,7 @@ class SettingsFragment : PreferenceFragmentCompat(), CoroutineScope {
 
                                         when(res?.code) {
                                             0 -> {
-                                                if(version == "master" || version == "dev")
+                                                if(version == "main")
                                                     preferences.lastUpdateCheck = System.currentTimeMillis() / 1000
                                                 preferences.lastCommit = GithubUtils.getLatestAccCommit(version)
                                                 preferences.accVersion = version
@@ -132,7 +155,7 @@ class SettingsFragment : PreferenceFragmentCompat(), CoroutineScope {
                                     MaterialDialog(context)
                                         .show {
                                             title(R.string.acc_version_compatibility_warning_title)
-                                            message(R.string.acc_version_compatibility_warning_description)
+                                            message(R.string.ng_engine_main_warning)
                                             positiveButton(android.R.string.yes) {
                                                 installVersion()
                                             }

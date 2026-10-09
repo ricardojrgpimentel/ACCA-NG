@@ -16,4 +16,15 @@
     <!-- Import and Export -->
     <!-- Config Parse Error -->
     <!-- Widget Label and Activity -->
+
+    <!-- Engine maintained for AccA-NG -->
+    <string name="ng_engine_title">Versão do ACC-NG</string>
+    <string name="ng_engine_summary">Motor de carregamento mantido para a AccA-NG. A versão incluída é testada com esta app.</string>
+    <string name="ng_engine_picker_message">Seleciona uma versão do ACC-NG.</string>
+    <string name="ng_engine_bundled">ACC-NG incluído (recomendado)</string>
+    <string name="ng_engine_main">ACC-NG em desenvolvimento (main)</string>
+    <string name="ng_engine_main_warning">A versão em desenvolvimento pode conter alterações ainda não testadas com esta app.</string>
+    <string name="ng_engine_notifications_title">Avisos de carregamento</string>
+    <string name="ng_engine_notifications_summary">Avisos do ACC-NG sobre ligação, pausa, retoma, temperatura e bateria fraca. A proteção do carregamento mantém-se ativa com estes avisos desligados.</string>
+    <string name="ng_engine_setting_failed">Não foi possível confirmar a definição no ACC-NG.</string>
 </resources>
