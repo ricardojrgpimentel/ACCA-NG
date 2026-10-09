@@ -1,1 +1,1 @@
-AccA empowers users to have full control over the device charge cycle.
+Charging profiles and diagnostics for rooted Android devices.

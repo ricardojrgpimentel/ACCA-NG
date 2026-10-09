@@ -1,0 +1,1 @@
+First public beta. ACC-NG v1.0.3-ng, refreshed interface, charging diagnostics, current calibration and verified profile settings. Restores DJS installation on clean setups. Android 8.0+ and root required; hardware support varies.

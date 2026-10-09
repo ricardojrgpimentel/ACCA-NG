@@ -10,7 +10,12 @@
 
 id=acc
 domain=vr25
-data_dir=/data/adb/$domain/${1:-$id}-data
+case "${1:-$id}" in
+  acc|djs) ;;
+  *) echo "Unsupported module" >&2; exit 5 ;;
+esac
+module_id=${1:-$id}
+data_dir=/data/adb/$domain/$module_id-data
 
 # log
 [ -z "${LINENO-}" ] || export PS4='$LINENO: '
@@ -58,11 +63,12 @@ set -e
 
 # this runs on exit if the installer is launched by a front-end app
 copy_log() {
-  rm -rf ${1-$id}[-_]*/ ACC-NG-*/ 2>/dev/null
+  rm -rf $module_id[-_]*/ 2>/dev/null
+  [ "$module_id" != acc ] || rm -rf ACC-NG-*/ 2>/dev/null
   case "$PWD" in
     /data/data/*|/data/user/*)
       mkdir -p logs
-      cp -af $data_dir/logs/install.log logs/${1:-$id}-install.log 2>/dev/null || return 0
+      cp -af $data_dir/logs/install.log logs/$module_id-install.log 2>/dev/null || return 0
       chown -R $(stat -c %u:%g .) logs
       /system/bin/restorecon -R logs
     ;;
@@ -71,18 +77,25 @@ copy_log() {
 trap copy_log EXIT
 
 # extract tarball
-rm -rf ${1:-$id}[-_]*/ ACC-NG-*/ 2>/dev/null
+rm -rf ${1:-$id}[-_]*/ 2>/dev/null
+[ "${1:-$id}" != acc ] || rm -rf ACC-NG-*/ 2>/dev/null
 test -f ${1:-$id}[-_]*.tar.gz && ext=tar.gz || ext=tgz
 tar -xf ${1:-$id}[-_]*.$ext
 unset ext
 
-# The bundled package uses acc-ng-*, while GitHub source archives use ACC-NG-*.
-# Accept only one source with our API marker; never select an upstream archive.
+# Keep ACC-NG selection strict while also supporting the bundled DJS scheduler.
+# Each module must have exactly one matching source directory and installer.
 select_source() {
-  local candidate= selected=
-  for candidate in acc[-_]*/ ACC-NG-*/; do
+  local candidate= selected= module=${1:-acc}
+  for candidate in acc[-_]*/ ACC-NG-*/ djs[-_]*/; do
     [ -f "${candidate}module.prop" ] || continue
-    [ "$(sed -n 's/^ngApiVersion=//p' "${candidate}module.prop")" = 1 ] || continue
+    [ "$(sed -n 's/^id=//p' "${candidate}module.prop")" = "$module" ] || continue
+    case "$module:$candidate" in
+      acc:acc[-_]*|acc:ACC-NG-*)
+        [ "$(sed -n 's/^ngApiVersion=//p' "${candidate}module.prop")" = 1 ] || continue ;;
+      djs:djs[-_]*) ;;
+      *) continue ;;
+    esac
     [ -f "${candidate}install.sh" ] || continue
     [ -z "$selected" ] || return 1
     selected=${candidate%/}
@@ -90,7 +103,7 @@ select_source() {
   [ -n "$selected" ] || return 1
   printf '%s' "$selected"
 }
-src_dir=$(select_source) || exit 5
+src_dir=$(select_source "${1:-$id}") || exit 5
 
 # prevent frontends from downgrading/reinstalling modules
 case "$PWD" in
@@ -98,7 +111,13 @@ case "$PWD" in
     get_ver() { sed -n '/^versionCode=/s/.*=//p' ${1}module.prop 2>/dev/null || echo 0; }
     bundled_ver=$(get_ver "$src_dir/")
     regular_ver=$(get_ver /data/adb/$domain/${1:-$id}/)
-    if [ "$(sed -n 's/^ngApiVersion=//p' /data/adb/$domain/${1:-$id}/module.prop 2>/dev/null)" = 1 ] && [ $bundled_ver -le $regular_ver ] && [ $regular_ver -ne 0 ]; then
+    compatible=false
+    if [ "${1:-$id}" = acc ]; then
+      [ "$(sed -n 's/^ngApiVersion=//p' /data/adb/$domain/acc/module.prop 2>/dev/null)" != 1 ] || compatible=true
+    else
+      [ "$(sed -n 's/^id=//p' /data/adb/$domain/djs/module.prop 2>/dev/null)" != djs ] || compatible=true
+    fi
+    if [ "$compatible" = true ] && [ $bundled_ver -le $regular_ver ] && [ $regular_ver -ne 0 ]; then
       ln -sfn $(readlink -f /data/adb/$domain/${1:-$id}) .
       exit 0
     fi 2>/dev/null || :

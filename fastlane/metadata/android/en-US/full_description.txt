@@ -1,10 +1,10 @@
-AccA is a frontend app for ACC.
-ACC is a completely configurable tool that allows to control how your device charges:
-   - Limit charging at a certain percentage
-   - Shutdown the device when battery is too low (ex 5%)
-   - Control battery temperatures and act accordingly
-   - Schedule operations during night
-   - Slow down charging
-   - and much much more
-You can find instructions for running acc at the [https://github.com/VR-25/acc/blob/master/README.md documentation].
-The app requires root to read and write charging control files.
+AccA-NG is an independent, modernised fork of AccA for rooted Android devices.
+
+Set charging pause/resume limits, save profiles, inspect battery readings and calibrate current readings. The app bundles ACC-NG v1.0.3-ng and the DJS scheduler. Setup explains the root module installation before you accept it.
+
+Requires Android 8.0 or newer and root access. Charging control depends on your device kernel. This is a beta with limited device testing; verify charging behaviour on your device. Existing ACC modules are replaced by ACC-NG during setup, with configuration backups.
+
+Free software under GPL-3.0-or-later. No account or advertising SDK. Engine version checks and downloads contact GitHub. Diagnostics stay local unless you share them.
+
+Source and support: https://github.com/ricardojrgpimentel/ACCA-NG
+Privacy: https://github.com/ricardojrgpimentel/ACCA-NG/blob/main/PRIVACY.md

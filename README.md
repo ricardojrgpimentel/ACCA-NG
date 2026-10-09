@@ -1,127 +1,102 @@
-# AccA-NG (fork of AccA)
+# AccA-NG
 
+<img src="design/branding/icon.png" width="112" alt="AccA-NG icon">
 
+An independent, modernised fork of [AccA](https://github.com/MatteCarra/AccA)
+for controlling charging on rooted Android devices. Maintained by
+[Ricardo Pimentel](https://github.com/ricardojrgpimentel).
 
-> **Fork** of [MatteCarra/AccA](https://github.com/MatteCarra/AccA), modernised for current Android.
-> Installed as `com.accang.app` (side-by-side with the original app).
->
-> Key changes vs upstream `develop`:
-> - Build: Gradle 8.12, AGP 8.7.3, Kotlin 2.0, Java 17, `compileSdk`/`targetSdk` 36, `minSdk` 26, KSP (Room/Moshi), Maven Central + JitPack (jcenter removed).
-> - Bundled engines: ACC-NG v1.0.2-ng (based on ACC v2023.10.16), DJS v2021.12.14.
-> - Android 12–16 runtime fixes: `PendingIntent` mutability, `registerReceiver` exported flags, `AccBootReceiver` registered in the manifest, widget updater as a foreground service, scoped-storage logging, `fitsSystemWindows` edge-to-edge layouts, new-API nullability signatures.
-> - Bug fixes from upstream issues: async ACC config load in the editor (no more `runBlocking` on the UI thread), crash-proof config parser, locale-safe voltage/current/temperature formatting, V/A/W unit normalisation for new ACC `acca -i` output, daemon stop via `acca -D stop` (the old `accd.` shortcut spawned stray processes).
-> - Vendored `CircleProgressBar` view (artifact never reached Maven Central).
->
-> Visual / reliability pass (AccA-NG):
-> - Electric-yellow energy monogram designed with Google Stitch, with adaptive
->   launcher icons and an Android 13+ monochrome themed-icon layer. Logo sources
->   and previews are in [design/branding](design/branding).
-> - All root shell calls go through `RootShell` with a `timeout` bound, so a
->   wedged daemon command can never freeze the app again (root cause of the
->   "infinite loading" reports: `set_ch_curr` waits for *charging* state when
->   control files were never detected).
-> - Config editor loads behind a centered skeleton with pulse; read failures
->   offer Retry / Use-defaults instead of an endless spinner.
-> - Dashboard config card shows an error-with-retry state instead of spinning
->   forever; tapping the card retries.
-> - Idle-mode probe is skipped when not charging (it hangs otherwise).
+**Public beta · Android 8.0+ · Root required · Hardware/kernel dependent**
 
-### ACC-NG engine
+[Download signed APKs](https://github.com/ricardojrgpimentel/ACCA-NG/releases)
+· [Report a problem](https://github.com/ricardojrgpimentel/ACCA-NG/issues)
+· [Privacy](PRIVACY.md)
+· [Build and release](docs/RELEASING.md)
 
-[ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG) is the charging engine
-maintained for AccA-NG. It keeps the tested ACC v2023.10.16 control loop and
-adds observed-state notifications, English/Portuguese messages and an independent
-update channel. Charging limits belong to the app profiles, never to fixed module
-percentages. Settings includes an engine-notification switch; it does not disable
-charging protection. Saved profiles preserve this global engine setting.
+## What it does
 
-The Magisk ID remains `acc`, replacing the previous engine while keeping runtime
-and DJS scheduling paths compatible. Installation preserves configuration and
-keeps dated root backups. Only NG versions are offered by the version selector.
+- Set charge pause/resume limits and save charging profiles.
+- Configure current, voltage and temperature limits where the kernel supports them.
+- Inspect battery readings, charging state and charging-control diagnostics.
+- Calibrate current readings with the charger disconnected.
+- Schedule charging settings through the bundled Daily Job Scheduler (DJS).
+- Use light/dark themes, English/Portuguese setup guidance and inherited translations.
 
-### Charging diagnostics
+The app bundles [ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG)
+**v1.0.3-ng**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
+The engine controls charging in the background; limits come from your settings
+and profiles. Disabling engine notifications does not disable charging protection.
 
-Open **Charging diagnostics** from the ACC status card when charging limits do
-not take effect. The dashboard also reports pending current calibration, a stopped
-service, the known modified service with fixed 90%/80% limits, and sustained battery
-charging above a configured percentage limit (30 seconds of fresh observations).
-A service fingerprint difference is reported as a difference, not proof of a fault.
+<p>
+  <img src="fastlane/metadata/android/pt-PT/images/phoneScreenshots/1-dashboard.png" width="240" alt="Battery dashboard">
+  <img src="fastlane/metadata/android/pt-PT/images/phoneScreenshots/2-profiles.png" width="240" alt="Charging profiles">
+</p>
 
-- **Calibrate current** requires all chargers to be disconnected. Five stable
-  discharge readings over ten seconds determine the sensor polarity and scale;
-  connected, missing, near-zero or mixed-sign readings do not change calibration.
-  The configuration is backed up before a confirmed calibration is written.
-- **Restore bundled service** repairs `accd.sh` from the app's existing ACC bundle
-  when the installed version matches the bundled version. It does not downgrade
-  another version. After confirmation, it backs up the module and configuration
-  under `/data/adb/vr25/acc-data/backup/troubleshoot-<id>/`, validates and atomically
-  replaces the service, restarts ACC and checks the fingerprint and preserved
-  settings. A failed verification attempts to restore the previous executable.
-- **Copy diagnostics** copies current readings and any displayed backup path for
-  manual sharing. Nothing is sent automatically.
+## Install
 
-Profile application now waits for the settings to be read back before reporting
-success. Automatic charging-switch discovery does not deactivate a saved profile;
-an explicitly enforced switch must still match. These checks do not certify a full
-charge/pause/resume cycle or guarantee every kernel's charging controls work.
+1. Download the APK from this project's **GitHub Releases**. The fork is not yet
+   published on F-Droid or Google Play; the original AccA listing is a different app.
+2. Allow installation from your browser/file manager when Android asks, then install.
+3. Open AccA-NG and grant root access through your root manager.
+4. Read the ACC-NG setup explanation and confirm installation. The engine uses the
+   Magisk module ID `acc`, so it replaces an existing ACC engine while preserving
+   configuration and creating backups. Avoid controlling it from two frontends.
+5. If current calibration is requested, disconnect all chargers and follow the
+   diagnostics screen. Reconnect and verify charging actually pauses/resumes on
+   your device before relying on a profile.
 
+The release app ID is `com.accang.app`. Original AccA (`mattecarra.accapp`) and
+local debug builds (`com.accang.app.debug`) install separately. Profiles do not
+move automatically between these apps; use profile export/import where available.
 
+Only the APK is needed to install. `SHA256SUMS` and the public signing certificate
+are provided for verification. Future official GitHub APKs use the same signing
+identity and an increasing `versionCode`; install them over the previous release.
+See [signature verification](docs/RELEASING.md#verify-a-download).
 
-- [DESCRIPTION](#description)
-- [DOWNLOAD](#download)
-- [LICENSE](#license)
-- [LOCALIZATION](#localization)
+## Beta scope and compatibility
 
+Charging control depends on kernel control files, root access and BusyBox provided
+by a compatible root setup. Android version alone does not establish compatibility.
+ACC-NG retains ACC's controller loop, but neither the app nor the engine can
+promise support for every device or guarantee battery health.
 
----
-## DESCRIPTION
+The recorded physical validation covers a **Samsung SM-G975F** and its kernel:
+setup, calibration, profile application and observed charging pause/resume.
+Boot persistence, other devices, a complete normal notification cycle and a
+physical thermal-limit test remain unverified. See the
+[validation record](docs/acc-ng-validation.md) for exact scope.
 
-[AccA](https://github.com/MatteCarra/AccA) is an [acc](https://github.com/VR-25/acc) and [djs](https://github.com/VR-25/djs) front-end.
-Both modules come bundled and are automatically installed as needed.
+Review [ACC-NG documentation](https://github.com/ricardojrgpimentel/ACC-NG)
+before changing charging controls. The GPL warranty disclaimer applies.
 
-The app is developed with ordinary users in mind.
-It targets mainly people and aliens alike who feel uncomfortable with terminal.
-ACC and djs commands are still made available, though.
+## Build
 
-**PLEASE** read acc's documentation (README) **BEFORE** installing AccA!
-It's available in Markdown and HTML formats from the link above.
-All **disclaimers** and **warnings** listed there apply to this project as well!
+Requirements: JDK 17 or a compatible newer JDK, Android SDK platform 36 and Android
+SDK Build Tools 34.0.0. The Gradle wrapper downloads Gradle 8.12; dependencies use
+Google Maven, Maven Central and JitPack.
 
-If you point your finger at us, because you forgot to do your homework and your home got burned to the ground as a result, we'll simply ignore you.
+```sh
+export ANDROID_HOME=/absolute/path/to/android-sdk
+./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleDebug
+```
 
-Typically, we don't answer questions that already have well documented answers.
+Without release credentials, `./gradlew :app:assembleRelease` produces an unsigned
+APK suitable for independent builds. Official signed releases use
+[`tools/build-release.py`](tools/build-release.py). CI tests, lints and builds an
+unsigned release without access to the private signing key.
 
-Join our [Telegram group](https://t.me/acc_group)!
+## Development and licensing
 
+The app uses AGP 8.7.3, Kotlin 2.0.21, Java 17 bytecode, Room/Moshi with KSP and
+`compileSdk`/`targetSdk` 36 (`minSdk` 26). Root commands have bounded timeouts;
+configuration reads report failures and profile writes are read back before
+success is shown. Diagnostics are shared only when the user chooses to copy them.
 
----
-## DOWNLOAD
+AccA-NG is licensed under **GPL-3.0-or-later**. Original work is credited to
+MatteCarra, Squabbi, VR25 and the upstream contributors; fork changes are maintained
+by Ricardo Pimentel. See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/mattecarra.accapp/)
-
-
----
-## LICENSE
-
-Copyright 2019-2021, [MatteCarra](https://github.com/MatteCarra/), [Squabbi](https://github.com/Squabbi/), [VR25](https://github.com/VR-25/)
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-
----
-## LOCALIZATION
-
-Help us with translations at [CrowdIn](https://crowdin.com/project/advanced-charging-controller/)!
+Pull requests and translations are welcome. Include app/engine versions, Android
+version, device/kernel and reproduction steps in bug reports. Review logs before
+posting them because they can contain device details, commands and profile names.

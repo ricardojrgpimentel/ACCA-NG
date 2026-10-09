@@ -1,0 +1,10 @@
+AccA-NG é um fork independente e modernizado do AccA para dispositivos Android com root.
+
+Define limites de pausa e retoma do carregamento, guarda perfis, consulta leituras da bateria e calibra a corrente. Inclui ACC-NG v1.0.3-ng e o agendador DJS. A configuração explica a instalação do módulo antes de a aceitares.
+
+Requer Android 8.0 ou superior e acesso root. O controlo depende do kernel do dispositivo. Esta versão beta tem testes limitados a poucos dispositivos; verifica o comportamento no teu equipamento. A instalação substitui módulos ACC existentes por ACC-NG, com cópias de segurança da configuração.
+
+Software livre sob GPL-3.0-or-later. Sem conta ou SDK de publicidade. A consulta de versões e os downloads do motor contactam o GitHub. O diagnóstico permanece local até o partilhares.
+
+Código e suporte: https://github.com/ricardojrgpimentel/ACCA-NG
+Privacidade: https://github.com/ricardojrgpimentel/ACCA-NG/blob/main/PRIVACY.md

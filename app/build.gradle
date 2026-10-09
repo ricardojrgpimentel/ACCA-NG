@@ -5,6 +5,22 @@ plugins {
     id 'com.google.devtools.ksp'
 }
 
+def keystoreProperties = new Properties()
+def signingPropertiesPath = System.getenv("ACCA_KEYSTORE_PROPERTIES_LOCATION")
+def signingPropertiesFile = rootProject.file(signingPropertiesPath ?: "keystore.properties")
+if (signingPropertiesPath && !signingPropertiesFile.isFile()) {
+    throw new GradleException("ACCA_KEYSTORE_PROPERTIES_LOCATION must point to an existing file.")
+}
+if (signingPropertiesFile.isFile()) {
+    signingPropertiesFile.withInputStream { keystoreProperties.load(it) }
+}
+def signingValues = ["ACCA_KEYSTORE_LOCATION", "ACCA_KEYSTORE_PASSWORD", "ACCA_KEY_ALIAS", "ACCA_KEY_PASSWORD"]
+        .collectEntries { name -> [(name): System.getenv(name) ?: keystoreProperties.getProperty(name)] }
+def hasReleaseSigning = signingValues.values().every { it }
+if (signingValues.values().any { it } && !hasReleaseSigning) {
+    throw new GradleException("Release signing is incomplete. Set all four ACCA signing values; see docs/RELEASING.md.")
+}
+
 android {
     // NOTE: namespace intentionally stays mattecarra.accapp so that all
     // existing Kotlin imports (mattecarra.accapp.R, BuildConfig, ...) keep
@@ -12,19 +28,12 @@ android {
     namespace "mattecarra.accapp"
 
     signingConfigs {
-        release {
-            try {
-                def keystoreProperties = new Properties()
-                try {
-                    keystoreProperties.load(new FileInputStream(rootProject.file(System.getenv("ACCA_KEYSTORE_PROPERTIES_LOCATION") ?: "keystore.properties")))
-                } catch (ignored) {}
-
-                storeFile file(keystoreProperties["ACCA_KEYSTORE_LOCATION"] ?: System.getenv("ACCA_KEYSTORE_LOCATION"))
-                storePassword keystoreProperties["ACCA_KEYSTORE_PASSWORD"] ?: System.getenv("ACCA_KEYSTORE_PASSWORD")
-                keyAlias keystoreProperties["ACCA_KEY_ALIAS"] ?: System.getenv("ACCA_KEY_ALIAS")
-                keyPassword keystoreProperties["ACCA_KEY_PASSWORD"] ?: System.getenv("ACCA_KEY_PASSWORD")
-            } catch (ignored) {
-                println "Release signing not configured. Define ACCA_KEYSTORE_LOCATION, ACCA_KEYSTORE_PASSWORD, ACCA_KEY_ALIAS and ACCA_KEY_PASSWORD in env variables or in keystore.properties."
+        if (hasReleaseSigning) {
+            release {
+                storeFile rootProject.file(signingValues["ACCA_KEYSTORE_LOCATION"])
+                storePassword signingValues["ACCA_KEYSTORE_PASSWORD"]
+                keyAlias signingValues["ACCA_KEY_ALIAS"]
+                keyPassword signingValues["ACCA_KEY_PASSWORD"]
             }
         }
     }
@@ -37,8 +46,8 @@ android {
         applicationId "com.accang.app"
         minSdk 26
         targetSdk 36
-        versionCode 40
-        versionName "2.0.0-ng"
+        versionCode 41
+        versionName "2.0.0-ng-beta.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true
@@ -57,10 +66,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            try {
+            if (hasReleaseSigning) {
                 signingConfig signingConfigs.release
-            } catch (ignored) {
-                println "No release keystore, release build will be unsigned."
             }
         }
     }
