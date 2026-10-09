@@ -1,4 +1,4 @@
-# ACCA-NG About screen
+# AccA-NG About screen
 
 Native implementation of the selected Editorial proposal. The screen uses the
 existing yellow and charcoal palette in light and dark mode, open sections,
@@ -34,6 +34,7 @@ changes and includes accessibility state descriptions and section headings.
 
 Screenshots: `about-light.png`, `about-dark.png`, `about-credits-dark.png`.
 These are captures of the native screen, not design mockups.
+The emulator captures predate the capitalization correction to `AccA-NG`.
 
 ## Samsung installation
 

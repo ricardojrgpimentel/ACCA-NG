@@ -1,5 +1,5 @@
 <resources>
-    <string name="ui_app_brand">ACCA-NG</string>
+    <string name="ui_app_brand" translatable="false">@string/app_name</string>
     <string name="ui_nav_dashboard">Overview</string>
     <string name="ui_nav_schedules">Schedules</string>
     <string name="ui_profiles_intro">Your charging preferences, ready to apply.</string>

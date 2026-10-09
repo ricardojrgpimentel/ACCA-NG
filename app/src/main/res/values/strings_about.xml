@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_ng_brand" translatable="false">ACCA-NG</string>
+    <string name="about_ng_brand" translatable="false">@string/app_name</string>
     <string name="about_ng_maintainer" translatable="false">Ricardo Pimentel</string>
     <string name="about_ng_maintainer_initials" translatable="false">RP</string>
     <string name="about_ng_matte" translatable="false">Matteo Carrara</string>
@@ -18,7 +18,7 @@
     <string name="about_ng_project">Project on GitHub</string>
     <string name="about_ng_issues">Report an issue</string>
     <string name="about_ng_origin">Origin and credits</string>
-    <string name="about_ng_origin_blurb">ACCA-NG builds on AccA, with improvements to the interface, compatibility and reliability.</string>
+    <string name="about_ng_origin_blurb">AccA-NG builds on AccA, with improvements to the interface, compatibility and reliability.</string>
     <string name="about_ng_original_team">Original AccA team</string>
     <string name="about_ng_acc_author">Author of ACC and DJS</string>
     <string name="about_ng_original_project">Original AccA project</string>

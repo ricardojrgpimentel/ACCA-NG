@@ -1,4 +1,4 @@
-# ACCA-NG (fork of AccA)
+# AccA-NG (fork of AccA)
 
 
 
@@ -12,7 +12,7 @@
 > - Bug fixes from upstream issues: async ACC config load in the editor (no more `runBlocking` on the UI thread), crash-proof config parser, locale-safe voltage/current/temperature formatting, V/A/W unit normalisation for new ACC `acca -i` output, daemon stop via `acca -D stop` (the old `accd.` shortcut spawned stray processes).
 > - Vendored `CircleProgressBar` view (artifact never reached Maven Central).
 >
-> Visual / reliability pass (ACCA-NG):
+> Visual / reliability pass (AccA-NG):
 > - Electric-yellow energy monogram designed with Google Stitch, with adaptive
 >   launcher icons and an Android 13+ monochrome themed-icon layer. Logo sources
 >   and previews are in [design/branding](design/branding).

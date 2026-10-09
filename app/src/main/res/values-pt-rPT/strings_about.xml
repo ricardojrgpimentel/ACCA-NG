@@ -10,7 +10,7 @@
     <string name="about_ng_project">Projeto no GitHub</string>
     <string name="about_ng_issues">Reportar problema</string>
     <string name="about_ng_origin">Origem e créditos</string>
-    <string name="about_ng_origin_blurb">ACCA-NG continua o trabalho de AccA, com melhorias de interface, compatibilidade e fiabilidade.</string>
+    <string name="about_ng_origin_blurb">AccA-NG continua o trabalho de AccA, com melhorias de interface, compatibilidade e fiabilidade.</string>
     <string name="about_ng_original_team">Equipa do projeto original AccA</string>
     <string name="about_ng_acc_author">Autor de ACC e DJS</string>
     <string name="about_ng_original_project">Projeto original AccA</string>
