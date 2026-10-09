@@ -7,7 +7,6 @@ import mattecarra.accapp.models.AccaScript
 interface OnScriptClickListener
 {
     fun onScriptClick(script: AccaScript)
-    fun onScriptRunSilent(script: AccaScript)
     fun onEditScript(script: AccaScript)
     fun onCopyScript(script: AccaScript)
     fun onRenameScript(script: AccaScript)

@@ -344,4 +344,12 @@
     <string name="script_label">Nome do script</string>
     <string name="script_description">Descrição</string>
     <string name="script_body_text">Comandos shell</string>
+    <string name="script_run">Correr</string>
+    <string name="script_command_label">Comando a executar</string>
+    <string name="script_output_label">Output</string>
+    <string name="script_run_preview">Este comando será executado com acesso root quando tocares em Correr.</string>
+    <string name="script_running">A correr o script…</string>
+    <string name="script_run_success">Script concluído com sucesso (código de saída 0).</string>
+    <string name="script_run_failed">O script falhou (código de saída %1$d).</string>
+    <string name="script_no_output">O script não produziu output.</string>
 </resources>

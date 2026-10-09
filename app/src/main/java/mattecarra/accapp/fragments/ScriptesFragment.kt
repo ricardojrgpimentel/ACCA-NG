@@ -1,32 +1,21 @@
 package mattecarra.accapp.fragments
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.WhichButton
+import com.afollestad.materialdialogs.actions.getActionButton
+import com.afollestad.materialdialogs.actions.setActionButtonEnabled
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.input.input
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import mattecarra.accapp.utils.RootShell
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import mattecarra.accapp.R
 import mattecarra.accapp._interface.OnScriptClickListener
 import mattecarra.accapp.adapters.ScriptListAdapter
@@ -35,6 +24,7 @@ import mattecarra.accapp.models.AccaScript
 import mattecarra.accapp.utils.LogExt
 import mattecarra.accapp.utils.ScopedFragment
 import mattecarra.accapp.viewmodel.ScriptsViewModel
+import mattecarra.accapp.viewmodel.ScriptRunState
 
 class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 {
@@ -46,6 +36,8 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
     lateinit var mContext: Context
     private lateinit var mScriptsViewModel: ScriptsViewModel
     private lateinit var mScriptesAdapter: ScriptListAdapter
+    private var scriptDialog: MaterialDialog? = null
+    private var scriptDialogBinding: MdRunScriptBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -86,185 +78,73 @@ class ScriptesFragment : ScopedFragment(), OnScriptClickListener
 
         view.findViewById<FloatingActionButton>(R.id.scripts_addBtn_fab).setOnClickListener{ onAddScript() }
 
-        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(
-            0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-        )
-        {
-
-            private var swipeBack: Boolean = true
-            private val background = ColorDrawable()
-            private val backgroundColour = ContextCompat.getColor(context as Context, R.color.color_primary)
-            private val applyIconColour = ContextCompat.getColor(context as Context, R.color.color_on_primary)
-            private val applyIcon = ContextCompat.getDrawable(context as Context, R.drawable.ic_outline_check_circle_24px)
-            private val intrinsicWidth = applyIcon!!.intrinsicWidth
-            private val intrinsicHeight = applyIcon!!.intrinsicHeight
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int)
-            {
-                // Required override, but not used
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder
-            ): Boolean
-            {
-                return false // No up and down movement
-            }
-
-            override fun onChildDraw(
-                c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
-            )
-            {
-                if (actionState == ACTION_STATE_SWIPE)
-                {
-                    setTouchListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                }
-
-                // Draw background
-                val itemView = viewHolder.itemView
-                val itemHeight = itemView.bottom - itemView.top
-                background.color = backgroundColour
-
-                if (dX < 0)
-                {
-                    background.setBounds(itemView.right + dX.toInt(), itemView.top, itemView.right, itemView.bottom)
-                    background.draw(c)
-
-                    // Determine icon dimensions
-                    val iconTop = itemView.top + (itemHeight - intrinsicHeight) / 2
-                    val iconMargin = (itemHeight - intrinsicHeight) / 2
-                    val iconLeft = itemView.right - iconMargin - intrinsicWidth
-                    val iconRight = itemView.right - iconMargin
-                    val iconBottom = iconTop + intrinsicWidth
-
-                    // Draw the apply icon
-                    val wrapped = DrawableCompat.wrap(applyIcon!!)
-                    DrawableCompat.setTint(wrapped, applyIconColour)
-                    wrapped.setBounds(iconLeft, iconTop, iconRight, iconBottom)
-
-                    wrapped.draw(c)
-                }
-
-                if (dX > 0)
-                {
-
-                    background.setBounds(itemView.left, itemView.top, itemView.left + dX.toInt(), itemView.bottom)
-                    background.draw(c)
-
-                    // Determine icon dimensions
-                    val iconTop = itemView.top + (itemHeight - intrinsicHeight) / 2
-                    val iconMargin = (itemHeight - intrinsicHeight) / 2
-                    val iconLeft = itemView.left + iconMargin
-                    val iconRight = itemView.left + iconMargin + intrinsicWidth
-                    val iconBottom = iconTop + intrinsicWidth
-
-                    // Draw the apply icon
-                    val wrapped = DrawableCompat.wrap(applyIcon!!)
-                    DrawableCompat.setTint(wrapped, applyIconColour)
-                    wrapped.setBounds(iconLeft, iconTop, iconRight, iconBottom)
-
-                    wrapped.draw(c)
-                }
-
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-            }
-
-            @SuppressLint("ClickableViewAccessibility")
-            private fun setTouchListener(
-                canvas: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean
-            )
-            {
-
-                recyclerView.setOnTouchListener(object : View.OnTouchListener
-                {
-                    override fun onTouch(v: View?, event: MotionEvent?): Boolean
-                    {
-                        when (event?.action)
-                        {
-                            MotionEvent.ACTION_CANCEL -> swipeBack = true
-                            MotionEvent.ACTION_UP -> swipeBack = true
-                        }
-
-                        if (swipeBack)
-                        {
-                            if (dX > 300)
-                            { // If slid towards right > 300px?, adjust for sensitivity
-                                onScriptClick(mScriptesAdapter.getScriptAt(viewHolder.adapterPosition))
-                            }
-                            if (dX < -300)
-                            { // Show right side
-                                onScriptRunSilent(mScriptesAdapter.getScriptAt(viewHolder.adapterPosition))
-                            }
-                        }
-
-                        return false
-                    }
-                })
-            }
-
-            override fun convertToAbsoluteDirection(flags: Int, layoutDirection: Int): Int
-            {
-                if (swipeBack) { swipeBack = false ; return 0 }
-                return super.convertToAbsoluteDirection(flags, layoutDirection)
-            }
+        mScriptsViewModel.scriptRunState.observe(viewLifecycleOwner) { state ->
+            if (state == null) dismissScriptDialog() else showScriptDialog(state)
         }
-
-        val itemTouchHelper = ItemTouchHelper(itemTouchCallback)
-        itemTouchHelper.attachToRecyclerView(binding.scriptsRecyclerView)
-    }
-
-    //-----------------------------------------------------------------------------------
-
-    suspend fun runScript(script: AccaScript): AccaScript = withContext(Dispatchers.IO)
-    {
-        // User scripts are arbitrary shell: bound them so a hung script
-        // can't wedge the shared root shell for the rest of the app.
-        val sr = RootShell.exec(script.scBody, RootShell.LONG_TIMEOUT_SECS)
-        script.scExitCode = sr.code
-        script.scOutput = sr.out.joinToString(separator = "\n")
-        script
     }
 
     override fun onScriptClick(script: AccaScript)
     {
-        MaterialDialog(mContext).show {
-            noAutoDismiss()
-            title(text = script.scName)
-            negativeButton { dismiss() }
+        mScriptsViewModel.previewScript(script)
+    }
 
+    private fun showScriptDialog(state: ScriptRunState) {
+        if (scriptDialog == null) {
             val binding = MdRunScriptBinding.inflate(layoutInflater)
-            customView(view = binding.root, scrollable = true)
-            binding.mdRunContent.setText(script.scBody)
-            binding.mdStatusPb.visibility = View.VISIBLE
-
-            launch {
-                val sr = runScript(script)
-                mScriptsViewModel.updateScript(script)
-
-                if (isShowing) {
-
-                    if (sr.scExitCode.equals(0)) {
-                        binding.mdStatusImageView.setImageResource(R.drawable.ic_outline_check_circle_24px)
-                        binding.mdStatusPb.visibility = View.INVISIBLE
-                    } else {
-                        binding.mdStatusImageView.setImageResource(R.drawable.ic_outline_error_outline_24px)
-                        binding.mdStatusPb.visibility = View.INVISIBLE
-                    }
-
-                    binding.mdOutContent.setText(script.scOutput)
-                    binding.mdOutContent.visibility = View.VISIBLE
+            scriptDialogBinding = binding
+            scriptDialog = MaterialDialog(mContext).show {
+                noAutoDismiss()
+                title(text = state.script.scName)
+                customView(view = binding.root, scrollable = true)
+                positiveButton(R.string.script_run) { mScriptsViewModel.runPreparedScript() }
+                negativeButton(R.string.command_close) {
+                    mScriptsViewModel.closeScriptPreview()
+                }
+                setOnDismissListener {
+                    scriptDialog = null
+                    scriptDialogBinding = null
+                    mScriptsViewModel.closeScriptPreview()
                 }
             }
         }
+        val dialog = scriptDialog ?: return
+        val binding = scriptDialogBinding ?: return
+        dialog.title(text = state.script.scName)
+        binding.mdDescription.text = state.script.scDescription
+        binding.mdDescription.visibility = if (state.script.scDescription.isBlank()) View.GONE else View.VISIBLE
+        binding.mdRunContent.text = state.script.scBody
+        binding.mdStatusText.text = when {
+            state.running -> getString(R.string.script_running)
+            state.exitCode == null -> getString(R.string.script_run_preview)
+            state.exitCode == 0 -> getString(R.string.script_run_success)
+            else -> getString(R.string.script_run_failed, state.exitCode)
+        }
+        binding.mdStatusPb.visibility = if (state.running) View.VISIBLE else View.GONE
+        binding.mdStatusImageView.visibility = if (state.exitCode != null) View.VISIBLE else View.GONE
+        binding.mdStatusImageView.setImageResource(if (state.exitCode == 0)
+            R.drawable.ic_outline_check_circle_24px else R.drawable.ic_outline_error_outline_24px)
+        binding.mdOutputLabel.visibility = if (state.exitCode != null) View.VISIBLE else View.GONE
+        binding.mdOutContent.visibility = if (state.exitCode != null) View.VISIBLE else View.GONE
+        binding.mdOutContent.text = state.output.ifBlank { getString(R.string.script_no_output) }
+        dialog.getActionButton(WhichButton.POSITIVE).visibility =
+            if (state.exitCode == null) View.VISIBLE else View.GONE
+        dialog.setActionButtonEnabled(WhichButton.POSITIVE, !state.running && state.script.scBody.isNotBlank())
+        dialog.setActionButtonEnabled(WhichButton.NEGATIVE, !state.running)
+        dialog.cancelable(!state.running)
+        dialog.cancelOnTouchOutside(!state.running)
     }
 
-    override fun onScriptRunSilent(script: AccaScript) {
-        launch {
-            Toast.makeText(mContext, "Running..\n" + script.scName, Toast.LENGTH_SHORT).show()
-            val sr = runScript(script)
-            mScriptsViewModel.updateScript(script)
-            Toast.makeText(mContext, "Finished with result " + sr.scExitCode.equals(0).toString().uppercase(), Toast.LENGTH_SHORT).show()
-        }
+    private fun dismissScriptDialog() {
+        // Detaching the view must not clear an execution that survives rotation.
+        scriptDialog?.setOnDismissListener(null)
+        scriptDialog?.dismiss()
+        scriptDialog = null
+        scriptDialogBinding = null
+    }
+
+    override fun onDestroyView() {
+        dismissScriptDialog()
+        super.onDestroyView()
     }
 
     fun onAddScript()

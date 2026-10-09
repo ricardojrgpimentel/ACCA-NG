@@ -47,4 +47,12 @@ object RootShell {
 
     fun execScript(script: String, timeoutSecs: Int = DEFAULT_TIMEOUT_SECS): Shell.Result =
         execute("/system/bin/sh -c ${quote(script)}", script, timeoutSecs)
+
+    /** ACC's runtime commands may not be mounted into /system/bin until reboot. */
+    fun execUserScript(script: String, timeoutSecs: Int = LONG_TIMEOUT_SECS): Shell.Result {
+        // Scope PATH to this child shell; leave the shared root shell untouched.
+        // The modern runtime takes precedence, with /dev for legacy installs.
+        val prepared = "export PATH=\"/dev/.vr25/acc:/dev:\$PATH\"\n$script"
+        return execute("/system/bin/sh -c ${quote(prepared)}", script, timeoutSecs)
+    }
 }

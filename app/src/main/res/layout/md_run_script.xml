@@ -5,59 +5,91 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp">
+
+    <TextView
+        android:id="@+id/md_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone"
+        tools:text="Show the current charging status" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/script_command_label"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/md_run_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/code_surface"
+        android:fontFamily="monospace"
+        android:padding="12dp"
+        android:textColor="@color/color_primary_content"
+        android:textIsSelectable="true"
+        android:textSize="14sp"
+        tools:text="acc --status" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="start|center_vertical"
-        android:background="@color/color_warning">
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <FrameLayout
-            android:layout_width="@dimen/acc_status2_icon"
-            android:layout_height="@dimen/acc_status2_icon"
-            android:background="@color/color_warning">
+        <ProgressBar
+            android:id="@+id/md_status_pb"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:indeterminate="true"
+            android:visibility="gone" />
 
-            <ImageView
-                android:id="@+id/md_status_imageView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <ProgressBar
-                android:id="@+id/md_status_pb"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:indeterminate="true" />
-
-        </FrameLayout>
+        <ImageView
+            android:id="@+id/md_status_imageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="12dp"
+            android:importantForAccessibility="no"
+            android:visibility="gone" />
 
         <TextView
-                android:id="@+id/md_run_content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:gravity="start"
-                android:paddingLeft="16dp"
-                android:paddingStart="16dp"
-                android:textAlignment="viewStart"
-                android:textSize="16dp"
-                tools:ignore="NewApi,RtlSymmetry,UnusedAttribute"
-                tools:text="Message"/>
-
+            android:id="@+id/md_status_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:accessibilityLiveRegion="polite"
+            android:text="@string/script_run_preview"
+            android:textSize="14sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/md_output_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/script_output_label"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/md_out_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif"
-        android:textSize="16sp"
+        android:background="@drawable/code_surface"
+        android:fontFamily="monospace"
+        android:padding="12dp"
+        android:textColor="@color/color_primary_content"
+        android:textIsSelectable="true"
+        android:textSize="14sp"
         android:visibility="gone"
-        android:singleLine="false"
-        tools:ignore="NewApi,RtlSymmetry,UnusedAttribute"
-        tools:text="Output Message"/>
+        tools:text="Output Message" />
 
 </LinearLayout>

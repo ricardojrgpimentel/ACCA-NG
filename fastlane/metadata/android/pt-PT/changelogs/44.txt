@@ -1,0 +1,1 @@
+Os scripts mostram o comando antes de Correr e apresentam o output, os erros e Fechar no final. Removidos os atalhos de execução silenciosa; o estado mantém-se ao rodar o ecrã. Corrigida a localização dos comandos ACC após a instalação do módulo. A versão debug tem nome próprio e ícone laranja DBG.

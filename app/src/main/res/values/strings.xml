@@ -495,4 +495,12 @@
     <string name="ng_engine_notifications_title">Charging notices</string>
     <string name="ng_engine_notifications_summary">Connection, pause, resume, temperature and low-battery notices from ACC-NG. Charging protection remains active when these notices are off.</string>
     <string name="ng_engine_setting_failed">Could not confirm the setting in ACC-NG.</string>
+    <string name="script_run">Run</string>
+    <string name="script_command_label">Command to run</string>
+    <string name="script_output_label">Output</string>
+    <string name="script_run_preview">This command will run with root access when you tap Run.</string>
+    <string name="script_running">Running script…</string>
+    <string name="script_run_success">Script completed successfully (exit code 0).</string>
+    <string name="script_run_failed">Script failed (exit code %1$d).</string>
+    <string name="script_no_output">The script produced no output.</string>
 </resources>

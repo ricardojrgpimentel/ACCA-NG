@@ -43,6 +43,16 @@ notification cycle during normal steady-state operation has not been tested.
 Thermal thresholds were tested with isolated fixtures; the physical battery was
 not heated or its sensor spoofed. Critical original ACC control paths remain intact.
 
+## Script command lookup
+
+On Samsung SM-G975F, `acca -v` failed with “inaccessible or not found” because
+the root shell PATH did not include the ACC runtime directories. The executable
+at `/dev/.vr25/acc/acca` returned `v1.0.3-ng (202610093)`; ACC-NG retains the
+`acca` and `acc` command names. User scripts now prepend `/dev/.vr25/acc` and
+`/dev` to PATH inside their child shell. Read-only device checks passed for
+`acca -v`, `acc -v`, multiline bodies with quotes/pipelines and preservation of
+an explicit exit code 23. These checks did not change charging settings.
+
 ## Clean module setup flow
 
 On Samsung SM-G975F, the ACC module, its runtime configuration and volatile

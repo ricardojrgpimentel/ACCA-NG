@@ -5,9 +5,6 @@
         android:id="@+id/script_option_menu_run"
         android:title="@string/menu_option_run" />
     <item
-        android:id="@+id/script_option_menu_run_silent"
-        android:title="@string/menu_option_run_silent" />
-    <item
         android:id="@+id/script_option_menu_edit"
         android:title="@string/menu_option_edit" />
     <item

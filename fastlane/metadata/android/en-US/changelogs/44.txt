@@ -1,0 +1,1 @@
+Scripts now preview the command before Run and show output, errors and a Close action afterwards. Remove silent execution shortcuts and keep execution state across rotation. Fix ACC command lookup after module setup. Debug builds have a distinct name and orange DBG icon.

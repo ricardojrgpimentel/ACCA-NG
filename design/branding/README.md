@@ -41,6 +41,12 @@ All five legacy density sizes and the 512px Fastlane store icon are also
 updated. The splash and widget use the complete launcher icon to retain its
 yellow background on light and dark surfaces.
 
+Debug builds use the name `AccA-NG Debug`, an orange launcher background and
+a `DBG` badge, including in themed monochrome icons. These overrides live in
+`app/src/debug/res`, so release branding and the production asset generator
+remain unchanged. The debug artwork uses the same monogram at a smaller scale
+to keep both the mark and badge inside the adaptive icon safe circle.
+
 ## Regeneration
 
 `generate-assets.cjs` recreates the icon SVGs, Android layers, density PNGs,
