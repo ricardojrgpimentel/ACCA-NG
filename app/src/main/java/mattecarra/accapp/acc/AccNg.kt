@@ -18,6 +18,11 @@ object AccNg {
         return "https://github.com/$repository/archive/$version.tar.gz"
     }
 
+    fun readContract(): NgEngineContract? {
+        val result = RootShell.exec("cat $module", 5)
+        return if (result.isSuccess) NgEngineContract.parse(result.out.joinToString("\n")) else null
+    }
+
     fun isInstalled(): Boolean = RootShell.exec(
         "test \"$(sed -n 's/^ngApiVersion=//p' $module 2>/dev/null)\" = 1", 5).isSuccess
 

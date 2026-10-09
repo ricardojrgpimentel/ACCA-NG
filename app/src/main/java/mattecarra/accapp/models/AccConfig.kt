@@ -91,10 +91,10 @@ import java.io.Serializable
         fun toString(context: Context): String
         {
             return context.getString(
-                    if (mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version))
+                    if (Acc.instance.usesResumeTemperature)
                         R.string.template_temperature_profile_resume else R.string.template_temperature_profile,
                     coolDownTemperature, maxTemperature,
-                    if (mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(Acc.instance.version))
+                    if (Acc.instance.usesResumeTemperature)
                         mattecarra.accapp.acc.TemperatureConfig.modern(this).resumeTemperature else pause
                 )
         }

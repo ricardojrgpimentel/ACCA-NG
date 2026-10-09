@@ -20,7 +20,7 @@ import kotlin.math.abs
 
 object Acc {
     // ACC-NG release code is independent of its tested upstream config schema.
-    const val bundledVersion = 202610094
+    const val bundledVersion = 202610095
 
     /**
      * App files dir. Must be initialised from MainApplication.onCreate via
@@ -41,7 +41,11 @@ object Acc {
     * Note: there won't be a package per version. There will be a package for every uncompatible version
     * Ex: if releases from 201903071->201907211 are all compatible there will only be a package, but if a new release is incompatible a new package is created
     * */
-    private fun getAccInterfaceForversion(v: Int): AccInterface {
+    internal fun getAccInterfaceForversion(v: Int, contract: NgEngineContract? = null): AccInterface {
+        if (contract != null) {
+            if (!contract.supportsConfig) throw java.io.IOException("Unsupported ACC-NG API/configuration schema")
+            return mattecarra.accapp.acc.v202107280.AccHandler(v, contract)
+        }
         return when {
             v >= 202107280 -> mattecarra.accapp.acc.v202107280.AccHandler(v)
             v >= 202007220 -> mattecarra.accapp.acc.v202107280.AccHandler(v)
@@ -73,7 +77,7 @@ object Acc {
         }
 
     internal fun createAccInstance(version: Int = getAccVersion() ?: bundledVersion): AccInterface{
-        INSTANCE = getAccInterfaceForversion(version)
+        INSTANCE = getAccInterfaceForversion(version, AccNg.readContract())
         return INSTANCE as AccInterface
     }
 
@@ -206,7 +210,7 @@ object Acc {
     }
 
     private fun getAccVersion(): Int? {
-        return RootShell.exec("/dev/.vr25/acc/acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull() ?: getAccVersionLegacy()
+        return AccOutput.version(RootShell.exec("/dev/.vr25/acc/acc --version").out.joinToString(separator = "\n")) ?: getAccVersionLegacy()
     }
 
     fun getAccVersionToStr(): String {
@@ -214,6 +218,6 @@ object Acc {
     }
 
     private fun getAccVersionLegacy(): Int? {
-        return RootShell.exec("acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull()
+        return AccOutput.version(RootShell.exec("acc --version").out.joinToString(separator = "\n"))
     }
 }

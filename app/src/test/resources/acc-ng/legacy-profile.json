@@ -1,0 +1,13 @@
+{
+  "configCapacity": {"shutdown": 2, "resume": 50, "pause": 60},
+  "configVoltage": {"max": 4100},
+  "configCurrMax": 500,
+  "configTemperature": {"coolDownTemperature": 35, "maxTemperature": 50, "pause": 90},
+  "configOnBoot": "battery/current_max::500::1800",
+  "configOnPlug": "battery/voltage_max::4100::4200",
+  "configResetUnplugged": false,
+  "configResetBsOnPause": false,
+  "configChargeSwitch": "battery/charging_enabled 1 0",
+  "configIsAutomaticSwitchingEnabled": false,
+  "prioritizeBatteryIdleMode": true
+}

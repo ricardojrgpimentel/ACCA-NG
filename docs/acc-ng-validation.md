@@ -154,3 +154,23 @@ tests, debug build and lint passed. Candidate packaging is deterministic.
 No installed APK/module/configuration/profile or live sysfs control was changed.
 Upgrade, rollback, actual current/voltage/thermal controls and reboot validation
 remain pending before publication.
+
+
+## ACC dev integration candidate I2 — v1.0.5-ng
+
+R0 contract fixtures and parsing/capability work are recorded in
+[the implementation record](acc-upstream-implementation.md#i2--r0-contrato-e-fixtures-entre-appmotor).
+The current bundle is v1.0.5-ng (202610095), from engine commit `2d969cb3ec3854155479115b5b230d344e4ff44f`;
+SHA-256 `b6b7dca9b4fd7816031b7852ed66ef339626d5c76d4f22c71dc5d130ebecca4a`. NG API 1 and schema 202310160 stay unchanged.
+
+52 host engine tests: 50 passed, 2 Android-only lock tests skipped. The 17
+contract tests and existing 20 limit tests passed on Samsung SM-G975F using
+root, mksh and BusyBox against generated temporary files. All 28 runtime shell
+scripts passed Android syntax checks. The app's 106 tests passed in both debug
+and release; both variants passed build and lint. The local release check is
+unsigned, matching CI, and is not published. Fixture source hashes match the bundle and packaging is deterministic.
+
+No installed APK/module, configuration, profile or live sysfs control was
+changed. Physical upgrade/rollback, hardware limit application, OEM thermal
+behaviour and reboot remain pending. v1.0.3-ng remains the published engine;
+v1.0.4-ng and v1.0.5-ng are source/bundle candidates only.

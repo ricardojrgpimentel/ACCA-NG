@@ -24,7 +24,7 @@ for controlling charging on rooted Android devices. Maintained by
   21 locales, with English fallback for older untranslated text.
 
 The app bundles [ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG)
-**v1.0.4-ng candidate**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
+**v1.0.5-ng candidate**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
 The engine controls charging in the background; limits come from your settings
 and profiles. Disabling engine notifications does not disable charging protection.
 

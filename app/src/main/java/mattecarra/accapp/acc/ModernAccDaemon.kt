@@ -4,17 +4,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.utils.RootShell
-import java.io.IOException
 
 object ModernAccDaemon {
     private const val MANAGER = "/dev/.vr25/acc/acca"
 
     suspend fun isRunning(): Boolean = withContext(Dispatchers.IO) {
-        when (val code = RootShell.exec("$MANAGER -D", 5).code) {
-            0, 8 -> true
-            9 -> false
-            else -> throw IOException("ACC status command failed: $code")
-        }
+        AccOutput.daemonRunning(RootShell.exec("$MANAGER -D", 5).code)
     }
 
     suspend fun start(): Boolean = withContext(Dispatchers.IO) {

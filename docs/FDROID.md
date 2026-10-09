@@ -29,9 +29,9 @@ channel. Do not display an F-Droid download badge until this package is listed.
 5. Only after those checks, submit a recipe to fdroiddata or an inclusion request
    through F-Droid's documented process. No signing credentials are needed.
 
-Current ACC-NG bundle: **v1.0.4-ng candidate**, built from the local engine
+Current ACC-NG bundle: **v1.0.5-ng candidate**, built from the local engine
 checkout (`../acc-ng`) using `python3 tools/build_ng.py`. Matching source:
-[`7375bbb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/7375bbb4be64b76643850bb15e56fcbc4e3ae6c8). The candidate has not been released or physically
+[`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f). The candidate has not been released or physically
 validated. See [the candidate integration record](acc-upstream-implementation.md).
 The previous published source is [v1.0.3-ng](https://github.com/ricardojrgpimentel/ACC-NG/tree/v1.0.3-ng);
 it does not reproduce the new candidate.

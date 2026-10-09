@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado:** primeiro incremento I1 implementado no motor e no bundle candidato **v1.0.4-ng (202610094)**. Preserva API NG 1 e schema 202310160. Fonte do motor publicada em [`7375bbb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/7375bbb4be64b76643850bb15e56fcbc4e3ae6c8); release e validação física pendentes. O aparelho mantém a versão instalada anterior. Ver o [registo de implementação e validação](acc-upstream-implementation.md).
+**Estado:** I1 (resets/permissões) e I2 (R0: contrato/fixtures) implementados no código e no bundle candidato **v1.0.5-ng (202610095)**. Preserva API NG 1 e schema 202310160, agora declarados separadamente da versão da release. Fonte do motor em [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f); release e validação física pendentes. O aparelho mantém a versão instalada anterior. Ver o [registo de implementação e validação](acc-upstream-implementation.md).
 
 ## Estado das tarefas
 
@@ -10,10 +10,10 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 
 | Tarefa | Estado atual | Implementado / restante |
 | --- | --- | --- |
-| R0.1 | Pendente | Contrato atual preservado; faltam fixtures completas de output e parsing entre app/motor. |
-| R0.2 | Pendente | API/schema mantidos; descoberta explícita de capacidades não implementada. |
-| R0.3 | Pendente | Suite existente preserva preferências; falta a matriz completa de perfis/upgrade. |
-| R0.4 | Parcial I1 | Harness de controlos, falhas, readback, permissões e concorrência; faltam sensores e unidades de corrente/tensão. |
+| R0.1 | Implementado I2 em fixtures | Outputs de versão, estado, informação, defaults/perfis, switches e testes executados pelo motor e lidos pela app; checks de CI contra o bundle. |
+| R0.2 | Implementado I2 | ngConfigSchema/ngCapabilities explícitos; compatibilidade com metadata API 1 antiga; schemas/API desconhecidos não selecionam um writer presumido. |
+| R0.3 | Implementado I2 em fixtures | Perfis JSON antigos/atuais, escrita/reload raw, limites, r, switch manual, calibração e preferências NG; upgrade real continua R7. |
+| R0.4 | Implementado I2 em fixtures | Harness host/Android de sensores mA/µA e mV/µV, polaridade, zero, dados ausentes/inválidos/recusados, mais controlos de I1. Descoberta OEM e sysfs real continuam R2/R7. |
 | R1.1 | Implementado I1; validação física pendente | Resets só de controlos alterados pelo NG, com snapshot e retry em falha. |
 | R1.2 | Parcial I1 | Setters isolados e snapshot original mantido; falta revisão completa de descoberta/cache e exposição de suporte à app. |
 | R1.3 | Implementado I1; validação física pendente | Escrita direta, sem chown; fallback u+w temporário com restauração e erro propagado. Falta ensaio de sysfs/política OEM. |
@@ -24,7 +24,7 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R4.1–R4.4 | Pendente | Import, escrita/migração e agendamento por integrar. |
 | R5.1–R5.5 | Pendente | Arranque, root, instalação, downloader e diagnósticos por integrar. |
 | R6.1–R6.5 | Opcional pendente | Não incluído em I1. |
-| R7 | Parcial I1 | Bundle determinístico, testes e build da app; upgrade, sysfs real, reboot e release pendentes. |
+| R7 | Parcial I1/I2 | Bundle determinístico, fixtures host/Android, testes e build/lint da app; upgrade, sysfs real, reboot e release pendentes. |
 
 
 ## Estratégia de integração
@@ -44,7 +44,7 @@ O contrato inicial continua `ngApiVersion=1`: `acca -i` conserva campos e unidad
 | R6 Funcionalidades opcionais | P2 | Núcleo R1 a R5 validado | Idle por app, Encore e opções avançadas opt-in |
 | R7 Validação e release | P1 | R0 a R5; R6 só se incluída | Candidato conjunto do motor e app com evidência |
 
-I1 cobre resets/permissões de R1 e a exclusão store_mode de R2; o restante destes grupos continua pendente. R4 pode avançar após R0 para import/quoting sem antecipar alterações térmicas de R3. R6 não bloqueia a release das correções principais.
+I2 completa a base R0 em fixtures, sem substituir a validação física R7. I1 cobre resets/permissões de R1 e a exclusão store_mode de R2; o restante destes grupos continua pendente. R4 pode avançar após R0 para import/quoting sem antecipar alterações térmicas de R3. R6 não bloqueia a release das correções principais.
 
 ## R0 Contrato e fixtures
 

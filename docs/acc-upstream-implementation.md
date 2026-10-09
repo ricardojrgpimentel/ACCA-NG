@@ -66,3 +66,51 @@ O runner Android requer root e BusyBox instalado. Usa apenas diretórios gerados
 Completar fixtures de output/parsing, perfis e sensores (R0); rever descoberta/cache (R1.2); alinhar suporte/aplicação física na confirmação da app (R1.4); completar blacklist e unificar os leitores de alimentação (R2.1/R2.4). Antes de distribuir I1, validar upgrade, reset/reaplicação de limites, política OEM, rollback e reboot num aparelho adequado. Não marcar R1/R2 ou a release como concluídas apenas por estes testes passarem.
 
 Para cada incremento seguinte, acrescentar uma entrada com origem, escopo aplicado, partes pendentes, ficheiros, versão/checksum e evidência. Atualizar a coluna Estado do catálogo e a tabela de tarefas do roadmap no mesmo conjunto de alterações.
+
+## I2 — R0: contrato e fixtures entre app/motor
+
+9 de outubro de 2026. **Implementado no código e no bundle candidato v1.0.5-ng (202610095); sem release ou instalação no aparelho.** Fonte do motor: [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f). O incremento parte de I1 `7375bbb`; o upstream revisto continua `908a5a4`. O R0 valida a interface que temos de preservar para os próximos ports, sem declarar novos commits upstream como integralmente integrados.
+
+| Tarefa | Implementação e evidência |
+| --- | --- |
+| R0.1 | Fixtures partilhadas de `-v`, estado do daemon (0/8/9 e falhas), `-i`, defaults/perfis de `-sp`, lista de switches e resultados de teste. Produzidas com fragmentos shell reais; os parsers usados pelos comandos da app leem as mesmas fixtures. |
+| R0.2 | `ngConfigSchema=202310160` e `ngCapabilities` no módulo; metadata API 1 antiga usa o contrato base, sem inventar capacidades. API/schema desconhecidos não escolhem um handler de configuração presumido. Editor e handler usam a semântica térmica do contrato. |
+| R0.3 | Perfil JSON legado, serialização de perfil atual, escrita/reload raw, pausa 60/resume 50, shutdown incluindo -1, cooldown/reset, r e switch manual. O motor preserva seis elementos de capacity, polaridade, idleThreshold e preferências de avisos/idioma. |
+| R0.4 | Harness host e Android: mA/µA, mV/µV, corrente positiva/negativa/zero, sensores ausentes/inválidos/leitura recusada e alimentação USB/DC/wireless/OEM. Só escreve em diretórios temporários. |
+
+### Correções reveladas pelos testes
+
+- Corrente/tensão ausentes ou inválidas deixam de gerar medições zero e potência derivada no motor. Zero válido continua presente. A saída mantém nomes KEY=VALUE e unidades A/V/W normalizadas. Potência raw do uevent não compete com a potência normalizada.
+- O parser da app usa a última leitura normalizada quando o output verbose também contém valores raw. Rejeita prefixos numéricos inválidos; conserva temperatura negativa, nomes e estados relevantes.
+- Flags de bateria usam 1 para verdadeiro; CURRENT_QNOVO e CHARGE_DISABLE leem os seus campos próprios.
+- Switch e hooks aceitam aspas envolventes e CRLF; hashes dentro de quotes e argumentos shell literais são preservados. Um ` --` noutro comando não força o switch. Hooks são enviados como um único argumento sem expansão prematura no shell da app.
+- Parsing de versão, estados e resultados usa funções comuns aos comandos reais e aos testes. Uma probe falhada/incompleta não confirma suporte idle.
+
+### Validação
+
+| Verificação | Resultado / alcance |
+| --- | --- |
+| Suite host do motor | 52 testes: 50 passaram; 2 testes de lock real reservados ao Android |
+| Contrato no Samsung SM-G975F | 17 testes passaram com root, mksh e BusyBox; ficheiros temporários |
+| Suite de limites no Samsung | 20 testes passaram; ficheiros temporários, sem sysfs real |
+| Sintaxe Android | 28 scripts runtime passaram `/system/bin/sh -n` |
+| App | 106 testes unitários passaram em debug e release; build e lint de ambas as variantes passaram. Release local sem assinatura, como no CI; não publicada. |
+| Sincronização | Fixtures exportadas nos dois projetos; CI verifica metadata e SHA-256 dos scripts de origem contra o bundle da app |
+| Build determinístico | Tarball reproduzido com o mesmo SHA-256: `b6b7dca9b4fd7816031b7852ed66ef339626d5c76d4f22c71dc5d130ebecca4a` |
+| Dispositivo instalado | App, módulo, configurações, perfis e controlos físicos não foram atualizados |
+
+As fixtures executam funções/dispatch relevantes com hardware/serviço substituídos por ficheiros e stubs. Não são uma instalação completa nem uma prova de sysfs OEM. Mantêm a precisão atual do output (duas casas A/V/W); descoberta de unidades e precisão adicional ficam em R2. A migração atómica, import de scripts arbitrários e lifecycle real permanecem R4/R7.
+
+Reproduzir no motor:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+python3 tools/export_contract.py --check --app ../ACCA-NG
+ACC_TEST_ADB_SERIAL=<serial> python3 -m unittest discover -s tests -p test_contract.py -v
+```
+
+Na app: `python3 tools/check-engine-contract.py` seguido de `./gradlew :app:testDebugUnitTest :app:lintDebug :app:assembleDebug`. O candidato continua sem publicação; module.json conserva v1.0.3-ng. A próxima release da app precisa de novo versionCode/versionName antes de gerar/publicar um APK alterado.
+
+### Próximo incremento
+
+R1.2: descoberta/cache dos controlos e exposição de suporte. R1.4: distinguir configuração gravada de aplicação física. R2.1/R2.4: blacklist e semântica comum de alimentação entre controlador, eventos e app. Validação física de I1/I2 (upgrade, resets/reaplicação, OEM, rollback e reboot) permanece pendente.

@@ -13,6 +13,8 @@ import mattecarra.accapp.models.BatteryInfo
 
 interface AccInterface {
     val version: Int
+    val usesResumeTemperature: Boolean
+        get() = mattecarra.accapp.acc.TemperatureConfig.usesResumeTemperature(version)
 
     suspend fun readConfig(): AccConfig
 
@@ -179,6 +181,6 @@ interface AccInterface {
     }
 
     suspend fun getAccVersion(): Int? = withContext(Dispatchers.IO) {
-        RootShell.exec("/dev/.vr25/acc/acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull() ?: RootShell.exec("acc --version").out.joinToString(separator = "\n").split("(").last().split(")").first().trim().toIntOrNull()
+        mattecarra.accapp.acc.AccOutput.version(RootShell.exec("/dev/.vr25/acc/acc --version").out.joinToString(separator = "\n")) ?: mattecarra.accapp.acc.AccOutput.version(RootShell.exec("acc --version").out.joinToString(separator = "\n"))
     }
 }

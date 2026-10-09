@@ -1,2 +1,2 @@
-30d15c078fc5f4af0544c837681e37d6fc92be2f11b3f45ba88c448754756b2a  app/src/main/res/raw/acc_bundle
+b6b7dca9b4fd7816031b7852ed66ef339626d5c76d4f22c71dc5d130ebecca4a  app/src/main/res/raw/acc_bundle
 3949221a8f969cbbd64db314cf834215575886e26d900c200dce171281b44570  app/src/main/res/raw/djs_bundle
