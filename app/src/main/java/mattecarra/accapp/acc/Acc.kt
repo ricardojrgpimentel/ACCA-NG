@@ -20,7 +20,7 @@ import kotlin.math.abs
 
 object Acc {
     // ACC-NG release code is independent of its tested upstream config schema.
-    const val bundledVersion = 202610095
+    const val bundledVersion = 202610106
 
     /**
      * App files dir. Must be initialised from MainApplication.onCreate via

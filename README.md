@@ -24,7 +24,7 @@ for controlling charging on rooted Android devices. Maintained by
   21 locales, with English fallback for older untranslated text.
 
 The app bundles [ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG)
-**v1.0.5-ng candidate**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
+**v1.0.6-ng candidate**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
 The engine controls charging in the background; limits come from your settings
 and profiles. Disabling engine notifications does not disable charging protection.
 
@@ -64,8 +64,12 @@ promise support for every device or guarantee battery health.
 
 The recorded physical validation covers a **Samsung SM-G975F** and its kernel:
 setup, calibration, profile application and observed charging pause/resume.
-Boot persistence, other devices, a complete normal notification cycle and a
-physical thermal-limit test remain unverified. See the
+Locked boot passed on that Samsung/Magisk with the I2 candidate. I3 passed
+synthetic host/Android tests and a limited physical upgrade/readback check:
+this kernel refused current-limit writes, which were reported as failed;
+voltage discovery remained pending during cooldown. The original configuration
+was restored. Other devices, notification delivery, successful power-limit
+application/restoration and OEM policy remain unverified. See the
 [validation record](docs/acc-ng-validation.md) for exact scope.
 
 Review [ACC-NG documentation](https://github.com/ricardojrgpimentel/ACC-NG)

@@ -178,4 +178,15 @@
     <string name="script_label">Nome do script</string>
     <string name="script_description">Descrição</string>
     <string name="script_body_text">Comandos shell</string>
+
+    <string name="settings_saved">Definições guardadas. Os limites de potência são apresentados abaixo quando a leitura dos controlos está disponível.</string>
+    <string name="power_limit_current">Limite de corrente</string>
+    <string name="power_limit_voltage">Limite de tensão</string>
+    <string name="power_limit_off">Desativado; nenhum limite ACC-NG está ativo</string>
+    <string name="power_limit_applied">Aplicado e confirmado nos controlos de carga</string>
+    <string name="power_limit_pending">Guardado; a aguardar controlos de carga ou um carregador</string>
+    <string name="power_limit_unsupported">Guardado; nenhum controlo compatível foi encontrado</string>
+    <string name="power_limit_failed">Guardado; a aplicação ou reposição do controlo falhou</string>
+    <string name="power_limit_unknown">Guardado; não foi possível verificar a aplicação do controlo</string>
+    <string name="power_limit_line">%1$s: %2$s</string>
 </resources>

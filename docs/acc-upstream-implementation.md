@@ -114,3 +114,33 @@ Na app: `python3 tools/check-engine-contract.py` seguido de `./gradlew :app:test
 ### Próximo incremento
 
 R1.2: descoberta/cache dos controlos e exposição de suporte. R1.4: distinguir configuração gravada de aplicação física. R2.1/R2.4: blacklist e semântica comum de alimentação entre controlador, eventos e app. Validação física parcial de I1/I2 registada: upgrade, reinício e pausa/retoma com switch conhecido passaram. Deteção física de desligar/religar USB também passou. Arranque pelo Magisk antes do primeiro desbloqueio também passou, preservando a configuração. Resets/reaplicação de potência, OEM e rollback permanecem pendentes.
+
+
+## I3 — descoberta, alimentação e aplicação de limites
+
+10 de outubro de 2026. **Implementado no candidato ACC-NG v1.0.6-ng (202610106) / AccA-NG 2.0.0-ng-beta.5 (45); motor e app debug instalados e parcialmente validados no Samsung.** Fonte do motor: [`1e8291b`](https://github.com/ricardojrgpimentel/ACC-NG/tree/1e8291bcc69d59de677674728075b0c9063b561a), sobre `2d969cb`; base da app `6b52e0a`. API NG 1, schema 202310160, capacity de seis elementos, calibração, r e perfis conservados. Release pendente.
+
+| Tarefa/origem | Comportamento integrado | Restante |
+| --- | --- | --- |
+| R1.2 — 07a3a8d/e89c463 | Cache por tipo/boot, valores inteiros estritos, unidades mA/µA e mV/µV, aliases deduplicados; reconstrução conserva snapshot original. Cache vazio representa probe concluída. Alteração de currentWorkaround refaz a seleção sem fallback. | Descoberta de sensores alternativos continua R2.3; ensaio OEM real pendente. |
+| R1.4 — 486aa90/a74d83b | Pedidos offline são guardados sem espera. acca --power-status expõe pedido, suporte e estado; aplicado exige tentativa bem sucedida e readback dos controlos. Drift/readback recusado são falha. App distingue configuração gravada da aplicação do limite. | Não mede a eficácia elétrica do limite; essa confirmação exige ensaio físico. |
+| R2.1 — d8cf7bb/e00ba35/67ec354/52265a1/7784280/6b308d8 | Blacklist final no parser e validação de candidatos, logs antigos e referências de níveis térmicos; leitura recusada/vazia/inválida não autoriza escrita. Descoberta não altera permissões. | Novos switches/exceções OEM continuam R2.2. |
+| R2.4 — deteção NG / parte de 9cdf64f | external-power.sh é a fonte comum do controlador, eventos e código Kotlin gerado. Connected prevalece; uma fonte inválida junto de fontes offline mantém unknown. Battery/BMS/OTG são excluídos por nome/tipo. | Polaridade automática e funcionalidades misturadas de 9cdf64f continuam R3/R6. |
+
+A aplicação do daemon lê a configuração mais recente sob o lock do frontend e deixa de enviar setters assíncronos que regravavam perfis antigos. Guardar um switch automático relê o config e respeita uma escolha manual entretanto feita. Scripts explícitos applyOnBoot/applyOnPlug conservam execução própria. O lock não substitui a escrita/migração atómica de R4 nem cobre todos os writers legados.
+
+Os valores originais de todos os controlos são capturados antes da primeira escrita: dois ficheiros distintos podem partilhar o mesmo valor no driver. As fixtures verificam que a escrita no primeiro não contamina o snapshot do segundo.
+
+`power-limits-status` é uma capacidade aditiva, sem alterar outputs existentes de -i/-sp. A leitura não descobre nem escreve nodes: um writer ocupado ou protocolo incompleto resulta em indisponível. A app apresenta os estados no resultado de guardar definições/perfis e no diagnóstico; só confirma o pedido correspondente. Motor antigo sem capacidade mantém confirmação da configuração e não inventa readback físico. Os textos novos têm pt-PT/pt-BR e fallback inglês para as restantes línguas.
+
+Ficheiros principais do motor: control-discovery.sh, control-write.sh, external-power.sh, ng-power-limits.sh, setters, acca/accd, misc-functions, batt-interface, ng-events e parser de switches. A app inclui PowerLimits, PowerLimitsText, GeneratedExternalPower, SharedViewModel, resultados/diagnóstico e fixtures partilhadas. O exportador gera o helper Kotlin; CI verifica-o contra o código efetivamente empacotado.
+
+### Validação I3
+
+Os resultados finais e checksum constam da [validação I3](acc-ng-validation.md#i3-local-candidate--2026-10-10). As suites usam ficheiros temporários. No ensaio físico, o upgrade para I3 preservou a configuração e arrancou um único daemon. Os nodes de corrente recusaram 250 mA e o readback reportou falha; o pedido de 4100 mV ficou pendente durante cooldown. Os pedidos foram retirados, a configuração original reposta e a carga retomou. Aplicação/restauração efetiva de limites, política OEM e matriz completa R7 continuam pendentes. A matriz física I2 não foi promovida a prova de I3.
+
+A primeira tentativa de upgrade revelou que o cleanup herdado apaga a origem quando o staging corresponde a /data/local/tmp/acc[-_]*. A recuperação automática repôs I2 e o config. Repetir fora desse padrão permitiu instalar I3; a correção do cleanup continua R5.3.
+
+### Seguinte
+
+Completar a aplicação/restauração física de limites num kernel com controlos graváveis; seguir R2.2/R2.3 e R3 e corrigir o cleanup de R5.3. A origem do bundle está fixada no commit do motor; concluir R7 antes de distribuição. R4/R5 continuam abertos; R6 é opcional.

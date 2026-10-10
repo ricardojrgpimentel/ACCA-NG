@@ -15,6 +15,8 @@ import mattecarra.accapp.utils.ProfileUtils
 class SharedViewModel(application: Application) : AndroidViewModel(application)
 {
     private val mSharedPrefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(application)
+    var lastPowerLimits: mattecarra.accapp.acc.PowerLimitsSnapshot? = null
+        private set
     private val config: MutableLiveData<Pair<AccConfig?, String?>> = MutableLiveData()
 
     init {
@@ -87,11 +89,14 @@ class SharedViewModel(application: Application) : AndroidViewModel(application)
     */
     private suspend fun saveAccConfig(value: AccConfig): Boolean
     {
+        lastPowerLimits = null
         val controls = ConfigUpdaterEnable(mSharedPrefs)
         val result = Acc.instance.updateAccConfig(value, controls)
-        val applied = if (result.isSuccessful()) ConfigVerifier.awaitApplied(value,
+        val applied = if (result.isSuccessful()) ConfigVerifier.awaitSaved(value,
             controls.sendVoltage, controls.sendCurrMax) { Acc.instance.readConfig() } else null
         if (applied != null) {
+            lastPowerLimits = mattecarra.accapp.acc.PowerLimits.read()?.matchingRequest(value)?.forControls(
+                controls.sendCurrMax, controls.sendVoltage)
             config.postValue(Pair(applied, null))
         } else {
             val currentConfig = try {

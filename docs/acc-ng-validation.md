@@ -269,3 +269,94 @@ Locked boot persistence passes on this Samsung/Magisk combination without
 opening either app. The user was told they could unlock after the check.
 Automatic discovery/state freshness, current/voltage reset/reapplication,
 rollback, OEM thermal policy and other root managers remain separate work.
+
+## I3 local candidate — 2026-10-10
+
+ACC-NG **v1.0.6-ng (202610106)** and AccA-NG **2.0.0-ng-beta.5 (45)** are
+unpublished candidates. Engine source: [`1e8291b`](https://github.com/ricardojrgpimentel/ACC-NG/tree/1e8291bcc69d59de677674728075b0c9063b561a),
+over `2d969cb`; app base: `6b52e0a`. NG API 1 and schema 202310160 remain
+unchanged. Implementation and upstream origins are recorded in
+[the I3 integration record](acc-upstream-implementation.md#i3--descoberta-alimentação-e-aplicação-de-limites).
+
+The deterministic engine archive and app resource have SHA-256:
+
+```text
+5bfa3609db90cd43c0c529ea8f91a920e02c20654c06f8fe6611c29e43914b92
+```
+
+The physical trial used archive
+`17332c2b3e43583e4df9233dd74802e947e627f992f80764db067c00984a0d79`.
+Before committing, only its bundled `docs/upstream-integration.md` was updated
+to record the completed trial and source provenance. All runtime files are
+byte-for-byte identical to that trial; the new archive was reproduced and the
+app rebuilt. This archive change did not repeat physical validation.
+
+### Automated checks
+
+| Check | Result |
+| --- | --- |
+| Engine host suite | 73 cases: 71 passed, 2 Android-only skipped |
+| Engine suite with Android fixture runners | 73 passed; root, mksh and BusyBox on Samsung SM-G975F for shell fixtures; Python/build checks on host |
+| Runtime shell syntax on Android | 32 scripts passed; final limit-control change also executed by all 21 limit cases on Android |
+| App unit tests | 114 passed in each of debug/release; no failures, errors or skips |
+| App builds and lint | Debug and unsigned release APKs built; lintDebug/lintRelease passed |
+| Shared contract | Export/check passed, including generated Kotlin power helper and all 18 bundled runtime source hashes |
+| Archive reproduction | Building from a clean git archive of engine commit 1e8291b produced the same SHA-256; packaged checksum matches |
+| Translation checks | 21 locales checked, no errors; new status strings include pt-PT/pt-BR and English fallback |
+
+Fixtures cover deferred requests, no support, refused writes, OEM value drift,
+original-value restoration, cache loss/restarts, strict units, alias deduplication,
+controls that share a driver value, blacklist/live candidate validation,
+thermal references and preservation of the latest/manual settings. They use
+temporary files and stubs, not live charging controls.
+
+### Limited physical upgrade and readback — Samsung SM-G975F
+
+The existing I2 engine/configuration and debug app data were backed up before
+installation. Private evidence is kept under ignored `build/validation/i3/`,
+with a corresponding dated backup on the device. The official release app was
+unchanged; the debug app was updated to code 45.
+
+The first upgrade attempt exposed an inherited installer bug: uninstall cleanup
+matches `/data/local/tmp/acc[-_]*` and deleted the installation source in that
+directory. Automatic recovery restored I2, restarted the daemon and preserved
+the configuration hash. Repeating from `/data/local/tmp/ng-i3-candidate-*`
+installed I3 successfully. This is a staging workaround; **the cleanup bug is
+still open in R5.3**. It does not certify the explicit rollback CLI.
+
+The installed runtime matched all 18 source hashes from the committed bundle.
+The installed debug APK matched the local debug artifact at the trial check,
+before the documentation-only archive update described above. The installed
+engine reported v1.0.6-ng/202610106, with one daemon matching its runtime lock.
+
+A bounded live trial requested **250 mA** and **4100 mV**, then withdrew both
+requests and restored the exact original configuration:
+
+- The eligible `ac`, `usb` and `wireless/current_max` controls stayed at 475000.
+  Writes were refused. Readback reported `current.state=failed`, with
+  `current.supported=true` meaning discovered candidate controls, not successful
+  write support. No current ownership snapshot was acquired.
+- Voltage discovery remained `supported=unknown`, `state=pending` while the
+  battery was Discharging and USB online=0 during configured slate cooldown.
+  This does not prove voltage support or lack of support, and was not a physical
+  cable unplug/replug test.
+- The 12 samples covered approximately 36 seconds. Battery temperature remained
+  26.6–26.7 °C. No battery sensor was spoofed or battery deliberately heated.
+- After withdrawal, both requests read `default`/`off`; ownership markers were
+  absent. Current nodes retained mode 444 and owner 0:0. `battery/siop_level`
+  remained 100, mode 664, owner 1000:1001; its write/reset was not exercised.
+- The original configuration SHA-256 was restored exactly:
+  `3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2`.
+  Later observation showed slate=0, USB online=1 and positive battery current
+  (134 mA), consistent with charging resuming under the original protection.
+  The final status showed online=true and both power limits off.
+
+The physical result confirms upgrade/configuration preservation and honest
+failure reporting on this kernel. **Successful current/voltage application and
+restoration remain unverified** because these current controls refused writing
+and voltage discovery did not complete in the trial window. Full OEM thermal
+policy, explicit rollback, locked boot/USB repetition for I3, other devices and
+root managers remain open. I2 results remain evidence for I2 only.
+
+No GitHub release, updater announcement or publication metadata was changed.
+The bundled engine source is pinned; finish the required R7 checks before distribution.

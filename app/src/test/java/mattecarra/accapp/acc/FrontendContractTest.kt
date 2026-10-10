@@ -14,7 +14,7 @@ class FrontendContractTest {
     private fun resource(name: String) = requireNotNull(javaClass.getResource("/acc-ng/$name")).readText()
     private val fixtures = Gson().fromJson(resource("frontend-contract.json"), JsonObject::class.java)
     private val contract = requireNotNull(NgEngineContract.parse(fixtures["module"].asString))
-    private val handler = AccHandler(202610095, contract)
+    private val handler = AccHandler(202610106, contract)
     private fun output(group: String, name: String) = fixtures.getAsJsonObject(group).getAsJsonObject(name)["output"].asString
     private fun code(group: String, name: String) = fixtures.getAsJsonObject(group).getAsJsonObject(name)["code"].asInt
 
@@ -141,9 +141,9 @@ class FrontendContractTest {
     }
 
     @Test fun releaseVersionParserIgnoresNoiseAndRejectsPartialNumbers() {
-        assertEquals(202610095, AccOutput.version(output("version", "current")))
+        assertEquals(202610106, AccOutput.version(output("version", "current")))
         assertEquals(202310160, AccOutput.version("warning\nv2023.10.16 (202310160)\n"))
-        assertNull(AccOutput.version("v1.0.5-ng (202610095oops)"))
+        assertNull(AccOutput.version("v1.0.6-ng (202610106oops)"))
         assertNull(AccOutput.version("command not found"))
     }
 
@@ -159,4 +159,13 @@ class FrontendContractTest {
         assertTrue(config.configResetUnplugged)
         assertTrue(config.configResetBsOnPause)
     }
+    @Test fun engineReadbackSeparatesPendingUnsupportedAppliedAndFailure() {
+        for ((name, state) in listOf("pending" to PowerLimitState.PENDING,
+            "unsupported" to PowerLimitState.UNSUPPORTED, "applied" to PowerLimitState.APPLIED,
+            "drift" to PowerLimitState.FAILED, "failed" to PowerLimitState.FAILED, "off" to PowerLimitState.OFF)) {
+            assertEquals(0, code("power-limits", name))
+            assertEquals(state, requireNotNull(PowerLimitsSnapshot.parse(output("power-limits", name))).current?.state)
+        }
+    }
+
 }

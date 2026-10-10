@@ -7,11 +7,12 @@ import mattecarra.accapp.models.ProfileActivation
 import mattecarra.accapp.utils.CommandTraceContext
 
 object ConfigVerifier {
-    suspend fun awaitApplied(requested: AccConfig, applyVoltage: Boolean, applyCurrent: Boolean,
+    /** Confirms persisted settings, independently of hardware application. */
+    suspend fun awaitSaved(requested: AccConfig, applyVoltage: Boolean, applyCurrent: Boolean,
                              wait: suspend () -> Unit = { delay(500) },
                              read: suspend () -> AccConfig): AccConfig? {
         val trace = CommandTraceContext.current()
-        val step = trace?.started("Verify applied ACC settings")
+        val step = trace?.started("Verify saved ACC settings")
         try {
             repeat(10) {
                 val current = try { read() }

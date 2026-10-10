@@ -64,4 +64,13 @@ class ExternalPowerSupplyTest {
             process.waitFor()
         } finally { root.deleteRecursively() }
     }
+    @Test fun unreadableOrInvalidSourceAlongsideOfflineIsStillUnknown() {
+        assertEquals("", read(mapOf("usb" to ("0" to "USB"), "dc" to ("invalid" to "Mains"))))
+        assertEquals("online=true", read(mapOf("usb" to ("1" to "USB"), "dc" to ("invalid" to "Mains"))))
+    }
+    @Test fun differentlyNamedOtgAndCaseVariationsAreExcluded() {
+        assertEquals("online=false", read(mapOf("BATTERY" to ("1" to null),
+            "reverse" to ("1" to "USB_OTG"), "usb" to ("0" to "USB"))))
+    }
+
 }

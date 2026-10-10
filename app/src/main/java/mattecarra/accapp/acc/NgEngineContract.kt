@@ -7,7 +7,7 @@ data class NgEngineContract(val api: Int, val schema: Int?, val capabilities: Se
 
     companion object {
         private val knownCapabilities = setOf("info-key-value-si", "capacity-six", "resume-temperature",
-            "resume-temperature-override", "manual-discharge-polarity", "ng-notifications")
+            "resume-temperature-override", "manual-discharge-polarity", "ng-notifications", "power-limits-status")
 
         fun parse(metadata: String): NgEngineContract? {
             val fields = metadata.lineSequence().map { it.trim() }

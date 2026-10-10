@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado:** I1 (resets/permissões) e I2 (R0: contrato/fixtures) implementados no código e no bundle candidato **v1.0.5-ng (202610095)**. Preserva API NG 1 e schema 202310160, agora declarados separadamente da versão da release. Fonte do motor em [`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f); release pendente. O candidato está instalado no Samsung: upgrade com configuração preservada, reinício e pausa/retoma com switch conhecido passaram. Deteção física de desligar/religar USB também passou. Arranque pelo Magisk antes do primeiro desbloqueio também passou, com configuração idêntica e um daemon. Resets de potência, rollback e política OEM continuam pendentes. Ver a [validação física](acc-ng-validation.md#i2-physical-debug-check--samsung-sm-g975f-2026-10-09). Ver o [registo de implementação e validação](acc-upstream-implementation.md).
+**Estado:** I1/I2 integrados; **I3 implementado no candidato v1.0.6-ng (202610106)**, mantendo API NG 1 e schema 202310160. I3 cobre descoberta/cache, blacklist/validação e alimentação externa comum, com readback de corrente/tensão na app. Fonte do motor em [`1e8291b`](https://github.com/ricardojrgpimentel/ACC-NG/tree/1e8291bcc69d59de677674728075b0c9063b561a), sobre `2d969cb`; release pendente. I3 está instalado no Samsung: upgrade/configuração preservada e deteção de escritas de corrente recusadas passaram; tensão ficou pendente durante cooldown. A configuração original foi reposta. Aplicação/restauração efetiva de limites e matriz completa continuam pendentes. USB físico e arranque Magisk antes do PIN passaram em I2, não foram repetidos em I3. Ver o [registo de implementação](acc-upstream-implementation.md#i3--descoberta-alimentação-e-aplicação-de-limites).
 
 ## Estado das tarefas
 
@@ -15,16 +15,17 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R0.3 | Implementado I2 em fixtures | Perfis JSON antigos/atuais, escrita/reload raw, limites, r, switch manual, calibração e preferências NG; upgrade real continua R7. |
 | R0.4 | Implementado I2 em fixtures | Harness host/Android de sensores mA/µA e mV/µV, polaridade, zero, dados ausentes/inválidos/recusados, mais controlos de I1. Descoberta OEM e sysfs real continuam R2/R7. |
 | R1.1 | Implementado I1; validação física pendente | Resets só de controlos alterados pelo NG, com snapshot e retry em falha. |
-| R1.2 | Parcial I1 | Setters isolados e snapshot original mantido; falta revisão completa de descoberta/cache e exposição de suporte à app. |
+| R1.2 | Implementado I3 em fixtures | Cache por boot/tipo, deduplicação de aliases, defaults originais e suporte explícito; aplicação lê o pedido mais recente sem regravar configuração antiga. Validação OEM real pendente. |
 | R1.3 | Implementado I1; validação física pendente | Escrita direta, sem chown; fallback u+w temporário com restauração e erro propagado. Falta ensaio de sysfs/política OEM. |
-| R1.4 | Pendente | A app ainda confirma configuração; distinguir aplicação física continua por fazer. |
-| R2.1 | Parcial I1 | store_mode excluído da lista automática; restante blacklist/validação de candidatos pendente. |
-| R2.2–R2.4 | Pendente | Novos switches, sensores e unificação de alimentação ainda por integrar. |
+| R1.4 | Implementado I3; validação física parcial | Readback distingue gravado/pendente, aplicado nos controlos, sem suporte e falha. Recusa real de corrente reportada como falha no Samsung; aplicação efetiva continua pendente. |
+| R2.1 | Implementado I3 em fixtures | Blacklist final de acc -p, validação de candidatos/parsed.log e referências térmicas, sem chmod na descoberta nem fallback arbitrário. Escolha manual preservada. |
+| R2.2–R2.3 | Pendente | Novos switches/regras OEM e descoberta de sensores alternativos ainda por integrar. |
+| R2.4 | Implementado I3 em fixtures | Um helper comum no motor, eventos e app; Battery/BMS/OTG excluídos, fontes OEM aceites e desconhecido conservado, incluindo leitura inválida junto de fonte offline. |
 | R3.1–R3.6 | Pendente | Testes de switches, estados, recuperação e proteções mantêm a implementação atual. |
 | R4.1–R4.4 | Pendente | Import, escrita/migração e agendamento por integrar. |
 | R5.1–R5.5 | Pendente | Arranque, root, instalação, downloader e diagnósticos por integrar. |
 | R6.1–R6.5 | Opcional pendente | Não incluído em I1. |
-| R7 | Parcial I1/I2 | Bundle determinístico, fixtures host/Android, testes e build/lint da app; upgrade, reinício e pausa/retoma com switch conhecido passaram; arranque antes do primeiro desbloqueio passou; restantes controlos sysfs, rollback e release pendentes. |
+| R7 | Parcial I1/I2/I3 | Bundle determinístico, fixtures host/Android, testes e build/lint da app. I3: upgrade/config preservada, recusa de corrente e recuperação de instalação falhada passaram. I2: pausa/retoma, USB e arranque antes do desbloqueio passaram. Aplicação/restauração efetiva de limites, matriz completa e release pendentes. |
 
 
 ## Estratégia de integração
@@ -129,7 +130,7 @@ Origens principais: `af87dce`, `00d1f32`, `0fe4455`, `0e239f4`, `67f27ed`, `41b8
 | --- | --- | --- |
 | R5.1 | Portar flags persistentes e arranque tolerante à inicialização | `-D` continua rápido; a app distingue a inicialização de falha; disable é respeitado também durante a espera; grace period de arranque é testado. |
 | R5.2 | Alinhar wrappers, BusyBox e root managers | Magisk mantém instalação sem reboot; KSU/APatch têm ensaios próprios. Não usar deteção por glob de BusyBox como prova suficiente do gestor root. |
-| R5.3 | Rever instala/desinstala/rollback preservando caminhos NG | Backups datados e recovery continuam funcionais; rollback encontra o snapshot NG, não presume o layout upstream; cleanup é limitado ao módulo e pacote correto. |
+| R5.3 | Rever instala/desinstala/rollback preservando caminhos NG | Backups datados e recovery continuam funcionais; rollback encontra o snapshot NG, não presume o layout upstream; cleanup é limitado ao módulo e pacote correto. Falha observada em I3: cleanup apagou o próprio staging /data/local/tmp/acc[-_]*; recovery repôs I2. Corrigir e testar esse caminho. |
 | R5.4 | Rever downloader e seleção de arquivos | Validação TLS, HTTP e conteúdo; branch/tag/archive compatíveis; falhas propagam o código real; identidade e URL continuam NG. |
 | R5.5 | Portar logs, filtros e resultados de teste | Último teste e contexto de sensores entram no arquivo; export não bloqueia o loop e possui limites; recuperação mantém evidência útil. |
 
@@ -171,12 +172,12 @@ Regenerar o bundle através de `tools/build_ng.py`, comparar hashes, atualizar `
 
 Um incremento só fica concluído quando os seus critérios passam. Novos candidatos de controlo de hardware podem ficar experimentais se não houver aparelho disponível; essa limitação deve acompanhar a release. R6 pode continuar pendente sem bloquear as correções do núcleo.
 
-## Primeira sequência de implementação
+## Próxima sequência após I3
 
-1. Completar R0.1 a R0.4: fixtures de output/perfis/sensores e capacidades, apoiadas no harness I1.
-2. Validar fisicamente R1.1/R1.3 de I1 e completar cache/descoberta de R1.2, conservando o output da app.
-3. Completar R2.1 após a exclusão de `store_mode`; R2.4: alinhar os três leitores de alimentação externa.
-4. R1.4: alinhar aplicação/readback e validar o primeiro incremento no Samsung.
-5. Avançar os restantes grupos pelo quadro de dependências, com release candidata em R7 antes de distribuição.
+1. Completar resets/reaplicação reais de mcc/mcv/tl num kernel com controlos graváveis, controlo OEM e rollback. O upgrade I3 e a recusa de corrente já estão registados; USB e locked boot anteriores continuam a ser evidência de I2. Corrigir o cleanup de staging identificado em R5.3 antes de distribuição.
+2. Completar R2.2/R2.3: novos switches/regras OEM e descoberta de sensores, com unidades e fontes identificadas.
+3. R3: testes de switches, seleção/recuperação com orçamento, idle e estados térmicos/cooldown.
+4. R4 e R5 pelo quadro de dependências: escrita/migração/import atómicos, DJS, readiness, root managers, instalação/recuperação e diagnóstico.
+5. Fechar R7 e publicar um candidato conjunto a partir dos commits fixados. R6 continua opcional.
 
-Esta sequência faz o primeiro port produzir uma melhoria concreta e verificável sem antecipar uma migração de schema ou as funcionalidades opcionais.
+I3 não altera o schema nem migra perfis. O lock comum cobre os writers do frontend acca e a aplicação/seleção automática do daemon; concorrência global de configuração, imports, CLI legado e migração atómica continuam R4.

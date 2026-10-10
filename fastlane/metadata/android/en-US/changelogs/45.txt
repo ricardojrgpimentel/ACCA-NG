@@ -1,0 +1,4 @@
+Improve discovery and caching of charging controls.
+Distinguish saved power settings from pending, applied, unsupported or failed limits.
+Use consistent external-power detection in the engine and app.
+Preserve original control values and latest settings across daemon updates.

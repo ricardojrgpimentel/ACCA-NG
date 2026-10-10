@@ -74,6 +74,14 @@ class MainActivity : ScopedAppActivity(), NavigationBarView.OnItemSelectedListen
 
     var selectedNavBarItem = R.id.botNav_home
 
+    override fun commandResultMessage(state: mattecarra.accapp.viewmodel.AccCommandState): CharSequence? {
+        if (state.successful != true || state.label !in listOf(
+                R.string.command_apply_settings, R.string.command_apply_profile)) return null
+        return listOfNotNull(getString(R.string.settings_saved),
+            _sharedViewModel.lastPowerLimits?.let { mattecarra.accapp.utils.PowerLimitsText.format(this, it) })
+            .joinToString("\n\n")
+    }
+
     fun showProfiles() {
         binding.mainBottomNav.selectedItemId = R.id.botNav_profiles
     }

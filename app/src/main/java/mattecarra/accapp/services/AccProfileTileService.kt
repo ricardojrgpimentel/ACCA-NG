@@ -101,7 +101,7 @@ class AccProfileTileService: TileService(), CoroutineScope {
                 val controls = ConfigUpdaterEnable(mSharedPrefs)
                 val successful = try {
                     val res = Acc.instance.updateAccConfig(profile.accConfig, controls)
-                    res.isSuccessful() && ConfigVerifier.awaitApplied(profile.accConfig,
+                    res.isSuccessful() && ConfigVerifier.awaitSaved(profile.accConfig,
                         controls.sendVoltage, controls.sendCurrMax) { Acc.instance.readConfig() } != null
                 } catch (ex: CancellationException) { throw ex
                 } catch (ex: Exception) { false }

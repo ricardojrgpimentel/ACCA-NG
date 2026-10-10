@@ -19,6 +19,11 @@ with tarfile.open(ROOT / 'app/src/main/res/raw/acc_bundle', 'r:gz') as archive:
         actual = hashlib.sha256(archive.extractfile(prefix + name).read()).hexdigest()
         if actual != expected:
             raise SystemExit(f'Bundled {name} differs from tested frontend fixture source.')
+    source = archive.extractfile(prefix + 'install/external-power.sh').read().decode()
+    generated = (ROOT / 'app/src/main/java/mattecarra/accapp/acc/GeneratedExternalPower.kt').read_text()
+    literal = re.search(r'const val source = (".*")', generated).group(1)
+    if json.loads(literal.replace(r'\$', '$')) != source:
+        raise SystemExit('Frontend external-power helper differs from bundled engine source.')
 props = dict(line.split('=', 1) for line in metadata.splitlines() if '=' in line)
 version = re.search(r'const val bundledVersion = (\d+)',
     (ROOT / 'app/src/main/java/mattecarra/accapp/acc/Acc.kt').read_text()).group(1)

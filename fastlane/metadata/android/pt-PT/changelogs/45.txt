@@ -1,0 +1,4 @@
+Melhora a descoberta e cache dos controlos de carga.
+Distingue definições guardadas de limites pendentes, aplicados, sem suporte ou com falha.
+Uniformiza a deteção de alimentação externa no motor e na app.
+Preserva valores originais dos controlos e definições recentes nas atualizações do daemon.

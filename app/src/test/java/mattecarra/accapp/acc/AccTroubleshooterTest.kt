@@ -43,4 +43,28 @@ class AccTroubleshooterTest {
         assertFalse(s.hasCurrentSensor)
         assertNull(s.online)
     }
+    @Test fun diagnosticsIncludeSeparateHardwareControlStatus() {
+        val s = AccTroubleshooter.parse("""
+            __CONFIG__
+            configVerCode=202310160
+            __MODULE__
+            version=202610106
+            __SOURCE__
+            __POWER__
+            status=Charging
+            daemon=0
+            __LIMITS__
+            powerLimitsVersion=1
+            current.requested=500
+            current.supported=true
+            current.state=failed
+            voltage.requested=default
+            voltage.supported=false
+            voltage.state=off
+        """.trimIndent())
+        assertTrue(s.available)
+        assertEquals(true, s.running)
+        assertEquals(PowerLimitState.FAILED, s.powerLimits?.current?.state)
+    }
+
 }

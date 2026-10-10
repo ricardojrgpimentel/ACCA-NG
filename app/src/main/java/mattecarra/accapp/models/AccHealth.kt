@@ -22,7 +22,8 @@ data class AccHealthSnapshot(
     val capacity: Int? = null,
     val pause: Int? = null,
     val resume: Int? = null,
-    val switch: String? = null
+    val switch: String? = null,
+    val powerLimits: mattecarra.accapp.acc.PowerLimitsSnapshot? = null
 ) {
     val currentMa: Double? get() = currentRaw?.let { raw ->
         ampFactor?.takeIf { it > 0 }?.let { raw.toDouble() * 1000 / it }

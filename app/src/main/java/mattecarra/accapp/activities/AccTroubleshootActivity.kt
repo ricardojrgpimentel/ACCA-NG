@@ -101,6 +101,9 @@ class AccTroubleshootActivity : ScopedAppActivity() {
             s.status ?: unknown, s.currentMa?.let { "%.0f".format(it) } ?: unknown,
             s.polarity?.takeIf { it in listOf("+", "-") } ?: unknown,
             s.switch?.takeUnless { it == "()" || it.isBlank() } ?: getString(R.string.automatic))
+        s?.powerLimits?.let { limits ->
+            binding.troubleshootDetails.append("\n\n" + mattecarra.accapp.utils.PowerLimitsText.format(this, limits))
+        }
         binding.troubleshootRefresh.isEnabled = !busy
         binding.troubleshootCalibrate.isEnabled = !busy && s?.available == true && s.workaround && s.hasCurrentSensor
         binding.troubleshootRestore.isEnabled = !busy && s?.available == true && s.version == Acc.bundledVersion &&

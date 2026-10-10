@@ -29,12 +29,17 @@ channel. Do not display an F-Droid download badge until this package is listed.
 5. Only after those checks, submit a recipe to fdroiddata or an inclusion request
    through F-Droid's documented process. No signing credentials are needed.
 
-Current ACC-NG bundle: **v1.0.5-ng candidate**, built from the local engine
-checkout (`../acc-ng`) using `python3 tools/build_ng.py`. Matching source:
-[`2d969cb`](https://github.com/ricardojrgpimentel/ACC-NG/tree/2d969cb3ec3854155479115b5b230d344e4ff44f). The candidate has not been released or physically
-validated. See [the candidate integration record](acc-upstream-implementation.md).
-The previous published source is [v1.0.3-ng](https://github.com/ricardojrgpimentel/ACC-NG/tree/v1.0.3-ng);
-it does not reproduce the new candidate.
+Current ACC-NG bundle: **v1.0.6-ng unreleased candidate**, built using
+`python3 tools/build_ng.py` from engine source
+[`1e8291b`](https://github.com/ricardojrgpimentel/ACC-NG/tree/1e8291bcc69d59de677674728075b0c9063b561a), including the I3 changes described in the
+[integration record](acc-upstream-implementation.md#i3--descoberta-alimentação-e-aplicação-de-limites).
+The source commit reproduces the bundled engine archive; reproducibility of
+the signed app APK and F-Droid eligibility remain separate checks. The
+candidate passed synthetic host/Android tests and a limited
+physical upgrade/readback check on Samsung; successful application/restoration
+of power limits remains unverified. See the [I3 validation record](acc-ng-validation.md#i3-local-candidate--2026-10-10).
+The previous published engine source remains [v1.0.3-ng](https://github.com/ricardojrgpimentel/ACC-NG/tree/v1.0.3-ng);
+it does not reproduce the candidate.
 DJS source: https://github.com/VR-25/djs/tree/v2021.12.14
 (commit `fec70823e379197a612fd18af644b2616d1168e0`).
 The DJS module metadata reports v2021.11.3 despite the archive tag v2021.12.14.

@@ -43,6 +43,10 @@ object AccTroubleshooter {
             ${ExternalPowerSupply.script()}
             $MANAGER -D >/dev/null 2>&1
             printf 'daemon=%s\n' "${'$'}?"
+            printf '__LIMITS__\n'
+            if grep -Eq '^ngCapabilities=(.*,)?power-limits-status(,|${'$'})' $MODULE/module.prop 2>/dev/null; then
+                $MANAGER --power-status || :
+            fi
         """.trimIndent(), 8)
         if (!result.isSuccess) return@withContext AccHealthSnapshot()
         parse(result.out.joinToString("\n"))
@@ -56,7 +60,7 @@ object AccTroubleshooter {
         }.toMap()
         val config = values(section("__CONFIG__", "__MODULE__"))
         val module = values(section("__MODULE__", "__SOURCE__"))
-        val power = values(output.substringAfter("__POWER__", ""))
+        val power = values(section("__POWER__", "__LIMITS__"))
         val capacity = config["capacity"]?.trim('(', ')')?.split(Regex("\\s+"))
         return AccHealthSnapshot(
             available = config["configVerCode"] != null && power["status"] != null,
@@ -69,7 +73,8 @@ object AccTroubleshooter {
             idleThreshold = config["idleThreshold"]?.toLongOrNull()?.coerceAtLeast(0) ?: 40,
             status = power["status"], online = power["online"]?.toBooleanStrictOrNull(),
             capacity = power["capacity"]?.toIntOrNull(), pause = capacity?.getOrNull(3)?.toIntOrNull(),
-            resume = capacity?.getOrNull(2)?.toIntOrNull(), switch = config["chargingSwitch"]
+            resume = capacity?.getOrNull(2)?.toIntOrNull(), switch = config["chargingSwitch"],
+            powerLimits = PowerLimitsSnapshot.parse(output.substringAfter("__LIMITS__", ""))
         )
     }
 

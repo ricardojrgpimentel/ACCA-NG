@@ -503,4 +503,15 @@
     <string name="script_run_success">Script completed successfully (exit code 0).</string>
     <string name="script_run_failed">Script failed (exit code %1$d).</string>
     <string name="script_no_output">The script produced no output.</string>
+
+    <string name="settings_saved">Settings saved. Power limits are reported below when control readback is available.</string>
+    <string name="power_limit_current">Current limit</string>
+    <string name="power_limit_voltage">Voltage limit</string>
+    <string name="power_limit_off">Off; no ACC-NG limit is active</string>
+    <string name="power_limit_applied">Applied and confirmed in charging controls</string>
+    <string name="power_limit_pending">Saved; awaiting charging controls or a charger</string>
+    <string name="power_limit_unsupported">Saved; no supported control was found</string>
+    <string name="power_limit_failed">Saved; control application or restoration failed</string>
+    <string name="power_limit_unknown">Saved; control application could not be verified</string>
+    <string name="power_limit_line">%1$s: %2$s</string>
 </resources>
