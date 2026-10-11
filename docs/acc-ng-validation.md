@@ -433,20 +433,20 @@ R7 remain pending. No source push, GitHub release or updater announcement.
 ## I6 joint core candidate — 2026-10-11
 
 **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**.
-Engine source: `601d1472d96c0084aee75adec974b93981cd5141`.
+Engine source: `ea5972f5d95e08ba9b98ac67c83ef375121aad72`.
 API 1/schema 202310160 retained; no stable release/updater change.
 Historical I1–I5 evidence above is not relabelled as this candidate's evidence.
 
 Tarball/app-resource SHA-256:
 
 ```text
-3bbbe3824cc66c6ed96f265a2c6f15d9b008ddef16cec44afec133c755b1d459
+96a4d95125be088cd5d2109020da8bcfaa8f1ddfb88f2359fed9922554ada1a1
 ```
 
 | Check | Result |
 | --- | --- |
-| Engine host suite | 131 cases: 129 passed, two Android-only skipped |
-| Engine with Android fixture runners | 131 passed; root/mksh/BusyBox fixtures on Samsung, Python/build checks on host |
+| Engine host suite | 133 cases: 131 passed, two Android-only skipped |
+| Engine with Android fixture runners | 133 passed; root/mksh/BusyBox fixtures on Samsung, Python/build checks on host |
 | Shell syntax | 53 scripts passed /system/bin/sh -n; final CLI changes checked again |
 | Configuration transactions | Concurrent writes, invalid/failing commits, imports/scripts, atomic reset/removal and restart without inherited writer lock |
 | Lifecycle/install fixtures | Boot/disable/readiness, safe extraction, HTTP failure, cleanup/recovery/rollback and bounded exports |
@@ -455,7 +455,7 @@ Tarball/app-resource SHA-256:
 | Shared contract | 35 source hashes, module/schema/capabilities and exact generated external-power helper match the shipped bundle |
 | Reproduction | Clean git archive reproduces identical engine tarball; candidate resources verified in both APKs |
 | Signing | Existing release certificate SHA-256 b658f70c0aa5046aaf2a508be344ad882c0293947628a6cf276a3ec8c533ea8d; APK signature and 16 KiB alignment verified |
-| Local APK updates | Signed and debug beta.7/code 47 installed; database rows/preferences and DJS runtime hashes preserved |
+| Local APK updates | Signed/debug beta.7/code 47 installed; database rows/preferences and DJS verified before locked boot. Final resource-only repack installed as an update before PIN; encrypted data is checked again only after user unlock |
 
 Fixtures write only generated temporary files; they do not certify electrical
 power limiting or all root managers. Boot/process/platform tools are simulated
@@ -493,11 +493,20 @@ The final candidate is installed on the device.
   runtime script/module hash, kept the current config and started one daemon.
   Reinstalling v1.0.8 through the exact app installer passed again.
 - Reboot changed boot ID; before PIN/unlock, engine-state was ready, a single
-  daemon owned its lock, 31 runtime hashes matched, config hash was preserved
-  and slate OFF was active under the original offMid profile. No UI unlock was
-  performed by automation. The verifier accepts the platform’s numeric
-  deviceLocked=1 readback and confirms RUNNING_LOCKED credential-encrypted user
-  state; the first verifier expected a textual boolean and was corrected.
+  daemon owned its lock and 31 runtime hashes matched. A temporary interval
+  away from the fuel-gauge boundary (resume 61%, pause 76%, cooldown 99%)
+  confirmed real offMid pause with slate OFF;
+  all thermal/OEM settings remained active. Its config hash survived reboot.
+  Original config and last-good were restored afterward under the writer mutex.
+  An earlier trial at 71%/resume 70% could not prove a stable OFF state during
+  boot. The code audit also removed dependence on observing net charging before
+  a known offMid pause, forces its OFF write even if normal disable would
+  classify net discharge as already stopped, and retains unresolved automatic
+  requests; two new
+  behavioral fixtures cover these paths. No UI unlock was performed.
+  The verifier accepts numeric deviceLocked=1 and confirms RUNNING_LOCKED
+  credential-encrypted user state; its initial textual-boolean assumption was
+  corrected.
 
 ### Certification still requiring hardware
 

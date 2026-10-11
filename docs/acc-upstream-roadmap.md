@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado em 11 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `601d1472d96c0084aee75adec974b93981cd5141`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk; a distribuição pública aguarda a certificação que exige outros kernels/gestores. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
+**Estado em 11 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `ea5972f5d95e08ba9b98ac67c83ef375121aad72`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk; a distribuição pública aguarda a certificação que exige outros kernels/gestores. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
 
 ## Estado das tarefas
 
@@ -26,7 +26,7 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R5.3 | Implementado I4/I6 | Staging e cleanup privados, arquivo validado e rollback NG. Upgrade, rollback físico e reinstalação passaram com config e uma instância preservados. |
 | R5.1/R5.2/R5.4/R5.5 | Implementado I6 | Readiness rápido, boot/disable limitado, flags dos gestores e BusyBox explícitos, HTTPS/TLS/HTTP, diagnósticos limitados. Magisk físico; KSU/APatch apenas fixtures. |
 | R6.1–R6.5 | Opcionais decididas | idle_apps, Encore e percentagens de corrente fora do candidato. Segurança das opções existentes: capacidade física, máscara 0–100 e force-charge temporário conserva limites/perfil. |
-| R7 | Candidato validado; certificação pública parcial | 131 testes motor (129 host + dois exclusivos Android; 131 Android), 119 app por variante, sintaxe/build/lint/assinatura, bundle reproduzido. Samsung: upgrade, switch, carga/pausa/retoma, rollback/reinstalação e boot antes do PIN. Controlos mcc/mcv graváveis, outros OEM/gestores e cabo fisicamente desligado/religado neste candidato continuam a exigir ensaio próprio. |
+| R7 | Candidato validado; certificação pública parcial | 133 testes motor (131 host + dois exclusivos Android; 133 Android), 119 app por variante, sintaxe/build/lint/assinatura, bundle reproduzido. Samsung: upgrade, switch, carga/pausa/retoma, rollback/reinstalação e boot antes do PIN. Controlos mcc/mcv graváveis, outros OEM/gestores e cabo fisicamente desligado/religado neste candidato continuam a exigir ensaio próprio. |
 
 
 ## Estratégia de integração

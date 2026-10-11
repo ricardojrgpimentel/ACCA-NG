@@ -18,7 +18,7 @@ Ver a [análise e compatibilidade](acc-upstream-review.md) e o [roadmap de imple
 
 As fases R0–R7 estão definidas no roadmap. “—” indica que não há tarefa de implementação para esse commit.
 
-Estado atual: **I6 / v1.0.8-ng candidato**, 11 outubro 2026, fonte [`601d147`](https://github.com/ricardojrgpimentel/ACC-NG/tree/601d1472d96c0084aee75adec974b93981cd5141). Núcleo implementado e validado no Samsung/Magisk; certificação de outros kernels/gestores e distribuição pública continuam abertas. O [registo I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) separa implementação, decisões NG, opcionais e evidência física.
+Estado atual: **I6 / v1.0.8-ng candidato**, 11 outubro 2026, fonte [`ea5972f`](https://github.com/ricardojrgpimentel/ACC-NG/tree/ea5972f5d95e08ba9b98ac67c83ef375121aad72). Núcleo implementado e validado no Samsung/Magisk; certificação de outros kernels/gestores e distribuição pública continuam abertas. O [registo I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) separa implementação, decisões NG, opcionais e evidência física.
 
 Registos históricos:
 
