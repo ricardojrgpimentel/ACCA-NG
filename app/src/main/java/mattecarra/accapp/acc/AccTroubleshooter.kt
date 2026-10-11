@@ -28,21 +28,28 @@ object AccTroubleshooter {
             printf '__SOURCE__\n'
             cat $MODULE/accd.sh 2>/dev/null
             printf '\n__POWER__\n'
-            for field in status capacity; do
-                key=battStatus; [ "${'$'}field" != capacity ] || key=battCapacity
-                path=${'$'}(sed -n "s/^${'$'}key=//p" /dev/.vr25/acc/.batt-interface.sh 2>/dev/null)
-                printf '%s' "${'$'}path" | grep -Eq "^[A-Za-z0-9_-]+/${'$'}field${'$'}" || path=battery/${'$'}field
-                value=${'$'}(cat /sys/class/power_supply/${'$'}path 2>/dev/null) && printf '%s=%s\n' "${'$'}field" "${'$'}value"
-            done
-            currentFile=${'$'}(sed -n 's/^currFile=//p' /dev/.vr25/acc/.batt-interface.sh 2>/dev/null)
-            if printf '%s' "${'$'}currentFile" | grep -Eq '^[A-Za-z0-9_-]+/current_now${'$'}'; then
-                value=${'$'}(cat /sys/class/power_supply/${'$'}currentFile 2>/dev/null) && printf 'current=%s\n' "${'$'}value"
-                printf 'sensor=true\n'
-                sed -n 's/^ampFactor_=/factor=/p' /dev/.vr25/acc/.batt-interface.sh 2>/dev/null
+            if grep -Eq '^ngCapabilities=(.*,)?sensor-status(,|${'$'})' $MODULE/module.prop 2>/dev/null; then
+                $MANAGER --sensor-status || :
+            else
+                for field in status capacity; do
+                    key=battStatus; [ "${'$'}field" != capacity ] || key=battCapacity
+                    path=${'$'}(sed -n "s/^${'$'}key=//p" /dev/.vr25/acc/.batt-interface.sh 2>/dev/null)
+                    printf '%s' "${'$'}path" | grep -Eq "^[A-Za-z0-9_-]+/${'$'}field${'$'}" || path=battery/${'$'}field
+                    value=${'$'}(cat /sys/class/power_supply/${'$'}path 2>/dev/null) && printf '%s=%s\n' "${'$'}field" "${'$'}value"
+                done
+                currentFile=${'$'}(sed -n 's/^currFile=//p' /dev/.vr25/acc/.batt-interface.sh 2>/dev/null)
+                if printf '%s' "${'$'}currentFile" | grep -Eq '^[A-Za-z0-9_-]+/current_now${'$'}'; then
+                    value=${'$'}(cat /sys/class/power_supply/${'$'}currentFile 2>/dev/null) && printf 'current=%s\n' "${'$'}value"
+                    printf 'sensor=true\n'
+                    sed -n 's/^ampFactor_=/factor=/p' /dev/.vr25/acc/.batt-interface.sh 2>/dev/null
+                fi
             fi
             ${ExternalPowerSupply.script()}
             $MANAGER -D >/dev/null 2>&1
             printf 'daemon=%s\n' "${'$'}?"
+            if grep -Eq '^ngCapabilities=(.*,)?engine-state(,|${'$'})' $MODULE/module.prop 2>/dev/null; then
+                $MANAGER --engine-status || :
+            fi
             printf '__LIMITS__\n'
             if grep -Eq '^ngCapabilities=(.*,)?power-limits-status(,|${'$'})' $MODULE/module.prop 2>/dev/null; then
                 $MANAGER --power-status || :
@@ -64,12 +71,15 @@ object AccTroubleshooter {
         val capacity = config["capacity"]?.trim('(', ')')?.split(Regex("\\s+"))
         return AccHealthSnapshot(
             available = config["configVerCode"] != null && power["status"] != null,
+            engineState = power["engineState"],
             running = when (power["daemon"]) { "0", "8" -> true; "9" -> false; else -> null },
             version = module["version"]?.toIntOrNull(), moduleHash = module["hash"],
             fixedLimits = AccHealthSnapshot.hasFixedLimitLoop(section("__SOURCE__", "__POWER__")),
-            polarity = config["dischargePolarity"], workaround = config["battStatusWorkaround"] == "true",
+            polarity = config["dischargePolarity"], workaround = config["battStatusWorkaround"] == "true" && power["currentStatusAllowed"] != "false",
             hasCurrentSensor = power["sensor"] == "true", currentRaw = power["current"]?.toLongOrNull(),
-            ampFactor = config["ampFactor"]?.toLongOrNull() ?: power["factor"]?.toLongOrNull(),
+            currentSource = power["currentSource"], currentRole = power["currentRole"],
+            ampFactor = if (power["sensorStatusVersion"] == "1") power["factor"]?.toLongOrNull()
+                else config["ampFactor"]?.toLongOrNull() ?: power["factor"]?.toLongOrNull(),
             idleThreshold = config["idleThreshold"]?.toLongOrNull()?.coerceAtLeast(0) ?: 40,
             status = power["status"], online = power["online"]?.toBooleanStrictOrNull(),
             capacity = power["capacity"]?.toIntOrNull(), pause = capacity?.getOrNull(3)?.toIntOrNull(),

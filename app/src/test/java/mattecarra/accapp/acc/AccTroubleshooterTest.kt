@@ -67,4 +67,26 @@ class AccTroubleshooterTest {
         assertEquals(PowerLimitState.FAILED, s.powerLimits?.current?.state)
     }
 
+    @Test fun inputCurrentIsNotUsedForBatteryCalibration() {
+        val s = AccTroubleshooter.parse("""
+            __CONFIG__
+            configVerCode=202310160
+            battStatusWorkaround=true
+            __MODULE__
+            __SOURCE__
+            __POWER__
+            status=Discharging
+            daemon=0
+            sensor=false
+            current=1800000
+            factor=1000000
+            currentSource=rt9471-charger/current_now
+            currentRole=input
+            __LIMITS__
+        """.trimIndent())
+        assertNull(s.currentMa)
+        assertFalse(s.calibrationPending)
+        assertEquals("rt9471-charger/current_now", s.currentSource)
+    }
+
 }

@@ -186,3 +186,35 @@ Restante: rollback CLI explícito, restante cleanup/caminhos NG, KSU/APatch e
 matriz R7. A recuperação após falha de cópia foi exercitada em fixtures; o
 ensaio físico I4 foi um upgrade bem sucedido. Limites/OEM, USB e locked boot
 não foram retestados. O próximo incremento de código é R2.2/R2.3.
+
+
+## I5 — R2 sensores físicos e switches OEM (incremento de trabalho)
+
+11 de outubro de 2026. Código integrado na branch do roadmap, sem novo bundle
+ou instalação física. O candidato instalado permanece I4 até à validação e
+empacotamento conjuntos dos grupos restantes. Fonte/testes em acc-ng; inclui
+ASUS, FP5/qcom, bypass, regras OEM exatas e preservação de escolhas manuais.
+Descoberta aceita Nexus 10 com status/capacidade separados e ausência de uevent;
+identifica fonte/escala e distingue corrente de entrada da corrente da bateria.
+Dados ausentes não recebem valores fictícios; perda de telemetria de proteção
+pausa o controlo escolhido com diagnóstico, sem sondagem nem shutdown falso.
+--sensor-status é aditivo; diagnóstico da app preserva compatibilidade antiga.
+91 testes do motor passaram com runners Android, incluindo 12 cenários de
+sensores/OEM. Certificação física em outros OEM continua pendente.
+
+
+## I6 — fecho do núcleo e candidato conjunto
+
+11 outubro 2026. **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**. Fonte do motor `601d1472d96c0084aee75adec974b93981cd5141`; bundle SHA-256 `3bbbe3824cc66c6ed96f265a2c6f15d9b008ddef16cec44afec133c755b1d459`. As notas históricas I1–I5 descrevem a situação desses incrementos; este registo atualiza o candidato final.
+
+- R2: descoberta OEM separada, origem/escala da corrente, distinção bateria/entrada e pausa protetora com sensores ausentes. O helper partilhado mantém unknown quando a nossa própria pausa Samsung corta online; não inventa unplug/calibração.
+- R3: probes ON/OFF com orçamento 45s, três amostras, códigos preservados em quiet, exclusão mútua e journals de restauro após TERM/KILL. Config nunca é revertido pelo teste. Seleção automática/erro 7 limitados, manual preservado, polaridade aprendida sem bloquear e proteção térmica/capacidade/cooldown consistente.
+- R4: writers, reset e remoção CLI sob mutex/rename/backup; import parcial CRLF e scripts por nome, valores/quoting/extensões preservados. Reset fecha o lock antes de reiniciar daemon. Scheduler diário evita duplicados e resolve wrappers NG mantendo DJS.
+- R5: engine-state/readiness sem espera em status, disable/boot limitados, flags explícitas Magisk/KSU/APatch e BusyBox independente; staging privado e arquivos validados, HTTPS/TLS/HTTP, rollback de snapshots NG e export limitado com contexto de sensores/teste/limites.
+- App: reconhece initializing/sensor-wait/config-invalid, preserva códigos de teste incompleto, cita argumentos literalmente, termina testes modernos com restauro e conserva compatibilidade com motores antigos. Textos en/pt-PT/pt-BR.
+
+Preservados API 1/schema 202310160, seis campos capacity, r, polaridade manual, preferências NG, perfis e DJS. Defaults/cooldownCustom permanecem NG; não usar 20 como fallback de node ilegível, inferir gestor por BusyBox ou executar bg-dexopt-job no loop.
+
+Validação final: 131 casos do motor (129 passam host, dois Android-only; 131 passam Android), 53 scripts com sintaxe Android válida, 119 testes da app por variante debug/release, builds/lint e APK assinado/alinhado com o certificado existente. Git archive limpo reproduz o bundle. No Samsung passaram upgrade com staging/sentinela, 31 hashes runtime, teste do switch, carga/pausa/retoma, rollback para v1.0.7/reinstalação e reboot antes do PIN. Config/perfis/assinatura preservados. Ver matriz I6 em acc-ng-validation.md.
+
+Limites: mcc/mcv/tl graváveis, política de outros OEM e KSU/APatch não são certificados pelo Samsung. USB desligado/religado não foi repetido fisicamente neste candidato. As novas idle_apps/Encore/percentagens de corrente R6 ficam opcionais fora do candidato; as opções existentes preservam fonte física e proteções. Fonte submetida em PRs de revisão; nenhuma release nem alteração do updater estável.

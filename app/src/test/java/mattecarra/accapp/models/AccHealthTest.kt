@@ -83,4 +83,25 @@ class AccHealthTest {
         assertFalse(AccHealthSnapshot.hasFixedLimitLoop(fixed.replace("-ge 90", "-ge 85")))
         assertFalse(AccHealthSnapshot.hasFixedLimitLoop(fixed.replace("disable_charging", "_ge_pause_cap && disable_charging")))
     }
+    @Test fun initializationAndTestingDoNotReportStoppedOrAboveLimit() {
+        for (state in listOf("boot-wait", "initializing", "testing")) {
+            val s = discharge.copy(engineState = state, running = false, polarity = "",
+                status = "Charging", currentRaw = 200)
+            val issues = AccHealthTracker().evaluate(s, "bundled", 0).issues
+            assertEquals(listOf(AccHealthIssue.INITIALIZING), issues)
+            assertFalse(s.calibrationPending)
+        }
+    }
+
+    @Test fun missingProtectiveSensorIsDistinctFromEngineFailure() {
+        val s = discharge.copy(available = false, engineState = "sensor-wait")
+        assertEquals(listOf(AccHealthIssue.SENSOR_UNAVAILABLE), AccHealthTracker().evaluate(s, "bundled", 0).issues)
+    }
+
+    @Test fun invalidConfigDoesNotSuggestCalibration() {
+        val s = discharge.copy(engineState = "config-invalid", polarity = "")
+        assertEquals(listOf(AccHealthIssue.CONFIG_INVALID), AccHealthTracker().evaluate(s, "bundled", 0).issues)
+        assertFalse(s.calibrationPending)
+    }
+
 }

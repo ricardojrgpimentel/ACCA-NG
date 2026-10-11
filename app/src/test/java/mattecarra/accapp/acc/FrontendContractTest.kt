@@ -137,7 +137,9 @@ class FrontendContractTest {
         assertEquals(0 to false, AccOutput.idleSupported(code("switch", "working"), output("switch", "working")))
         assertEquals(10 to false, AccOutput.idleSupported(code("switch", "failed"), output("switch", "failed")))
         for (code in listOf(7, 16, 124)) assertEquals(code to false, AccOutput.idleSupported(code, "- battIdleMode=true"))
-        assertEquals(15 to false, AccOutput.idleSupported(15, "incomplete output"))
+        assertEquals(16 to false, AccOutput.idleSupported(15, "incomplete output"))
+        assertEquals(16 to false, AccOutput.idleSupported(0, "incomplete output"))
+        assertEquals(16 to false, AccOutput.idleSupported(15, "- battIdleMode=false"))
     }
 
     @Test fun releaseVersionParserIgnoresNoiseAndRejectsPartialNumbers() {

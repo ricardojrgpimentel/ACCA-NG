@@ -13,9 +13,13 @@ object AccOutput {
         else -> throw IOException("ACC status command failed: $code")
     }
 
-    fun idleSupported(code: Int, output: String): Pair<Int, Boolean> = code to
-        (code in listOf(0, 15) && Regex("^\\s*-\\s*battIdleMode=true\\s*$", RegexOption.MULTILINE)
-            .containsMatchIn(output))
+    fun idleSupported(code: Int, output: String): Pair<Int, Boolean> {
+        if (code !in listOf(0, 15)) return code to false
+        val states = Regex("^\\s*-\\s*battIdleMode=(true|false)\\s*$", RegexOption.MULTILINE)
+            .findAll(output).map { it.groupValues[1] }.toList()
+        if (states.isEmpty() || (code == 15 && "true" !in states)) return 16 to false
+        return code to ("true" in states)
+    }
 
     fun switches(code: Int, output: String): List<String> =
         if (code == 0) output.lineSequence().map { it.trim() }.filter { it.isNotEmpty() }.toList()

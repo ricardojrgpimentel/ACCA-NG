@@ -46,8 +46,8 @@ android {
         applicationId "com.accang.app"
         minSdk 26
         targetSdk 36
-        versionCode 46
-        versionName "2.0.0-ng-beta.6"
+        versionCode 47
+        versionName "2.0.0-ng-beta.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary true

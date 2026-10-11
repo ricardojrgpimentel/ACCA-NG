@@ -514,4 +514,7 @@
     <string name="power_limit_failed">Saved; control application or restoration failed</string>
     <string name="power_limit_unknown">Saved; control application could not be verified</string>
     <string name="power_limit_line">%1$s: %2$s</string>
+    <string name="troubleshoot_initializing">The ACC engine is initializing or testing controls. Wait a few moments.</string>
+    <string name="troubleshoot_sensor_unavailable">Protection is paused: a physical battery sensor is unavailable.</string>
+    <string name="troubleshoot_config_invalid">The ACC configuration is invalid. Protection is paused until a valid profile is saved.</string>
 </resources>

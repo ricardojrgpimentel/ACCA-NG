@@ -189,4 +189,7 @@
     <string name="power_limit_failed">Guardado; a aplicação ou reposição do controlo falhou</string>
     <string name="power_limit_unknown">Guardado; não foi possível verificar a aplicação do controlo</string>
     <string name="power_limit_line">%1$s: %2$s</string>
+    <string name="troubleshoot_initializing">O motor ACC está a inicializar ou a testar os controlos. Aguarda alguns instantes.</string>
+    <string name="troubleshoot_sensor_unavailable">A proteção está em pausa: um sensor físico da bateria não está disponível.</string>
+    <string name="troubleshoot_config_invalid">A configuração do ACC é inválida. A proteção está em pausa até um perfil válido ser salvo.</string>
 </resources>

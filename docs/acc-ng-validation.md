@@ -428,3 +428,92 @@ coverage. Failed-copy recovery is covered in fixtures; no live failure was
 injected. Explicit rollback CLI, broader R5.3 cleanup/root managers, successful
 limit application/restoration, OEM policy, USB/locked boot repetition and full
 R7 remain pending. No source push, GitHub release or updater announcement.
+
+
+## I6 joint core candidate — 2026-10-11
+
+**ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**.
+Engine source: `601d1472d96c0084aee75adec974b93981cd5141`.
+API 1/schema 202310160 retained; no stable release/updater change.
+Historical I1–I5 evidence above is not relabelled as this candidate's evidence.
+
+Tarball/app-resource SHA-256:
+
+```text
+3bbbe3824cc66c6ed96f265a2c6f15d9b008ddef16cec44afec133c755b1d459
+```
+
+| Check | Result |
+| --- | --- |
+| Engine host suite | 131 cases: 129 passed, two Android-only skipped |
+| Engine with Android fixture runners | 131 passed; root/mksh/BusyBox fixtures on Samsung, Python/build checks on host |
+| Shell syntax | 53 scripts passed /system/bin/sh -n; final CLI changes checked again |
+| Configuration transactions | Concurrent writes, invalid/failing commits, imports/scripts, atomic reset/removal and restart without inherited writer lock |
+| Lifecycle/install fixtures | Boot/disable/readiness, safe extraction, HTTP failure, cleanup/recovery/rollback and bounded exports |
+| App unit tests | 119 passed in each debug/release, no failures/errors/skips |
+| App build/lint | Debug build, signed release, lintDebug/lintRelease passed |
+| Shared contract | 35 source hashes, module/schema/capabilities and exact generated external-power helper match the shipped bundle |
+| Reproduction | Clean git archive reproduces identical engine tarball; candidate resources verified in both APKs |
+| Signing | Existing release certificate SHA-256 b658f70c0aa5046aaf2a508be344ad882c0293947628a6cf276a3ec8c533ea8d; APK signature and 16 KiB alignment verified |
+| Local APK updates | Signed and debug beta.7/code 47 installed; database rows/preferences and DJS runtime hashes preserved |
+
+Fixtures write only generated temporary files; they do not certify electrical
+power limiting or all root managers. Boot/process/platform tools are simulated
+in lifecycle fixtures. Actual device trials are recorded separately below.
+Private device logs, database copies and backups remain outside Git.
+
+### Physical Samsung SM-G975F / Magisk
+
+Evidence/scripts: ignored `build/validation/i6-final/`. Each upgrade retained a
+dated module/config backup, tested the exact app installer from acc-* staging,
+preserved a separate unrelated sentinel, removed only its extraction and
+verified 31 installed runtime hashes plus one normal daemon matching its lock.
+The final candidate is installed on the device.
+
+- Original config SHA-256 remained
+  `3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2`.
+  Native battery current is mA (factor 1000); voltage is µV. Manual polarity,
+  selected switch, thermal limits and notification preferences were retained.
+- A physical probe of `battery/batt_slate_mode 0 1 --` returned **0 / Ok**.
+  Off/on were confirmed with three stable samples each and original OFF restored.
+  This is a working pause switch, not a claim of idle-mode support.
+- The first trial exposed that slate OFF clears USB online while the cable is
+  attached. The final helper records our OFF readback and preserves unknown;
+  probes temporarily enable the configured input, prove connected power and
+  restore its journal. Android/host fixtures exercise baseline recovery,
+  cancellation and resolving relative paths from the app.
+- Capacity trial confirmed initial charging, real pause and real resume over
+  three consecutive samples. At 73%, pause yielded about **−107 mA** and resume
+  **+337 mA**, temperature **29.9 °C**. Cooldown capacity was temporarily 99% to
+  isolate capacity switching from the original 50s/10s cycle; thermal limits
+  remained active. The first capacity trial retained cooldown and did not prove
+  net charging; it restored the profile and prompted this corrected trial.
+  All temporary capacity/cooldown changes were removed and original hash restored.
+- Explicit CLI rollback selected the retained v1.0.7 snapshot, matched every
+  runtime script/module hash, kept the current config and started one daemon.
+  Reinstalling v1.0.8 through the exact app installer passed again.
+- Reboot changed boot ID; before PIN/unlock, engine-state was ready, a single
+  daemon owned its lock, 31 runtime hashes matched, config hash was preserved
+  and slate OFF was active under the original offMid profile. No UI unlock was
+  performed by automation. The verifier accepts the platform’s numeric
+  deviceLocked=1 readback and confirms RUNNING_LOCKED credential-encrypted user
+  state; the first verifier expected a textual boolean and was corrected.
+
+### Certification still requiring hardware
+
+The candidate implements R0–R5 and validates the available Samsung/Magisk path.
+Successful current/voltage/thermal-level writes and restoration require a
+kernel with writable supported nodes; the earlier I3 current-write refusal is
+not promoted to proof of successful I6 limiting. KSU/APatch and other OEM
+rules have fixtures and official manager flag/path references, not physical
+certification. Clean installation is covered by complete-script fixtures;
+the live trial preserves the existing installation/data. Physical USB
+unplug/replug was not repeated for I6; historical I2 evidence remains I2.
+Thermal boundaries/cooldown/shutdown are exercised synthetically, without
+heating the device or falsifying live sensors.
+
+New idle_apps, Encore, percentage-current/editor features and advanced R6
+extensions remain optional outside this candidate. Existing temporary
+force-charge and mask behavior keep physical capacity and thermal/OEM limits.
+Source PRs and locally signed artifacts are review candidates; no GitHub
+release, main merge or stable updater announcement was performed.

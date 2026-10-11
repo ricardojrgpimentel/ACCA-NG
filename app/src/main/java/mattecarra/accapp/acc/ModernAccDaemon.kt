@@ -22,14 +22,22 @@ object ModernAccDaemon {
     }
 
     suspend fun stop(): Boolean = withContext(Dispatchers.IO) {
-        if (!isRunning()) return@withContext true
         val processes = RootShell.exec("ps -A -o PID,ARGS", 5).let { result ->
             if (!result.isSuccess) return@withContext false
             result.out.mapNotNull(AccDaemonProcess::parse)
         }
-        // Charging tests keep a saved configuration in their EXIT trap. An
-        // orphaned test must not restore that older configuration during stop.
-        signalVerified(processes.filter { it.isTestWorker }, "KILL")
+        val tests = processes.filter { it.isTestWorker }
+        if (tests.isNotEmpty()) {
+            val bounded = RootShell.exec("grep '^ngCapabilities=' /data/adb/vr25/acc/module.prop", 5)
+                .out.any { it.substringAfter('=').split(',').contains("bounded-switch-test") }
+            if (bounded) {
+                RootShell.execScript("touch /dev/.vr25/acc/.test-cancel", 5)
+                signalVerified(tests, "TERM")
+                delay(2000)
+            }
+            signalVerified(tests, "KILL")
+        }
+        if (!isRunning()) return@withContext true
         val daemons = processes.filterNot { it.isTestWorker }
         val lockPid = RootShell.exec("cat /dev/.vr25/acc/acc.lock", 5).out.firstOrNull()?.trim()?.toIntOrNull()
         // Avoid the known wait on an obsolete PID. A normal, current PID uses

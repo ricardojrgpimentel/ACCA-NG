@@ -6,6 +6,9 @@ import mattecarra.accapp.models.AccHealthIssue
 
 object AccHealthText {
     @StringRes fun message(issue: AccHealthIssue): Int = when (issue) {
+        AccHealthIssue.INITIALIZING -> R.string.troubleshoot_initializing
+        AccHealthIssue.CONFIG_INVALID -> R.string.troubleshoot_config_invalid
+        AccHealthIssue.SENSOR_UNAVAILABLE -> R.string.troubleshoot_sensor_unavailable
         AccHealthIssue.UNAVAILABLE -> R.string.troubleshoot_unavailable
         AccHealthIssue.FIXED_LIMIT_MODULE -> R.string.troubleshoot_fixed_limits
         AccHealthIssue.DIFFERENT_MODULE -> R.string.troubleshoot_different_module
