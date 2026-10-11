@@ -1,0 +1,3 @@
+Preserve upgrade staging and recovery files during ACC-NG installation.
+Verify failed-copy recovery and configuration preservation.
+Bundle ACC-NG v1.0.7-ng candidate with installer source checks.

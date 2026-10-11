@@ -360,3 +360,71 @@ root managers remain open. I2 results remain evidence for I2 only.
 
 No GitHub release, updater announcement or publication metadata was changed.
 The bundled engine source is pinned; finish the required R7 checks before distribution.
+
+
+## I4 staging cleanup candidate — 2026-10-11
+
+ACC-NG **v1.0.7-ng (202610117)** / AccA-NG **2.0.0-ng-beta.6 (46)**,
+unpublished. Engine source pinned to local commit
+`8305720c356fec9c8b4be8ee7a5de1bffc4983aa`, over I3 `1e8291b`;
+app base `e857f57`. This source commit has not yet been pushed. API 1/schema
+202310160 and charging behaviour remain unchanged.
+
+Candidate tarball and app resource SHA-256:
+
+```text
+603b4aabd7315066e09a279637c29f8411612371f0afc05f3d5c32b9e86ebaf1
+```
+
+### Automated checks
+
+| Check | Result |
+| --- | --- |
+| Engine host suite | 79 cases: 77 passed, two Android-only skipped |
+| Engine with Android fixture runners | 79 passed; Samsung root/mksh/BusyBox shell fixtures, Python/build checks on host |
+| Installation regression | Six tests/nine scenarios pass on host and Android; all six tests fail against the old uninstaller |
+| Shell syntax | All 35 runtime/installer scripts passed Android /system/bin/sh -n |
+| App unit tests | 114 passed in each debug/release, no failures/errors/skips |
+| App build/lint | Debug and unsigned release builds, lintDebug/lintRelease passed |
+| Shared contract | Export/check passed; 22 source hashes including four installation scripts |
+| Reproduction | Clean git archive of source commit reproduces exact tarball; flashable uninstaller equals fixed source |
+
+Installer fixtures execute full production scripts with Android paths redirected
+below a temporary root. Root/process/platform tools and service initialization
+are stubbed. Tests verify clean installation, direct/tarball upgrades, full
+uninstall, unrelated staging preservation, and recovery from injected copy
+failure (exit 42). They verify backup/config restoration, one fixture service
+initialization, original exit status and source cleanup after recovery. They do
+not validate live rollback CLI or charging hardware.
+
+### Physical upgrade — Samsung SM-G975F / Magisk
+
+Private evidence and scripts are under ignored `build/validation/i4/`; a dated
+module/configuration backup was retained on the device before installation.
+The committed candidate was installed using the **exact app raw installer**
+from /data/local/tmp/acc-i4-install-*. A separate acc-i4-sentinel-* directory
+contained an unrelated marker. Both match the formerly destructive glob.
+
+- Upgrade succeeded, reporting v1.0.7-ng/202610117. The staging installer and
+  unrelated marker survived; the tarball caller removed its extracted source.
+- Original configuration SHA-256 remained exactly
+  `3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2`,
+  both immediately after install and after daemon initialization.
+- All 19 installed runtime hashes (including uninstall.sh) matched the fixed
+  candidate's contract. Root-level installers are tracked in the 22 bundle
+  hashes but are not copied into the installed runtime.
+- The initial verifier sampled --init and its temporary subshell too early.
+  Follow-up after initialization confirmed one normal accd process, PID matching
+  the runtime lock. This was a verification timing issue; installation passed.
+- Readback showed current/voltage requests at default and both states off.
+  online=false was observed; no physical USB or charging-limit test was
+  performed.
+- Debug APK upgrade succeeded and package metadata reports beta.6-debug/code 46.
+  Official release app and DJS were unchanged. Test staging/sentinel paths were
+  removed after collecting evidence; the module/config backup was retained.
+
+The staging cleanup defect observed in I3 is fixed and has physical upgrade
+coverage. Failed-copy recovery is covered in fixtures; no live failure was
+injected. Explicit rollback CLI, broader R5.3 cleanup/root managers, successful
+limit application/restoration, OEM policy, USB/locked boot repetition and full
+R7 remain pending. No source push, GitHub release or updater announcement.

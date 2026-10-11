@@ -144,3 +144,45 @@ A primeira tentativa de upgrade revelou que o cleanup herdado apaga a origem qua
 ### Seguinte
 
 Completar a aplicação/restauração física de limites num kernel com controlos graváveis; seguir R2.2/R2.3 e R3 e corrigir o cleanup de R5.3. A origem do bundle está fixada no commit do motor; concluir R7 antes de distribuição. R4/R5 continuam abertos; R6 é opcional.
+
+
+## I4 — preservação do staging de instalação e recuperação
+
+11 de outubro de 2026. **Candidato ACC-NG v1.0.7-ng (202610117) / AccA-NG
+2.0.0-ng-beta.6 (46), sem publicação.** Fonte local do motor fixada em
+`8305720c356fec9c8b4be8ee7a5de1bffc4983aa`, sobre I3 `1e8291b`;
+base da app `e857f57`. A fonte I4 ainda não foi enviada ao remoto.
+
+R5.3 parcial: removido o glob /data/local/tmp/acc[-_]* de install/uninstall.sh.
+O desinstalador remove os caminhos instalados; staging e ficheiros temporários
+continuam sob responsabilidade de quem lançou a instalação. Os instaladores
+tarball/online conservam a limpeza da extração no fim, depois da recuperação.
+É uma correção NG da falha observada em I3; não declara novo commit upstream
+como integralmente portado. API 1, schema 202310160 e controlo de carga mantidos.
+
+Seis testes de regressão executam nove cenários com os scripts completos em
+filesystem temporário: staging com hífen, underscore e caminho aninhado,
+instalação limpa, desinstalação completa, tarball e falha de cópia com exit 42.
+Verificam preservação da origem e de ficheiros alheios, backup/configuração,
+restauro do módulo anterior, inicialização única do serviço simulado e
+propagação do erro antes de limpar a extração. Todos os seis falham com o
+código anterior e passam no host e no shell Android. Os comandos de processos,
+root e serviço são simulados; não exercitam hardware. A proveniência partilhada
+passa de 18 para 22 hashes, incluindo os quatro scripts de instalação.
+
+O bundle foi reproduzido a partir de um git archive limpo do commit fixado;
+o desinstalador flashable contém exatamente a fonte corrigida. A app empacota
+o candidato, atualiza bundledVersion e fixtures e reserva beta.6/code 46.
+
+Validação: 79 testes do motor (77 passam no host, dois exclusivos Android
+omitidos; 79 passam com runners Android), 35 scripts com sintaxe Android válida,
+114 testes da app em cada variante debug/release, builds e lint de ambas as
+variantes. Upgrade real no Samsung a partir de staging acc-* com o instalador
+exato da app passou, preservou o hash do config e terminou com um daemon
+correspondente ao lock. A app debug beta.6 foi instalada. Ver [evidência e
+checksum](acc-ng-validation.md#i4-staging-cleanup-candidate--2026-10-11).
+
+Restante: rollback CLI explícito, restante cleanup/caminhos NG, KSU/APatch e
+matriz R7. A recuperação após falha de cópia foi exercitada em fixtures; o
+ensaio físico I4 foi um upgrade bem sucedido. Limites/OEM, USB e locked boot
+não foram retestados. O próximo incremento de código é R2.2/R2.3.

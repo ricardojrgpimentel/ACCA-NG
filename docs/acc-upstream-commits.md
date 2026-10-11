@@ -20,6 +20,12 @@ As fases R0–R7 estão definidas no roadmap. “—” indica que não há tare
 
 Estado atualizado em 10 de outubro de 2026, incrementos **I1/I2/I3 / v1.0.6-ng candidato**. Código e bundle candidatos integrados; fonte do motor em [`1e8291b`](https://github.com/ricardojrgpimentel/ACC-NG/tree/1e8291bcc69d59de677674728075b0c9063b561a). Validação física parcial registada; release e matriz completa pendentes. O [registo de I1/I2/I3](acc-upstream-implementation.md) identifica os ficheiros, a validação e o trabalho restante. Uma adaptação pode cobrir o objetivo final de vários commits sem importar alterações transitórias.
 
+I4, 11 de outubro de 2026: candidato **v1.0.7-ng**, fonte local
+`8305720c356fec9c8b4be8ee7a5de1bffc4983aa`. Corrige o cleanup de staging R5.3
+observado em I3, com fixtures de recuperação e upgrade real validados.
+Não altera as decisões/estados por commit upstream abaixo; é uma correção NG.
+Fonte I4 e release ainda não publicadas. Ver [registo I4](acc-upstream-implementation.md#i4--preservação-do-staging-de-instalação-e-recuperação).
+
 - **Aplicado/adaptado I3:** comportamento selecionado implementado em fixtures; validação física parcial, matriz completa e release pendentes.
 - **Aplicado I1:** comportamento selecionado implementado e testado em fixtures; validação física pendente.
 - **Parcial I1:** apenas a parte descrita no registo foi implementada.

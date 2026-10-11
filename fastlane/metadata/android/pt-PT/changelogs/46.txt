@@ -1,0 +1,3 @@
+Preservar a origem do upgrade e os ficheiros de recuperação na instalação do ACC-NG.
+Validar recuperação após falha de cópia e preservação da configuração.
+Integrar o candidato ACC-NG v1.0.7-ng com verificação dos instaladores.
