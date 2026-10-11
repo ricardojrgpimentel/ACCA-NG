@@ -470,6 +470,11 @@ preserved a separate unrelated sentinel, removed only its extraction and
 verified 31 installed runtime hashes plus one normal daemon matching its lock.
 The final candidate is installed on the device.
 
+- User feedback on 2026-10-11: “esta a funcionar bem no samsung”. This records
+  a positive report of general use. The report does not specify individual
+  test scenarios or independently verify the installed version; physical USB
+  unplug/replug, clean installation and the other certification gaps below
+  remain open until their results are recorded.
 - Original config SHA-256 remained
   `3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2`.
   Native battery current is mA (factor 1000); voltage is µV. Manual polarity,
