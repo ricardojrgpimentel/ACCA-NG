@@ -507,12 +507,22 @@ The final candidate is installed on the device.
   The verifier accepts numeric deviceLocked=1 and confirms RUNNING_LOCKED
   credential-encrypted user state; its initial textual-boolean assumption was
   corrected.
+- Samsung SIOP: with charging held OFF and the daemon stopped, production
+  set_temp_level/apply_limit helpers changed siop_level **100 → 80 → 100**,
+  captured/restored the owned value and removed their journal. Original mode
+  **664** and config hash were retained, then the daemon restarted. This proves
+  control write/readback/restoration; the stopped-charge trial does not certify
+  electrical current reduction or OEM thermal policy under load. Private
+  evidence: build/validation/i6-final/thermal-level.json.
+
+Final code CI passed [Android checks](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38168343919): translations, exact bundled contract, tests, lint and unsigned release build.
 
 ### Certification still requiring hardware
 
 The candidate implements R0–R5 and validates the available Samsung/Magisk path.
-Successful current/voltage/thermal-level writes and restoration require a
-kernel with writable supported nodes; the earlier I3 current-write refusal is
+Successful current/voltage limiting and broader OEM thermal behavior require
+a kernel with supported writable nodes; the SIOP write/reset above covers that
+specific Samsung control, not its electrical efficacy. the earlier I3 current-write refusal is
 not promoted to proof of successful I6 limiting. KSU/APatch and other OEM
 rules have fixtures and official manager flag/path references, not physical
 certification. Clean installation is covered by complete-script fixtures;

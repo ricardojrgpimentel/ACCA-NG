@@ -14,9 +14,9 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R0.2 | Implementado I2 | ngConfigSchema/ngCapabilities explícitos; compatibilidade com metadata API 1 antiga; schemas/API desconhecidos não selecionam um writer presumido. |
 | R0.3 | Implementado I2 em fixtures | Perfis JSON antigos/atuais, escrita/reload raw, limites, r, switch manual, calibração e preferências NG; upgrade e dados da app conservados no ensaio I6. |
 | R0.4 | Implementado I2 em fixtures | Harness host/Android de sensores mA/µA e mV/µV, polaridade, zero, dados ausentes/inválidos/recusados, mais controlos de I1. Descoberta OEM e sysfs real continuam R2/R7. |
-| R1.1 | Implementado I1; validação física pendente | Resets só de controlos alterados pelo NG, com snapshot e retry em falha. |
+| R1.1 | Implementado I1; física parcial I6 | Resets só de controlos alterados pelo NG, com snapshot/retry. Samsung SIOP 100→80→100 restaurado; corrente/tensão e outros OEM exigem hardware adequado. |
 | R1.2 | Implementado I3 em fixtures | Cache por boot/tipo, deduplicação de aliases, defaults originais e suporte explícito; aplicação lê o pedido mais recente sem regravar configuração antiga. Validação OEM real pendente. |
-| R1.3 | Implementado I1; validação física pendente | Escrita direta, sem chown; fallback u+w temporário com restauração e erro propagado. Falta ensaio de sysfs/política OEM. |
+| R1.3 | Implementado I1; física parcial I6 | Escrita direta sem chown; fallback u+w temporário restaurado em fixtures. SIOP real preservou mode 664; política OEM sob carga continua a exigir ensaio próprio. |
 | R1.4 | Implementado I3; validação física parcial | Readback distingue gravado/pendente, aplicado nos controlos, sem suporte e falha. Recusa real de corrente reportada como falha no Samsung; aplicação efetiva continua pendente. |
 | R2.1 | Implementado I3 em fixtures | Blacklist final de acc -p, validação de candidatos/parsed.log e referências térmicas, sem chmod na descoberta nem fallback arbitrário. Escolha manual preservada. |
 | R2.2–R2.3 | Implementado I5/I6 | Switches deduplicados e regras OEM exatas; sensores separados, fontes/unidades explícitas e proteção na perda de telemetria. Empacotado e validado no Android; outros OEM requerem aparelhos próprios. |
