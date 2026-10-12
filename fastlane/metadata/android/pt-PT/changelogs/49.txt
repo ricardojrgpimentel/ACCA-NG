@@ -1,0 +1,1 @@
+Mostra a versão do módulo ACC instalado no topo de Sobre e atualiza-a ao abrir o ecrã. Consulta os metadados sem iniciar o daemon; mantém os casos indisponíveis e a compatibilidade com motores antigos.

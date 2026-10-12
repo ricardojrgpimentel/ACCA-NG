@@ -1,0 +1,1 @@
+Show the installed ACC module version at the top of About and refresh it when opening the screen. Read engine metadata without starting the daemon; retain unavailable and legacy-engine handling.
