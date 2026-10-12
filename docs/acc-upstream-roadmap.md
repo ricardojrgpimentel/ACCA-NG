@@ -2,14 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado em 12 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `ea5972f5d95e08ba9b98ac67c83ef375121aad72`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk, incluindo instalação limpa e atualização assinada após desbloqueio. O núcleo está integrado nas duas mains; publicação e certificação em outros kernels/gestores têm alcance separado e continuam documentadas. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
-
-**Candidato I7 em validação:** ACC-NG v1.0.9-ng / AccA-NG beta.8, fonte
-`b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`. O unplug/replug físico I6 passou,
-mas a calibração automática ficou pendente por esperas ON com a alimentação
-realmente desligada. I7 corrige novas tentativas e interrompe uma espera em curso;
-138 casos motor e 119 app por variante passaram. A repetição física está pendente.
-O registo I6 acima mantém o alcance histórico; I7 não publica release/updater.
+**Estado em 12 outubro 2026:** núcleo R0–R5 implementado e integrado nas duas mains, com **ACC-NG v1.0.9-ng (202610129) / AccA-NG beta.8 (48)**. Fonte runtime `b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`; API 1/schema 202310160, perfis e preferências NG conservados. R7 tem suites automatizadas e evidência física Samsung/Magisk, incluindo instalação limpa, atualização assinada, boot antes do PIN, cabo desligado/religado e calibração fresca. A repetição I7 aprendeu polaridade negativa em 30 segundos e retomou carga real. Certificação física mcc/mcv/outros OEM/KSU/APatch continua pendente; não se declara o objetivo R7 completo. R6 permanece opcional e fora do candidato. Ver [I7](acc-upstream-implementation.md#i7--calibração-após-desligar-o-cabo) e [validação](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12). Nenhuma release/updater foi publicada.
 
 ## Estado das tarefas
 
@@ -27,13 +20,13 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R1.4 | Implementado I3; validação física parcial | Readback distingue gravado/pendente, aplicado nos controlos, sem suporte e falha. Recusa real de corrente reportada como falha no Samsung; aplicação efetiva continua pendente. |
 | R2.1 | Implementado I3 em fixtures | Blacklist final de acc -p, validação de candidatos/parsed.log e referências térmicas, sem chmod na descoberta nem fallback arbitrário. Escolha manual preservada. |
 | R2.2–R2.3 | Implementado I5/I6 | Switches deduplicados e regras OEM exatas; sensores separados, fontes/unidades explícitas e proteção na perda de telemetria. Empacotado e validado no Android; outros OEM requerem aparelhos próprios. |
-| R2.4 | Implementado I3/I6 | Helper comum motor/eventos/app. OFF Samsung que também corta online mantém unknown; teste comprova cabo com controlo ON e restaura OFF original. Não conclui calibração a partir da própria pausa. |
-| R3.1–R3.6 | Implementado I6 | Testes 45s, três amostras, mutex/diários de restauro/cancelamento, seleção e recuperação limitadas, polaridade não bloqueante, motivo térmico/capacidade, idle e cooldown protegidos. Switch e pausa/retoma físicos passaram. |
+| R2.4 | Implementado I3/I6/I7 | Helper comum motor/eventos/app. OFF Samsung que também corta online mantém unknown; teste comprova cabo com controlo ON e restaura OFF original. Não conclui calibração a partir da própria pausa; I7 aprendeu `-` durante desconexão física fresca. |
+| R3.1–R3.6 | Implementado I6/I7 | Testes 45s, três amostras, mutex/diários de restauro/cancelamento, seleção e recuperação limitadas, polaridade não bloqueante, motivo térmico/capacidade, idle e cooldown protegidos. Switch e pausa/retoma físicos passaram; I7 passou calibração após unplug. A auditoria adicional executa as fronteiras do cooldown, shutdown físico e orçamentos de erro 7. |
 | R4.1–R4.4 | Implementado I6 | Import parcial CRLF/scripts por nome, writers/reset/remoção atómicos com backup/mutex, extensão de config conservada e scheduler diário/quoting/wrappers NG. DJS preservado. |
 | R5.3 | Implementado I4/I6 | Staging e cleanup privados, arquivo validado e rollback NG. Upgrade, rollback físico e reinstalação passaram com config e uma instância preservados. |
 | R5.1/R5.2/R5.4/R5.5 | Implementado I6 | Readiness rápido, boot/disable limitado, flags dos gestores e BusyBox explícitos, HTTPS/TLS/HTTP, diagnósticos limitados. Magisk físico; KSU/APatch apenas fixtures. |
 | R6.1–R6.5 | Opcionais decididas | idle_apps, Encore e percentagens de corrente fora do candidato. Segurança das opções existentes: capacidade física, máscara 0–100 e force-charge temporário conserva limites/perfil. |
-| R7 | Candidato validado; certificação pública parcial | 133 testes motor (131 host + dois exclusivos Android; 133 Android), 119 app por variante, sintaxe/build/lint/assinatura, bundle reproduzido e CI Linux/macOS. Samsung: instalação limpa, upgrade direto do snapshot v1.0.3-ng, dados após desbloqueio, switch, carga/pausa/retoma, rollback/reinstalação e boot antes do PIN. Controlos mcc/mcv graváveis, outros OEM/gestores e cabo fisicamente desligado/religado neste candidato continuam a exigir ensaio próprio. |
+| R7 | Validação Samsung e automatizada; objetivo completo pendente | Suites motor/app, sintaxe/build/lint/assinatura, bundle reproduzido e CI Linux/macOS/Android. Samsung: instalação limpa, upgrade do snapshot v1.0.3-ng, dados após desbloqueio, switch, carga/pausa/retoma, rollback/reinstalação, boot antes do PIN e cabo/calibração física I7. Os registos distinguem I6 de I7; ensaios anteriores não são relabelados. Controlos mcc/mcv graváveis, política de outros OEM e KSU/APatch continuam sem prova física. |
 
 
 ## Estratégia de integração
@@ -182,11 +175,11 @@ Um incremento só fica concluído quando os seus critérios passam. Novos candid
 
 ## Fecho do candidato e critérios de publicação
 
-A implementação do núcleo e todos os ensaios possíveis no ambiente disponível estão concluídos e registados em I6. Foram mantidas decisões NG explícitas para defaults/schema, root tooling/overlayfs, transporte sem fallback inseguro e funcionalidades opcionais; o catálogo não declara cherry-pick integral dos 202 commits.
+A implementação do núcleo foi integrada em I6 e corrigida em I7; os ensaios Samsung disponíveis estão registados por incremento. Foram mantidas decisões NG explícitas para defaults/schema, root tooling/overlayfs, transporte sem fallback inseguro e funcionalidades opcionais; o catálogo não declara cherry-pick integral dos 202 commits.
 
 Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. O ensaio físico I6 detetou desligar/religar mas revelou atraso na calibração; a correção I7 passou a repetição física, aprendendo polaridade negativa em 30 segundos e retomando carga real. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
 
-O núcleo foi integrado nos PRs #1 de ACC-NG/AccA-NG; os checks dos commits de merge passaram. O APK assinado continua candidato. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
+O núcleo e a correção I7 foram integrados nos PRs #1 e #2 de ACC-NG/AccA-NG; os checks dos merges #2 passaram em engine `96dfe45` e app `6d64cb2`. O APK assinado continua candidato. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
 
 
 ## I7 — calibração após desligar o cabo
