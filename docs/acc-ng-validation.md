@@ -712,8 +712,7 @@ requests for three samples. The corrected loop skips those requests for known
 unplug, yielding three samples in 27 seconds. Connected and unknown power still
 allow resume, so an OEM input pause is not mistaken for a disconnected cable.
 
-Physical validation of I7 will be recorded separately; I6 results are not
-relabeled as this candidate's results. The remaining external-hardware
+The corrected I7 trial is recorded separately below. The remaining external-hardware
 certification and release gate continue to apply.
 
 
@@ -722,7 +721,7 @@ I7 final automated checks: 138 Android-runner cases passed; 138 host cases
 unplug during an existing check: 42 simulated seconds before the fix, three
 after, including lagging kernel Charging status. Connected/unknown resume
 remains eligible. The signed/debug beta.8 build checks and final physical trial
-are recorded below after completion.
+are recorded below.
 
 
 I7 packaging/upgrade checks: 119 app tests passed per debug/release, both lints
@@ -742,3 +741,37 @@ fallback previously changed that to Charging. Confirmed absent incoming power
 now remains Discharging without waiting for calibration; unknown/connected
 power retains the existing behavior. Final source is b3e59e6, covered by all
 138 Android cases and 136 host cases plus two Android-only skips.
+
+
+### Physical I7 calibration and restoration — 2026-10-12
+
+The user unplugged and reattached the cable with final b3e59e6 runtime and
+signed beta.8 installed. A detached logger captured 89 samples through the
+ADB disconnect. Recorded accd.sh/batt-interface.sh hashes match that source.
+Fresh automatic calibration began with dischargePolarity blank; temporary
+resume 65% / pause 70% / cooldown 101% ensured charging before unplug.
+
+- Incoming-power readback changed true → false at 10:23:43 UTC → true at
+  10:25:24 UTC. AC was the incoming source; USB online stayed zero.
+- The disconnected event and Discharging state were observed at 10:23:53 UTC,
+  with real battery current −760 mA. Polarity became `-` at 10:24:13 UTC,
+  30 seconds after the first offline sample, without an unpowered ON wait.
+- Reconnect event was recorded at 10:25:31 UTC. The next sample at 10:25:32 UTC
+  showed connected/Charging and +1647 mA; subsequent charging current reached
+  +1880 mA. Learned negative polarity remained after reconnect.
+- Published daemon state lagged the first offline/online readbacks by about
+  ten/eight seconds, consistent with controller cadence and logger sampling.
+  This is not an assertion of instantaneous state or delivered UI notifications.
+- Logger result was `restored`. Original config and last-good were restored
+  byte for byte; config SHA-256 remains
+  `f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`.
+  Final health showed ready/Magisk, one daemon matching its lock, original
+  protective thresholds, SIOP 100/mode 664/owner 1000:1001 and current-node
+  permissions 444/root. Charging is again governed by the original profile.
+
+Private raw evidence and summary are ignored `build/validation/manual-i7-usb/`;
+final health is `build/validation/i7-final-device-health.txt`. Android CI passed
+for engine b3e59e6 on Linux/macOS and app de2cefb. This closes physical cable
+and fresh automatic-calibration checks on this Samsung. Successful writable
+mcc/mcv, other OEM policy and KSU/APatch still require separate hardware;
+R6 remains optional. No public release or updater promotion occurred.

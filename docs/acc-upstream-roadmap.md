@@ -184,6 +184,21 @@ Um incremento só fica concluído quando os seus critérios passam. Novos candid
 
 A implementação do núcleo e todos os ensaios possíveis no ambiente disponível estão concluídos e registados em I6. Foram mantidas decisões NG explícitas para defaults/schema, root tooling/overlayfs, transporte sem fallback inseguro e funcionalidades opcionais; o catálogo não declara cherry-pick integral dos 202 commits.
 
-Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. USB físico desligado/religado tem evidência histórica I2; I6 confirma alimentação ligada e o caso de pausa que altera online, mas não repete a desconexão física. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
+Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. O ensaio físico I6 detetou desligar/religar mas revelou atraso na calibração; a correção I7 passou a repetição física, aprendendo polaridade negativa em 30 segundos e retomando carga real. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
 
 O núcleo foi integrado nos PRs #1 de ACC-NG/AccA-NG; os checks dos commits de merge passaram. O APK assinado continua candidato. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
+
+
+## I7 — calibração após desligar o cabo
+
+12 outubro 2026. Motor v1.0.9-ng/202610129 e app beta.8/code 48. A correção
+preserva a cadência de amostragem quando a alimentação está confirmadamente
+ausente, interrompe verificações ON pendentes e classifica a desconexão antes
+de aprender a polaridade. Alimentação unknown continua elegível para retoma.
+138 casos passaram Android; 136 passaram host e dois Android-only foram omitidos.
+119 testes por variante da app, lint/build/assinatura/alinhamento e CI passaram.
+O ensaio físico final aprendeu `-` em 30 segundos, confirmou eventos e corrente
+real ao religar; config/last-good, perfis e instância única foram preservados.
+Ver [registo I7](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12).
+A matriz Samsung disponível está concluída; certificação em hardware mcc/mcv,
+KSU/APatch/outros OEM e publicação continuam pendentes. R6 permanece opcional.

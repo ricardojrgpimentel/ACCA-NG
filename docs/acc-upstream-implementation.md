@@ -220,3 +220,22 @@ Validação final: 133 casos do motor (131 passam host, dois Android-only; 133 p
 Limites: mcc/mcv/tl graváveis, política de outros OEM e KSU/APatch não são certificados pelo Samsung. USB desligado/religado não foi repetido fisicamente neste candidato. As novas idle_apps/Encore/percentagens de corrente R6 ficam opcionais fora do candidato; as opções existentes preservam fonte física e proteções. Fonte submetida em PRs de revisão; nenhuma release nem alteração do updater estável.
 
 I6 adicional: helpers de temp_level/SIOP confirmaram no Samsung a escrita e o restauro 100→80→100 com mode 664/config preservados e carga pausada. Não certifica eficácia elétrica nem política térmica OEM sob carga; corrente/tensão continuam a exigir controlos graváveis. A CI do código candidato passou as verificações Android no GitHub.
+
+
+## I7 — calibração após desligar o cabo
+
+12 outubro 2026. **ACC-NG v1.0.9-ng (202610129) / AccA-NG beta.8 (48)**.
+Fonte runtime `b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`; bundle SHA-256
+`6254bb8ad9bf5bf2d9e35c1344124815325258c1b62b63da7a5f9ddfa8682b51`.
+O ensaio físico I6 revelou ON retries que atrasavam a calibração sem cabo.
+I7 evita ON com input ausente, interrompe uma verificação em curso e conserva
+Discharging mesmo sem polaridade aprendida. Input unknown preserva retoma OEM.
+Regressões reproduzem 153→27 segundos para três amostras e 42→3 segundos para
+ON pendente; 138 casos Android/136 host mais dois skips passaram. App: 119 testes
+por variante, lint/build e APK assinado/alinhado; CI verde. Git archive limpo
+reproduz o bundle, fixtures/31 hashes runtime e dados/prefs foram verificados.
+No Samsung, a repetição física aprendeu polaridade negativa em 30 segundos e
+regressou a Charging/+1647 mA. Config/last-good restaurados byte a byte, daemon
+único/lock/ready confirmados. Ver [evidência I7](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12).
+Certificação mcc/mcv/outros OEM/KSU/APatch e R6 opcional continuam separadas;
+nenhuma release/updater foi publicada.
