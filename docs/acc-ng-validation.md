@@ -603,3 +603,41 @@ Physical cable removal/reconnection requires a person at the device. Other OEM,
 KSU/APatch, writable mcc/mcv and OEM policy under load remain separate hardware
 certification. The core integration does not imply that unsupported hardware
 acquired support. No public release or stable updater announcement was made.
+
+
+### Direct legacy upgrade follow-up — 2026-10-12
+
+A further R7 audit checked the exact v1.0.3-ng upgrade path, rather than relying
+on the earlier chain of incremental upgrades. The original dated on-device
+snapshot `install-20261009-221423-28464` contained v1.0.3-ng/202610093 with API 1
+and its original configuration. While the current module/data/runtime were
+safely held aside, those genuine module files and configuration were restored
+as the installer input. The old daemon was never started. This validates the
+legacy on-disk upgrade path, not a running-old-daemon transition.
+
+The exact app installer/bundle upgraded that installation to v1.0.8-ng/202610118
+and reached ready/Magisk with valid physical sensors. The upgrade backup matched
+all old module files and the original profile exactly. Every upgraded config
+byte except the initially empty automatic `chargingSwitch` assignment remained
+unchanged: resume 70% / pause 80%, cooldown capacity 60%, temperatures 40/45/40/55,
+manual negative polarity, notification settings and hooks were preserved.
+Automatic discovery selected `battery/batt_slate_mode 0 1`. The first verifier
+incorrectly treated that expected selection as a profile-loss failure; the
+second explicitly verified that it was the only change and checked the complete
+rollback snapshot. Both attempts restored the current installation and its
+session-baseline configuration exactly.
+
+Private evidence: ignored `build/validation/legacy-upgrade-trial.txt` and dated
+on-device backups. The final current config SHA-256 remains
+`f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`.
+
+The core PRs were merged into engine main `938e75f` and app main `206411c`.
+Post-merge CI passed on both exact commits:
+[engine Linux/macOS checks](https://github.com/ricardojrgpimentel/ACC-NG/actions/runs/38225806794)
+and [app Android checks](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38226054157).
+These merges did not create a release or promote the stable updater.
+
+R7 remains open for current-candidate physical cable disconnect/reconnect and
+fresh calibration with genuinely disconnected external power, successful
+mcc/mcv on writable hardware, OEM policy under load and physical KSU/APatch.
+The available Samsung result does not certify those unobserved scenarios.

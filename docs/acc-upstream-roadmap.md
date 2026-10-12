@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado em 12 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `ea5972f5d95e08ba9b98ac67c83ef375121aad72`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk, incluindo instalação limpa e atualização assinada após desbloqueio. O núcleo está pronto para integração; publicação e certificação em outros kernels/gestores têm alcance separado e continuam documentadas. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
+**Estado em 12 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `ea5972f5d95e08ba9b98ac67c83ef375121aad72`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk, incluindo instalação limpa e atualização assinada após desbloqueio. O núcleo está integrado nas duas mains; publicação e certificação em outros kernels/gestores têm alcance separado e continuam documentadas. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
 
 ## Estado das tarefas
 
@@ -26,7 +26,7 @@ Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a
 | R5.3 | Implementado I4/I6 | Staging e cleanup privados, arquivo validado e rollback NG. Upgrade, rollback físico e reinstalação passaram com config e uma instância preservados. |
 | R5.1/R5.2/R5.4/R5.5 | Implementado I6 | Readiness rápido, boot/disable limitado, flags dos gestores e BusyBox explícitos, HTTPS/TLS/HTTP, diagnósticos limitados. Magisk físico; KSU/APatch apenas fixtures. |
 | R6.1–R6.5 | Opcionais decididas | idle_apps, Encore e percentagens de corrente fora do candidato. Segurança das opções existentes: capacidade física, máscara 0–100 e force-charge temporário conserva limites/perfil. |
-| R7 | Candidato validado; certificação pública parcial | 133 testes motor (131 host + dois exclusivos Android; 133 Android), 119 app por variante, sintaxe/build/lint/assinatura, bundle reproduzido e CI Linux/macOS. Samsung: instalação limpa, upgrade, dados após desbloqueio, switch, carga/pausa/retoma, rollback/reinstalação e boot antes do PIN. Controlos mcc/mcv graváveis, outros OEM/gestores e cabo fisicamente desligado/religado neste candidato continuam a exigir ensaio próprio. |
+| R7 | Candidato validado; certificação pública parcial | 133 testes motor (131 host + dois exclusivos Android; 133 Android), 119 app por variante, sintaxe/build/lint/assinatura, bundle reproduzido e CI Linux/macOS. Samsung: instalação limpa, upgrade direto do snapshot v1.0.3-ng, dados após desbloqueio, switch, carga/pausa/retoma, rollback/reinstalação e boot antes do PIN. Controlos mcc/mcv graváveis, outros OEM/gestores e cabo fisicamente desligado/religado neste candidato continuam a exigir ensaio próprio. |
 
 
 ## Estratégia de integração
@@ -179,4 +179,4 @@ A implementação do núcleo e todos os ensaios possíveis no ambiente disponív
 
 Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. USB físico desligado/religado tem evidência histórica I2; I6 confirma alimentação ligada e o caso de pausa que altera online, mas não repete a desconexão física. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
 
-O APK assinado e os PRs de revisão são candidatos. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
+O núcleo foi integrado nos PRs #1 de ACC-NG/AccA-NG; os checks dos commits de merge passaram. O APK assinado continua candidato. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
