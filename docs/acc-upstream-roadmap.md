@@ -4,6 +4,13 @@
 
 **Estado em 12 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `ea5972f5d95e08ba9b98ac67c83ef375121aad72`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk, incluindo instalação limpa e atualização assinada após desbloqueio. O núcleo está integrado nas duas mains; publicação e certificação em outros kernels/gestores têm alcance separado e continuam documentadas. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
 
+**Candidato I7 em validação:** ACC-NG v1.0.9-ng / AccA-NG beta.8, fonte
+`dadb2e98b2f14809302e8af2822b60aeced20be2`. O unplug/replug físico I6 passou,
+mas a calibração automática ficou pendente por esperas ON com a alimentação
+realmente desligada. I7 corrige novas tentativas e interrompe uma espera em curso;
+137 casos motor e 119 app por variante passaram. A repetição física está pendente.
+O registo I6 acima mantém o alcance histórico; I7 não publica release/updater.
+
 ## Estado das tarefas
 
 Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a definir os critérios completos. “Implementado” indica código e fixtures, não aprovação para release. Cada incremento deve atualizar esta tabela, o catálogo e o registo de validação.

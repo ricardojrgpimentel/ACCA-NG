@@ -676,3 +676,61 @@ CI for app main `534b5a9` also passed
 [Android checks](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38227058994).
 The remaining full R7 gate still needs physical cable/calibration work and
 suitable writable mcc/mcv and KSU/APatch/OEM hardware. No release was published.
+
+
+## I7 unplug/calibration candidate — 2026-10-12
+
+ACC-NG v1.0.9-ng/202610129 / AccA-NG beta.8/code 48, unpublished.
+Runtime source `dadb2e98b2f14809302e8af2822b60aeced20be2`; bundle SHA-256
+`246e7bfcd1ed9e6700f940b78eb40c824bf6fafdabf8cec92972961310378ab1`.
+
+### Physical I6 cable trial and identified calibration delay
+
+The user physically removed and reattached the USB cable with I6 installed.
+A bounded detached logger captured 118 samples independently of the ADB
+connection. The ADB transport changed on reconnect. AC was the actual incoming
+source on this Samsung; the USB online node alone was not a correct cable proxy.
+
+- Incoming-power readback changed true → false → true, and real battery current
+  changed from about +1854 mA to −539 mA and then +1566 mA.
+- Engine events recorded disconnected at 09:26:12 UTC and connected at
+  09:27:03 UTC. Connection state updated coherently; the event check does not
+  establish user-visible notification delivery.
+- `dischargePolarity` had been cleared for fresh automatic calibration, but
+  remained blank. This trial passes physical cable detection for I6, not
+  automatic calibration.
+- The logger removed its temporary resume 65% / pause 70% and restored the exact
+  original config/last-good. Engine ready and config SHA-256
+  `f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`
+  were verified. Private evidence is ignored `build/validation/manual-usb/`.
+
+The controller resumed at low capacity even with explicitly disconnected power;
+its ON verification could wait 14 × 3 seconds on an unpowered control before
+another calibration sample. A full loop regression, including real is_charging
+and set_dp functions, reproduces 153 simulated seconds and three futile ON
+requests for three samples. The corrected loop skips those requests for known
+unplug, yielding three samples in 27 seconds. Connected and unknown power still
+allow resume, so an OEM input pause is not mistaken for a disconnected cable.
+
+Physical validation of I7 will be recorded separately; I6 results are not
+relabeled as this candidate's results. The remaining external-hardware
+certification and release gate continue to apply.
+
+
+I7 final automated checks: 137 Android-runner cases passed; 137 host cases
+(135 passed, two Android-only skipped). The pending-ON regressions also verify
+unplug during an existing check: 42 simulated seconds before the fix, three
+after, including lagging kernel Charging status. Connected/unknown resume
+remains eligible. The signed/debug beta.8 build checks and final physical trial
+are recorded below after completion.
+
+
+I7 packaging/upgrade checks: 119 app tests passed per debug/release, both lints
+and builds passed. The signed APK retains the established certificate and
+16 KiB alignment. The final bundle was installed through the exact app raw
+installer; the APK update succeeded. All 31 runtime hashes match the final
+contract. Official/debug database rows and preferences matched the immediately
+pre-upgrade backup, and the original config hash remained unchanged. The
+initial v1.0.9 package was an intermediate local build; both module and APK were
+replaced with the final dadb2e9 bundle before the next physical trial. No public
+version code or release asset was reused.

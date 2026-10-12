@@ -1,0 +1,1 @@
+Corrige atrasos na calibração com o carregador desligado. Mantém a retoma após pausas de entrada OEM e preserva a configuração.

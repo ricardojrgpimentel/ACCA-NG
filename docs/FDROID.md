@@ -29,9 +29,9 @@ channel. Do not display an F-Droid download badge until this package is listed.
 5. Only after those checks, submit a recipe to fdroiddata or an inclusion request
    through F-Droid's documented process. No signing credentials are needed.
 
-Current ACC-NG bundle: **v1.0.8-ng candidate**, built using
+Current ACC-NG bundle: **v1.0.9-ng candidate**, built using
 `python3 tools/build_ng.py` from engine source commit
-[`ea5972f5d95e08ba9b98ac67c83ef375121aad72`](https://github.com/ricardojrgpimentel/ACC-NG/tree/ea5972f5d95e08ba9b98ac67c83ef375121aad72).
+[`dadb2e98b2f14809302e8af2822b60aeced20be2`](https://github.com/ricardojrgpimentel/ACC-NG/tree/dadb2e98b2f14809302e8af2822b60aeced20be2).
 See the [I6 integration record](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto).
 A clean git archive of that commit reproduces the exact bundled archive and its
 flashable uninstaller. The app contract checks 35 source hashes and the shared
