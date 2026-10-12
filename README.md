@@ -72,7 +72,7 @@ voltage control; successful mcc/mcv, independent OEM policy and physical
 KSU/APatch/other-device validation remain pending. See the
 [validation record](docs/acc-ng-validation.md) for each trial's exact scope.
 
-Current prereleases: [signed beta.8 APK](https://github.com/ricardojrgpimentel/ACCA-NG/releases/tag/v2.0.0-ng-beta.8)
+Current prereleases: [signed beta.9 APK](https://github.com/ricardojrgpimentel/ACCA-NG/releases/tag/v2.0.0-ng-beta.9)
 and [ACC-NG v1.0.9-ng module](https://github.com/ricardojrgpimentel/ACC-NG/releases/tag/v1.0.9-ng).
 
 Review [ACC-NG documentation](https://github.com/ricardojrgpimentel/ACC-NG)
