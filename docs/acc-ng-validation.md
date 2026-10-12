@@ -530,8 +530,8 @@ a kernel with supported writable nodes; the SIOP write/reset above covers that
 specific Samsung control, not its electrical efficacy. the earlier I3 current-write refusal is
 not promoted to proof of successful I6 limiting. KSU/APatch and other OEM
 rules have fixtures and official manager flag/path references, not physical
-certification. Clean installation is covered by complete-script fixtures;
-the live trial preserves the existing installation/data. Physical USB
+certification. Clean installation was initially covered by complete-script fixtures; the
+12 October live clean-installation follow-up below now covers Samsung/Magisk. Physical USB
 unplug/replug was not repeated for I6; historical I2 evidence remains I2.
 Thermal boundaries/cooldown/shutdown are exercised synthetically, without
 heating the device or falsifying live sensors.
@@ -541,3 +541,65 @@ extensions remain optional outside this candidate. Existing temporary
 force-charge and mask behavior keep physical capacity and thermal/OEM limits.
 Source PRs and locally signed artifacts are review candidates; no GitHub
 release, main merge or stable updater announcement was performed.
+
+
+### Post-unlock and clean-installation follow-up — 2026-10-12
+
+The current roadmap branches were recovered from the two draft PRs; `main`
+held I3 at the start of this follow-up. The Samsung was already running the pinned I6 runtime. No older
+candidate was installed over it. Private evidence is under ignored
+`build/validation/`, with backups retained on the device.
+
+- User 0 was RUNNING_UNLOCKED. Official-app SQLite integrity checks passed;
+  all rows (three profiles, ten scripts, no schedules) and preferences matched
+  the pre-PIN backup. Debug already had one profile instead of the earlier
+  three, with different preferences before this session. That state was kept;
+  it is not evidence that the earlier debug update preserved every old row.
+- Rebuilt and verified the signed beta.7 APK with the established certificate
+  and 16 KiB alignment, installed it as an update, and opened the dashboard.
+  Both apps retained their session-baseline database rows. Debug preferences
+  were unchanged; official preferences changed only `profile=3` to `profile=-1`
+  when the dashboard recognized the current custom configuration. Saved profiles
+  remained present. No historical debug data or engine profile was restored over
+  the current settings. The latest config SHA-256 remained
+  `f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`.
+- All 31 installed runtime source hashes match the existing I6 contract. The
+  engine reports ready/Magisk. Both rebuilt APKs contain the exact deterministic
+  bundle with SHA-256 `96a4d95125be088cd5d2109020da8bcfaa8f1ddfb88f2359fed9922554ada1a1`.
+- Live clean installation used the exact app raw installer and bundle. After
+  stopping the original daemon, its module, data and runtime were moved aside;
+  the installer had no existing module/configuration to migrate. Defaults were
+  resume 70% / pause 75%, temperature 35/50/45/55, no power limits and automatic
+  polarity; valid physical sensors and ready/Magisk were observed. Original
+  module/data were then restored, and the current configuration passed a
+  byte-for-byte comparison. App data and DJS were not removed. The first setup
+  attempt could not move the tmpfs runtime onto `/data`; its recovery passed.
+  The successful attempt used a rename within `/dev` for that runtime.
+- A bounded 500 mA / 4100 mV trial recorded `500::failed` and
+  `4100::unsupported` from the production limit results. The current request was not confirmed as applied; voltage discovery reported no eligible control. Concurrent
+  `--power-status` calls were busy while the daemon owned the configuration
+  lock, so they were not described as successful readback. After stopping the
+  daemon, voltage read unsupported and current read pending after stop reset
+  its result marker. Both requests were removed; config/last-good were restored
+  exactly and normal protection restarted. This remains failure/no-support
+  evidence, not successful electrical current/voltage limiting.
+- Engine suite: 133 cases on macOS (131 passed, two Android-only skipped) and
+  133 with Android fixture runners. The historical preference-write test runs
+  on the host even in the Android invocation. Its missing host `timeout` was
+  fixed; host fixtures now use real POSIX file locks, bounded subprocesses and
+  translations of the used GNU tool forms. macOS Bash 3.2's zero status on an
+  unclosed array is treated as a syntax failure. The diagnostic fixture uses an
+  explicit synthetic boot identity instead of assuming host `/proc`. These are
+  test-tool changes; the runtime/archive bytes remain identical to I6.
+- App: 119 tests passed per debug/release, both lints and builds passed;
+  translations checked 21 locales with no errors; shared contract export/check
+  passed. All 51 runtime/installer/translation shell sources checked in this
+  follow-up passed Android syntax. Previous 53-script checks included additional
+  staged wrappers. Engine CI now covers Linux and macOS plus fixture export and
+  deterministic candidate packaging, without promoting `module.json`. Both jobs
+  passed [Engine checks](https://github.com/ricardojrgpimentel/ACC-NG/actions/runs/38225148486).
+
+Physical cable removal/reconnection requires a person at the device. Other OEM,
+KSU/APatch, writable mcc/mcv and OEM policy under load remain separate hardware
+certification. The core integration does not imply that unsupported hardware
+acquired support. No public release or stable updater announcement was made.
