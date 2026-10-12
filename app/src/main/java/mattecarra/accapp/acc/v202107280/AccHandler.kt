@@ -313,7 +313,8 @@ open class AccHandler(override val version: Int, private val contract: NgEngineC
 
     override suspend fun testChargingSwitch(chargingSwitch: String?): Int = withContext(Dispatchers.IO) {
         // Switch tests sleep and poll hardware: allow a full minute.
-        RootShell.exec("/dev/.vr25/acc/acca -t${chargingSwitch?.let{" $it"} ?: ""}", RootShell.LONG_TIMEOUT_SECS).code
+        val args = chargingSwitch?.trim()?.split(Regex("\\s+")) ?: emptyList()
+        RootShell.execScript("/dev/.vr25/acc/acca -t " + args.joinToString(" ", transform = RootShell::quote), RootShell.LONG_TIMEOUT_SECS).code
     }
 
     override fun getCurrentChargingSwitch(config: String): String? {

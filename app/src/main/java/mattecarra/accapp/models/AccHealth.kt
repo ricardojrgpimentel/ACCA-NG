@@ -1,12 +1,13 @@
 package mattecarra.accapp.models
 
 enum class AccHealthIssue {
-    UNAVAILABLE, FIXED_LIMIT_MODULE, DIFFERENT_MODULE, CALIBRATION_PENDING,
+    INITIALIZING, CONFIG_INVALID, SENSOR_UNAVAILABLE, UNAVAILABLE, FIXED_LIMIT_MODULE, DIFFERENT_MODULE, CALIBRATION_PENDING,
     DAEMON_STOPPED, CHARGING_ABOVE_LIMIT
 }
 
 data class AccHealthSnapshot(
     val available: Boolean = false,
+    val engineState: String? = null,
     val running: Boolean? = null,
     val version: Int? = null,
     val moduleHash: String? = null,
@@ -15,6 +16,8 @@ data class AccHealthSnapshot(
     val workaround: Boolean = false,
     val hasCurrentSensor: Boolean = false,
     val currentRaw: Long? = null,
+    val currentSource: String? = null,
+    val currentRole: String? = null,
     val ampFactor: Long? = null,
     val idleThreshold: Long = 40,
     val status: String? = null,
@@ -25,10 +28,11 @@ data class AccHealthSnapshot(
     val switch: String? = null,
     val powerLimits: mattecarra.accapp.acc.PowerLimitsSnapshot? = null
 ) {
-    val currentMa: Double? get() = currentRaw?.let { raw ->
+    val currentMa: Double? get() = currentRaw?.takeIf { currentRole != "input" }?.let { raw ->
         ampFactor?.takeIf { it > 0 }?.let { raw.toDouble() * 1000 / it }
     }
-    val calibrationPending: Boolean get() = running == true && workaround &&
+    val initializing: Boolean get() = engineState in listOf("boot-wait", "initializing", "testing")
+    val calibrationPending: Boolean get() = running == true && !initializing && engineState !in listOf("config-invalid", "sensor-wait") && workaround &&
         hasCurrentSensor && polarity !in listOf("+", "-")
 
     companion object {
@@ -66,13 +70,16 @@ class AccHealthTracker {
 
     fun evaluate(s: AccHealthSnapshot, bundledHash: String, now: Long): AccHealthReport {
         val issues = mutableListOf<AccHealthIssue>()
-        if (!s.available || s.running == null || s.moduleHash == null) issues += AccHealthIssue.UNAVAILABLE
+        if (s.initializing) issues += AccHealthIssue.INITIALIZING
+        else if (s.engineState == "config-invalid") issues += AccHealthIssue.CONFIG_INVALID
+        else if (s.engineState == "sensor-wait") issues += AccHealthIssue.SENSOR_UNAVAILABLE
+        else if (!s.available || s.running == null || s.moduleHash == null) issues += AccHealthIssue.UNAVAILABLE
         if (s.available) {
             if (s.fixedLimits) issues += AccHealthIssue.FIXED_LIMIT_MODULE
             else if (s.moduleHash != null && s.moduleHash != bundledHash)
                 issues += AccHealthIssue.DIFFERENT_MODULE
             if (s.calibrationPending) issues += AccHealthIssue.CALIBRATION_PENDING
-            if (s.running == false) issues += AccHealthIssue.DAEMON_STOPPED
+            if (s.running == false && !s.initializing) issues += AccHealthIssue.DAEMON_STOPPED
         }
         val realCharge = s.currentMa?.let { current ->
             when (s.polarity) {
@@ -81,7 +88,7 @@ class AccHealthTracker {
                 else -> !s.workaround && s.status == "Charging"
             }
         } ?: (s.status == "Charging" && !s.workaround)
-        val aboveLimit = s.available && s.running == true && !s.calibrationPending &&
+        val aboveLimit = s.available && !s.initializing && s.engineState !in listOf("sensor-wait", "config-invalid") && s.running == true && !s.calibrationPending &&
             s.pause in 1..100 && s.capacity != null && s.capacity >= s.pause!! && realCharge
         if (!aboveLimit || limit != s.pause || lastReading?.let { now - it > 20_000 } == true) {
             chargingSince = null

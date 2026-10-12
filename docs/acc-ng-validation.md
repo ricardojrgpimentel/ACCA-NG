@@ -360,3 +360,246 @@ root managers remain open. I2 results remain evidence for I2 only.
 
 No GitHub release, updater announcement or publication metadata was changed.
 The bundled engine source is pinned; finish the required R7 checks before distribution.
+
+
+## I4 staging cleanup candidate — 2026-10-11
+
+ACC-NG **v1.0.7-ng (202610117)** / AccA-NG **2.0.0-ng-beta.6 (46)**,
+unpublished. Engine source pinned to local commit
+`8305720c356fec9c8b4be8ee7a5de1bffc4983aa`, over I3 `1e8291b`;
+app base `e857f57`. This source commit has not yet been pushed. API 1/schema
+202310160 and charging behaviour remain unchanged.
+
+Candidate tarball and app resource SHA-256:
+
+```text
+603b4aabd7315066e09a279637c29f8411612371f0afc05f3d5c32b9e86ebaf1
+```
+
+### Automated checks
+
+| Check | Result |
+| --- | --- |
+| Engine host suite | 79 cases: 77 passed, two Android-only skipped |
+| Engine with Android fixture runners | 79 passed; Samsung root/mksh/BusyBox shell fixtures, Python/build checks on host |
+| Installation regression | Six tests/nine scenarios pass on host and Android; all six tests fail against the old uninstaller |
+| Shell syntax | All 35 runtime/installer scripts passed Android /system/bin/sh -n |
+| App unit tests | 114 passed in each debug/release, no failures/errors/skips |
+| App build/lint | Debug and unsigned release builds, lintDebug/lintRelease passed |
+| Shared contract | Export/check passed; 22 source hashes including four installation scripts |
+| Reproduction | Clean git archive of source commit reproduces exact tarball; flashable uninstaller equals fixed source |
+
+Installer fixtures execute full production scripts with Android paths redirected
+below a temporary root. Root/process/platform tools and service initialization
+are stubbed. Tests verify clean installation, direct/tarball upgrades, full
+uninstall, unrelated staging preservation, and recovery from injected copy
+failure (exit 42). They verify backup/config restoration, one fixture service
+initialization, original exit status and source cleanup after recovery. They do
+not validate live rollback CLI or charging hardware.
+
+### Physical upgrade — Samsung SM-G975F / Magisk
+
+Private evidence and scripts are under ignored `build/validation/i4/`; a dated
+module/configuration backup was retained on the device before installation.
+The committed candidate was installed using the **exact app raw installer**
+from /data/local/tmp/acc-i4-install-*. A separate acc-i4-sentinel-* directory
+contained an unrelated marker. Both match the formerly destructive glob.
+
+- Upgrade succeeded, reporting v1.0.7-ng/202610117. The staging installer and
+  unrelated marker survived; the tarball caller removed its extracted source.
+- Original configuration SHA-256 remained exactly
+  `3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2`,
+  both immediately after install and after daemon initialization.
+- All 19 installed runtime hashes (including uninstall.sh) matched the fixed
+  candidate's contract. Root-level installers are tracked in the 22 bundle
+  hashes but are not copied into the installed runtime.
+- The initial verifier sampled --init and its temporary subshell too early.
+  Follow-up after initialization confirmed one normal accd process, PID matching
+  the runtime lock. This was a verification timing issue; installation passed.
+- Readback showed current/voltage requests at default and both states off.
+  online=false was observed; no physical USB or charging-limit test was
+  performed.
+- Debug APK upgrade succeeded and package metadata reports beta.6-debug/code 46.
+  Official release app and DJS were unchanged. Test staging/sentinel paths were
+  removed after collecting evidence; the module/config backup was retained.
+
+The staging cleanup defect observed in I3 is fixed and has physical upgrade
+coverage. Failed-copy recovery is covered in fixtures; no live failure was
+injected. Explicit rollback CLI, broader R5.3 cleanup/root managers, successful
+limit application/restoration, OEM policy, USB/locked boot repetition and full
+R7 remain pending. No source push, GitHub release or updater announcement.
+
+
+## I6 joint core candidate — 2026-10-11
+
+**ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**.
+Engine source: `ea5972f5d95e08ba9b98ac67c83ef375121aad72`.
+API 1/schema 202310160 retained; no stable release/updater change.
+Historical I1–I5 evidence above is not relabelled as this candidate's evidence.
+
+Tarball/app-resource SHA-256:
+
+```text
+96a4d95125be088cd5d2109020da8bcfaa8f1ddfb88f2359fed9922554ada1a1
+```
+
+| Check | Result |
+| --- | --- |
+| Engine host suite | 133 cases: 131 passed, two Android-only skipped |
+| Engine with Android fixture runners | 133 passed; root/mksh/BusyBox fixtures on Samsung, Python/build checks on host |
+| Shell syntax | 53 scripts passed /system/bin/sh -n; final CLI changes checked again |
+| Configuration transactions | Concurrent writes, invalid/failing commits, imports/scripts, atomic reset/removal and restart without inherited writer lock |
+| Lifecycle/install fixtures | Boot/disable/readiness, safe extraction, HTTP failure, cleanup/recovery/rollback and bounded exports |
+| App unit tests | 119 passed in each debug/release, no failures/errors/skips |
+| App build/lint | Debug build, signed release, lintDebug/lintRelease passed |
+| Shared contract | 35 source hashes, module/schema/capabilities and exact generated external-power helper match the shipped bundle |
+| Reproduction | Clean git archive reproduces identical engine tarball; candidate resources verified in both APKs |
+| Signing | Existing release certificate SHA-256 b658f70c0aa5046aaf2a508be344ad882c0293947628a6cf276a3ec8c533ea8d; APK signature and 16 KiB alignment verified |
+| Local APK updates | Signed/debug beta.7/code 47 installed; database rows/preferences and DJS verified before locked boot. Final resource-only repack installed as an update before PIN; encrypted data is checked again only after user unlock |
+
+Fixtures write only generated temporary files; they do not certify electrical
+power limiting or all root managers. Boot/process/platform tools are simulated
+in lifecycle fixtures. Actual device trials are recorded separately below.
+Private device logs, database copies and backups remain outside Git.
+
+### Physical Samsung SM-G975F / Magisk
+
+Evidence/scripts: ignored `build/validation/i6-final/`. Each upgrade retained a
+dated module/config backup, tested the exact app installer from acc-* staging,
+preserved a separate unrelated sentinel, removed only its extraction and
+verified 31 installed runtime hashes plus one normal daemon matching its lock.
+The final candidate is installed on the device.
+
+- User feedback on 2026-10-11: “esta a funcionar bem no samsung”. This records
+  a positive report of general use. The report does not specify individual
+  test scenarios or independently verify the installed version; physical USB
+  unplug/replug, clean installation and the other certification gaps below
+  remain open until their results are recorded.
+- Original config SHA-256 remained
+  `3edaa8195194973fb644d9aef2b8b7e08e10754df4c5172291434620b4338ec2`.
+  Native battery current is mA (factor 1000); voltage is µV. Manual polarity,
+  selected switch, thermal limits and notification preferences were retained.
+- A physical probe of `battery/batt_slate_mode 0 1 --` returned **0 / Ok**.
+  Off/on were confirmed with three stable samples each and original OFF restored.
+  This is a working pause switch, not a claim of idle-mode support.
+- The first trial exposed that slate OFF clears USB online while the cable is
+  attached. The final helper records our OFF readback and preserves unknown;
+  probes temporarily enable the configured input, prove connected power and
+  restore its journal. Android/host fixtures exercise baseline recovery,
+  cancellation and resolving relative paths from the app.
+- Capacity trial confirmed initial charging, real pause and real resume over
+  three consecutive samples. At 73%, pause yielded about **−107 mA** and resume
+  **+337 mA**, temperature **29.9 °C**. Cooldown capacity was temporarily 99% to
+  isolate capacity switching from the original 50s/10s cycle; thermal limits
+  remained active. The first capacity trial retained cooldown and did not prove
+  net charging; it restored the profile and prompted this corrected trial.
+  All temporary capacity/cooldown changes were removed and original hash restored.
+- Explicit CLI rollback selected the retained v1.0.7 snapshot, matched every
+  runtime script/module hash, kept the current config and started one daemon.
+  Reinstalling v1.0.8 through the exact app installer passed again.
+- Reboot changed boot ID; before PIN/unlock, engine-state was ready, a single
+  daemon owned its lock and 31 runtime hashes matched. A temporary interval
+  away from the fuel-gauge boundary (resume 61%, pause 76%, cooldown 99%)
+  confirmed real offMid pause with slate OFF;
+  all thermal/OEM settings remained active. Its config hash survived reboot.
+  Original config and last-good were restored afterward under the writer mutex.
+  An earlier trial at 71%/resume 70% could not prove a stable OFF state during
+  boot. The code audit also removed dependence on observing net charging before
+  a known offMid pause, forces its OFF write even if normal disable would
+  classify net discharge as already stopped, and retains unresolved automatic
+  requests; two new
+  behavioral fixtures cover these paths. No UI unlock was performed.
+  The verifier accepts numeric deviceLocked=1 and confirms RUNNING_LOCKED
+  credential-encrypted user state; its initial textual-boolean assumption was
+  corrected.
+- Samsung SIOP: with charging held OFF and the daemon stopped, production
+  set_temp_level/apply_limit helpers changed siop_level **100 → 80 → 100**,
+  captured/restored the owned value and removed their journal. Original mode
+  **664** and config hash were retained, then the daemon restarted. This proves
+  control write/readback/restoration; the stopped-charge trial does not certify
+  electrical current reduction or OEM thermal policy under load. Private
+  evidence: build/validation/i6-final/thermal-level.json.
+
+Final code CI passed [Android checks](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38168343919): translations, exact bundled contract, tests, lint and unsigned release build.
+
+### Certification still requiring hardware
+
+The candidate implements R0–R5 and validates the available Samsung/Magisk path.
+Successful current/voltage limiting and broader OEM thermal behavior require
+a kernel with supported writable nodes; the SIOP write/reset above covers that
+specific Samsung control, not its electrical efficacy. the earlier I3 current-write refusal is
+not promoted to proof of successful I6 limiting. KSU/APatch and other OEM
+rules have fixtures and official manager flag/path references, not physical
+certification. Clean installation was initially covered by complete-script fixtures; the
+12 October live clean-installation follow-up below now covers Samsung/Magisk. Physical USB
+unplug/replug was not repeated for I6; historical I2 evidence remains I2.
+Thermal boundaries/cooldown/shutdown are exercised synthetically, without
+heating the device or falsifying live sensors.
+
+New idle_apps, Encore, percentage-current/editor features and advanced R6
+extensions remain optional outside this candidate. Existing temporary
+force-charge and mask behavior keep physical capacity and thermal/OEM limits.
+Source PRs and locally signed artifacts are review candidates; no GitHub
+release, main merge or stable updater announcement was performed.
+
+
+### Post-unlock and clean-installation follow-up — 2026-10-12
+
+The current roadmap branches were recovered from the two draft PRs; `main`
+held I3 at the start of this follow-up. The Samsung was already running the pinned I6 runtime. No older
+candidate was installed over it. Private evidence is under ignored
+`build/validation/`, with backups retained on the device.
+
+- User 0 was RUNNING_UNLOCKED. Official-app SQLite integrity checks passed;
+  all rows (three profiles, ten scripts, no schedules) and preferences matched
+  the pre-PIN backup. Debug already had one profile instead of the earlier
+  three, with different preferences before this session. That state was kept;
+  it is not evidence that the earlier debug update preserved every old row.
+- Rebuilt and verified the signed beta.7 APK with the established certificate
+  and 16 KiB alignment, installed it as an update, and opened the dashboard.
+  Both apps retained their session-baseline database rows. Debug preferences
+  were unchanged; official preferences changed only `profile=3` to `profile=-1`
+  when the dashboard recognized the current custom configuration. Saved profiles
+  remained present. No historical debug data or engine profile was restored over
+  the current settings. The latest config SHA-256 remained
+  `f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`.
+- All 31 installed runtime source hashes match the existing I6 contract. The
+  engine reports ready/Magisk. Both rebuilt APKs contain the exact deterministic
+  bundle with SHA-256 `96a4d95125be088cd5d2109020da8bcfaa8f1ddfb88f2359fed9922554ada1a1`.
+- Live clean installation used the exact app raw installer and bundle. After
+  stopping the original daemon, its module, data and runtime were moved aside;
+  the installer had no existing module/configuration to migrate. Defaults were
+  resume 70% / pause 75%, temperature 35/50/45/55, no power limits and automatic
+  polarity; valid physical sensors and ready/Magisk were observed. Original
+  module/data were then restored, and the current configuration passed a
+  byte-for-byte comparison. App data and DJS were not removed. The first setup
+  attempt could not move the tmpfs runtime onto `/data`; its recovery passed.
+  The successful attempt used a rename within `/dev` for that runtime.
+- A bounded 500 mA / 4100 mV trial recorded `500::failed` and
+  `4100::unsupported` from the production limit results. The current request was not confirmed as applied; voltage discovery reported no eligible control. Concurrent
+  `--power-status` calls were busy while the daemon owned the configuration
+  lock, so they were not described as successful readback. After stopping the
+  daemon, voltage read unsupported and current read pending after stop reset
+  its result marker. Both requests were removed; config/last-good were restored
+  exactly and normal protection restarted. This remains failure/no-support
+  evidence, not successful electrical current/voltage limiting.
+- Engine suite: 133 cases on macOS (131 passed, two Android-only skipped) and
+  133 with Android fixture runners. The historical preference-write test runs
+  on the host even in the Android invocation. Its missing host `timeout` was
+  fixed; host fixtures now use real POSIX file locks, bounded subprocesses and
+  translations of the used GNU tool forms. macOS Bash 3.2's zero status on an
+  unclosed array is treated as a syntax failure. The diagnostic fixture uses an
+  explicit synthetic boot identity instead of assuming host `/proc`. These are
+  test-tool changes; the runtime/archive bytes remain identical to I6.
+- App: 119 tests passed per debug/release, both lints and builds passed;
+  translations checked 21 locales with no errors; shared contract export/check
+  passed. All 51 runtime/installer/translation shell sources checked in this
+  follow-up passed Android syntax. Previous 53-script checks included additional
+  staged wrappers. Engine CI now covers Linux and macOS plus fixture export and
+  deterministic candidate packaging, without promoting `module.json`. Both jobs
+  passed [Engine checks](https://github.com/ricardojrgpimentel/ACC-NG/actions/runs/38225148486).
+
+Physical cable removal/reconnection requires a person at the device. Other OEM,
+KSU/APatch, writable mcc/mcv and OEM policy under load remain separate hardware
+certification. The core integration does not imply that unsupported hardware
+acquired support. No public release or stable updater announcement was made.

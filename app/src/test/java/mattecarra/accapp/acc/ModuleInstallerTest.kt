@@ -24,17 +24,19 @@ class ModuleInstallerTest {
         } finally { root.deleteRecursively() }
     }
 
-    @Test fun djsCleanupDoesNotRemoveAccSources() {
+    @Test fun cleanupRemovesOnlyOwnedExtraction() {
         val root = Files.createTempDirectory("module-cleanup-").toFile()
         try {
             for (name in listOf("djs-2021", "acc-ng-v1", "ACC-NG-v1")) root.resolve(name).mkdir()
+            root.resolve(".owned/djs-candidate").mkdirs()
             val installer = File("src/main/res/raw/install").readText()
             val function = "copy_log() {" + installer.substringAfter("copy_log() {").substringBefore("\ntrap copy_log EXIT")
-            val process = ProcessBuilder("sh", "-c", "module_id=djs\n$function\ncopy_log")
+            val process = ProcessBuilder("sh", "-c", "module_id=djs; extract_dir=\"$root/.owned\"\n$function\ncopy_log")
                 .directory(root).redirectErrorStream(true).start()
             process.inputStream.bufferedReader().readText()
             assertEquals(0, process.waitFor())
-            assertEquals(false, root.resolve("djs-2021").exists())
+            assertEquals(false, root.resolve(".owned").exists())
+            assertEquals(true, root.resolve("djs-2021").exists())
             assertEquals(true, root.resolve("acc-ng-v1").exists())
             assertEquals(true, root.resolve("ACC-NG-v1").exists())
         } finally { root.deleteRecursively() }

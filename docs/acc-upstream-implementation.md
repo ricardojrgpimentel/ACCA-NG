@@ -144,3 +144,79 @@ A primeira tentativa de upgrade revelou que o cleanup herdado apaga a origem qua
 ### Seguinte
 
 Completar a aplicação/restauração física de limites num kernel com controlos graváveis; seguir R2.2/R2.3 e R3 e corrigir o cleanup de R5.3. A origem do bundle está fixada no commit do motor; concluir R7 antes de distribuição. R4/R5 continuam abertos; R6 é opcional.
+
+
+## I4 — preservação do staging de instalação e recuperação
+
+11 de outubro de 2026. **Candidato ACC-NG v1.0.7-ng (202610117) / AccA-NG
+2.0.0-ng-beta.6 (46), sem publicação.** Fonte local do motor fixada em
+`8305720c356fec9c8b4be8ee7a5de1bffc4983aa`, sobre I3 `1e8291b`;
+base da app `e857f57`. A fonte I4 ainda não foi enviada ao remoto.
+
+R5.3 parcial: removido o glob /data/local/tmp/acc[-_]* de install/uninstall.sh.
+O desinstalador remove os caminhos instalados; staging e ficheiros temporários
+continuam sob responsabilidade de quem lançou a instalação. Os instaladores
+tarball/online conservam a limpeza da extração no fim, depois da recuperação.
+É uma correção NG da falha observada em I3; não declara novo commit upstream
+como integralmente portado. API 1, schema 202310160 e controlo de carga mantidos.
+
+Seis testes de regressão executam nove cenários com os scripts completos em
+filesystem temporário: staging com hífen, underscore e caminho aninhado,
+instalação limpa, desinstalação completa, tarball e falha de cópia com exit 42.
+Verificam preservação da origem e de ficheiros alheios, backup/configuração,
+restauro do módulo anterior, inicialização única do serviço simulado e
+propagação do erro antes de limpar a extração. Todos os seis falham com o
+código anterior e passam no host e no shell Android. Os comandos de processos,
+root e serviço são simulados; não exercitam hardware. A proveniência partilhada
+passa de 18 para 22 hashes, incluindo os quatro scripts de instalação.
+
+O bundle foi reproduzido a partir de um git archive limpo do commit fixado;
+o desinstalador flashable contém exatamente a fonte corrigida. A app empacota
+o candidato, atualiza bundledVersion e fixtures e reserva beta.6/code 46.
+
+Validação: 79 testes do motor (77 passam no host, dois exclusivos Android
+omitidos; 79 passam com runners Android), 35 scripts com sintaxe Android válida,
+114 testes da app em cada variante debug/release, builds e lint de ambas as
+variantes. Upgrade real no Samsung a partir de staging acc-* com o instalador
+exato da app passou, preservou o hash do config e terminou com um daemon
+correspondente ao lock. A app debug beta.6 foi instalada. Ver [evidência e
+checksum](acc-ng-validation.md#i4-staging-cleanup-candidate--2026-10-11).
+
+Restante: rollback CLI explícito, restante cleanup/caminhos NG, KSU/APatch e
+matriz R7. A recuperação após falha de cópia foi exercitada em fixtures; o
+ensaio físico I4 foi um upgrade bem sucedido. Limites/OEM, USB e locked boot
+não foram retestados. O próximo incremento de código é R2.2/R2.3.
+
+
+## I5 — R2 sensores físicos e switches OEM (incremento de trabalho)
+
+11 de outubro de 2026. Código integrado na branch do roadmap, sem novo bundle
+ou instalação física. O candidato instalado permanece I4 até à validação e
+empacotamento conjuntos dos grupos restantes. Fonte/testes em acc-ng; inclui
+ASUS, FP5/qcom, bypass, regras OEM exatas e preservação de escolhas manuais.
+Descoberta aceita Nexus 10 com status/capacidade separados e ausência de uevent;
+identifica fonte/escala e distingue corrente de entrada da corrente da bateria.
+Dados ausentes não recebem valores fictícios; perda de telemetria de proteção
+pausa o controlo escolhido com diagnóstico, sem sondagem nem shutdown falso.
+--sensor-status é aditivo; diagnóstico da app preserva compatibilidade antiga.
+91 testes do motor passaram com runners Android, incluindo 12 cenários de
+sensores/OEM. Certificação física em outros OEM continua pendente.
+
+
+## I6 — fecho do núcleo e candidato conjunto
+
+11 outubro 2026. **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**. Fonte do motor `ea5972f5d95e08ba9b98ac67c83ef375121aad72`; bundle SHA-256 `96a4d95125be088cd5d2109020da8bcfaa8f1ddfb88f2359fed9922554ada1a1`. As notas históricas I1–I5 descrevem a situação desses incrementos; este registo atualiza o candidato final.
+
+- R2: descoberta OEM separada, origem/escala da corrente, distinção bateria/entrada e pausa protetora com sensores ausentes. O helper partilhado mantém unknown quando a nossa própria pausa Samsung corta online; não inventa unplug/calibração.
+- R3: probes ON/OFF com orçamento 45s, três amostras, códigos preservados em quiet, exclusão mútua e journals de restauro após TERM/KILL. Config nunca é revertido pelo teste. Seleção automática/erro 7 limitados, manual preservado, polaridade aprendida sem bloquear e proteção térmica/capacidade/cooldown consistente.
+- R4: writers, reset e remoção CLI sob mutex/rename/backup; import parcial CRLF e scripts por nome, valores/quoting/extensões preservados. Reset fecha o lock antes de reiniciar daemon. Scheduler diário evita duplicados e resolve wrappers NG mantendo DJS.
+- R5: engine-state/readiness sem espera em status, disable/boot limitados, flags explícitas Magisk/KSU/APatch e BusyBox independente; staging privado e arquivos validados, HTTPS/TLS/HTTP, rollback de snapshots NG e export limitado com contexto de sensores/teste/limites.
+- App: reconhece initializing/sensor-wait/config-invalid, preserva códigos de teste incompleto, cita argumentos literalmente, termina testes modernos com restauro e conserva compatibilidade com motores antigos. Textos en/pt-PT/pt-BR.
+
+Preservados API 1/schema 202310160, seis campos capacity, r, polaridade manual, preferências NG, perfis e DJS. Defaults/cooldownCustom permanecem NG; não usar 20 como fallback de node ilegível, inferir gestor por BusyBox ou executar bg-dexopt-job no loop.
+
+Validação final: 133 casos do motor (131 passam host, dois Android-only; 133 passam Android), 53 scripts com sintaxe Android válida, 119 testes da app por variante debug/release, builds/lint e APK assinado/alinhado com o certificado existente. Git archive limpo reproduz o bundle. No Samsung passaram upgrade com staging/sentinela, 31 hashes runtime, teste do switch, carga/pausa/retoma, rollback para v1.0.7/reinstalação e reboot antes do PIN. Config/perfis/assinatura preservados; ensaio de boot usa uma histerese temporária afastada do limiar e repõe config/last-good. Ver matriz I6 em acc-ng-validation.md.
+
+Limites: mcc/mcv/tl graváveis, política de outros OEM e KSU/APatch não são certificados pelo Samsung. USB desligado/religado não foi repetido fisicamente neste candidato. As novas idle_apps/Encore/percentagens de corrente R6 ficam opcionais fora do candidato; as opções existentes preservam fonte física e proteções. Fonte submetida em PRs de revisão; nenhuma release nem alteração do updater estável.
+
+I6 adicional: helpers de temp_level/SIOP confirmaram no Samsung a escrita e o restauro 100→80→100 com mode 664/config preservados e carga pausada. Não certifica eficácia elétrica nem política térmica OEM sob carga; corrente/tensão continuam a exigir controlos graváveis. A CI do código candidato passou as verificações Android no GitHub.
