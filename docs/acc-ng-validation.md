@@ -641,3 +641,38 @@ R7 remains open for current-candidate physical cable disconnect/reconnect and
 fresh calibration with genuinely disconnected external power, successful
 mcc/mcv on writable hardware, OEM policy under load and physical KSU/APatch.
 The available Samsung result does not certify those unobserved scenarios.
+
+
+### Samsung SIOP under charging load — 2026-10-12
+
+The preceding SIOP test had the charging control OFF, so it proved ownership
+and restoration without electrical-effect evidence. This follow-up used the
+real `acc --set temp_level` CLI while the battery was naturally charging.
+Current firmware/runtime remained I6; no battery service/sensor was falsified.
+
+For the bounded test only, resume/pause were 65%/70% and cooldown capacity 101%
+so that the original 50%/60% interval did not stop charge during sampling. The
+actual capacity was 58–59%. Shutdown, temperatures, switch, polarity and other
+OEM/current/voltage settings remained active. Four physical battery-current
+samples were taken every two seconds in each phase:
+
+| Phase | SIOP readback | Mean battery current | Battery temperature |
+| --- | ---: | ---: | ---: |
+| Before restriction | 100 | +1908.5 mA | 29.4–29.7 °C |
+| `temp_level=70` | 30 | +1158.5 mA | 29.7 °C |
+| After `temp_level=0` reset | 100 | +1898 mA | 29.7–29.8 °C |
+
+This observed reduction followed by return toward the baseline supports an
+electrical effect of this specific Samsung SIOP control under the sampled load.
+It does not establish an exact current target or general thermal-policy behavior.
+SIOP mode/owner stayed 664 and 1000:1001. Its ownership journal was removed after
+reset. The original current config and last-good were restored byte-for-byte;
+original SIOP 100 was confirmed and the daemon restarted. Private evidence:
+ignored `build/validation/siop-load-trial.txt` and `siop-load-summary.json`, plus a
+dated device backup. The actual USB online node was 0 in these samples; positive
+battery current confirms charge, but this is not evidence of physical unplug.
+
+CI for app main `534b5a9` also passed
+[Android checks](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38227058994).
+The remaining full R7 gate still needs physical cable/calibration work and
+suitable writable mcc/mcv and KSU/APatch/OEM hardware. No release was published.
