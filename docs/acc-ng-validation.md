@@ -775,3 +775,75 @@ for engine b3e59e6 on Linux/macOS and app de2cefb. This closes physical cable
 and fresh automatic-calibration checks on this Samsung. Successful writable
 mcc/mcv, other OEM policy and KSU/APatch still require separate hardware;
 R6 remains optional. No public release or updater promotion occurred.
+
+
+## Completion audit — 2026-10-12
+
+The full R0–R5/R7 objective remains **incomplete**. Runtime and app integration
+are in main (engine `96dfe45`, app `6d64cb2`) and both exact merge CIs passed:
+[engine Linux/macOS](https://github.com/ricardojrgpimentel/ACC-NG/actions/runs/38236917858),
+[app Android](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38237425088).
+Review below distinguishes executed synthetic behavior, actual Samsung trials
+and external-hardware evidence that is still absent. Historical I6 trials retain
+their source identity; they are not relabeled as I7 repetitions.
+
+The audit found a structural assertion for three protective code paths. It was
+replaced by seven controller scenarios in `tests/test_controller_protections.py`
+in the engine: cooldown-charge capacity/max-temperature/shutdown/unplug,
+invalid config/sensors, physical percent/mV shutdown boundaries, reconnect
+cancellation, three-attempt error 7 and two-cycle idle reselection. They execute
+production control/threshold/wait helpers with synthetic files and stub only
+platform operations. No live thermal sensor was changed and no shutdown was
+triggered. Removing protective sampling or shutdown eligibility, extending the
+control budget to four, or extending idle reselection to three each caused
+failures in those tests; mutations were applied only in memory.
+
+Full audited engine suite: **144 Android passed; 142 host passed/two Android-only
+skipped**. App results inspected from XML: **119 per debug/release**, no errors,
+failures or skips. Existing signed build/lint/signature/alignment evidence
+continues to apply because this increment changes tests/documentation only.
+The engine package reproduced SHA-256
+`6254bb8ad9bf5bf2d9e35c1344124815325258c1b62b63da7a5f9ddfa8682b51`;
+source reference b3e59e6 and the installed signed beta.8 remain accurate.
+Private audit logs are `/private/tmp/acc-roadmap-audit-{host,android,mutations}.log`.
+
+| Requirement | Inspected authoritative evidence | Completion scope / missing proof |
+| --- | --- | --- |
+| R0.1 machine outputs and codes | Engine `test_contract.py` executes CLI/info/config/daemon/switch fragments; app `FrontendContractTest`, `PrintedConfigContractTest` parse exact exported bundle fixtures | Contract implemented and exercised; success/failure/unknown remain distinct |
+| R0.2 capabilities/schema compatibility | Engine module/contract fixtures; app `NgEngineContractTest` covers missing metadata, legacy API 1, malformed/unknown API/schema and rejects guessed writers | Implemented; API 1/schema 202310160 retained |
+| R0.3 old/current/raw profiles | Engine profile rewrite/readback and config transaction fixtures; app legacy JSON/temperature/profile tests; signed update database/prefs report | Implemented; current official three/debug one profiles and all rows retained against session baseline |
+| R0.4 synthetic sensors and refusal | Engine contract/sensors/discovery/limits suites cover sign/zero/missing/malformed/scale/refused reads and writes; actual Android fixture invocation passed | Implemented; synthetic behavior does not certify electrical limiting |
+| R1.1 conditional resets | Limits tests cover untouched defaults, original snapshots, restart, partial/failed resets; real SIOP 100→30→100 and journal removal | Implemented and SIOP physically proved; successful physical mcc/mcv still missing |
+| R1.2 isolated current/voltage application/cache | Discovery/limits/frontend-control tests exercise cache loss, restart defaults, deferred latest requests, aliases and no cross-limit reset | Implemented in fixtures; writable mcc/mcv hardware still required |
+| R1.3 owner/mode and OEM control | Limits tests execute permission fallback, restoration failure, owner/mode, target symlinks; real SIOP kept 664/1000:1001 under charging load | Specific restoration proved; independent OEM thermal-policy interaction remains unverified |
+| R1.4 saved versus applied readback | Frontend-controls/discovery tests and app PowerLimits/ConfigVerifier/FrontendContract tests; real `500::failed` / `4100::unsupported` evidence | Failure/no-support reporting proved; successful physical current/voltage application missing |
+| R2.1 valid candidates/blacklist | Discovery/frontend-control tests reject absent/empty/invalid/blacklisted references and preserve manual choices | Implemented and exercised; discovery never establishes support merely from a filename |
+| R2.2 exact OEM switches | Whole OEM-rule execution and deduplication tests in `test_sensors.py`; manual selection preserved | Implemented; other OEM boards not physically certified |
+| R2.3 physical sensor selection/units | Sensors suite executes split Nexus interface, absent uevent, explicit units, battery/input distinction, missing protection; Samsung actual sensor-status/current measurements | Implemented; real Samsung mA/µV path verified, other OEM physical paths missing |
+| R2.4 incoming-power semantics | Shared external-power engine/app fixtures, own-input-cut unknown and relative-path tests; I7 AC online and new events across cable removal/reconnect | Samsung physical detection proved; own pause does not authorize false calibration |
+| R3.1 switch result/codes | Switch probe/quiet/incomplete/reference/restore-failure fixtures; app parser preserves complete success/idle versus errors; physical slate probe | Implemented; tested Samsung pause switch passes without claiming idle support |
+| R3.2 bounded/cancellable/concurrent probes | Deadline, TERM, busy mutex, original-OFF restoration and grouped-snapshot tests; app test worker/process cases | Executed synthetic behavior and physical switch restoration proved |
+| R3.3 automatic recovery budget | New full-controller case observes two reselections then three disable attempts/error 7, plus recovery log; lock/worker fixtures and final one-daemon check | Bounded behavior proved; no generic claim for every OEM switch |
+| R3.4 idle and polarity | Stable three-sample/threshold/sign/manual/zero fixtures; I7 blank→negative calibration at 30 seconds with negative physical battery current | Fresh Samsung calibration proved; manual compatibility retained |
+| R3.5 thermal/capacity pause and `r` | Engine actual threshold/transition tests, `r` case, controller cooldown interruption; app TemperatureConfig/ConfigVerifier tests | Implemented and exercised synthetically; no live battery heating required |
+| R3.6 cooldown/shutdown | New controller cases observe first-ON-sample interruption at exact capacity/temperature bounds, physical percent/mV shutdown and reconnect cancellation; existing OFF-wait case | Effects/deadlines proved with synthetic data; actual shutdown stubbed |
+| R4.1 import/CRLF/named scripts | Config transaction suite executes replacement/addition, case-insensitive names, quoting/extensions and invalid import | Implemented and exercised |
+| R4.2 atomic config/recovery | Concurrent writers, failing commits/reset/removal, last-good and invalid-file recovery tests; physical trial config/last-good restoration | Implemented and original files restored byte for byte |
+| R4.3 parsers/defaults/units | Config/contract suite and app exact printed output, temperature/config-verification tests; physical original thresholds retained | Implemented; six-field capacity and original defaults/schema retained |
+| R4.4 scheduler/DJS | Daily/midnight/quoting/wrapper fixture; DJS archive unchanged, app database rows unchanged with zero existing schedules | Engine scheduler exercised; no pre-existing DJS schedules existed to trigger in this session |
+| R5.1 readiness/disable/boot | Actual readiness/disable/150-second grace fixtures and app diagnostics; I6 locked boot with changed boot ID/RUNNING_LOCKED, one daemon and physical OFF | Implemented and Samsung locked boot observed on I6; unchanged boot branch covered by I7 control fixtures |
+| R5.2 managers/BusyBox | Explicit Magisk/KSU/APatch manager installation flags and independent BusyBox fixture; actual Samsung Magisk install without reboot | Magisk physically verified; KSU/APatch physical trials absent |
+| R5.3 install/staging/rollback | Complete installer fixtures and I6 live clean/upgrade/rollback/reinstall; I7 exact app installer update, 31 runtime hashes and single-daemon health | Samsung paths observed by increment; rollback/failure synthetic cases pass |
+| R5.4 secure archive/downloader | Actual TLS/HTTP failure/timeout argument fixture, archive traversal/symlink/root rejection and bundle/GitHub source selection tests | Implemented; NG identities/URLs retained, no insecure transport fallback |
+| R5.5 bounded diagnostics | Actual diagnostic exporter fixture verifies 128 KiB log caps, timeout of platform dump, test/sensor/limit context and temp cleanup | Implemented and exercised; live loop does not wait for exporter |
+| R7 joint artifact and preservation | Deterministic source archive, bundle hash, 35 contract/31 runtime hashes, beta.8 signed APK equality, XML tests, lint/build/signature/16 KiB checks, data/config proofs and merged PRs | Joint candidate integrated and reviewable; no release or updater promotion |
+| R7 physical matrix | I6 clean/legacy upgrade/reboot/capacity/rollback/SIOP load; I7 signed upgrade/cable/fresh polarity/restoration; separate raw results retained | Samsung evidence available. Successful writable mcc/mcv, independent OEM policy and physical KSU/APatch remain absent; full R7 is not complete |
+| R6 optional features | Catalog and module capabilities exclude new idle_apps/Encore/percentage-current editor; existing physical-capacity/mask/temporary-charge protections retained | Explicitly outside candidate; not substituted for missing R7 evidence |
+
+The remaining gate needs an attached supported current/voltage-control device,
+physical KSU and APatch environments, and independent OEM-policy read/write
+observations under normal load. Repeating a rejected Samsung current write or
+renaming fixture results would not supply that evidence. The automatic goal
+must therefore remain incomplete until suitable hardware or a user-approved
+change to the required scope is available. Public release assets/tags and
+stable `module.json` stay untouched.
