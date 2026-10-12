@@ -676,3 +676,102 @@ CI for app main `534b5a9` also passed
 [Android checks](https://github.com/ricardojrgpimentel/ACCA-NG/actions/runs/38227058994).
 The remaining full R7 gate still needs physical cable/calibration work and
 suitable writable mcc/mcv and KSU/APatch/OEM hardware. No release was published.
+
+
+## I7 unplug/calibration candidate — 2026-10-12
+
+ACC-NG v1.0.9-ng/202610129 / AccA-NG beta.8/code 48, unpublished.
+Runtime source `b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`; bundle SHA-256
+`6254bb8ad9bf5bf2d9e35c1344124815325258c1b62b63da7a5f9ddfa8682b51`.
+
+### Physical I6 cable trial and identified calibration delay
+
+The user physically removed and reattached the USB cable with I6 installed.
+A bounded detached logger captured 118 samples independently of the ADB
+connection. The ADB transport changed on reconnect. AC was the actual incoming
+source on this Samsung; the USB online node alone was not a correct cable proxy.
+
+- Incoming-power readback changed true → false → true, and real battery current
+  changed from about +1854 mA to −539 mA and then +1566 mA.
+- Engine events recorded disconnected at 09:26:12 UTC and connected at
+  09:27:03 UTC. Connection state updated coherently; the event check does not
+  establish user-visible notification delivery.
+- `dischargePolarity` had been cleared for fresh automatic calibration, but
+  remained blank. This trial passes physical cable detection for I6, not
+  automatic calibration.
+- The logger removed its temporary resume 65% / pause 70% and restored the exact
+  original config/last-good. Engine ready and config SHA-256
+  `f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`
+  were verified. Private evidence is ignored `build/validation/manual-usb/`.
+
+The controller resumed at low capacity even with explicitly disconnected power;
+its ON verification could wait 14 × 3 seconds on an unpowered control before
+another calibration sample. A full loop regression, including real is_charging
+and set_dp functions, reproduces 153 simulated seconds and three futile ON
+requests for three samples. The corrected loop skips those requests for known
+unplug, yielding three samples in 27 seconds. Connected and unknown power still
+allow resume, so an OEM input pause is not mistaken for a disconnected cable.
+
+The corrected I7 trial is recorded separately below. The remaining external-hardware
+certification and release gate continue to apply.
+
+
+I7 final automated checks: 138 Android-runner cases passed; 138 host cases
+(136 passed, two Android-only skipped). The pending-ON regressions also verify
+unplug during an existing check: 42 simulated seconds before the fix, three
+after, including lagging kernel Charging status. Connected/unknown resume
+remains eligible. The signed/debug beta.8 build checks and final physical trial
+are recorded below.
+
+
+I7 packaging/upgrade checks: 119 app tests passed per debug/release, both lints
+and builds passed. The signed APK retains the established certificate and
+16 KiB alignment. The final bundle was installed through the exact app raw
+installer; the APK update succeeded. All 31 runtime hashes match the final
+contract. Official/debug database rows and preferences matched the immediately
+pre-upgrade backup, and the original config hash remained unchanged. The
+initial v1.0.9 package was an intermediate local build; both module and APK were
+replaced with the final b3e59e6 bundle before the next physical trial. No public
+version code or release asset was reused.
+
+
+The final classification regression also reproduces native Discharging with two
+negative battery-current samples while polarity is blank. Relative-current
+fallback previously changed that to Charging. Confirmed absent incoming power
+now remains Discharging without waiting for calibration; unknown/connected
+power retains the existing behavior. Final source is b3e59e6, covered by all
+138 Android cases and 136 host cases plus two Android-only skips.
+
+
+### Physical I7 calibration and restoration — 2026-10-12
+
+The user unplugged and reattached the cable with final b3e59e6 runtime and
+signed beta.8 installed. A detached logger captured 89 samples through the
+ADB disconnect. Recorded accd.sh/batt-interface.sh hashes match that source.
+Fresh automatic calibration began with dischargePolarity blank; temporary
+resume 65% / pause 70% / cooldown 101% ensured charging before unplug.
+
+- Incoming-power readback changed true → false at 10:23:43 UTC → true at
+  10:25:24 UTC. AC was the incoming source; USB online stayed zero.
+- The disconnected event and Discharging state were observed at 10:23:53 UTC,
+  with real battery current −760 mA. Polarity became `-` at 10:24:13 UTC,
+  30 seconds after the first offline sample, without an unpowered ON wait.
+- Reconnect event was recorded at 10:25:31 UTC. The next sample at 10:25:32 UTC
+  showed connected/Charging and +1647 mA; subsequent charging current reached
+  +1880 mA. Learned negative polarity remained after reconnect.
+- Published daemon state lagged the first offline/online readbacks by about
+  ten/eight seconds, consistent with controller cadence and logger sampling.
+  This is not an assertion of instantaneous state or delivered UI notifications.
+- Logger result was `restored`. Original config and last-good were restored
+  byte for byte; config SHA-256 remains
+  `f51e728c6a5d1f3641284c1c6d28fb61fbabcaaf1de8a3a3d348ac452f084366`.
+  Final health showed ready/Magisk, one daemon matching its lock, original
+  protective thresholds, SIOP 100/mode 664/owner 1000:1001 and current-node
+  permissions 444/root. Charging is again governed by the original profile.
+
+Private raw evidence and summary are ignored `build/validation/manual-i7-usb/`;
+final health is `build/validation/i7-final-device-health.txt`. Android CI passed
+for engine b3e59e6 on Linux/macOS and app de2cefb. This closes physical cable
+and fresh automatic-calibration checks on this Samsung. Successful writable
+mcc/mcv, other OEM policy and KSU/APatch still require separate hardware;
+R6 remains optional. No public release or updater promotion occurred.

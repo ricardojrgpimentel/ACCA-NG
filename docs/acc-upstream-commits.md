@@ -249,3 +249,12 @@ Fonte I4 e release ainda não publicadas. Ver [registo I4](acc-upstream-implemen
 ## Fecho do núcleo I6 — 11 outubro 2026
 
 O catálogo regista objetivos finais, adaptações parciais de commits mistos e decisões explícitas de manter NG. A evidência por tarefa e os limites físicos estão no registo I6/validação; os estados não certificam todos os OEM. R0–R5 estão implementados no candidato conjunto, com API 1/schema 202310160. R6 idle_apps, Encore, percentagens de corrente e novos formatos avançados permanecem fora do candidato por serem opcionais. Não se declara merge integral dos 202 commits.
+
+
+## Correção física I7 — 12 outubro 2026
+
+A repetição Samsung revelou e corrigiu atraso NG de calibração sem cabo, após
+a adaptação do núcleo I6. Fonte runtime b3e59e6, motor v1.0.9-ng/app beta.8;
+138 casos Android e calibração física negativa em 30 segundos passaram. O
+incremento preserva decisões NG e estados deste catálogo; não adiciona um
+cherry-pick upstream. Ver [I7](acc-upstream-implementation.md#i7--calibração-após-desligar-o-cabo).

@@ -4,6 +4,13 @@
 
 **Estado em 12 outubro 2026:** núcleo R0–R5 implementado no candidato conjunto **ACC-NG v1.0.8-ng (202610118) / AccA-NG 2.0.0-ng-beta.7 (47)**, fonte `ea5972f5d95e08ba9b98ac67c83ef375121aad72`. API 1/schema 202310160, perfis e preferências NG conservados. R7 tem validação automatizada e física Samsung/Magisk, incluindo instalação limpa e atualização assinada após desbloqueio. O núcleo está integrado nas duas mains; publicação e certificação em outros kernels/gestores têm alcance separado e continuam documentadas. Novas funcionalidades R6 continuam opcionais e fora deste candidato. Ver [I6](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto) e [validação](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
 
+**Candidato I7 em validação:** ACC-NG v1.0.9-ng / AccA-NG beta.8, fonte
+`b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`. O unplug/replug físico I6 passou,
+mas a calibração automática ficou pendente por esperas ON com a alimentação
+realmente desligada. I7 corrige novas tentativas e interrompe uma espera em curso;
+138 casos motor e 119 app por variante passaram. A repetição física está pendente.
+O registo I6 acima mantém o alcance histórico; I7 não publica release/updater.
+
 ## Estado das tarefas
 
 Esta tabela acompanha o trabalho; as especificações R0–R7 abaixo continuam a definir os critérios completos. “Implementado” indica código e fixtures, não aprovação para release. Cada incremento deve atualizar esta tabela, o catálogo e o registo de validação.
@@ -177,6 +184,21 @@ Um incremento só fica concluído quando os seus critérios passam. Novos candid
 
 A implementação do núcleo e todos os ensaios possíveis no ambiente disponível estão concluídos e registados em I6. Foram mantidas decisões NG explícitas para defaults/schema, root tooling/overlayfs, transporte sem fallback inseguro e funcionalidades opcionais; o catálogo não declara cherry-pick integral dos 202 commits.
 
-Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. USB físico desligado/religado tem evidência histórica I2; I6 confirma alimentação ligada e o caso de pausa que altera online, mas não repete a desconexão física. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
+Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. O ensaio físico I6 detetou desligar/religar mas revelou atraso na calibração; a correção I7 passou a repetição física, aprendendo polaridade negativa em 30 segundos e retomando carga real. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
 
 O núcleo foi integrado nos PRs #1 de ACC-NG/AccA-NG; os checks dos commits de merge passaram. O APK assinado continua candidato. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
+
+
+## I7 — calibração após desligar o cabo
+
+12 outubro 2026. Motor v1.0.9-ng/202610129 e app beta.8/code 48. A correção
+preserva a cadência de amostragem quando a alimentação está confirmadamente
+ausente, interrompe verificações ON pendentes e classifica a desconexão antes
+de aprender a polaridade. Alimentação unknown continua elegível para retoma.
+138 casos passaram Android; 136 passaram host e dois Android-only foram omitidos.
+119 testes por variante da app, lint/build/assinatura/alinhamento e CI passaram.
+O ensaio físico final aprendeu `-` em 30 segundos, confirmou eventos e corrente
+real ao religar; config/last-good, perfis e instância única foram preservados.
+Ver [registo I7](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12).
+A matriz Samsung disponível está concluída; certificação em hardware mcc/mcv,
+KSU/APatch/outros OEM e publicação continuam pendentes. R6 permanece opcional.

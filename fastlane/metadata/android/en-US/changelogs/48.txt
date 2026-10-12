@@ -1,0 +1,1 @@
+Fix discharge calibration delays while the charger is physically disconnected. Keep resume behavior for OEM input pauses and preserve configuration.
