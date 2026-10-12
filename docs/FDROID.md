@@ -31,7 +31,7 @@ channel. Do not display an F-Droid download badge until this package is listed.
 
 Current ACC-NG bundle: **v1.0.9-ng candidate**, built using
 `python3 tools/build_ng.py` from engine source commit
-[`dadb2e98b2f14809302e8af2822b60aeced20be2`](https://github.com/ricardojrgpimentel/ACC-NG/tree/dadb2e98b2f14809302e8af2822b60aeced20be2).
+[`b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`](https://github.com/ricardojrgpimentel/ACC-NG/tree/b3e59e6d3bed20d52aadcb66d351f4a7eac2af88).
 See the [I6 integration record](acc-upstream-implementation.md#i6--fecho-do-núcleo-e-candidato-conjunto).
 A clean git archive of that commit reproduces the exact bundled archive and its
 flashable uninstaller. The app contract checks 35 source hashes and the shared

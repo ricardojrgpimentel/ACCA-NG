@@ -681,8 +681,8 @@ suitable writable mcc/mcv and KSU/APatch/OEM hardware. No release was published.
 ## I7 unplug/calibration candidate — 2026-10-12
 
 ACC-NG v1.0.9-ng/202610129 / AccA-NG beta.8/code 48, unpublished.
-Runtime source `dadb2e98b2f14809302e8af2822b60aeced20be2`; bundle SHA-256
-`246e7bfcd1ed9e6700f940b78eb40c824bf6fafdabf8cec92972961310378ab1`.
+Runtime source `b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`; bundle SHA-256
+`6254bb8ad9bf5bf2d9e35c1344124815325258c1b62b63da7a5f9ddfa8682b51`.
 
 ### Physical I6 cable trial and identified calibration delay
 
@@ -717,8 +717,8 @@ relabeled as this candidate's results. The remaining external-hardware
 certification and release gate continue to apply.
 
 
-I7 final automated checks: 137 Android-runner cases passed; 137 host cases
-(135 passed, two Android-only skipped). The pending-ON regressions also verify
+I7 final automated checks: 138 Android-runner cases passed; 138 host cases
+(136 passed, two Android-only skipped). The pending-ON regressions also verify
 unplug during an existing check: 42 simulated seconds before the fix, three
 after, including lagging kernel Charging status. Connected/unknown resume
 remains eligible. The signed/debug beta.8 build checks and final physical trial
@@ -732,5 +732,13 @@ installer; the APK update succeeded. All 31 runtime hashes match the final
 contract. Official/debug database rows and preferences matched the immediately
 pre-upgrade backup, and the original config hash remained unchanged. The
 initial v1.0.9 package was an intermediate local build; both module and APK were
-replaced with the final dadb2e9 bundle before the next physical trial. No public
+replaced with the final b3e59e6 bundle before the next physical trial. No public
 version code or release asset was reused.
+
+
+The final classification regression also reproduces native Discharging with two
+negative battery-current samples while polarity is blank. Relative-current
+fallback previously changed that to Charging. Confirmed absent incoming power
+now remains Discharging without waiting for calibration; unknown/connected
+power retains the existing behavior. Final source is b3e59e6, covered by all
+138 Android cases and 136 host cases plus two Android-only skips.
