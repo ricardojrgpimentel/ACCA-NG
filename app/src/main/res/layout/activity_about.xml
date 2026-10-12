@@ -53,8 +53,22 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/about_build_summary"
                 android:layout_marginTop="12dp"
-                android:layout_marginBottom="28dp"
                 tools:text="2.0.0-ng-debug · Debug" />
+            <TextView
+                style="@style/TextAppearance.Acca.About.Caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/about_ng_acc_version" />
+            <TextView
+                style="@style/TextAppearance.Acca.About.Value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/about_acc_daemon_version_tv"
+                android:layout_marginBottom="28dp"
+                android:text="@string/about_ng_loading"
+                android:accessibilityLiveRegion="polite"
+                tools:text="v1.0.9-ng (202610129)" />
             <View
                 style="@style/Widget.Acca.About.Divider" />
             <TextView
@@ -207,19 +221,6 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/about_acca_version_tv"
                     tools:text="2.0.0-ng-debug (40)" />
-                <TextView
-                    style="@style/TextAppearance.Acca.About.Caption"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/about_ng_acc_version" />
-                <TextView
-                    style="@style/TextAppearance.Acca.About.Value"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/about_acc_daemon_version_tv"
-                    android:text="@string/about_ng_loading"
-                    android:accessibilityLiveRegion="polite" />
                 <TextView
                     style="@style/TextAppearance.Acca.About.Caption"
                     android:layout_width="match_parent"

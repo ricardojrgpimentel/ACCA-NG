@@ -23,7 +23,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mattecarra.accapp.BuildConfig
 import mattecarra.accapp.R
-import mattecarra.accapp.acc.Acc
+import mattecarra.accapp.acc.AccNg
+import mattecarra.accapp.acc.AccOutput
 import mattecarra.accapp.databinding.ActivityAboutBinding
 import mattecarra.accapp.utils.RootShell
 
@@ -56,9 +57,14 @@ class AboutActivity : AppCompatActivity() {
         binding.aboutLicense.setOnClickListener { openUrl("$PROJECT_URL/blob/main/LICENSE") }
 
         bindDisclosure(binding.aboutTechnicalToggle, binding.aboutTechnicalContent,
-            savedInstanceState?.getBoolean(TECHNICAL_EXPANDED) ?: false) { loadAccVersions() }
+            savedInstanceState?.getBoolean(TECHNICAL_EXPANDED) ?: false)
         bindDisclosure(binding.aboutLicensesToggle, binding.aboutLicensesContent,
             savedInstanceState?.getBoolean(LICENSES_EXPANDED) ?: false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        loadAccVersions()
     }
 
     private fun bindDisclosure(button: MaterialButton, content: View, expanded: Boolean, onExpand: () -> Unit = {}) {
@@ -78,14 +84,23 @@ class AboutActivity : AppCompatActivity() {
     }
 
     private fun loadAccVersions() {
-        if (versionJob != null) return
+        versionJob?.cancel()
+        binding.aboutAccDaemonVersionTv.setText(R.string.about_ng_loading)
+        binding.aboutAccApiVersionTv.setText(R.string.about_ng_loading)
         versionJob = lifecycleScope.launch {
             val versions = withContext(Dispatchers.IO) {
                 try {
-                    val result = RootShell.exec("/dev/acca --version", timeoutSecs = 5)
-                    val daemon = result.out.joinToString("\n").trim().takeIf { result.isSuccess && it.isNotBlank() }
-                    // Avoid initializing ACC when it is unavailable. About remains usable without root.
-                    daemon to daemon?.let { Acc.instance.version.toString() }
+                    val result = RootShell.execScript(
+                        "/dev/.vr25/acc/acca --version 2>/dev/null || /dev/acca --version", timeoutSecs = 5)
+                    val daemon = result.out.joinToString("\n").trim()
+                        .takeIf { result.isSuccess && AccOutput.version(it) != null }
+                    // Read the installed engine; never initialize a daemon or use the bundled version.
+                    val api = daemon?.let {
+                        val contract = AccNg.readContract()
+                        if (contract != null) contract.api.takeIf { it > 0 }?.toString()
+                        else AccOutput.version(it)?.toString()
+                    }
+                    daemon to api
                 } catch (ex: CancellationException) {
                     throw ex
                 } catch (ex: Exception) {
