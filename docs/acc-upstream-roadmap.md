@@ -2,7 +2,7 @@
 
 9 de outubro de 2026. Integrar as melhorias do ACC até `908a5a4` no nosso motor, mantendo perfis, diagnósticos, notificações e instalação pela AccA-NG. A [revisão](acc-upstream-review.md) identifica os conflitos; o [catálogo](acc-upstream-commits.md) cobre os 202 commits e as reversões.
 
-**Estado em 12 outubro 2026:** núcleo R0–R5 implementado e integrado nas duas mains, com **ACC-NG v1.0.9-ng (202610129) / AccA-NG beta.8 (48)**. Fonte runtime `b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`; API 1/schema 202310160, perfis e preferências NG conservados. R7 tem suites automatizadas e evidência física Samsung/Magisk, incluindo instalação limpa, atualização assinada, boot antes do PIN, cabo desligado/religado e calibração fresca. A repetição I7 aprendeu polaridade negativa em 30 segundos e retomou carga real. Certificação física mcc/mcv/outros OEM/KSU/APatch continua pendente; não se declara o objetivo R7 completo. R6 permanece opcional e fora do candidato. Ver [I7](acc-upstream-implementation.md#i7--calibração-após-desligar-o-cabo) e [validação](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12). Nenhuma release/updater foi publicada.
+**Estado em 12 outubro 2026:** núcleo R0–R5 implementado e integrado nas duas mains, com **ACC-NG v1.0.9-ng (202610129) / AccA-NG beta.8 (48)**. Fonte runtime `b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`; API 1/schema 202310160, perfis e preferências NG conservados. R7 tem suites automatizadas e evidência física Samsung/Magisk, incluindo instalação limpa, atualização assinada, boot antes do PIN, cabo desligado/religado e calibração fresca. A repetição I7 aprendeu polaridade negativa em 30 segundos e retomou carga real. Certificação física mcc/mcv/outros OEM/KSU/APatch continua pendente; não se declara o objetivo R7 completo. R6 permanece opcional e fora do candidato. Ver [I7](acc-upstream-implementation.md#i7--calibração-após-desligar-o-cabo) e [validação](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12). As [prereleases v1.0.9-ng](https://github.com/ricardojrgpimentel/ACC-NG/releases/tag/v1.0.9-ng) e [beta.8](https://github.com/ricardojrgpimentel/ACCA-NG/releases/tag/v2.0.0-ng-beta.8) foram publicadas em 12 outubro com as limitações físicas explícitas; o canal automático não foi promovido.
 
 ## Estado das tarefas
 
@@ -179,7 +179,7 @@ A implementação do núcleo foi integrada em I6 e corrigida em I7; os ensaios S
 
 Para certificação pública restante é necessário hardware com mcc/mcv/tl graváveis e aparelhos KSU/APatch/outros OEM. O Samsung não valida esses cenários. O ensaio físico I6 detetou desligar/religar mas revelou atraso na calibração; a correção I7 passou a repetição física, aprendendo polaridade negativa em 30 segundos e retomando carga real. Não provocar aquecimento da bateria para validar limites térmicos: fixtures exercitam as fronteiras.
 
-O núcleo e a correção I7 foram integrados nos PRs #1 e #2 de ACC-NG/AccA-NG; os checks dos merges #2 passaram em engine `96dfe45` e app `6d64cb2`. O APK assinado continua candidato. module.json estável permanece v1.0.3-ng e nenhuma release/updater foi publicada. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
+O núcleo e a correção I7 foram integrados nos PRs #1 e #2 de ACC-NG/AccA-NG; os checks dos merges #2 passaram em engine `96dfe45` e app `6d64cb2`. O APK assinado e módulo v1.0.9-ng estão publicados como prereleases com escopo Samsung/Magisk documentado. module.json do canal automático permanece v1.0.3-ng. R6 só deve entrar num incremento próprio com capacidades, editor e hardware adequados.
 
 
 ## I7 — calibração após desligar o cabo
@@ -194,4 +194,4 @@ O ensaio físico final aprendeu `-` em 30 segundos, confirmou eventos e corrente
 real ao religar; config/last-good, perfis e instância única foram preservados.
 Ver [registo I7](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12).
 A matriz Samsung disponível está concluída; certificação em hardware mcc/mcv,
-KSU/APatch/outros OEM e publicação continuam pendentes. R6 permanece opcional.
+KSU/APatch/outros OEM continua pendente. As prereleases foram publicadas por autorização explícita, sem afirmar certificação R7 completa. R6 permanece opcional.

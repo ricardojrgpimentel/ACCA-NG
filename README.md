@@ -24,7 +24,7 @@ for controlling charging on rooted Android devices. Maintained by
   21 locales, with English fallback for older untranslated text.
 
 The app bundles [ACC-NG](https://github.com/ricardojrgpimentel/ACC-NG)
-**v1.0.9-ng candidate**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
+**v1.0.9-ng prerelease**, based on ACC v2023.10.16, and DJS **v2021.12.14**.
 The engine controls charging in the background; limits come from your settings
 and profiles. Disabling engine notifications does not disable charging protection.
 
@@ -62,15 +62,18 @@ by a compatible root setup. Android version alone does not establish compatibili
 ACC-NG retains ACC's controller loop, but neither the app nor the engine can
 promise support for every device or guarantee battery health.
 
-The recorded physical validation covers a **Samsung SM-G975F** and its kernel:
-setup, calibration, profile application and observed charging pause/resume.
-Locked boot passed on that Samsung/Magisk with the I2 candidate. I3 passed
-synthetic host/Android tests and a limited physical upgrade/readback check:
-this kernel refused current-limit writes, which were reported as failed;
-voltage discovery remained pending during cooldown. The original configuration
-was restored. Other devices, notification delivery, successful power-limit
-application/restoration and OEM policy remain unverified. See the
-[validation record](docs/acc-ng-validation.md) for exact scope.
+The recorded physical validation covers a **Samsung SM-G975F / Magisk**. I6
+trials include clean installation, upgrade, charging pause/resume, rollback,
+locked boot and SIOP current reduction/restoration under load. The final I7
+trial with beta.8 verifies physical cable removal/reconnection and fresh
+negative-polarity calibration within 30 seconds. Configuration and app data
+were preserved. This kernel refused current-limit writes and had no eligible
+voltage control; successful mcc/mcv, independent OEM policy and physical
+KSU/APatch/other-device validation remain pending. See the
+[validation record](docs/acc-ng-validation.md) for each trial's exact scope.
+
+Current prereleases: [signed beta.8 APK](https://github.com/ricardojrgpimentel/ACCA-NG/releases/tag/v2.0.0-ng-beta.8)
+and [ACC-NG v1.0.9-ng module](https://github.com/ricardojrgpimentel/ACC-NG/releases/tag/v1.0.9-ng).
 
 Review [ACC-NG documentation](https://github.com/ricardojrgpimentel/ACC-NG)
 before changing charging controls. The GPL warranty disclaimer applies.

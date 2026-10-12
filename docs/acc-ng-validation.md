@@ -845,5 +845,43 @@ physical KSU and APatch environments, and independent OEM-policy read/write
 observations under normal load. Repeating a rejected Samsung current write or
 renaming fixture results would not supply that evidence. The automatic goal
 must therefore remain incomplete until suitable hardware or a user-approved
-change to the required scope is available. Public release assets/tags and
-stable `module.json` stay untouched.
+change to the required scope is available. Publication is a separate decision;
+the follow-up below records the explicitly authorized prereleases. The stable
+`module.json` update channel remains unpromoted.
+
+
+## Prerelease publication — 2026-10-12
+
+[ACC-NG v1.0.9-ng](https://github.com/ricardojrgpimentel/ACC-NG/releases/tag/v1.0.9-ng)
+and [AccA-NG 2.0.0-ng-beta.8](https://github.com/ricardojrgpimentel/ACCA-NG/releases/tag/v2.0.0-ng-beta.8)
+were explicitly authorized and published as **prereleases**. This changes the
+distribution state after the preceding candidate/completion-audit records;
+it does not certify the missing hardware scenarios or complete the R7 goal.
+The earlier v1.0.8-ng/beta.7 prereleases were also found in GitHub during the
+publication check; historical no-publication statements refer to those specific
+work sessions, not a claim that the repositories had no public prereleases.
+
+- Engine tag pins `a9ab34ee455c792a6d092da8180c2af97553b51d`; a clean git archive
+  reproduces the exact tested bundle. Runtime source remains b3e59e6.
+- App tag pins `9d2254b2beedffef29c58cdd640b8453cf587da7`. The exact signed
+  beta.8 APK already installed and verified on Samsung was published, preserving
+  version code 48, package and established signing identity.
+- Six engine assets and four app assets were downloaded from both drafts and
+  public releases. Every byte matched the local validated files, all checksums
+  passed, the APK signature and 16 KiB alignment were independently verified,
+  and its embedded tarball matched the standalone module tarball exactly.
+- Tarball SHA-256:
+  `6254bb8ad9bf5bf2d9e35c1344124815325258c1b62b63da7a5f9ddfa8682b51`.
+  APK SHA-256:
+  `8fffc65d13abdaf916a36886b0e49ffbda322534a229c3dfa968671d3e853657`.
+- Notes distinguish I6/I7 physical scope, successful Samsung calibration and
+  the remaining mcc/mcv/OEM/KSU/APatch hardware gap. Repository automatic-update
+  metadata stays v1.0.3-ng, following the previous prerelease channel behavior;
+  the attached release module.json correctly describes v1.0.9-ng assets.
+- Current/history scans checked private-key markers, GitHub/AWS credential
+  patterns and keystore filenames over 3,420 app and 2,995 engine blobs, with
+  no findings. Only the explicit public asset lists were uploaded. Private
+  signing material, app data and device backups remain local.
+
+Private publication verification is under ignored `build/release-publication/`.
+No further device changes were made for publication.

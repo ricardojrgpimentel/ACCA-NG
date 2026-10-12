@@ -29,21 +29,22 @@ channel. Do not display an F-Droid download badge until this package is listed.
 5. Only after those checks, submit a recipe to fdroiddata or an inclusion request
    through F-Droid's documented process. No signing credentials are needed.
 
-Current ACC-NG bundle: **v1.0.9-ng candidate**, built using
+Current ACC-NG bundle: **v1.0.9-ng prerelease**, built using
 `python3 tools/build_ng.py` from engine source commit
-[`b3e59e6d3bed20d52aadcb66d351f4a7eac2af88`](https://github.com/ricardojrgpimentel/ACC-NG/tree/b3e59e6d3bed20d52aadcb66d351f4a7eac2af88).
+[`a9ab34ee455c792a6d092da8180c2af97553b51d`](https://github.com/ricardojrgpimentel/ACC-NG/tree/a9ab34ee455c792a6d092da8180c2af97553b51d).
 See the [I7 integration record](acc-upstream-implementation.md#i7--calibração-após-desligar-o-cabo).
 A clean git archive of that commit reproduces the exact bundled archive and its
 flashable uninstaller. The app contract checks 35 source hashes and the shared
 external-power helper. APK reproducibility in F-Droid and eligibility remain
-separate checks; our signed candidate uses the existing GitHub certificate.
+separate checks; the signed prerelease uses the existing GitHub certificate.
 Samsung/Magisk upgrade, rollback, capacity control and locked boot are recorded
 in [I6 validation](acc-ng-validation.md#i6-joint-core-candidate--2026-10-11).
-Fresh unplug/replug calibration of the current candidate passed in
+Fresh unplug/replug calibration of the current prerelease passed in
 [I7 validation](acc-ng-validation.md#physical-i7-calibration-and-restoration--2026-10-12).
 Other root managers/OEM and successful writable power-limit application still
-require their own physical certification. No stable updater or release changed.
-The previous published source remains
+require their own physical certification. The [v1.0.9-ng prerelease](https://github.com/ricardojrgpimentel/ACC-NG/releases/tag/v1.0.9-ng)
+was published with explicit scope limitations; the automatic updater was not promoted.
+The original NG baseline remains
 [v1.0.3-ng](https://github.com/ricardojrgpimentel/ACC-NG/tree/v1.0.3-ng).
 DJS source: https://github.com/VR-25/djs/tree/v2021.12.14
 (commit `fec70823e379197a612fd18af644b2616d1168e0`).
